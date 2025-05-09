@@ -1,129 +1,141 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-05-07 18:33:34
+# 配置生成日期：2025-05-09 19:41:56
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
-    server: 13.60.166.119
-    port: 443
-    uuid: 7f93e196-1b2f-4a42-8051-5815554c05db
-    network: tcp
-    tls: true
-    servername: zula.ir
-    flow: xtls-rprx-vision
-    alpn:
-      - h2
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: GbWTeH8a_C8FLKqJ2hyuoY77WsSQIJschXB16usasCg
-      short-id: 7a2b
+    server: 84.32.9.31
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_2
     type: vless
-    server: 157.180.93.74
-    port: 20000
-    uuid: 6543593a-f55e-422c-8ffd-b6d930b1808c
-    network: grpc
-    tls: true
-    servername: ebookiran.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X2l8AS8XhUKxyskDWHA-gRhvCO3LTGqWEs1GYIpyfEo
-      short-id: d525279f3c6c0ef5
-    grpc-opts:
-      grpc-service-name: Tok
+    server: 151.101.2.228
+    port: 80
+    uuid: 0d083787-080d-4eaa-a741-e78c8fcd9547
+    network: ws
+    tls: false
+    ws-opts:
+      path: /olem/ws?ed=1024
+      headers:
+        host: foffmelo.com
     ip-version: dual
     udp: true
   - name: DefaultName_3
     type: vless
-    server: 95.217.206.161
-    port: 443
-    uuid: 01d68a9b-be48-4c7b-b4f9-71b29c4cfaca
-    network: tcp
-    tls: true
-    servername: api.chandplus.com
-    skip-cert-verify: true
+    server: 84.32.9.44
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_4
     type: vless
-    server: 188.245.250.75
-    port: 7022
-    uuid: ce462cc3-9983-45da-b030-728fb7b5684e
-    network: tcp
+    server: 94.130.78.148
+    port: 2087
+    uuid: f38e1473-0bb8-4190-8d49-ba1aaaf4e264
+    network: grpc
     tls: true
-    servername: refersion.com
+    servername: tt.eldenmonodefense5.ir
+    alpn:
+      - h2
     skip-cert-verify: true
     client-fingerprint: chrome
-    reality-opts:
-      public-key: Sm0gGVH8qJHECOVhNaN2j52ayfqYcrZggyQMxiQP2Fo
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_5
     type: vless
-    server: 194.182.79.7
-    port: 19123
-    uuid: 7318d456-0bfd-4973-8735-fb4d1236d6cb
+    server: 84.32.9.52
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: '@V2ray_Alpha'
-    type: vless
-    server: 45.80.111.10
-    port: 2052
-    uuid: 45f01712-2893-53e3-8e6a-6b7c925021da
-    network: ws
-    tls: false
-    ws-opts:
-      path: /vless
-      headers:
-        host: sPeedtest2.sbs.br.vless.sitespeedtest.net
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_6
     type: vless
-    server: 37.156.46.44
-    port: 59536
-    uuid: d2a6d095-e897-1c16-8fde-b96d5892d515
+    server: 49.13.174.239
+    port: 1287
+    uuid: 09123053-aa01-4233-b67b-49f613d4cb5d
     network: tcp
-    tls: true
-    servername: stackoverflow.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: KmXtdOimd1xGGg7V2rvo74_HxMd6_bzFyosF6Z5c22A
-      short-id: d6d54c08fbbf895f
+    tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_7
     type: vless
-    server: 151.101.130.133
-    port: 80
-    uuid: 2ce4da59-28c7-41fa-9411-7dfde437c1cb
+    server: 5.182.86.128
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
     network: ws
-    tls: false
+    tls: true
+    servername: nl07.abvpn.ru
+    skip-cert-verify: true
+    client-fingerprint: randomized
     ws-opts:
-      path: /TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray?ed=2048
+      path: /websocket
       headers:
-        host: namehmain.com
+        host: nl07.abvpn.ru
     ip-version: dual
     udp: true
   - name: DefaultName_8
     type: vless
-    server: 95.164.45.78
+    server: 84.32.9.41
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
@@ -133,9 +145,9 @@ proxies:
     udp: true
   - name: DefaultName_9
     type: vless
-    server: 45.82.251.149
+    server: 5.199.174.174
     port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
     grpc-opts: {}
@@ -143,15 +155,147 @@ proxies:
     udp: true
   - name: DefaultName_10
     type: vless
-    server: 45.82.251.163
+    server: 104.17.147.22
+    port: 2096
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    ip-version: dual
+    udp: true
+  - name: DefaultName_11
+    type: vless
+    server: 185.146.173.39
     port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    uuid: Parsashonam-233
+    network: httpupgrade
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_12
+    type: vless
+    server: 104.17.148.22
+    port: 2096
+    uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
+    network: ws
+    tls: true
+    servername: DrOt0Ai1Oq.DeRaKhT.iNfO
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: DrOt0Ai1Oq.DeRaKhT.iNfO
+    ip-version: dual
+    udp: true
+  - name: DefaultName_13
+    type: vless
+    server: 45.82.251.68
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: 5fab0deb
+    ip-version: dual
+    udp: true
+  - name: DefaultName_14
+    type: vless
+    server: 84.32.9.25
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_11
+  - name: DefaultName_15
+    type: vless
+    server: 135.148.74.159
+    port: 443
+    uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+    network: tcp
+    tls: true
+    servername: 147135004002.sec20org.com
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+    ip-version: dual
+    udp: true
+  - name: DefaultName_16
+    type: vless
+    server: 135.148.182.1
+    port: 443
+    uuid: ea286109-d20f-415e-849e-4af20ab04b65
+    network: tcp
+    tls: true
+    servername: 147135001195.sec22org.com
+    skip-cert-verify: true
+    ip-version: dual
+    udp: true
+  - name: DefaultName_17
+    type: vless
+    server: 104.21.32.242
+    port: 443
+    uuid: 4f435a3a-dfb8-4c90-b637-8df8c5d44550
+    network: ws
+    tls: true
+    servername: 9dswerty.890604.dpdns.org
+    alpn:
+      - http/1.1
+    skip-cert-verify: true
+    ws-opts:
+      path: /vUUL3CyENdTbFYDBimbKYmPIggy
+      headers:
+        host: 9dswerty.890604.dpdns.org
+    ip-version: dual
+    udp: true
+  - name: DefaultName_18
+    type: vless
+    server: 15.204.153.29
+    port: 443
+    uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+    network: tcp
+    tls: true
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ip-version: dual
+    udp: true
+  - name: DefaultName_19
+    type: vless
+    server: 51.81.36.78
+    port: 443
+    uuid: 0a44145f-59dc-4e5b-a233-677b97f5114c
+    network: tcp
+    tls: true
+    servername: 147135011033.sec21org.com
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+    ip-version: dual
+    udp: true
+  - name: DefaultName_20
+    type: vless
+    server: 84.32.9.17
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_21
     type: vless
     server: 45.82.251.114
     port: 8880
@@ -161,177 +305,40 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_12
-    type: vless
-    server: 5.182.86.128
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: nl07.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-      headers:
-        host: nl07.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_13
-    type: vless
-    server: 15.204.150.39
-    port: 443
-    uuid: e20ebe01-1815-4c09-8e77-fb2f168263ce
-    network: tcp
-    tls: true
-    servername: 147135001178.sec22org.com
-    skip-cert-verify: true
-    ip-version: dual
-    udp: true
-  - name: DefaultName_14
-    type: vless
-    server: 194.182.79.209
-    port: 18411
-    uuid: f939e99b-5f02-41cc-ae7a-b09289a3d160
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: DefaultName_15
-    type: vless
-    server: 88.216.187.57
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_16
-    type: vless
-    server: 45.159.216.212
-    port: 443
-    uuid: 4d91916f-a7fd-419b-8b90-640bb8d4b3f2
-    network: ws
-    tls: true
-    servername: mypHOtoGRAPICpIctUre.iR
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    ws-opts:
-      path: /fJBvsL0uR2MtzRig
-      headers:
-        host: myphotograpicpicture.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_17
-    type: vless
-    server: 162.159.153.28
-    port: 2083
-    uuid: 6965e558-73a4-4808-a778-67e8a82d15aa
-    network: ws
-    tls: true
-    servername: 1.659118019.uk
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: 1.659118019.uk
-    ip-version: dual
-    udp: true
-  - name: DefaultName_18
-    type: vless
-    server: 94.131.9.172
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_19
-    type: vless
-    server: 84.32.25.237
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_20
-    type: vless
-    server: 140.245.58.56
-    port: 443
-    uuid: 9466263a-4b8e-4647-99b2-d2a363f001cd
-    network: tcp
-    tls: true
-    servername: tv.apple.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: Wmz2q2twfWYu6FrO5xU1M87LO5KjkyGif0AuPLNMPW0
-      short-id: a86103965ac913f2
-    ip-version: dual
-    udp: true
-  - name: DefaultName_21
-    type: vless
-    server: 185.140.211.50
-    port: 2052
-    uuid: a040115b-aaef-4851-9ba0-d558bba55359
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: vless-grpc
-    ip-version: dual
-    udp: true
   - name: DefaultName_22
     type: vless
-    server: 104.24.155.131
-    port: 443
-    uuid: 9dca0400-cb85-4328-88f3-6e765c9a2e82
-    network: ws
+    server: 95.164.45.95
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
     tls: false
-    ws-opts:
-      path: /Telegram@V2ray_Alpha
-      headers:
-        host: cf.breakday.top
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_23
     type: vless
-    server: 104.24.83.107
+    server: 135.148.74.145
     port: 443
-    uuid: 2fd18148-ef55-461c-bd5d-c9f5c851d467
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: wk.625229.xyz
+    uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+    network: tcp
+    tls: true
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: true
     ip-version: dual
     udp: true
   - name: DefaultName_24
     type: vless
-    server: 157.180.93.74
-    port: 20000
-    uuid: 6543593a-f55e-422c-8ffd-b6d930b1808c
+    server: 84.32.131.108
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
-    tls: true
-    servername: ebookiran.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X2l8AS8XhUKxyskDWHA-gRhvCO3LTGqWEs1GYIpyfEo
-      short-id: d525279f3c6c0ef5
-    grpc-opts:
-      grpc-service-name: Tok
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_25
     type: vless
-    server: 88.216.187.57
+    server: 84.32.9.8
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
@@ -341,92 +348,410 @@ proxies:
     udp: true
   - name: DefaultName_26
     type: vless
-    server: 146.190.226.24
-    port: 443
-    uuid: 63000b22-6e89-456c-b3fc-79aaf8409084
+    server: 84.32.9.24
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
-    tls: true
-    servername: stackoverflow.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: KHFGWEKi_QyG4srp-Mn8XghMjBJOFLZ4Djt9dPpn0TM
-      short-id: 7ab5a2bb
-    grpc-opts:
-      grpc-service-name: stackoverflow.com
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_27
     type: vless
-    server: 57.129.55.24
-    port: 21147
-    uuid: 3fafa6c0-7f0a-4149-bd8f-05fa19e11be7
-    network: tcp
+    server: 78.47.141.72
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
     tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_28
     type: vless
-    server: 213.21.245.83
-    port: 443
-    uuid: 9966e820-772c-46b6-be0a-8fde377feedc
-    network: tcp
+    server: 154.92.9.1
+    port: 8443
+    uuid: de537efd-4d7c-4f3c-aea5-19d3f36c7b1b
+    network: ws
     tls: true
-    servername: tgju.org
+    servername: txmt.conetcdata.dpdns.org
     skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: TXHciLv9Ctu7k7sdIcadLJIEa1WTCIseYctDMa6NW0c
-      short-id: 7e39db0c
+    ws-opts:
+      path: /
+      headers:
+        host: txmt.conetcdata.dpdns.org
     ip-version: dual
     udp: true
   - name: DefaultName_29
     type: vless
-    server: 151.101.64.155
-    port: 80
-    uuid: b74155c7-b9dd-4d1d-f122-892d08c52f89
-    network: ws
+    server: 84.32.9.37
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
     tls: false
-    ws-opts:
-      path: /@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam/@XpnTeam?ed=2048
-      headers:
-        host: Bpalanenok.ir
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_30
     type: vless
-    server: 104.21.215.75
-    port: 80
-    uuid: 94b8984f-44d4-420a-9304-85a3c7c56cd4
+    server: 45.131.208.155
+    port: 8443
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
     network: ws
-    tls: false
+    tls: true
+    servername: NuWoLcZn28.qUiCkOrA.OrG
+    skip-cert-verify: true
+    client-fingerprint: chrome
     ws-opts:
-      path: /@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20----@VPNTV20?ed=2048
+      path: /
       headers:
-        host: xsr.erfantop.ir
+        host: NuWoLcZn28.qUiCkOrA.OrG
     ip-version: dual
     udp: true
   - name: DefaultName_31
     type: vless
-    server: 51.77.110.211
-    port: 22351
-    uuid: e13dc928-2afb-4ede-839b-40b0ab07122c
-    network: tcp
+    server: 84.32.9.52
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
     tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_32
     type: vless
-    server: 194.182.79.7
-    port: 19123
-    uuid: 7318d456-0bfd-4973-8735-fb4d1236d6cb
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+    server: 104.17.148.22
+    port: 2096
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
     ip-version: dual
     udp: true
   - name: DefaultName_33
+    type: vless
+    server: 104.17.147.22
+    port: 2096
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: ByRhHePn14.bLuEvIa.oRg
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: ByRhHePn14.bLuEvIa.oRg
+    ip-version: dual
+    udp: true
+  - name: DefaultName_34
+    type: vless
+    server: 78.47.141.72
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_35
+    type: vless
+    server: 209.208.227.229
+    port: 2096
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    ip-version: dual
+    udp: true
+  - name: DefaultName_36
+    type: vless
+    server: 157.180.30.213
+    port: 36014
+    uuid: 6af7e545-9d69-431a-ae9b-3181c81e13ec
+    network: ws
+    tls: false
+    ws-opts:
+      path: /---------@proprojec--------@proprojec--------@proprojec-------@proprojec---------
+    ip-version: dual
+    udp: true
+  - name: DefaultName_37
+    type: vless
+    server: 45.131.5.252
+    port: 8443
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: QtRkJtLt27.pRiMeXaD.OrG
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: QtRkJtLt27.pRiMeXaD.OrG
+    ip-version: dual
+    udp: true
+  - name: DefaultName_38
+    type: vless
+    server: 141.193.213.20
+    port: 80
+    uuid: 628a3541-1b2d-43ab-ad4f-82b6406480fe
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+      headers:
+        host: lk.sahanwickramasinghe.shop
+    ip-version: dual
+    udp: true
+  - name: DefaultName_39
+    type: vless
+    server: 84.32.9.52
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_40
+    type: vless
+    server: 86.38.214.22
+    port: 2052
+    uuid: 5ceb35f0-5106-4a1d-893b-cdf0abf42452
+    network: ws
+    tls: false
+    ws-opts:
+      path: /vless
+      headers:
+        host: sPeedtest2.sbs.devl.cytun.xyz
+    ip-version: dual
+    udp: true
+  - name: DefaultName_41
+    type: vless
+    server: 84.32.9.47
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_42
+    type: vless
+    server: 84.32.9.41
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_43
+    type: vless
+    server: 194.53.53.65
+    port: 2096
+    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
+    network: ws
+    tls: true
+    servername: ScGiYaSk.rOcKsToNeY.InFo
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: ScGiYaSk.rOcKsToNeY.InFo
+    ip-version: dual
+    udp: true
+  - name: DefaultName_44
+    type: vless
+    server: 199.34.228.174
+    port: 2096
+    uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
+    network: ws
+    tls: true
+    servername: DrOt0Ai1Oq.DeRaKhT.iNfO
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: DrOt0Ai1Oq.DeRaKhT.iNfO
+    ip-version: dual
+    udp: true
+  - name: DefaultName_45
+    type: vless
+    server: 78.47.141.72
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_46
+    type: vless
+    server: 157.180.30.213
+    port: 36014
+    uuid: 6af7e545-9d69-431a-ae9b-3181c81e13ec
+    network: ws
+    tls: false
+    ws-opts:
+      path: /---------@proprojec--------@proprojec--------@proprojec-------@proprojec---------
+    ip-version: dual
+    udp: true
+  - name: DefaultName_47
+    type: vless
+    server: 94.130.78.148
+    port: 2087
+    uuid: f38e1473-0bb8-4190-8d49-ba1aaaf4e264
+    network: grpc
+    tls: true
+    servername: tt.eldenmonodefense5.ir
+    alpn:
+      - h2
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_48
+    type: vless
+    server: 45.144.51.195
+    port: 35036
+    uuid: b9e98405-0454-474e-a5b3-1d6e164ba40d
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON
+    ip-version: dual
+    udp: true
+  - name: DefaultName_49
+    type: vless
+    server: 104.17.148.22
+    port: 2096
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    ip-version: dual
+    udp: true
+  - name: DefaultName_50
+    type: vless
+    server: 104.17.147.22
+    port: 2096
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: ScKzAhYz14.qUiCkOrA.OrG
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: ScKzAhYz14.qUiCkOrA.OrG
+    ip-version: dual
+    udp: true
+  - name: DefaultName_51
+    type: vless
+    server: 45.142.120.97
+    port: 443
+    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
+    network: ws
+    tls: true
+    servername: CxNiMjJz.cAfUnEaR.InFo
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      headers:
+        host: CxNiMjJz.cAfUnEaR.InFo
+    ip-version: dual
+    udp: true
+  - name: DefaultName_52
+    type: vless
+    server: 104.18.12.149
+    port: 443
+    uuid: ccff34b1-44fd-478d-bc0e-5111cb11f5be
+    network: ws
+    tls: true
+    servername: d1.medicaldream.ir
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: d1.medicaldream.ir
+    ip-version: dual
+    udp: true
+  - name: DefaultName_53
+    type: vless
+    server: 104.17.147.22
+    port: 8443
+    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
+    network: ws
+    tls: true
+    servername: MdLoXlYg.rIcKtMoUsE.InFo
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+      headers:
+        host: MdLoXlYg.rIcKtMoUsE.InFo
+    ip-version: dual
+    udp: true
+  - name: DefaultName_54
+    type: vless
+    server: 45.131.5.252
+    port: 8443
+    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
+    network: ws
+    tls: true
+    servername: QtRkJtLt27.pRiMeXaD.OrG
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: QtRkJtLt27.pRiMeXaD.OrG
+    ip-version: dual
+    udp: true
+  - name: DefaultName_55
+    type: vless
+    server: 84.32.9.37
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_56
+    type: vless
+    server: 157.173.127.239
+    port: 443
+    uuid: 667b5dfa-7ec4-45d7-ba9c-6957eed8cfbb
+    network: tcp
+    tls: true
+    servername: analytics.google.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: c5VJpRsIyrxNp0eS3Lz5EMQH6jWBsvSTK7hNZQ77bl4
+      short-id: 4fd4ad
+    ip-version: dual
+    udp: true
+  - name: DefaultName_57
     type: vless
     server: 84.32.25.237
     port: 8880
@@ -436,31 +761,9 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_34
+  - name: DefaultName_58
     type: vless
-    server: 194.182.79.242
-    port: 45831
-    uuid: 38ed1e08-b164-43b8-b9cb-6cf869bb0964
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: DefaultName_35
-    type: vless
-    server: 194.182.79.209
-    port: 18411
-    uuid: f939e99b-5f02-41cc-ae7a-b09289a3d160
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: DefaultName_36
-    type: vless
-    server: 94.131.9.172
+    server: 84.32.25.206
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
@@ -468,348 +771,34 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_37
-    type: vless
-    server: 45.82.251.114
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_38
-    type: vless
-    server: 37.156.46.65
-    port: 59536
-    uuid: d2a6d095-e897-1c16-8fde-b96d5892d515
-    network: tcp
-    tls: true
-    servername: stackoverflow.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: KmXtdOimd1xGGg7V2rvo74_HxMd6_bzFyosF6Z5c22A
-      short-id: d6d54c08fbbf895f
-    ip-version: dual
-    udp: true
-  - name: DefaultName_39
-    type: vless
-    server: 45.82.251.163
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_40
-    type: vless
-    server: 45.82.251.167
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_41
-    type: vless
-    server: 103.175.79.10
-    port: 443
-    uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
-    network: tcp
-    tls: true
-    servername: speed.cloudflare.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 4e-unF1RO2v--E7-X3aqxnCSPaK9QaTfJ7LawAr2bRI
-    ip-version: dual
-    udp: true
-  - name: DefaultName_42
-    type: vless
-    server: 45.159.216.212
-    port: 443
-    uuid: 4d91916f-a7fd-419b-8b90-640bb8d4b3f2
-    network: ws
-    tls: true
-    servername: mypHOtoGRAPICpIctUre.iR
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    ws-opts:
-      path: /fJBvsL0uR2MtzRig
-      headers:
-        host: myphotograpicpicture.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_43
-    type: vless
-    server: 104.21.83.113
-    port: 443
-    uuid: aa424865-2762-404c-b767-66c9f98e026b
-    network: ws
-    tls: true
-    servername: edS859886XYzXS.859886.xYZ
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /25Rajr8UdFGa29fCwxS
-      headers:
-        host: eds859886xyzxs.859886.xyz
-    ip-version: dual
-    udp: true
-  - name: DefaultName_44
-    type: vless
-    server: 140.245.58.56
-    port: 443
-    uuid: 9466263a-4b8e-4647-99b2-d2a363f001cd
-    network: tcp
-    tls: true
-    servername: tv.apple.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: Wmz2q2twfWYu6FrO5xU1M87LO5KjkyGif0AuPLNMPW0
-      short-id: a86103965ac913f2
-    ip-version: dual
-    udp: true
-  - name: DefaultName_45
-    type: vless
-    server: 104.24.7.206
-    port: 443
-    uuid: 9dca0400-cb85-4328-88f3-6e765c9a2e82
-    network: ws
-    tls: false
-    ws-opts:
-      path: /TELEGRAM@MARAMBASHI_MARAMBASHI
-      headers:
-        host: cf.breakday.top
-    ip-version: dual
-    udp: true
-  - name: DefaultName_46
-    type: vless
-    server: 104.24.83.107
-    port: 443
-    uuid: 2fd18148-ef55-461c-bd5d-c9f5c851d467
-    network: ws
-    tls: false
-    ws-opts:
-      path: /Telegram@V2ray_Alpha
-      headers:
-        host: wk.625229.xyz
-    ip-version: dual
-    udp: true
-  - name: DefaultName_47
-    type: vless
-    server: 162.159.153.28
-    port: 2083
-    uuid: 6965e558-73a4-4808-a778-67e8a82d15aa
-    network: ws
-    tls: false
-    ws-opts:
-      path: /Telegram@MTMVPN
-      headers:
-        host: 1.659118019.uk
-    ip-version: dual
-    udp: true
-  - name: DefaultName_48
-    type: vless
-    server: 151.101.2.216
-    port: 80
-    uuid: 2ce4da59-28c7-41fa-9411-7dfde437c1cb
-    network: ws
-    tls: false
-    ws-opts:
-      path: /TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray?ed=2048
-      headers:
-        host: namehmain.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_49
-    type: vless
-    server: 46.226.162.42
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: gbr01.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-    ip-version: dual
-    udp: true
-  - name: DefaultName_50
-    type: vless
-    server: 86.38.214.22
-    port: 2052
-    uuid: b04a24aa-394e-5278-8202-dc480ae6f49b
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: sPeedtest2.sbs.sg.vless.sitespeedtest.net
-    ip-version: dual
-    udp: true
-  - name: DefaultName_51
-    type: vless
-    server: 45.80.111.10
-    port: 2052
-    uuid: 45f01712-2893-53e3-8e6a-6b7c925021da
-    network: ws
-    tls: false
-    ws-opts:
-      path: /vless
-      headers:
-        host: sPeedtest2.sbs.br.vless.sitespeedtest.net
-    ip-version: dual
-    udp: true
-  - name: DefaultName_52
-    type: vless
-    server: 89.23.118.93
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: ru01.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-      headers:
-        host: ru01.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_53
-    type: vless
-    server: 151.101.3.8
-    port: 80
-    uuid: d44d89f5-e726-4479-b3ab-d3cf51a286d7
-    network: ws
-    tls: false
-    ws-opts:
-      path: /Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420?ed=2048
-      headers:
-        host: taxi.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_54
-    type: vless
-    server: 89.23.103.150
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: nl08.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-      headers:
-        host: nl08.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_55
-    type: vless
-    server: 45.150.65.53
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: usa01.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-      headers:
-        host: usa01.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_56
-    type: vless
-    server: 95.164.47.60
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: de02.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-      headers:
-        host: de02.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_57
-    type: vless
-    server: 213.210.55.72
-    port: 24443
-    uuid: 5543ae5c-c24f-405a-9266-597cbc43c818
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: miku.mikuru.ip-ddns.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_58
-    type: vless
-    server: 157.180.93.74
-    port: 20000
-    uuid: 6543593a-f55e-422c-8ffd-b6d930b1808c
-    network: grpc
-    tls: true
-    servername: ebookiran.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X2l8AS8XhUKxyskDWHA-gRhvCO3LTGqWEs1GYIpyfEo
-      short-id: d525279f3c6c0ef5
-    grpc-opts:
-      grpc-service-name: Tok
-    ip-version: dual
-    udp: true
   - name: DefaultName_59
     type: vless
-    server: 79.137.32.159
-    port: 2052
-    uuid: 5125ef9d-d366-4e69-b049-0dc37a6f5783
-    network: grpc
+    server: 142.93.231.14
+    port: 27931
+    uuid: 856b93c7-0ecb-4bba-a275-e2c9180be68c
+    network: httpupgrade
     tls: false
-    grpc-opts:
-      grpc-service-name: vless-grpc
     ip-version: dual
     udp: true
   - name: DefaultName_60
     type: vless
-    server: 172.67.73.163
-    port: 8880
-    uuid: d44d89f5-e726-4479-b3ab-d3cf51a286d7
-    network: ws
+    server: 194.182.79.209
+    port: 18411
+    uuid: 44c83e4b-e35d-4bbe-8e69-56bbd8a366d3
+    network: grpc
     tls: false
-    ws-opts:
-      path: /Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420?ed=2048
-      headers:
-        host: de-snapp.academigroup.ir.
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
     ip-version: dual
     udp: true
   - name: DefaultName_61
     type: vless
-    server: 194.182.79.209
-    port: 18411
-    uuid: f939e99b-5f02-41cc-ae7a-b09289a3d160
+    server: 142.93.231.14
+    port: 44111
+    uuid: b3d82748-e641-430b-8779-7d36b83e9670
     network: grpc
     tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_1'
@@ -827,187 +816,50 @@ proxies:
     udp: true
   - name: DefaultName_62
     type: vless
-    server: 46.226.162.42
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: gbr01.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
+    server: 95.164.45.70
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_63
     type: vless
-    server: 151.101.2.165
-    port: 80
-    uuid: 2ce4da59-28c7-41fa-9411-7dfde437c1cb
-    network: ws
+    server: 142.93.231.14
+    port: 38347
+    uuid: 04462d33-4938-4505-92bd-61d3581ccae3
+    network: tcp
     tls: false
-    ws-opts:
-      path: /TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray?ed=2048
-      headers:
-        host: namehmain.com
     ip-version: dual
     udp: true
   - name: DefaultName_64
     type: vless
-    server: 95.164.45.78
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    server: 194.182.79.242
+    port: 45831
+    uuid: 2fe2f807-e81b-4134-afb5-1d41564c73c7
     network: grpc
     tls: false
-    grpc-opts: {}
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
     ip-version: dual
     udp: true
   - name: DefaultName_65
     type: vless
-    server: 103.231.73.214
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
+    server: 142.93.231.14
+    port: 16426
+    uuid: 3040574d-d249-4b04-9513-cabd9e7b3044
     network: ws
-    tls: true
-    servername: lv01.abvpn.ru
-    skip-cert-verify: true
+    tls: false
     ws-opts:
-      path: /websocket
-      headers:
-        host: lv01.abvpn.ru
+      path: /
     ip-version: dual
     udp: true
   - name: DefaultName_66
     type: vless
-    server: 157.173.127.227
-    port: 443
-    uuid: 7bda027c-cbc8-488f-864f-cfb415cd8d77
-    network: tcp
-    tls: true
-    servername: analytics.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: q70yFMTo4Dz6IWwVcL9icqgJPgyIuv3j3n5fZxym6kg
-      short-id: 40e3350da285
-    ip-version: dual
-    udp: true
-  - name: DefaultName_67
-    type: vless
-    server: 84.32.25.206
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_68
-    type: vless
-    server: 151.101.2.216
-    port: 80
-    uuid: 2ce4da59-28c7-41fa-9411-7dfde437c1cb
-    network: ws
-    tls: false
-    ws-opts:
-      path: /TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray?ed=2048
-      headers:
-        host: namehmain.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_69
-    type: vless
-    server: 104.16.143.237
-    port: 443
-    uuid: db3e522a-5846-4be7-b197-14cd48e20e6d
-    network: ws
-    tls: true
-    servername: COLLECTION.EiNETWORK.NEWS
-    skip-cert-verify: true
-    ws-opts:
-      path: /Telegram-EiV2Ray-Telegram-EiV2Ray-Telegram-EiV2Ray-Telegram-EiV2Ray-Telegram-EiV2Ray-Telegram-EiV2Ray-Telegram
-      headers:
-        host: COLLECTION.EiNETWORK.NEWS
-    ip-version: dual
-    udp: true
-  - name: DefaultName_70
-    type: vless
-    server: 151.101.2.133
-    port: 80
-    uuid: 2ce4da59-28c7-41fa-9411-7dfde437c1cb
-    network: ws
-    tls: false
-    ws-opts:
-      path: /TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray,TELEGRAM-@mainv2-ray?ed=2048
-      headers:
-        host: namehmain.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_71
-    type: vless
-    server: 95.164.47.60
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: de02.abvpn.ru
-    skip-cert-verify: true
-    ws-opts:
-      path: /websocket
-      headers:
-        host: de02.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_72
-    type: vless
-    server: 104.19.222.79
-    port: 2096
-    uuid: 4460a461-2946-48da-a1b0-138641caa045
-    network: ws
-    tls: true
-    servername: wwwspeedtestnetwhiteberinsistomd6625996s27.elitemizban.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      headers:
-        host: wwwspeedtestnetwhiteberinsistomd6625996s27.elitemizban.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_73
-    type: vless
-    server: 104.19.223.79
-    port: 2096
-    uuid: 4460a461-2946-48da-a1b0-138641caa045
-    network: ws
-    tls: true
-    servername: wwwspeedtestnetwhiteberinsistomd6625996s26.elitemizban.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      headers:
-        host: wwwspeedtestnetwhiteberinsistomd6625996s26.elitemizban.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_74
-    type: vless
-    server: 157.173.127.238
-    port: 443
-    uuid: 571b311b-4a34-4792-93f9-a5c0cfa66f66
-    network: tcp
-    tls: true
-    servername: analytics.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: p2iqEmOs4u682Jz5S-E-s7k8AbsNZbc-mitgU89PRi4
-      short-id: db06
-    ip-version: dual
-    udp: true
-  - name: DefaultName_75
-    type: vless
     server: 104.26.15.85
     port: 8880
-    uuid: d44d89f5-e726-4479-b3ab-d3cf51a286d7
+    uuid: dbbfc9a5-7bed-45fd-afae-a655f285788d
     network: ws
     tls: false
     ws-opts:
@@ -1016,137 +868,22 @@ proxies:
         host: de-snapp.academigroup.ir.
     ip-version: dual
     udp: true
-  - name: DefaultName_76
+  - name: DefaultName_67
     type: vless
-    server: 84.234.29.73
-    port: 22622
-    uuid: 5ecade50-928d-4902-a0fa-ff30ebcf8166
-    network: grpc
-    tls: true
-    servername: github.com
-    skip-cert-verify: true
-    client-fingerprint: randomized
-    reality-opts:
-      public-key: xWZPtuZm-EpUcKa-PNPBRYQ5hZ1lQbvOemIwcwOR82k
-      short-id: '56'
-    grpc-opts:
-      grpc-service-name: '@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF-@iP_CF'
-    ip-version: dual
-    udp: true
-  - name: DefaultName_77
-    type: vless
-    server: 86.38.214.22
-    port: 2052
-    uuid: b04a24aa-394e-5278-8202-dc480ae6f49b
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: sPeedtest2.sbs.sg.vless.sitespeedtest.net
-    ip-version: dual
-    udp: true
-  - name: DefaultName_78
-    type: vless
-    server: 51.77.110.211
-    port: 22351
-    uuid: e13dc928-2afb-4ede-839b-40b0ab07122c
+    server: 37.156.46.65
+    port: 59536
+    uuid: 24304c4b-68c7-7975-2e64-2231b8d4b8bb
     network: tcp
-    tls: false
+    tls: true
+    servername: stackoverflow.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    reality-opts:
+      public-key: KmXtdOimd1xGGg7V2rvo74_HxMd6_bzFyosF6Z5c22A
+      short-id: d6d54c08fbbf895f
     ip-version: dual
     udp: true
-  - name: DefaultName_79
-    type: vless
-    server: 194.182.79.7
-    port: 19123
-    uuid: 7318d456-0bfd-4973-8735-fb4d1236d6cb
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: DefaultName_80
-    type: vless
-    server: 194.182.79.242
-    port: 45831
-    uuid: 38ed1e08-b164-43b8-b9cb-6cf869bb0964
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: DefaultName_81
-    type: vless
-    server: 84.32.25.200
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_82
-    type: vless
-    server: 84.32.25.237
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_83
-    type: vless
-    server: 45.159.248.125
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_84
-    type: vless
-    server: 84.32.191.215
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_85
-    type: vless
-    server: 45.82.251.167
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_86
-    type: vless
-    server: 45.82.251.146
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_87
-    type: vless
-    server: 84.32.248.159
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_88
+  - name: DefaultName_68
     type: vless
     server: 94.131.9.172
     port: 8880
@@ -1156,9 +893,70 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_89
+  - name: DefaultName_69
     type: vless
-    server: 45.82.251.144
+    server: 84.32.25.200
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_70
+    type: vless
+    server: 2a01:4f8:1c1b:7df::1
+    port: 443
+    uuid: 764a13da-76a5-4bc0-a2c9-e2a02f62408f
+    network: grpc
+    tls: true
+    servername: gsmarena.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: AVesZ9rUbwnESVl0YSPs98oWmZbXlhDVjR4ssJAw6yw
+      short-id: 32d7a82d
+    grpc-opts:
+      grpc-service-name: '@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN'
+    ip-version: dual
+    udp: true
+  - name: DefaultName_71
+    type: vless
+    server: 88.216.187.57
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_72
+    type: vless
+    server: 45.159.248.125
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_73
+    type: vless
+    server: 45.82.251.69
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: 5fab0deb
+    ip-version: dual
+    udp: true
+  - name: DefaultName_74
+    type: vless
+    server: 45.82.251.161
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
@@ -1166,9 +964,9 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_90
+  - name: DefaultName_75
     type: vless
-    server: 45.82.251.171
+    server: 45.82.251.151
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
@@ -1176,9 +974,9 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_91
+  - name: DefaultName_76
     type: vless
-    server: 45.82.251.163
+    server: 45.82.251.105
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
@@ -1186,7 +984,27 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_92
+  - name: DefaultName_77
+    type: vless
+    server: 45.82.251.167
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_78
+    type: vless
+    server: 45.82.251.146
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_79
     type: vless
     server: 45.82.251.176
     port: 8880
@@ -1196,7 +1014,102 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_93
+  - name: DefaultName_80
+    type: vless
+    server: 45.82.251.84
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: randomized
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: 5fab0deb
+    ip-version: dual
+    udp: true
+  - name: DefaultName_81
+    type: vless
+    server: 45.82.251.149
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_82
+    type: vless
+    server: 45.82.251.183
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_83
+    type: vless
+    server: 45.82.251.166
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_84
+    type: vless
+    server: 45.82.251.139
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_85
+    type: vless
+    server: 45.82.251.170
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_86
+    type: vless
+    server: 45.82.251.141
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_87
+    type: vless
+    server: 45.82.251.133
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_88
+    type: vless
+    server: 45.82.251.165
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_89
     type: vless
     server: 45.150.65.53
     port: 443
@@ -1205,13 +1118,80 @@ proxies:
     tls: true
     servername: usa01.abvpn.ru
     skip-cert-verify: true
+    client-fingerprint: chrome
     ws-opts:
       path: /websocket
       headers:
         host: usa01.abvpn.ru
     ip-version: dual
     udp: true
+  - name: DefaultName_90
+    type: vless
+    server: 104.17.148.22
+    port: 8880
+    uuid: dbbfc9a5-7bed-45fd-afae-a655f285788d
+    network: ws
+    tls: false
+    ws-opts:
+      path: /Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420?ed=2048
+      headers:
+        host: de-snapp.academigroup.ir.
+    ip-version: dual
+    udp: true
+  - name: DefaultName_91
+    type: vless
+    server: 104.17.147.22
+    port: 2052
+    uuid: 09747c66-0d01-4e13-9ef8-d97133035b36
+    network: ws
+    tls: false
+    ws-opts:
+      path: /@Maznet--@MAZNET--@Maznet--@MAZNET--@Maznet--@MAZNET--@Maznet--@MAZNET--@Maznet--@MAZNET?ed=2048
+      headers:
+        host: www.spEedtest.net.snApfoodsupPort.onlIne.
+    ip-version: dual
+    udp: true
+  - name: DefaultName_92
+    type: vless
+    server: 45.82.251.171
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_93
+    type: vless
+    server: 45.82.251.144
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
   - name: DefaultName_94
+    type: vless
+    server: 45.82.251.112
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_95
+    type: vless
+    server: 84.32.191.215
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_96
     type: vless
     server: 15.204.150.39
     port: 443
@@ -1222,99 +1202,7 @@ proxies:
     skip-cert-verify: true
     ip-version: dual
     udp: true
-  - name: DefaultName_95
-    type: vless
-    server: 57.129.55.24
-    port: 21147
-    uuid: 3fafa6c0-7f0a-4149-bd8f-05fa19e11be7
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_96
-    type: vless
-    server: 45.82.251.114
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
   - name: DefaultName_97
-    type: vless
-    server: 89.23.103.150
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: nl08.abvpn.ru
-    skip-cert-verify: true
-    ws-opts:
-      path: /websocket
-      headers:
-        host: nl08.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_98
-    type: vless
-    server: 84.32.131.21
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_99
-    type: vless
-    server: 45.82.251.149
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_100
-    type: vless
-    server: 45.82.251.141
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_101
-    type: vless
-    server: 64.23.131.38
-    port: 21853
-    uuid: 98fb73f1-4806-4b2d-95e7-e455bdc3f87b
-    network: tcp
-    tls: true
-    servername: southernpalmskenya.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: qq
-    reality-opts:
-      public-key: yDkCTYl7Ap0XeU9PNv_kBY9BwQrgYZPIov-MXvpf7R8
-    ip-version: dual
-    udp: true
-  - name: DefaultName_102
-    type: vless
-    server: 104.19.54.50
-    port: 8080
-    uuid: 2127b978-c320-4d31-8045-dfb9a643fd54
-    network: ws
-    tls: false
-    ws-opts:
-      path: /@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy?ed=2048
-      headers:
-        host: www.speedtest.net.www.zula.ir.cloudflare.com.developsp.ir.svgspeedtest.net.
-    ip-version: dual
-    udp: true
-  - name: DefaultName_103
     type: vless
     server: 84.32.9.7
     port: 8880
@@ -1324,17 +1212,7 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_104
-    type: vless
-    server: 84.32.9.26
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_105
+  - name: DefaultName_98
     type: vless
     server: 103.175.79.10
     port: 443
@@ -1349,34 +1227,9 @@ proxies:
       public-key: 4e-unF1RO2v--E7-X3aqxnCSPaK9QaTfJ7LawAr2bRI
     ip-version: dual
     udp: true
-  - name: DefaultName_106
+  - name: DefaultName_99
     type: vless
-    server: 45.82.251.105
-    port: 8880
-    uuid: e4824193-4f54-453b-d037-88368e85ef0e
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_107
-    type: vless
-    server: 104.16.131.9
-    port: 443
-    uuid: 7f3776d8-65bd-4767-a995-34fb4e0937e2
-    network: ws
-    tls: true
-    servername: worker.nexvivagroup.com
-    skip-cert-verify: true
-    ws-opts:
-      path: /
-      headers:
-        host: worker.nexvivagroup.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_108
-    type: vless
-    server: 88.216.187.57
+    server: 5.199.169.208
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
@@ -1384,56 +1237,168 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_109
+  - name: DefaultName_100
     type: vless
-    server: 193.123.226.5
-    port: 443
-    uuid: 9466263a-4b8e-4647-99b2-d2a363f001cd
+    server: 15.204.76.221
+    port: 45490
+    uuid: ca969221-5992-4ee2-bf64-bc94acccddf6
+    network: grpc
+    tls: true
+    servername: syntax7417.ignorelist.com
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_101
+    type: vless
+    server: 84.32.9.26
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_102
+    type: vless
+    server: 68.183.178.106
+    port: 14798
+    uuid: e7cd8b22-4b4e-4436-80b6-a8e091f1de17
+    network: ws
+    tls: false
+    ws-opts:
+      path: /FREE By Tharuwa (@z_z_z_zz_z) 0767597317
+      headers:
+        host: zoom.us
+    ip-version: dual
+    udp: true
+  - name: DefaultName_103
+    type: vless
+    server: 15.204.76.221
+    port: 41707
+    uuid: 71957cd5-c0ac-4ee3-862e-740b5ee44875
     network: tcp
     tls: true
-    servername: buylite.music.apple.com
-    flow: xtls-rprx-vision
+    servername: syntax7417.ignorelist.com
+    alpn:
+      - h3
+      - h2
+      - http/1.1
     skip-cert-verify: true
-    client-fingerprint: edge
-    reality-opts:
-      public-key: 8nT5x5OM-97ibWMfu5y0mrvWdmuwVeg_f_RE5Ycl_yw
-      short-id: c5835b1f
+    client-fingerprint: chrome
+    ip-version: dual
+    udp: true
+  - name: DefaultName_104
+    type: vless
+    server: 89.23.103.150
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: nl08.abvpn.ru
+    skip-cert-verify: true
+    ws-opts:
+      path: /websocket
+      headers:
+        host: nl08.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_105
+    type: vless
+    server: 5.182.86.128
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: nl07.abvpn.ru
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /websocket
+      headers:
+        host: nl07.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_106
+    type: vless
+    server: 95.164.47.60
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: de02.abvpn.ru
+    skip-cert-verify: true
+    ws-opts:
+      path: /websocket
+      headers:
+        host: de02.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_107
+    type: vless
+    server: 95.164.45.95
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_108
+    type: vless
+    server: 104.24.254.125
+    port: 80
+    uuid: b8a0fe1a-fbea-4572-a878-20b7f7c98636
+    network: ws
+    tls: false
+    ws-opts:
+      path: /ProxyIP=ProxyIP.US.fxxk.dedyn.io
+      headers:
+        host: sweet-glade-2430-ppal03.xasev15708.workers.dev
+    ip-version: dual
+    udp: true
+  - name: DefaultName_109
+    type: vless
+    server: 95.164.45.78
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_110
     type: vless
-    server: 8.222.213.91
-    port: 587
+    server: 185.140.211.50
+    port: 2052
+    uuid: a040115b-aaef-4851-9ba0-d558bba55359
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: vless-grpc
+    ip-version: dual
+    udp: true
+  - name: DefaultName_111
+    type: vless
+    server: 139.59.181.80
+    port: 9200
     uuid: 5543ae5c-c24f-405a-9266-597cbc43c818
     network: ws
-    tls: true
-    servername: miku.mikuru.ip-ddns.com
-    skip-cert-verify: true
+    tls: false
     ws-opts:
       headers:
         host: miku.mikuru.ip-ddns.com
     ip-version: dual
     udp: true
-  - name: DefaultName_111
-    type: vless
-    server: 140.245.58.56
-    port: 443
-    uuid: 9466263a-4b8e-4647-99b2-d2a363f001cd
-    network: tcp
-    tls: true
-    servername: tv.apple.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: Wmz2q2twfWYu6FrO5xU1M87LO5KjkyGif0AuPLNMPW0
-      short-id: a86103965ac913f2
-    ip-version: dual
-    udp: true
   - name: DefaultName_112
     type: vless
-    server: 213.210.55.72
-    port: 24443
+    server: 14.39.43.121
+    port: 10943
     uuid: 5543ae5c-c24f-405a-9266-597cbc43c818
     network: ws
     tls: false
@@ -1444,249 +1409,100 @@ proxies:
     udp: true
   - name: DefaultName_113
     type: vless
-    server: 104.16.42.209
-    port: 80
-    uuid: be976fd2-e487-45b6-8f83-8d095c300fd8
-    network: ws
+    server: 64.227.77.203
+    port: 443
+    uuid: c69ef4ef-0314-4412-9962-ca6f9a6ea64d
+    network: tcp
     tls: false
-    ws-opts:
-      headers:
-        host: cold-limit-d61-ppal03.sobeyov632.workers.dev
     ip-version: dual
     udp: true
   - name: DefaultName_114
     type: vless
-    server: 162.159.153.28
-    port: 2083
-    uuid: 6965e558-73a4-4808-a778-67e8a82d15aa
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: 1.659118019.uk
+    server: 93.127.180.140
+    port: 443
+    uuid: 342e2067-f08c-438a-8ab3-ac1142a2a57c
+    network: tcp
+    tls: true
+    servername: www.cdn77.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: dImou9rUd7je5NZZ8ND5ULgPC0Ppxym_p7eJvpnS0Rk
+      short-id: 4e
     ip-version: dual
     udp: true
   - name: DefaultName_115
     type: vless
-    server: 104.24.83.107
-    port: 443
-    uuid: 2fd18148-ef55-461c-bd5d-c9f5c851d467
-    network: ws
+    server: 194.182.79.113
+    port: 26468
+    uuid: 495a1363-bd37-4f3a-861e-ffb1686cf4d5
+    network: grpc
     tls: false
-    ws-opts:
-      path: /Telegram@V2ray_Alpha
-      headers:
-        host: wk.625229.xyz
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
     ip-version: dual
     udp: true
   - name: DefaultName_116
     type: vless
-    server: 2a01:4f8:1c1b:247d::1
-    port: 41066
-    uuid: TELEGRAM-ServerNett
-    network: tcp
+    server: 194.182.79.242
+    port: 45831
+    uuid: 2fe2f807-e81b-4134-afb5-1d41564c73c7
+    network: grpc
     tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
     ip-version: dual
     udp: true
   - name: DefaultName_117
     type: vless
-    server: 2a01:4f8:1c1b:1aa0::1
-    port: 45726
-    uuid: TELEGRAM-ServerNett
-    network: tcp
+    server: 194.182.79.209
+    port: 18411
+    uuid: 44c83e4b-e35d-4bbe-8e69-56bbd8a366d3
+    network: grpc
     tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
     ip-version: dual
     udp: true
   - name: DefaultName_118
     type: vless
-    server: 209.208.227.229
-    port: 2096
-    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
-    network: ws
-    tls: true
-    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
+    server: 142.93.231.14
+    port: 44111
+    uuid: b3d82748-e641-430b-8779-7d36b83e9670
+    network: grpc
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_119
     type: vless
-    server: 154.92.9.1
-    port: 8443
-    uuid: de537efd-4d7c-4f3c-aea5-19d3f36c7b1b
-    network: ws
-    tls: true
-    servername: txmt.conetcdata.dpdns.org
-    skip-cert-verify: true
-    ws-opts:
-      path: /
-      headers:
-        host: txmt.conetcdata.dpdns.org
-    ip-version: dual
-    udp: true
-  - name: TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
-    type: vless
-    server: 104.24.40.146
-    port: 8443
-    uuid: b5441b0d-2147-4898-8a6a-9b2c87f58382
-    network: ws
+    server: 142.93.231.14
+    port: 38347
+    uuid: 04462d33-4938-4505-92bd-61d3581ccae3
+    network: tcp
     tls: false
-    ws-opts:
-      headers:
-        host: bitget1.asdasd.click
     ip-version: dual
     udp: true
   - name: DefaultName_120
     type: vless
-    server: 157.173.127.235
-    port: 443
-    uuid: 4a617961-06bb-405d-b1d8-28abaaaf18e7
+    server: 49.13.174.239
+    port: 1287
+    uuid: 09123053-aa01-4233-b67b-49f613d4cb5d
     network: tcp
-    tls: true
-    servername: analytics.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: k9oHeYY0hNmcd6BRZQTX9sp0ZQR7Bx85fPMu0v4uvwc
-      short-id: c5a5eca0d8234375
+    tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_121
     type: vless
-    server: 45.12.30.132
-    port: 443
-    uuid: 4d91916f-a7fd-419b-8b90-640bb8d4b3f2
-    network: ws
-    tls: true
-    servername: mypHOtoGRAPICpIctUre.iR
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    ws-opts:
-      path: /fJBvsL0uR2MtzRig
-      headers:
-        host: myphotograpicpicture.ir
+    server: 95.164.45.70
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
     ip-version: dual
     udp: true
   - name: DefaultName_122
-    type: vless
-    server: 172.66.44.193
-    port: 80
-    uuid: 10d9df89-9a20-4110-9711-bca119490ee9
-    network: ws
-    tls: false
-    ws-opts:
-      path: /TM@AZAFBAYJAB1flow=-udp443
-      headers:
-        host: masaleini.mahsaamini.dpdns.org
-    ip-version: dual
-    udp: true
-  - name: DefaultName_123
-    type: vless
-    server: 104.18.12.149
-    port: 443
-    uuid: ccff34b1-44fd-478d-bc0e-5111cb11f5be
-    network: ws
-    tls: true
-    servername: d1.medicaldream.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: d1.medicaldream.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_124
-    type: vless
-    server: 45.131.208.55
-    port: 443
-    uuid: 4d91916f-a7fd-419b-8b90-640bb8d4b3f2
-    network: ws
-    tls: true
-    servername: mypHOtoGRAPICpIctUre.iR
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    ws-opts:
-      path: /fJBvsL0uR2MtzRig
-      headers:
-        host: myphotograpicpicture.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_125
-    type: vless
-    server: 2.56.178.47
-    port: 443
-    uuid: 588f094b-431b-422c-b80b-007945037072
-    network: ws
-    tls: true
-    servername: ru05.abvpn.ru
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /websocket
-      headers:
-        host: ru05.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_126
-    type: vless
-    server: 185.208.77.113
-    port: 14040
-    uuid: a2691bdd-7989-4e7e-9c44-302e360c021f
-    network: ws
-    tls: false
-    ws-opts:
-      path: /
-    ip-version: dual
-    udp: true
-  - name: '@MARAMBASHI_MARAMBASHI'
-    type: vless
-    server: 45.80.111.10
-    port: 2052
-    uuid: 45f01712-2893-53e3-8e6a-6b7c925021da
-    network: ws
-    tls: false
-    ws-opts:
-      path: /vless
-      headers:
-        host: sPeedtest2.sbs.br.vless.sitespeedtest.net
-    ip-version: dual
-    udp: true
-  - name: DefaultName_127
-    type: vless
-    server: 151.101.130.228
-    port: 80
-    uuid: b26e6aca-66c8-491f-8389-b33ac192ffe8
-    network: ws
-    tls: false
-    ws-opts:
-      path: /olem/ws?ed=1024
-      headers:
-        host: foffmelo.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_128
-    type: vless
-    server: 194.53.53.65
-    port: 2096
-    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
-    network: ws
-    tls: true
-    servername: ScGiYaSk.rOcKsToNeY.InFo
-    skip-cert-verify: true
-    ws-opts:
-      path: /
-      headers:
-        host: ScGiYaSk.rOcKsToNeY.InFo
-    ip-version: dual
-    udp: true
-  - name: DefaultName_129
     type: vless
     server: 2a01:4f8:1c1b:7df::1
     port: 443
@@ -1703,36 +1519,77 @@ proxies:
       grpc-service-name: '@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN'
     ip-version: dual
     udp: true
-  - name: DefaultName_130
+  - name: DefaultName_123
     type: vless
-    server: 162.55.36.107
-    port: 577
-    uuid: bf4631cc-27eb-4b8e-ab85-5db1ddab6125
-    network: tcp
+    server: 37.27.206.75
+    port: 26528
+    uuid: abe782ba-678a-4391-ae92-4dd9b0cb88ce
+    network: grpc
     tls: true
-    servername: stackoverflow.com
-    flow: xtls-rprx-vision
+    servername: yahoo.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: AU2O1no3apJnMhDrfHwDACAwFDo8-DZkCL66AXSRbh8
-      short-id: 9b28132c703433
+      public-key: 2FrbyUtv6Ajh0Ufmst5Tw0ch_aeF3tXw0kDcfOrvGTk
+      short-id: 8f9d4d9a
+    grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
+  - name: DefaultName_124
     type: vless
-    server: 104.17.148.22
-    port: 2052
-    uuid: 457e18b3-7422-4154-b946-1c144b6b87d8
+    server: 46.226.162.42
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
     network: ws
-    tls: false
+    tls: true
+    servername: gbr01.abvpn.ru
+    skip-cert-verify: true
+    client-fingerprint: chrome
     ws-opts:
-      path: /vless
-      headers:
-        host: sPeedtest2.sbs.gbvl.cytun.xyz
+      path: /websocket
     ip-version: dual
     udp: true
-  - name: DefaultName_131
+  - name: DefaultName_125
+    type: vless
+    server: 95.164.45.95
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_126
+    type: vless
+    server: 95.164.47.60
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: de02.abvpn.ru
+    skip-cert-verify: true
+    ws-opts:
+      path: /websocket
+      headers:
+        host: de02.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_127
+    type: vless
+    server: 5.182.86.128
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: nl07.abvpn.ru
+    skip-cert-verify: true
+    ws-opts:
+      path: /websocket
+      headers:
+        host: nl07.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_128
     type: vless
     server: 89.23.118.93
     port: 443
@@ -1748,438 +1605,33 @@ proxies:
         host: ru01.abvpn.ru
     ip-version: dual
     udp: true
-  - name: DefaultName_132
+  - name: DefaultName_129
     type: vless
-    server: 172.67.175.139
-    port: 443
-    uuid: aa424865-2762-404c-b767-66c9f98e026b
-    network: ws
-    tls: true
-    servername: edS859886XYzXS.859886.xYZ
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /25Rajr8UdFGa29fCwxS
-      headers:
-        host: eds859886xyzxs.859886.xyz
-    ip-version: dual
-    udp: true
-  - name: DefaultName_133
-    type: vless
-    server: 104.21.83.113
-    port: 443
-    uuid: aa424865-2762-404c-b767-66c9f98e026b
-    network: ws
-    tls: true
-    servername: edS859886XYzXS.859886.xYZ
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /25Rajr8UdFGa29fCwxS
-      headers:
-        host: eds859886xyzxs.859886.xyz
-    ip-version: dual
-    udp: true
-  - name: DefaultName_134
-    type: vless
-    server: 84.32.9.25
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_135
-    type: vless
-    server: 104.24.182.250
-    port: 2083
-    uuid: d9deb36e-aa79-409a-ba54-012d69b0f9d7
-    network: ws
-    tls: true
-    servername: x5kh.org
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: x5kh.org
-    ip-version: dual
-    udp: true
-  - name: DefaultName_136
-    type: vless
-    server: 190.93.246.186
-    port: 443
-    uuid: 7818c1dc-bdf8-4fad-a272-21b8484c48d6
-    network: ws
-    tls: true
-    servername: free.thhy.one
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: free.thhy.one
-    ip-version: dual
-    udp: true
-  - name: DefaultName_137
-    type: vless
-    server: 188.114.98.82
-    port: 443
-    uuid: a268ce39-7687-4817-aa5f-def4f653fb88
-    network: ws
-    tls: true
-    servername: zeyichen.sbs
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: zeyichen.sbs
-    ip-version: dual
-    udp: true
-  - name: DefaultName_138
-    type: vless
-    server: 172.64.80.228
-    port: 443
-    uuid: 422f7f8a-2f97-444f-8ec1-2505c9b8482b
-    network: ws
-    tls: true
-    servername: bantony199.top
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: bantony199.top
-    ip-version: dual
-    udp: true
-  - name: DefaultName_139
-    type: vless
-    server: 45.131.7.131
-    port: 443
-    uuid: 4d91916f-a7fd-419b-8b90-640bb8d4b3f2
-    network: ws
-    tls: true
-    servername: mypHOtoGRAPICpIctUre.iR
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-    ws-opts:
-      path: /fJBvsL0uR2MtzRig
-      headers:
-        host: myphotograpicpicture.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_140
-    type: vless
-    server: 104.24.35.106
-    port: 443
-    uuid: 112858f5-760f-4886-95c1-c87b3b6b298e
-    network: ws
-    tls: true
-    servername: sbs666.jjjj2024.sbs
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: sbs666.jjjj2024.sbs
-    ip-version: dual
-    udp: true
-  - name: DefaultName_141
-    type: vless
-    server: 104.24.73.254
-    port: 2087
-    uuid: 4527ff0c-8ac2-452a-95cb-c2d29e5a8421
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: ghh.wsthh.site
-    ip-version: dual
-    udp: true
-  - name: DefaultName_142
-    type: vless
-    server: 104.24.25.27
-    port: 443
-    uuid: 7848a81e-3ed7-488f-8339-5a032e1c46c2
-    network: ws
-    tls: true
-    servername: 227123.xyz
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: 227123.xyz
-    ip-version: dual
-    udp: true
-  - name: DefaultName_143
-    type: vless
-    server: 104.16.143.139
-    port: 2096
-    uuid: 4527ff0c-8ac2-452a-95cb-c2d29e5a8421
-    network: ws
-    tls: true
-    servername: ghh.wsthh.site
-    skip-cert-verify: true
-    ws-opts:
-      headers:
-        host: ghh.wsthh.site
-    ip-version: dual
-    udp: true
-  - name: DefaultName_144
-    type: vless
-    server: 104.24.7.206
-    port: 443
-    uuid: 9dca0400-cb85-4328-88f3-6e765c9a2e82
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: cf.breakday.top
-    ip-version: dual
-    udp: true
-  - name: DefaultName_145
-    type: vless
-    server: 84.32.9.47
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_146
-    type: vless
-    server: 84.32.9.31
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_147
-    type: vless
-    server: 151.101.2.228
-    port: 80
-    uuid: b26e6aca-66c8-491f-8389-b33ac192ffe8
-    network: ws
-    tls: false
-    ws-opts:
-      path: /olem/ws?ed=1024/@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----@Evay_vpn----
-      headers:
-        host: foffmelo.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_148
-    type: vless
-    server: 94.130.78.148
-    port: 2087
-    uuid: f38e1473-0bb8-4190-8d49-ba1aaaf4e264
-    network: grpc
-    tls: true
-    servername: tt.eldenmonodefense5.ir
-    alpn:
-      - h2
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_149
-    type: vless
-    server: 213.21.245.83
-    port: 443
-    uuid: 9966e820-772c-46b6-be0a-8fde377feedc
-    network: tcp
-    tls: true
-    servername: tgju.org
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: TXHciLv9Ctu7k7sdIcadLJIEa1WTCIseYctDMa6NW0c
-      short-id: 7e39db0c
-    ip-version: dual
-    udp: true
-  - name: DefaultName_150
-    type: vless
-    server: 167.235.238.146
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_151
-    type: vless
-    server: 157.180.93.74
-    port: 20000
-    uuid: 6543593a-f55e-422c-8ffd-b6d930b1808c
-    network: grpc
-    tls: true
-    servername: ebookiran.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X2l8AS8XhUKxyskDWHA-gRhvCO3LTGqWEs1GYIpyfEo
-      short-id: d525279f3c6c0ef5
-    grpc-opts:
-      grpc-service-name: Tok
-    ip-version: dual
-    udp: true
-  - name: DefaultName_152
-    type: vless
-    server: 84.32.9.52
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_153
-    type: vless
-    server: 84.32.25.200
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_154
-    type: vless
-    server: 45.131.5.252
-    port: 8443
-    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
-    network: ws
-    tls: true
-    servername: QtRkJtLt27.pRiMeXaD.OrG
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: QtRkJtLt27.pRiMeXaD.OrG
-    ip-version: dual
-    udp: true
-  - name: DefaultName_155
-    type: vless
-    server: 157.180.30.213
-    port: 36014
-    uuid: 6af7e545-9d69-431a-ae9b-3181c81e13ec
-    network: ws
-    tls: false
-    ws-opts:
-      path: /---------@proprojec--------@proprojec--------@proprojec-------@proprojec---------
-    ip-version: dual
-    udp: true
-  - name: DefaultName_156
-    type: vless
-    server: 172.67.73.163
-    port: 8080
-    uuid: 9322430d-84fd-4fdf-808d-5c146fcde700
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: 06.GDyA7g7K11.ZuLair.ORG.
-    ip-version: dual
-    udp: true
-  - name: '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
-    type: vless
-    server: 104.17.148.22
-    port: 2052
-    uuid: 457e18b3-7422-4154-b946-1c144b6b87d8
-    network: ws
-    tls: false
-    ws-opts:
-      path: /vless
-      headers:
-        host: sPeedtest2.sbs.gbvl.cytun.xyz
-    ip-version: dual
-    udp: true
-  - name: DefaultName_157
-    type: vless
-    server: 45.8.211.230
-    port: 443
-    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
-    network: ws
-    tls: true
-    servername: CxNiMjJz.cAfUnEaR.InFo
-    skip-cert-verify: true
-    ws-opts:
-      path: /
-      headers:
-        host: CxNiMjJz.cAfUnEaR.InFo
-    ip-version: dual
-    udp: true
-  - name: DefaultName_158
-    type: vless
-    server: 84.32.9.204
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
-    tls: false
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_159
-    type: vless
-    server: 104.17.147.22
-    port: 8443
-    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
-    network: ws
-    tls: true
-    servername: MdLoXlYg.rIcKtMoUsE.InFo
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: MdLoXlYg.rIcKtMoUsE.InFo
-    ip-version: dual
-    udp: true
-  - name: DefaultName_160
-    type: vless
-    server: 103.231.73.214
+    server: 89.23.118.93
     port: 443
     uuid: 588f094b-431b-422c-b80b-007945037072
     network: ws
     tls: true
-    servername: lv01.abvpn.ru
-    skip-cert-verify: true
-    ws-opts:
-      path: /websocket
-      headers:
-        host: lv01.abvpn.ru
-    ip-version: dual
-    udp: true
-  - name: DefaultName_161
-    type: vless
-    server: 194.182.79.209
-    port: 18411
-    uuid: f939e99b-5f02-41cc-ae7a-b09289a3d160
-    network: grpc
-    tls: false
-    grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
-    ip-version: dual
-    udp: true
-  - name: DefaultName_162
-    type: vless
-    server: 104.19.223.79
-    port: 2096
-    uuid: 4460a461-2946-48da-a1b0-138641caa045
-    network: ws
-    tls: true
-    servername: wwwspeedtestnetwhiteberinsistomd6625996s26.elitemizban.ir
+    servername: ru01.abvpn.ru
     skip-cert-verify: true
     client-fingerprint: chrome
     ws-opts:
+      path: /websocket
       headers:
-        host: wwwspeedtestnetwhiteberinsistomd6625996s26.elitemizban.ir
+        host: ru01.abvpn.ru
     ip-version: dual
     udp: true
-  - name: DefaultName_163
+  - name: DefaultName_130
+    type: vless
+    server: 84.32.25.206
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_131
     type: vless
     server: 95.164.45.78
     port: 8880
@@ -2189,101 +1641,9 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_164
+  - name: DefaultName_132
     type: vless
-    server: 154.92.9.2
-    port: 2096
-    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
-    network: ws
-    tls: true
-    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
-    skip-cert-verify: true
-    ws-opts:
-      path: /
-      headers:
-        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
-    ip-version: dual
-    udp: true
-  - name: '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
-    type: vless
-    server: 141.101.122.211
-    port: 2052
-    uuid: 8247c690-5157-58f2-a7a2-21a78377bd98
-    network: ws
-    tls: false
-    ws-opts:
-      path: /vless
-      headers:
-        host: sPeedtest2.sbs.us.vless.sitespeedtest.net
-    ip-version: dual
-    udp: true
-  - name: DefaultName_165
-    type: vless
-    server: 209.208.227.229
-    port: 2096
-    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
-    network: ws
-    tls: true
-    servername: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: LgUoZjGr14.hAmEcHiRuHaVaSt.cOm
-    ip-version: dual
-    udp: true
-  - name: DefaultName_166
-    type: vless
-    server: 185.59.218.169
-    port: 8443
-    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
-    network: ws
-    tls: true
-    servername: QtRkJtLt27.pRiMeXaD.OrG
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      path: /
-      headers:
-        host: QtRkJtLt27.pRiMeXaD.OrG
-    ip-version: dual
-    udp: true
-  - name: DefaultName_167
-    type: vless
-    server: 104.19.222.79
-    port: 2096
-    uuid: 4460a461-2946-48da-a1b0-138641caa045
-    network: ws
-    tls: true
-    servername: wwwspeedtestnetwhiteberinsistomd6625996s27.elitemizban.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    ws-opts:
-      headers:
-        host: wwwspeedtestnetwhiteberinsistomd6625996s27.elitemizban.ir
-    ip-version: dual
-    udp: true
-  - name: DefaultName_168
-    type: vless
-    server: 104.17.148.22
-    port: 2096
-    uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
-    network: ws
-    tls: true
-    servername: Lw4JfMxGiO.mAkEfOrLeSs.InFo
-    alpn:
-      - h3h2
-    skip-cert-verify: true
-    ws-opts:
-      path: /
-      headers:
-        host: Lw4JfMxGiO.mAkEfOrLeSs.InFo
-    ip-version: dual
-    udp: true
-  - name: DefaultName_169
-    type: vless
-    server: 78.47.141.72
+    server: 88.216.187.57
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
@@ -2291,18 +1651,313 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_170
+  - name: DefaultName_133
     type: vless
-    server: 194.182.79.7
-    port: 19123
-    uuid: 7318d456-0bfd-4973-8735-fb4d1236d6cb
+    server: 95.164.45.70
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_134
+    type: vless
+    server: 2a01:4f8:1c1b:e1d0::1
+    port: 8888
+    uuid: Parsashonam-233
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_135
+    type: vless
+    server: 95.164.47.60
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: de02.abvpn.ru
+    skip-cert-verify: true
+    ws-opts:
+      path: /websocket
+      headers:
+        host: de02.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_136
+    type: vless
+    server: 94.131.9.172
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_137
+    type: vless
+    server: 79.137.32.159
+    port: 2052
+    uuid: 5125ef9d-d366-4e69-b049-0dc37a6f5783
     network: grpc
     tls: false
     grpc-opts:
-      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+      grpc-service-name: vless-grpc
     ip-version: dual
     udp: true
-  - name: DefaultName_171
+  - name: DefaultName_138
+    type: vless
+    server: 89.23.103.150
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: nl08.abvpn.ru
+    skip-cert-verify: true
+    ws-opts:
+      path: /websocket
+      headers:
+        host: nl08.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_139
+    type: vless
+    server: 45.82.251.161
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_140
+    type: vless
+    server: 65.109.176.100
+    port: 442
+    uuid: fbf0444d-3941-45ca-a1b2-54f58fc8c43c
+    network: tcp
+    tls: true
+    servername: www.cdn77.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: 3Ub2-GJ9ldN9dA6hW_e0TG8bIRxVkYu8ewdRjNnAIms
+      short-id: '74'
+    ip-version: dual
+    udp: true
+  - name: DefaultName_141
+    type: vless
+    server: 45.82.251.141
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_142
+    type: vless
+    server: 45.82.251.167
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_143
+    type: vless
+    server: 45.82.251.165
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_144
+    type: vless
+    server: 5.199.169.208
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_145
+    type: vless
+    server: 45.82.251.170
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_146
+    type: vless
+    server: 45.82.251.171
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_147
+    type: vless
+    server: 45.82.251.139
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_148
+    type: vless
+    server: 45.82.251.112
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_149
+    type: vless
+    server: 45.82.251.149
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_150
+    type: vless
+    server: 45.82.251.166
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_151
+    type: vless
+    server: 2a01:4f8:1c1b:1aa0::1
+    port: 45726
+    uuid: TELEGRAM-ServerNett
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_152
+    type: vless
+    server: 45.82.251.133
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_153
+    type: vless
+    server: 45.82.251.183
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_154
+    type: vless
+    server: 45.82.251.144
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_155
+    type: vless
+    server: 45.82.251.105
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_156
+    type: vless
+    server: 45.82.251.163
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_157
+    type: vless
+    server: 45.82.251.84
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: 5fab0deb
+    ip-version: dual
+    udp: true
+  - name: DefaultName_158
+    type: vless
+    server: 45.82.251.69
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: 5fab0deb
+    ip-version: dual
+    udp: true
+  - name: DefaultName_159
+    type: vless
+    server: 15.204.150.39
+    port: 443
+    uuid: e20ebe01-1815-4c09-8e77-fb2f168263ce
+    network: tcp
+    tls: true
+    servername: 147135001178.sec22org.com
+    skip-cert-verify: true
+    ip-version: dual
+    udp: true
+  - name: DefaultName_160
+    type: vless
+    server: 172.67.204.84
+    port: 8880
+    uuid: f3b7552c-d4f6-43c9-b87b-2990c3063a6b
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: join.V2RAYFAST7.iran.ir.arvancloud.ir.nett.focusontrade.ir
+    ip-version: dual
+    udp: true
+  - name: DefaultName_161
     type: vless
     server: 45.159.248.125
     port: 8880
@@ -2312,23 +1967,367 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_172
+  - name: '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
     type: vless
-    server: 147.78.140.159
-    port: 2096
-    uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
+    server: 104.17.148.22
+    port: 2052
+    uuid: 98f48d81-da83-49d2-a1c1-547c2a57798d
     network: ws
-    tls: true
-    servername: ScGiYaSk.rOcKsToNeY.InFo
-    skip-cert-verify: true
-    client-fingerprint: chrome
+    tls: false
+    ws-opts:
+      path: /vless
+      headers:
+        host: sPeedtest2.sbs.cavl.cytun.xyz
+    ip-version: dual
+    udp: true
+  - name: DefaultName_162
+    type: vless
+    server: 84.32.25.200
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_163
+    type: vless
+    server: 2a01:4f8:1c1b:247d::1
+    port: 41066
+    uuid: TELEGRAM-ServerNett
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_164
+    type: vless
+    server: 194.182.79.202
+    port: 39049
+    uuid: 5a29a909-66c2-476e-b851-73966c64023c
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+    ip-version: dual
+    udp: true
+  - name: DefaultName_165
+    type: vless
+    server: 194.182.79.209
+    port: 18411
+    uuid: 44c83e4b-e35d-4bbe-8e69-56bbd8a366d3
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+    ip-version: dual
+    udp: true
+  - name: DefaultName_166
+    type: vless
+    server: 194.182.79.7
+    port: 19123
+    uuid: 9e8c4793-f653-4839-9b8b-852496ef0e27
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+    ip-version: dual
+    udp: true
+  - name: DefaultName_167
+    type: vless
+    server: 142.93.231.14
+    port: 44111
+    uuid: b3d82748-e641-430b-8779-7d36b83e9670
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_168
+    type: vless
+    server: 84.32.25.237
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_169
+    type: vless
+    server: 88.216.187.57
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_170
+    type: vless
+    server: 142.93.231.14
+    port: 16426
+    uuid: 3040574d-d249-4b04-9513-cabd9e7b3044
+    network: ws
+    tls: false
     ws-opts:
       path: /
-      headers:
-        host: ScGiYaSk.rOcKsToNeY.InFo
+    ip-version: dual
+    udp: true
+  - name: DefaultName_171
+    type: vless
+    server: 84.32.25.200
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_172
+    type: vless
+    server: 194.182.79.242
+    port: 45831
+    uuid: 2fe2f807-e81b-4134-afb5-1d41564c73c7
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
     ip-version: dual
     udp: true
   - name: DefaultName_173
+    type: vless
+    server: 83.147.18.150
+    port: 443
+    uuid: 2a1c791e-40b3-4033-942a-914763a53908
+    network: tcp
+    tls: true
+    servername: snapp.ir
+    skip-cert-verify: true
+    reality-opts:
+      public-key: NVyURHRuwh2Y4RxejiTR0tczjPM2pBVWkc6D7FCUkxA
+      short-id: 0126b9
+    ip-version: dual
+    udp: true
+  - name: DefaultName_174
+    type: vless
+    server: 45.140.167.253
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_175
+    type: vless
+    server: 213.21.245.83
+    port: 443
+    uuid: f807d70f-d5bd-45b7-aa1e-abcd0a79cfe7
+    network: tcp
+    tls: true
+    servername: www.cdn77.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: TXHciLv9Ctu7k7sdIcadLJIEa1WTCIseYctDMa6NW0c
+      short-id: 7e39db0c
+    ip-version: dual
+    udp: true
+  - name: DefaultName_176
+    type: vless
+    server: 37.27.206.75
+    port: 26528
+    uuid: abe782ba-678a-4391-ae92-4dd9b0cb88ce
+    network: grpc
+    tls: true
+    servername: yahoo.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: 2FrbyUtv6Ajh0Ufmst5Tw0ch_aeF3tXw0kDcfOrvGTk
+      short-id: 8f9d4d9a
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_177
+    type: vless
+    server: 2a01:4f8:1c1b:11e::1
+    port: 20000
+    uuid: 3091880b-13e7-4c1f-8211-f2a79428671d
+    network: tcp
+    tls: true
+    servername: fontawesome.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: PHP5Ibb_VceW-qb5RXLn-lKMHoqMTZbhrjwCMtsJZiQ
+      short-id: 49d5a3bd8cd3e6b6
+    ip-version: dual
+    udp: true
+  - name: DefaultName_178
+    type: vless
+    server: 2a01:4f8:1c1b:7df::1
+    port: 443
+    uuid: 764a13da-76a5-4bc0-a2c9-e2a02f62408f
+    network: grpc
+    tls: true
+    servername: gsmarena.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: AVesZ9rUbwnESVl0YSPs98oWmZbXlhDVjR4ssJAw6yw
+      short-id: 32d7a82d
+    grpc-opts:
+      grpc-service-name: '@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN,@Everyday_VPN'
+    ip-version: dual
+    udp: true
+  - name: DefaultName_179
+    type: vless
+    server: 45.82.251.151
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_180
+    type: vless
+    server: 45.82.251.69
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: 5fab0deb
+    ip-version: dual
+    udp: true
+  - name: DefaultName_181
+    type: vless
+    server: 45.82.251.163
+    port: 8880
+    uuid: e4824193-4f54-453b-d037-88368e85ef0e
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_182
+    type: vless
+    server: 194.182.79.113
+    port: 26468
+    uuid: 495a1363-bd37-4f3a-861e-ffb1686cf4d5
+    network: grpc
+    tls: false
+    grpc-opts:
+      grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON?ed=2048
+    ip-version: dual
+    udp: true
+  - name: DefaultName_183
+    type: vless
+    server: 2606:4700:3030::6815:4001
+    port: 443
+    uuid: 2bb5e4f9-35c5-45aa-8f84-b81ac8da330d
+    network: httpupgrade
+    tls: true
+    servername: osi.speedx3net.ir
+    skip-cert-verify: true
+    ip-version: dual
+    udp: true
+  - name: DefaultName_184
+    type: vless
+    server: 95.164.45.95
+    port: 8880
+    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+    network: grpc
+    tls: false
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_185
+    type: vless
+    server: 213.210.55.72
+    port: 24443
+    uuid: 5543ae5c-c24f-405a-9266-597cbc43c818
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: miku.mikuru.ip-ddns.com
+    ip-version: dual
+    udp: true
+  - name: DefaultName_186
+    type: vless
+    server: 142.93.231.14
+    port: 16426
+    uuid: 3040574d-d249-4b04-9513-cabd9e7b3044
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+    ip-version: dual
+    udp: true
+  - name: DefaultName_187
+    type: vless
+    server: 151.101.194.165
+    port: 80
+    uuid: dbbfc9a5-7bed-45fd-afae-a655f285788d
+    network: ws
+    tls: false
+    ws-opts:
+      path: /Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420--Join--EXPRESSVPN_420?ed=2048
+      headers:
+        host: taxi.ir
+    ip-version: dual
+    udp: true
+  - name: DefaultName_188
+    type: vless
+    server: 89.23.118.93
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: ru01.abvpn.ru
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /websocket
+      headers:
+        host: ru01.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_189
+    type: vless
+    server: 95.164.47.60
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: de02.abvpn.ru
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /websocket
+      headers:
+        host: de02.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_190
+    type: vless
+    server: 45.80.111.10
+    port: 2052
+    uuid: 45f01712-2893-53e3-8e6a-6b7c925021da
+    network: ws
+    tls: false
+    ws-opts:
+      path: /vless
+      headers:
+        host: sPeedtest2.sbs.br.vless.sitespeedtest.net
+    ip-version: dual
+    udp: true
+  - name: DefaultName_191
     type: vless
     server: 46.226.162.42
     port: 443
@@ -2342,66 +2341,102 @@ proxies:
       path: /websocket
     ip-version: dual
     udp: true
-  - name: DefaultName_174
+  - name: DefaultName_192
     type: vless
-    server: 51.77.110.211
-    port: 22351
-    uuid: e13dc928-2afb-4ede-839b-40b0ab07122c
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_175
-    type: vless
-    server: 157.90.114.104
+    server: 45.150.65.53
     port: 443
-    uuid: 86a4b3b1-a6ba-46e5-9f7a-807bfe9c4367
-    network: tcp
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
     tls: true
-    servername: docker.com
-    flow: xtls-rprx-vision
+    servername: usa01.abvpn.ru
     skip-cert-verify: true
     client-fingerprint: chrome
-    reality-opts:
-      public-key: fD7tYLaNuuNWZm7a9RgKGa8AG2xUCCpN-Jhie4FaxwI
-      short-id: '6734'
+    ws-opts:
+      path: /websocket
+      headers:
+        host: usa01.abvpn.ru
     ip-version: dual
     udp: true
-  - name: DefaultName_176
+  - name: DefaultName_193
     type: vless
-    server: 35.178.235.225
+    server: 2.56.178.47
     port: 443
-    uuid: 00651706-0d2d-448b-80f2-7678f3e5187c
+    uuid: 588f094b-431b-422c-b80b-007945037072
     network: ws
     tls: true
-    servername: uk.rtot.me
+    servername: ru05.abvpn.ru
     skip-cert-verify: true
+    client-fingerprint: chrome
     ws-opts:
-      path: /bing
+      path: /websocket
       headers:
-        host: uk.rtot.me
+        host: ru05.abvpn.ru
     ip-version: dual
     udp: true
-  - name: DefaultName_177
+  - name: DefaultName_194
     type: vless
-    server: 84.32.9.41
-    port: 8880
-    uuid: df0680ca-e43c-498d-ed86-8e196eedd012
-    network: grpc
+    server: 103.231.73.214
+    port: 443
+    uuid: 588f094b-431b-422c-b80b-007945037072
+    network: ws
+    tls: true
+    servername: lv01.abvpn.ru
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /websocket
+      headers:
+        host: lv01.abvpn.ru
+    ip-version: dual
+    udp: true
+  - name: DefaultName_195
+    type: vless
+    server: 68.183.178.106
+    port: 14798
+    uuid: e7cd8b22-4b4e-4436-80b6-a8e091f1de17
+    network: ws
     tls: false
-    grpc-opts: {}
+    ws-opts:
+      path: /FREE By Tharuwa (@z_z_z_zz_z) 0767597317
+      headers:
+        host: zoom.us
     ip-version: dual
     udp: true
-  - name: DefaultName_178
+  - name: DefaultName_196
     type: vless
-    server: 86.38.214.22
-    port: 2052
-    uuid: b04a24aa-394e-5278-8202-dc480ae6f49b
+    server: 213.210.55.72
+    port: 24443
+    uuid: 5543ae5c-c24f-405a-9266-597cbc43c818
     network: ws
     tls: false
     ws-opts:
       headers:
-        host: sPeedtest2.sbs.sg.vless.sitespeedtest.net
+        host: miku.mikuru.ip-ddns.com
+    ip-version: dual
+    udp: true
+  - name: DefaultName_197
+    type: vless
+    server: 68.183.178.106
+    port: 14798
+    uuid: e7cd8b22-4b4e-4436-80b6-a8e091f1de17
+    network: ws
+    tls: false
+    ws-opts:
+      path: /FREE By Tharuwa (@z_z_z_zz_z) 0767597317
+      headers:
+        host: zoom.us
+    ip-version: dual
+    udp: true
+  - name: DefaultName_198
+    type: vless
+    server: 213.210.55.72
+    port: 24443
+    uuid: 5543ae5c-c24f-405a-9266-597cbc43c818
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: miku.mikuru.ip-ddns.com
     ip-version: dual
     udp: true
 proxy-groups:
@@ -2415,7 +2450,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -2531,7 +2565,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -2539,12 +2572,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -2571,16 +2602,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -2595,6 +2625,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -2606,7 +2656,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -2722,7 +2771,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -2730,12 +2778,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -2762,16 +2808,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -2786,6 +2831,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -2797,7 +2862,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -2913,7 +2977,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -2921,12 +2984,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -2953,16 +3014,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -2977,6 +3037,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
   - name: 📲 电报信息
     type: select
     proxies:
@@ -2987,7 +3067,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -3103,7 +3182,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -3111,12 +3189,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -3143,16 +3219,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -3167,6 +3242,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -3177,7 +3272,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -3293,7 +3387,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -3301,12 +3394,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -3333,16 +3424,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -3357,6 +3447,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -3367,7 +3477,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -3483,7 +3592,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -3491,12 +3599,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -3523,16 +3629,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -3547,6 +3652,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -3574,7 +3699,6 @@ proxy-groups:
       - DefaultName_3
       - DefaultName_4
       - DefaultName_5
-      - '@V2ray_Alpha'
       - DefaultName_6
       - DefaultName_7
       - DefaultName_8
@@ -3690,7 +3814,6 @@ proxy-groups:
       - DefaultName_117
       - DefaultName_118
       - DefaultName_119
-      - TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&sni=bitget1.asdasd.click
       - DefaultName_120
       - DefaultName_121
       - DefaultName_122
@@ -3698,12 +3821,10 @@ proxy-groups:
       - DefaultName_124
       - DefaultName_125
       - DefaultName_126
-      - '@MARAMBASHI_MARAMBASHI'
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
       - DefaultName_130
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_131
       - DefaultName_132
       - DefaultName_133
@@ -3730,16 +3851,15 @@ proxy-groups:
       - DefaultName_154
       - DefaultName_155
       - DefaultName_156
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_3'
       - DefaultName_157
       - DefaultName_158
       - DefaultName_159
       - DefaultName_160
       - DefaultName_161
+      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_2'
       - DefaultName_162
       - DefaultName_163
       - DefaultName_164
-      - '@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL,@V2RAY_SPATIAL_4'
       - DefaultName_165
       - DefaultName_166
       - DefaultName_167
@@ -3754,6 +3874,26 @@ proxy-groups:
       - DefaultName_176
       - DefaultName_177
       - DefaultName_178
+      - DefaultName_179
+      - DefaultName_180
+      - DefaultName_181
+      - DefaultName_182
+      - DefaultName_183
+      - DefaultName_184
+      - DefaultName_185
+      - DefaultName_186
+      - DefaultName_187
+      - DefaultName_188
+      - DefaultName_189
+      - DefaultName_190
+      - DefaultName_191
+      - DefaultName_192
+      - DefaultName_193
+      - DefaultName_194
+      - DefaultName_195
+      - DefaultName_196
+      - DefaultName_197
+      - DefaultName_198
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
