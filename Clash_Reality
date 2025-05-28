@@ -1,29 +1,56 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-05-28 00:28:00
+# 配置生成日期：2025-05-28 15:42:57
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
-  - name: '🇹🇷@FREE2CONFIG  '
-    type: vless
-    server: 46.203.248.224
-    port: 20411
-    uuid: 54ffbe99-7aaf-4ceb-9a82-048fb2489757
-    network: tcp
-    tls: true
-    servername: www.speedtest.net
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 9rx7JwMO-KRZZEM9TQBO19BOAmmGjJyjN86ll2J7uVc
-    ip-version: dual
-    udp: true
-  - name: 🇩🇪@FREE2CONFIG _1
+  - name: 🇩🇪@FREE2CONFIG  _1
     type: vless
     server: 134.122.92.59
     port: 443
@@ -36,6 +63,73 @@ proxies:
     reality-opts:
       public-key: jeolU3LnNSyKZnb6ttzoj5VQJNEILGm6HMTj4qY9IB8
       short-id: 783fc5877197f528
+    ip-version: dual
+    udp: true
+  - name: 🇬🇧@FREE2CONFIG _1
+    type: vless
+    server: 74.220.23.227
+    port: 2030
+    uuid: b035f65f-5674-4bf2-b306-8ca985c85e64
+    network: grpc
+    tls: true
+    servername: wordpress.org
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: YWfCdTnr4FAOMYTY2dLrMtQUokyxOGpPhYEEszPj20E
+      short-id: 7fe29733
+    grpc-opts:
+      grpc-service-name: CANALTELEGRAM--jet_config--TELEGRAM--jet_config--CANALTELEGRAM--jet_config--TELEGRAM--jet_config--CANALTELEGRAM--jet_config
+    ip-version: dual
+    udp: true
+  - name: '🇲🇩@FREE2CONFIG '
+    type: vless
+    server: 185.235.241.208
+    port: 3567
+    uuid: 3f1fc9d9-8cbc-46eb-8dd4-660187c2810e
+    network: grpc
+    tls: true
+    servername: www.cdn77.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: WAexhAE6LEk2BSCikHVk7eSNTWel__rYPsJfq5Ud9Tc
+      short-id: 1f8912
+    grpc-opts:
+      grpc-service-name: Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs_Telegram_configMs
+    ip-version: dual
+    udp: true
+  - name: 🇫🇮@FREE2CONFIG _1
+    type: vless
+    server: 37.27.199.89
+    port: 8443
+    uuid: 65a25ae6-6ba4-47db-b928-a89e0014478d
+    network: grpc
+    tls: true
+    servername: mhhauto.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: Vbs9aDtJnNcG38wSEn_8T6_T_385ml7Ouv41zJR3aAs
+      short-id: 30416d62
+    grpc-opts:
+      grpc-service-name: qqq
+    ip-version: dual
+    udp: true
+  - name: 🇩🇪@FREE2CONFIG _1
+    type: vless
+    server: 5.75.152.152
+    port: 2053
+    uuid: 0828386d-8a07-4f12-b582-5d2cf43969b8
+    network: tcp
+    tls: true
+    servername: www.tgju.org
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: eR4J5FtMqaNxy-RvJb6JzcBoREYy7iDGC61J6xtQHkc
+      short-id: '48'
     ip-version: dual
     udp: true
   - name: 🇩🇪@FREE2CONFIG _2
@@ -54,78 +148,67 @@ proxies:
       grpc-service-name: '@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy'
     ip-version: dual
     udp: true
-  - name: '🇫🇮@FREE2CONFIG '
+  - name: '🇸🇪@FREE2CONFIG '
     type: vless
-    server: 65.21.102.23
-    port: 54401
-    uuid: 6b3bc016-fafc-4051-9680-3b43dd372503
-    network: tcp
-    tls: true
-    servername: zula.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: AqGO4WCsGfcX046DebowJcVTKANHPazld7XyAHD_RQE
-      short-id: e5201e3c
-    ip-version: dual
-    udp: true
-  - name: 🇩🇪@FREE2CONFIG _3
-    type: vless
-    server: 178.63.228.220
+    server: 46.253.4.31
     port: 443
-    uuid: a3266b60-038f-4b82-964d-9ae2face9c5d
-    network: grpc
-    tls: true
-    servername: fauxid.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: Aa3FogZ9ohTiRHsdnoyiMg7TFARWEeZs_m290juxEzs
-    grpc-opts:
-      grpc-service-name: '@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy'
-    ip-version: dual
-    udp: true
-  - name: 🇩🇪@FREE2CONFIG _4
-    type: vless
-    server: 49.12.243.80
-    port: 4041
-    uuid: 0372681d-ee33-473e-acf0-8132105ff0ea
+    uuid: f7fdf2c2-a98a-4e8f-b06a-29f1b3c8122f
     network: tcp
     tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: firefox
-    reality-opts:
-      public-key: GqpLuqbGhZ3N1oIlSMfuLnpKCNZOoK8JWwHPmqSNxgk
-    ip-version: dual
-    udp: true
-  - name: 🇩🇪@FREE2CONFIG _5
-    type: vless
-    server: 49.12.243.80
-    port: 4043
-    uuid: 0372681d-ee33-473e-acf0-8132105ff0ea
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: firefox
-    reality-opts:
-      public-key: GqpLuqbGhZ3N1oIlSMfuLnpKCNZOoK8JWwHPmqSNxgk
-    ip-version: dual
-    udp: true
-  - name: '🇵🇰@FREE2CONFIG '
-    type: vless
-    server: 103.175.79.10
-    port: 443
-    uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
-    network: tcp
-    tls: true
-    servername: speed.cloudflare.com
+    servername: www.dropbox.com
     flow: xtls-rprx-vision
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: 4e-unF1RO2v--E7-X3aqxnCSPaK9QaTfJ7LawAr2bRI
+      public-key: r-Sryx8MT35Vu5eHeRr-nfVXkGw1pQCkkwL0MFIkeEw
+      short-id: 321dd18a
+    ip-version: dual
+    udp: true
+  - name: 🇳🇱@FREE2CONFIG _1
+    type: vless
+    server: 206.189.0.81
+    port: 44485
+    uuid: 3aca3678-780d-4609-9cf8-d633e0bde36a
+    network: grpc
+    tls: true
+    servername: yahoo.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: vqK1SOy4GmKgWtwgI-AcvIyMxQRXHsMG6xe_b6-Nvl8
+      short-id: e3
+    grpc-opts:
+      grpc-service-name: '@drakvpn'
+    ip-version: dual
+    udp: true
+  - name: '🇹🇷@FREE2CONFIG '
+    type: vless
+    server: 46.203.248.224
+    port: 20411
+    uuid: 54ffbe99-7aaf-4ceb-9a82-048fb2489757
+    network: tcp
+    tls: true
+    servername: www.speedtest.net
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 9rx7JwMO-KRZZEM9TQBO19BOAmmGjJyjN86ll2J7uVc
+    ip-version: dual
+    udp: true
+  - name: 🇩🇪@FREE2CONFIG _3
+    type: vless
+    server: 138.199.212.144
+    port: 65531
+    uuid: 469e2694-da00-410a-87e9-051d81a741fc
+    network: tcp
+    tls: true
+    servername: stackoverflow.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: SyFxcn1HOj_g6IK7Pn-VS9tHr7_FGQm55tAGQWwR8Tw
+      short-id: 843af58709db
     ip-version: dual
     udp: true
   - name: '🇺🇸@FREE2CONFIG '
@@ -144,6 +227,21 @@ proxies:
       short-id: 7d
     ip-version: dual
     udp: true
+  - name: '🇵🇰@FREE2CONFIG '
+    type: vless
+    server: 103.175.79.10
+    port: 443
+    uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
+    network: tcp
+    tls: true
+    servername: speed.cloudflare.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 4e-unF1RO2v--E7-X3aqxnCSPaK9QaTfJ7LawAr2bRI
+    ip-version: dual
+    udp: true
   - name: '🇦🇺@FREE2CONFIG '
     type: vless
     server: 170.64.156.152
@@ -157,6 +255,84 @@ proxies:
     reality-opts:
       public-key: HmhJeIza6ZLRu38PWEI00aKv-Nqp4SglYXvDZj9rbhM
       short-id: c03adf0e43c6bb75
+    ip-version: dual
+    udp: true
+  - name: 🇩🇪@FREE2CONFIG _4
+    type: vless
+    server: 91.99.13.80
+    port: 30561
+    uuid: d37d1df5-1422-4e59-a187-47cc37a1ff4b
+    network: tcp
+    tls: true
+    servername: stackoverflow.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: H1HfMqwks7GIdi-LoswMO4xxR7fJihqN_xLolycIWX8
+      short-id: 95ac1a9f19
+    ip-version: dual
+    udp: true
+  - name: 🇳🇱@FREE2CONFIG _2
+    type: vless
+    server: 46.243.3.15
+    port: 443
+    uuid: 715b3f21-8774-484a-9230-f0a2c187e168
+    network: tcp
+    tls: true
+    servername: www.cdn77.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: SWA-po18cETv3noGE9OearcQaA6ERQRg31ejuSMpbkI
+      short-id: e54b5ad736ae4c38
+    ip-version: dual
+    udp: true
+  - name: 🇫🇮@FREE2CONFIG _2
+    type: vless
+    server: 65.21.102.23
+    port: 54401
+    uuid: 6b3bc016-fafc-4051-9680-3b43dd372503
+    network: tcp
+    tls: true
+    servername: zula.ir
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: AqGO4WCsGfcX046DebowJcVTKANHPazld7XyAHD_RQE
+      short-id: e5201e3c
+    ip-version: dual
+    udp: true
+  - name: 🇩🇪@FREE2CONFIG _5
+    type: vless
+    server: 5.75.202.153
+    port: 20003
+    uuid: b8245016-e494-4eb8-834d-207995abd821
+    network: tcp
+    tls: true
+    servername: www.speedtest.net.vip.ger.dbsll.ir
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: F7VsJyw_2U5Bmdvx1JWogG0CCZfoQGPOZL-gTybpIRE
+      short-id: 23f44163
+    ip-version: dual
+    udp: true
+  - name: 🇩🇪@FREE2CONFIG _6
+    type: vless
+    server: 95.164.16.166
+    port: 3567
+    uuid: a071aeaf-02b2-4f79-8dd9-001b2c15c00b
+    network: grpc
+    tls: true
+    servername: www.cdn77.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: UmfiIOjfgdKF7C2cWhO-rzHeKHHxONToNSjTNpilA00
+      short-id: 34f2
+    grpc-opts:
+      grpc-service-name: telegram-ipV2Ry-telegram-ipV2Ry-telegram-ipV2Ry
     ip-version: dual
     udp: true
   - name: '🇸🇨@FREE2CONFIG '
@@ -174,101 +350,82 @@ proxies:
       public-key: oE7ZEghzkaOUiw1q3PqBtpllP1NlPHLY8ydJRuICtko
     ip-version: dual
     udp: true
-  - name: 🇩🇪@FREE2CONFIG _6
+  - name: '🇲🇺@FREE2CONFIG '
     type: vless
-    server: 162.55.185.143
-    port: 22000
-    uuid: f93a6388-c998-4864-8eb7-c61de4754aca
-    network: grpc
+    server: 45.196.239.151
+    port: 14224
+    uuid: 6813a9e7-6aca-45b8-8e4a-b724c3b95388
+    network: tcp
     tls: true
-    servername: refersion.com
+    servername: apple.com
+    flow: xtls-rprx-vision
     skip-cert-verify: true
-    client-fingerprint: random
+    client-fingerprint: chrome
     reality-opts:
-      public-key: f8YkaG5qTpO4VrwZAXriDsuhM_OB1vEtcq_XQ3Y040A
-      short-id: a14a0330c8ede1cd
-    grpc-opts:
-      grpc-service-name: Tok
+      public-key: Q86BFbKPjYQizum69psLaAzKYnCYdnDY9_PAJR5edy4
+      short-id: bf
     ip-version: dual
     udp: true
   - name: 🇩🇪@FREE2CONFIG _7
     type: vless
-    server: 5.75.202.153
-    port: 20003
-    uuid: b8245016-e494-4eb8-834d-207995abd821
+    server: 23.88.62.209
+    port: 2089
+    uuid: c05d6d23-b67b-4f00-ad57-a754a222ea83
     network: tcp
     tls: true
-    servername: www.speedtest.net.vip.ger.dbsll.ir
-    flow: xtls-rprx-vision
+    servername: refersion.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: F7VsJyw_2U5Bmdvx1JWogG0CCZfoQGPOZL-gTybpIRE
-      short-id: 23f44163
+      public-key: bvEBes1y2n6327dEgJyZTR6Xz_EuyfLdkEX7DxWGFFg
+      short-id: e3c5c005cae07eb8
     ip-version: dual
     udp: true
-  - name: '🇳🇱@FREE2CONFIG '
+  - name: '🇨🇾@FREE2CONFIG '
     type: vless
-    server: 89.34.230.186
+    server: 171.22.120.10
     port: 3567
-    uuid: e71099b1-f54b-4cd3-80b0-20c2ba854a5e
+    uuid: 182dff0f-53ed-4c89-b74d-e221068f28f4
     network: grpc
     tls: true
-    servername: maps.google.com
+    servername: www.cdn77.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: OUFykWUCiUsuGV3oGsKRAAPmyev5dpnP3TvoJO9sECQ
-      short-id: 0cc6d3a98d5c
-    grpc-opts:
-      grpc-service-name: telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER
+      public-key: As--7b3xqKlpgs420dAdMeZk7-RVXMeGqLsb6ckgHiQ
+      short-id: e966
+    grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: 🇫🇷@FREE2CONFIG _1
+  - name: 🇩🇪@FREE2CONFIG _8
     type: vless
-    server: 51.195.35.2
-    port: 4768
-    uuid: 632e71fd-b756-9543-468b-680e87bbfed5
-    network: tcp
-    tls: true
-    servername: yandex.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 1juiWgfU1-cGsbu9zxKCly7Vn3WGES5x6S86r90_vwc
-      short-id: b7e284c9b786f709
-    ip-version: dual
-    udp: true
-  - name: 🇫🇷@FREE2CONFIG _2
-    type: vless
-    server: 62.60.148.14
-    port: 25756
-    uuid: 99464d7f-8691-41c2-922b-e75a1e182344
-    network: tcp
-    tls: true
-    servername: google.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: QYKUzjbRc3V_-SwJ7DbChBt5nT6miAoFuNCqbflDF2o
-      short-id: '61'
-    ip-version: dual
-    udp: true
-  - name: '🇷🇺@FREE2CONFIG '
-    type: vless
-    server: 5.181.171.10
+    server: 213.176.95.70
     port: 443
-    uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
+    uuid: 73a21609-8238-45c0-b2b0-0469e6c58ba3
     network: tcp
     tls: true
-    servername: speed.cloudflare.com
+    servername: pingless.com
     flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: random
+    reality-opts:
+      public-key: y_kHGyJmpYqiGgeh5gTgDRda0d_l6p-_2at2HHBrWEU
+      short-id: 700c1d3ddf2f99
+    ip-version: dual
+    udp: true
+  - name: 🇬🇧@FREE2CONFIG _2
+    type: vless
+    server: 45.77.230.57
+    port: 55311
+    uuid: 52a0b1c0-0b8d-4e08-a2ae-89f6f13852b4
+    network: tcp
+    tls: true
+    servername: www.speedtest.net
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: YNGotlyAx3ELUmi4lxOUjiEDmibqf1pPUTE9o3YYT2Y
+      public-key: YUcUHdfvj0h3EbIe2kLT9IM4J3Q1O3Cpb29gKxE2fwM
+      short-id: 2d0fc01b3c72ce
     ip-version: dual
     udp: true
   - name: '🇪🇪@FREE2CONFIG '
@@ -287,7 +444,23 @@ proxies:
       short-id: b7e284c9b786f709
     ip-version: dual
     udp: true
-  - name: 🇩🇪@FREE2CONFIG _8
+  - name: 🇫🇮@FREE2CONFIG _3
+    type: vless
+    server: 77.110.98.221
+    port: 36994
+    uuid: e2b3c239-98aa-4cb6-bf67-c90223b7172d
+    network: tcp
+    tls: true
+    servername: google.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: B0o9qWjR8-Rwid0pZe-C4LPfxUJCDSWANN0CMbbPxSY
+      short-id: 8b5ba7aca4
+    ip-version: dual
+    udp: true
+  - name: 🇩🇪@FREE2CONFIG _9
     type: vless
     server: 91.107.219.8
     port: 443
@@ -301,6 +474,21 @@ proxies:
     reality-opts:
       public-key: Rcapy_5gvuL9LOr1Bqz-Y84P69L3wUQjG48xpB4fLTA
       short-id: 1d13151ce1
+    ip-version: dual
+    udp: true
+  - name: '🇷🇺@FREE2CONFIG '
+    type: vless
+    server: 5.181.171.10
+    port: 443
+    uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
+    network: tcp
+    tls: true
+    servername: speed.cloudflare.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: YNGotlyAx3ELUmi4lxOUjiEDmibqf1pPUTE9o3YYT2Y
     ip-version: dual
     udp: true
   - name: '🇸🇬@FREE2CONFIG '
@@ -318,7 +506,7 @@ proxies:
       public-key: qhTzYYIgBzDLNYR79oxftqdo1kzL-1_hGJKfqrOliCY
     ip-version: dual
     udp: true
-  - name: 🇭🇰@FREE2CONFIG _1
+  - name: '🇭🇰@FREE2CONFIG '
     type: vless
     server: 8.218.114.184
     port: 443
@@ -334,55 +522,22 @@ proxies:
       short-id: 35f29e450ad773a3
     ip-version: dual
     udp: true
-  - name: 🇭🇰@FREE2CONFIG _2
+  - name: 🇩🇪@FREE2CONFIG _10
     type: vless
-    server: 103.103.245.218
-    port: 37730
-    uuid: 7c4ba50c-b313-42df-bf33-0121082a4d0b
+    server: 157.173.127.224
+    port: 443
+    uuid: bec44ac3-a662-4179-a9dd-2aa881706dde
     network: tcp
     tls: true
-    servername: 759dvhk.wudiovv.mom
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: firefox
-    reality-opts:
-      public-key: fpchgOvR77dN7cNU2xBiJGk1LKsF_3o5JbTXr_EjLEo
-      short-id: 78624e43199a
-    ip-version: dual
-    udp: true
-  - name: '🇬🇧@FREE2CONFIG '
-    type: vless
-    server: 45.77.230.57
-    port: 55311
-    uuid: 52a0b1c0-0b8d-4e08-a2ae-89f6f13852b4
-    network: tcp
-    tls: true
-    servername: www.speedtest.net
+    servername: analytics.google.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: YUcUHdfvj0h3EbIe2kLT9IM4J3Q1O3Cpb29gKxE2fwM
-      short-id: 2d0fc01b3c72ce
+      public-key: Ajk0QudeMVQocN88OG14PpsxparFuRJlvqzXDlW-gyQ
+      short-id: aba7bc9a
     ip-version: dual
     udp: true
-  - name: '🇮🇹@FREE2CONFIG '
-    type: vless
-    server: 141.227.140.42
-    port: 1210
-    uuid: c44da510-fe78-41c5-803e-2999fd091b48
-    network: grpc
-    tls: true
-    servername: ubuntu.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: YWfCdTnr4FAOMYTY2dLrMtQUokyxOGpPhYEEszPj20E
-      short-id: 7fe29733
-    grpc-opts:
-      grpc-service-name: CANALTELEGRAM--jet_config--TELEGRAM--jet_config--CANALTELEGRAM--jet_config--TELEGRAM--jet_config--CANALTELEGRAM--jet_config--TELEGRAM--jet_config--CANALTELEGRAM--jet_config--TELEGRAM--jet_config
-    ip-version: dual
-    udp: true
-  - name: 🇩🇪@FREE2CONFIG _9
+  - name: 🇩🇪@FREE2CONFIG _11
     type: vless
     server: 188.245.250.75
     port: 7022
@@ -396,189 +551,276 @@ proxies:
       public-key: Sm0gGVH8qJHECOVhNaN2j52ayfqYcrZggyQMxiQP2Fo
     ip-version: dual
     udp: true
+  - name: 🇩🇪@FREE2CONFIG  _2
+    type: vless
+    server: 162.55.185.143
+    port: 22000
+    uuid: f93a6388-c998-4864-8eb7-c61de4754aca
+    network: grpc
+    tls: true
+    servername: refersion.com
+    skip-cert-verify: true
+    client-fingerprint: random
+    reality-opts:
+      public-key: f8YkaG5qTpO4VrwZAXriDsuhM_OB1vEtcq_XQ3Y040A
+      short-id: a14a0330c8ede1cd
+    grpc-opts:
+      grpc-service-name: Tok
+    ip-version: dual
+    udp: true
+  - name: 🇫🇷@FREE2CONFIG
+    type: vless
+    server: 51.195.35.2
+    port: 4768
+    uuid: 632e71fd-b756-9543-468b-680e87bbfed5
+    network: tcp
+    tls: true
+    servername: yandex.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 1juiWgfU1-cGsbu9zxKCly7Vn3WGES5x6S86r90_vwc
+      short-id: b7e284c9b786f709
+    ip-version: dual
+    udp: true
 proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
       - DIRECT
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 5000
     proxies:
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
   - name: 🌍 国外媒体
     type: select
     proxies:
       - 🚀 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
   - name: 📲 电报信息
     type: select
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
       - 🎯 全球直连
       - 🚀 节点选择
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
   - name: 🍎 苹果服务
     type: select
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -601,31 +843,40 @@ proxy-groups:
       - 🚀 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
-      - '🇹🇷@FREE2CONFIG  '
+      - 🇩🇪@FREE2CONFIG  _1
+      - 🇬🇧@FREE2CONFIG _1
+      - '🇲🇩@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _1
       - 🇩🇪@FREE2CONFIG _2
-      - '🇫🇮@FREE2CONFIG '
+      - '🇸🇪@FREE2CONFIG '
+      - 🇳🇱@FREE2CONFIG _1
+      - '🇹🇷@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _3
-      - 🇩🇪@FREE2CONFIG _4
-      - 🇩🇪@FREE2CONFIG _5
-      - '🇵🇰@FREE2CONFIG '
       - '🇺🇸@FREE2CONFIG '
+      - '🇵🇰@FREE2CONFIG '
       - '🇦🇺@FREE2CONFIG '
-      - '🇸🇨@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _4
+      - 🇳🇱@FREE2CONFIG _2
+      - 🇫🇮@FREE2CONFIG _2
+      - 🇩🇪@FREE2CONFIG _5
       - 🇩🇪@FREE2CONFIG _6
+      - '🇸🇨@FREE2CONFIG '
+      - '🇲🇺@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _7
-      - '🇳🇱@FREE2CONFIG '
-      - 🇫🇷@FREE2CONFIG _1
-      - 🇫🇷@FREE2CONFIG _2
-      - '🇷🇺@FREE2CONFIG '
-      - '🇪🇪@FREE2CONFIG '
+      - '🇨🇾@FREE2CONFIG '
       - 🇩🇪@FREE2CONFIG _8
-      - '🇸🇬@FREE2CONFIG '
-      - 🇭🇰@FREE2CONFIG _1
-      - 🇭🇰@FREE2CONFIG _2
-      - '🇬🇧@FREE2CONFIG '
-      - '🇮🇹@FREE2CONFIG '
+      - 🇬🇧@FREE2CONFIG _2
+      - '🇪🇪@FREE2CONFIG '
+      - 🇫🇮@FREE2CONFIG _3
       - 🇩🇪@FREE2CONFIG _9
+      - '🇷🇺@FREE2CONFIG '
+      - '🇸🇬@FREE2CONFIG '
+      - '🇭🇰@FREE2CONFIG '
+      - 🇩🇪@FREE2CONFIG _10
+      - 🇩🇪@FREE2CONFIG _11
+      - 🇩🇪@FREE2CONFIG  _2
+      - 🇫🇷@FREE2CONFIG
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
