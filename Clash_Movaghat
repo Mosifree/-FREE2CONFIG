@@ -1,56 +1,30 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-14 21:10:27
+# 配置生成日期：2025-06-14 22:12:29
 
 mixed-port: 7890
-allow-lan: false
+allow-lan: true
 mode: rule
-log-level: info
-ipv6: false
-external-controller: 0.0.0.0:9090
-dns:
-  enable: true
-  listen: 0.0.0.0:53
-  ipv6: false
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-    - 119.29.29.29
-    - 180.76.76.76
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - router.asus.com
-    - localhost.sec.qq.com
-    - localhost.ptlogin2.qq.com
-    - +.msftconnecttest.com
-tun:
-  enable: true
-  stack: system
-  auto-route: true
-  auto-detect-interface: true
-  dns-hijack:
-    - 114.114.114.114
-    - 180.76.76.76
-    - 119.29.29.29
-    - 223.5.5.5
-    - 8.8.8.8
-    - 8.8.4.4
-    - 1.1.1.1
-    - 1.0.0.1
+log-level: debug
+external-controller: 0.0.0.0:9093
 proxies:
   - name: DefaultName_1
+    type: vless
+    server: 31.59.184.96
+    port: 443
+    uuid: 0d26383d-21f7-4159-986a-a7ecac87e072
+    network: tcp
+    tls: true
+    servername: google.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: sLOqi_GLDpQTPbqpUIAHoBqDCzIamePjAy701bD7mWI
+      short-id: 7DdB966b
+    ip-version: dual
+    udp: true
+  - name: DefaultName_2
     type: vless
     server: 148.135.195.96
     port: 44356
@@ -66,7 +40,7 @@ proxies:
     grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_2
+  - name: DefaultName_3
     type: vless
     server: 157.180.23.58
     port: 2052
@@ -83,7 +57,7 @@ proxies:
       grpc-service-name: '@seyyedmt-@seyyedmt@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt-@seyyedmt'
     ip-version: dual
     udp: true
-  - name: DefaultName_3
+  - name: DefaultName_4
     type: vless
     server: 8.218.114.184
     port: 443
@@ -99,7 +73,7 @@ proxies:
       short-id: 35f29e450ad773a3
     ip-version: dual
     udp: true
-  - name: DefaultName_4
+  - name: DefaultName_5
     type: vless
     server: 45.82.251.83
     port: 1001
@@ -114,7 +88,7 @@ proxies:
       short-id: 5fab0deb
     ip-version: dual
     udp: true
-  - name: DefaultName_5
+  - name: DefaultName_6
     type: vless
     server: 5.39.254.88
     port: 443
@@ -130,7 +104,7 @@ proxies:
       short-id: a0c384bbcd1fa2ad
     ip-version: dual
     udp: true
-  - name: DefaultName_6
+  - name: DefaultName_7
     type: vless
     server: 151.101.64.155
     port: 80
@@ -143,7 +117,7 @@ proxies:
         host: KEISJWJ.COM
     ip-version: dual
     udp: true
-  - name: DefaultName_7
+  - name: DefaultName_8
     type: vless
     server: 84.32.131.193
     port: 8880
@@ -151,17 +125,6 @@ proxies:
     network: grpc
     tls: false
     grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_8
-    type: trojan
-    server: 27.122.59.45
-    port: 443
-    network: tcp
-    tls: false
-    password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
-    sni: 45.32.28.232
-    skip-cert-verify: false
     ip-version: dual
     udp: true
   - name: DefaultName_9
@@ -423,6 +386,22 @@ proxies:
     tls: false
     ip-version: dual
     udp: true
+  - name: 'n'
+    type: vmess
+    server: bist.moon-night.ir
+    port: 80
+    uuid: 7c0f989f-6c02-482e-9cb7-7654f8d87399
+    network: tcp
+    tls: true
+    servername: cafebazaar.ir
+    alpn:
+      - http/1.1
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -461,6 +440,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -499,6 +479,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -537,6 +518,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
   - name: 📲 电报信息
     type: select
     proxies:
@@ -574,6 +556,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -611,6 +594,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -648,6 +632,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -702,6 +687,7 @@ proxy-groups:
       - DefaultName_29
       - c_1
       - c_2
+      - 'n'
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
