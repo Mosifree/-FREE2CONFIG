@@ -1,12 +1,54 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-15 17:36:14
+# 配置生成日期：2025-06-15 17:44:52
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
