@@ -1,12 +1,54 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-16 16:37:49
+# 配置生成日期：2025-06-16 17:38:06
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
@@ -802,6 +844,48 @@ proxies:
     ip-version: dual
     udp: true
     cipher: chacha20-ietf-poly1305
+  - name: DefaultName_46
+    type: vless
+    server: 193.151.154.59
+    port: 3389
+    uuid: 5438a51f-e993-4a4a-85dd-566130b491cf
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+    ip-version: dual
+    udp: true
+  - name: DefaultName_47
+    type: vless
+    server: 193.151.150.244
+    port: 3389
+    uuid: 5438a51f-e993-4a4a-85dd-566130b491cf
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+    ip-version: dual
+    udp: true
+  - name: DefaultName_48
+    type: vless
+    server: tenns3.bidaplay.ir
+    port: 3389
+    uuid: 5438a51f-e993-4a4a-85dd-566130b491cf
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+    ip-version: dual
+    udp: true
+  - name: DefaultName_49
+    type: vless
+    server: 79.132.192.148
+    port: 12087
+    uuid: 8aff0bd4-87f0-4ade-a8d1-ef5594703e31
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -867,6 +951,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -932,6 +1020,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -997,6 +1089,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
   - name: 📲 电报信息
     type: select
     proxies:
@@ -1061,6 +1157,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -1125,6 +1225,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -1189,6 +1293,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -1270,6 +1378,10 @@ proxy-groups:
       - DefaultName_44
       - s
       - DefaultName_45
+      - DefaultName_46
+      - DefaultName_47
+      - DefaultName_48
+      - DefaultName_49
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
