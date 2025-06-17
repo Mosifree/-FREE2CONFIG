@@ -1,12 +1,54 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-17 21:18:15
+# 配置生成日期：2025-06-17 23:21:13
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
@@ -1691,6 +1733,116 @@ proxies:
     udp: true
     alterId: 0
     cipher: auto
+  - name: DefaultName_115
+    type: vless
+    server: 81.12.92.231
+    port: 80
+    uuid: 864e44d5-2cd8-c1e5-966a-4e59474db8b3
+    network: ws
+    tls: false
+    ws-opts:
+      path: /IVApi/NL/3
+      headers:
+        host: web.rubika.ir
+    ip-version: dual
+    udp: true
+  - name: DefaultName_116
+    type: vless
+    server: 85.133.221.46
+    port: 6010
+    uuid: 5d19d8d8-d0c8-4ea0-b86e-082030397ebc
+    network: tcp
+    tls: true
+    servername: traffic-tile.maps.snapp.ir
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: OCW4VToUh_2gtej7iO30chCKwUWDmmmpW01kHE4BDwU
+      short-id: 7fcf499c88f80777
+    ip-version: dual
+    udp: true
+  - name: DefaultName_117
+    type: vless
+    server: 85.133.221.46
+    port: 6010
+    uuid: 5d19d8d8-d0c8-4ea0-b86e-082030397ebc
+    network: tcp
+    tls: true
+    servername: traffic-tile.maps.snapp.ir
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: OCW4VToUh_2gtej7iO30chCKwUWDmmmpW01kHE4BDwU
+      short-id: 7fcf499c88f80777
+    ip-version: dual
+    udp: true
+  - name: DefaultName_118
+    type: vless
+    server: 81.12.92.231
+    port: 80
+    uuid: 864e44d5-2cd8-c1e5-966a-4e59474db8b3
+    network: ws
+    tls: false
+    ws-opts:
+      path: /IVApi/NL/3
+      headers:
+        host: web.rubika.ir
+    ip-version: dual
+    udp: true
+  - name: DefaultName_119
+    type: vless
+    server: jojo.mysupport.monster
+    port: 5261
+    uuid: 5e2d1a2a-9570-4fd7-9d17-12d10bebd62d
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_120
+    type: vless
+    server: 85.9.100.153
+    port: 8080
+    uuid: a0db1c74-7a03-4bad-9b4b-ced8d1d22315
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_121
+    type: vless
+    server: 185.143.234.120
+    port: 443
+    uuid: f606713e-8725-417e-b055-0abd1d6608ae
+    network: ws
+    tls: true
+    servername: arv46.digitalmanage.top
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        host: arv46.digitalmanage.top
+    ip-version: dual
+    udp: true
+  - name: DefaultName_122
+    type: vless
+    server: ebook.streamingpower.sbs
+    port: 7042
+    uuid: b55d615a-104d-48bb-acd6-fe2a4666745a
+    network: tcp
+    tls: true
+    servername: refersion.com
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: tVj9PPwOKTxHu1ACpZUaHv1hZLGy9P0Z7Y6jJOVTLzI
+      short-id: 5668ea398f7657ef
+    ip-version: dual
+    udp: true
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -1821,6 +1973,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -1951,6 +2111,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -2081,6 +2249,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
   - name: 📲 电报信息
     type: select
     proxies:
@@ -2210,6 +2386,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -2339,6 +2523,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -2468,6 +2660,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -2614,6 +2814,14 @@ proxy-groups:
       - DefaultName_113
       - DefaultName_114
       - all_net 🇩🇪
+      - DefaultName_115
+      - DefaultName_116
+      - DefaultName_117
+      - DefaultName_118
+      - DefaultName_119
+      - DefaultName_120
+      - DefaultName_121
+      - DefaultName_122
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
