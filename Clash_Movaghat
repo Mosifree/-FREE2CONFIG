@@ -1,54 +1,12 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-17 20:55:50
+# 配置生成日期：2025-06-17 21:18:15
 
 mixed-port: 7890
-allow-lan: false
+allow-lan: true
 mode: rule
-log-level: info
-ipv6: false
-external-controller: 0.0.0.0:9090
-dns:
-  enable: true
-  listen: 0.0.0.0:53
-  ipv6: false
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-    - 119.29.29.29
-    - 180.76.76.76
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - router.asus.com
-    - localhost.sec.qq.com
-    - localhost.ptlogin2.qq.com
-    - +.msftconnecttest.com
-tun:
-  enable: true
-  stack: system
-  auto-route: true
-  auto-detect-interface: true
-  dns-hijack:
-    - 114.114.114.114
-    - 180.76.76.76
-    - 119.29.29.29
-    - 223.5.5.5
-    - 8.8.8.8
-    - 8.8.4.4
-    - 1.1.1.1
-    - 1.0.0.1
+log-level: debug
+external-controller: 0.0.0.0:9093
 proxies:
   - name: DefaultName_1
     type: vless
@@ -1717,6 +1675,22 @@ proxies:
     tls: false
     ip-version: dual
     udp: true
+  - name: all_net 🇩🇪
+    type: vmess
+    server: bist.moon-night.ir
+    port: 80
+    uuid: 8dd61d51-5926-4c48-ad33-14c91726e42e
+    network: tcp
+    tls: true
+    servername: cafebazaar.ir
+    alpn:
+      - http/1.1
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -1846,6 +1820,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -1975,6 +1950,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -2104,6 +2080,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
   - name: 📲 电报信息
     type: select
     proxies:
@@ -2232,6 +2209,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -2360,6 +2338,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -2488,6 +2467,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -2633,6 +2613,7 @@ proxy-groups:
       - DefaultName_112
       - DefaultName_113
       - DefaultName_114
+      - all_net 🇩🇪
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
