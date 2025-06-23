@@ -1,54 +1,12 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-23 05:20:03
+# 配置生成日期：2025-06-23 06:16:31
 
 mixed-port: 7890
-allow-lan: false
+allow-lan: true
 mode: rule
-log-level: info
-ipv6: false
-external-controller: 0.0.0.0:9090
-dns:
-  enable: true
-  listen: 0.0.0.0:53
-  ipv6: false
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-    - 119.29.29.29
-    - 180.76.76.76
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - router.asus.com
-    - localhost.sec.qq.com
-    - localhost.ptlogin2.qq.com
-    - +.msftconnecttest.com
-tun:
-  enable: true
-  stack: system
-  auto-route: true
-  auto-detect-interface: true
-  dns-hijack:
-    - 114.114.114.114
-    - 180.76.76.76
-    - 119.29.29.29
-    - 223.5.5.5
-    - 8.8.8.8
-    - 8.8.4.4
-    - 1.1.1.1
-    - 1.0.0.1
+log-level: debug
+external-controller: 0.0.0.0:9093
 proxies:
   - name: DefaultName_1
     type: vless
@@ -335,6 +293,58 @@ proxies:
     tls: false
     ip-version: dual
     udp: true
+  - name: b
+    type: vless
+    server: 151.101.3.8
+    port: 80
+    uuid: 30ef22a6-b8a0-4b15-b8b7-bb92ded87b46
+    network: xhttp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_30
+    type: vless
+    server: 151.101.3.8
+    port: 80
+    uuid: 263535f3-e631-442f-b25f-1f3f1db2b8e7
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_31
+    type: vless
+    server: ge.7gozar.net
+    port: 25547
+    uuid: 15ba8153-db69-4e7f-b3bd-6e9890071894
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+    ip-version: dual
+    udp: true
+  - name: DefaultName_32
+    type: vless
+    server: info.websy.au
+    port: 18818
+    uuid: 8b4c316e-f05a-413e-bda5-a7383a123a77
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_33
+    type: trojan
+    server: 109.230.91.202
+    port: 443
+    network: grpc
+    tls: true
+    password: b6f0c135-043a-40e3-863a-08fba589034c
+    sni: gr1.grtj.sulindac.top
+    skip-cert-verify: false
+    client-fingerprint: chrome
+    grpc-opts:
+      grpc-service-name: gr1.grtj.sulindac.top
+    ip-version: dual
+    udp: true
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -370,6 +380,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -405,6 +420,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -440,6 +460,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
   - name: 📲 电报信息
     type: select
     proxies:
@@ -474,6 +499,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -508,6 +538,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -542,6 +577,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -593,6 +633,11 @@ proxy-groups:
       - DefaultName_27
       - DefaultName_28
       - DefaultName_29
+      - b
+      - DefaultName_30
+      - DefaultName_31
+      - DefaultName_32
+      - DefaultName_33
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
