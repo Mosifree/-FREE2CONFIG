@@ -1,12 +1,54 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-06-25 06:36:58
+# 配置生成日期：2025-06-25 09:32:10
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
@@ -380,6 +422,471 @@ proxies:
     tls: false
     ip-version: dual
     udp: true
+  - name: DefaultName_39
+    type: vless
+    server: 109.207.171.150
+    port: 8443
+    uuid: 1e7e2325-b256-4843-b2dc-09cbf0a1d144
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_40
+    type: vless
+    server: 109.69.58.250
+    port: 30670
+    uuid: 386cabd9-a0e9-451b-ee4e-6fe23a6ef50e
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: _1
+    type: vmess
+    server: 135.125.182.74
+    port: 28213
+    uuid: 81852771-76fb-4e94-e4f1-4e37a698a49a
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_41
+    type: vless
+    server: 188.34.185.192
+    port: 18013
+    uuid: e362a7d3-0018-4910-a885-ea27a79d00c3
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: _2
+    type: vmess
+    server: 45.12.138.82
+    port: 54757
+    uuid: cde9f074-c930-4aa3-a558-46bbc9d0a5a1
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_42
+    type: vless
+    server: 109.207.173.6
+    port: 8443
+    uuid: 863a79a8-b56b-41cc-b7fb-c7d7314c2fa2
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_43
+    type: vless
+    server: 188.114.99.42
+    port: 80
+    uuid: ced20efa-802d-4589-a91f-26947496c81f
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+      headers:
+        host: q3.19kala.co
+    ip-version: dual
+    udp: true
+  - name: _3
+    type: vmess
+    server: 51.38.64.209
+    port: 44023
+    uuid: 7da457da-ed0f-437d-c81d-6c35885bbea3
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_44
+    type: vless
+    server: 172.67.21.2
+    port: 80
+    uuid: ced20efa-802d-4589-a91f-26947496c81f
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+      headers:
+        host: q3.19kala.co
+    ip-version: dual
+    udp: true
+  - name: DefaultName_45
+    type: vless
+    server: 109.207.173.6
+    port: 8443
+    uuid: 863a79a8-b56b-41cc-b7fb-c7d7314c2fa2
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_46
+    type: vless
+    server: 188.114.98.18
+    port: 80
+    uuid: a43ecdaf-c1e9-44f6-bbd9-1c113cb7d48f
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: q6.19kalA.co
+    ip-version: dual
+    udp: true
+  - name: _4
+    type: vmess
+    server: 104.17.223.18
+    port: 80
+    uuid: ff2d17c6-0d96-4801-a270-9dba8334f8c6
+    network: ws
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _5
+    type: vmess
+    server: 92.223.2.46
+    port: 8081
+    uuid: 8c8c759c-88c0-4cea-a25b-74dd30b88ad5
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _6
+    type: vmess
+    server: 51.79.86.182
+    port: 42610
+    uuid: e0957ca6-f613-4017-ff3c-effd1da8871a
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_47
+    type: vless
+    server: 172.67.78.196
+    port: 80
+    uuid: dfdf1c0a-5e52-4746-88bd-19d4e4ac7853
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: tannaz.juveitaly.dpdns.org
+    ip-version: dual
+    udp: true
+  - name: _7
+    type: vmess
+    server: 51.79.86.182
+    port: 42610
+    uuid: e0957ca6-f613-4017-ff3c-effd1da8871a
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _8
+    type: vmess
+    server: 84.247.150.177
+    port: 36141
+    uuid: d31ee52f-b6e4-4db8-9c95-98855ec823cc
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _9
+    type: vmess
+    server: 142.4.119.72
+    port: 57118
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_48
+    type: vless
+    server: 104.16.0.113
+    port: 80
+    uuid: bbd2882a-c158-4ae6-b53a-5ae6be8dbcb0
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: barayeiran.nastaranh.dpdns.org
+    ip-version: dual
+    udp: true
+  - name: DefaultName_49
+    type: vless
+    server: 43.156.217.68
+    port: 41283
+    uuid: 4839e0b9-b275-47ea-81ab-9bfd38bbe7af
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: _10
+    type: vmess
+    server: 43.199.24.247
+    port: 3000
+    uuid: cc101ff1-3452-41c3-89fe-c2a5a20dc6dc
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _11
+    type: vmess
+    server: 84.247.147.67
+    port: 54179
+    uuid: d143ebbc-7825-4b43-a55e-f11cb153bd5b
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _12
+    type: vmess
+    server: 43.199.24.247
+    port: 3000
+    uuid: cc101ff1-3452-41c3-89fe-c2a5a20dc6dc
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_50
+    type: vless
+    server: 104.16.38.60
+    port: 80
+    uuid: 2ab04aa0-5f28-432f-96c7-d168d09973d8
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        host: hidden-river-df80-ppal03.bewome9099.workers.dev
+    ip-version: dual
+    udp: true
+  - name: _13
+    type: vmess
+    server: 192.53.113.156
+    port: 10002
+    uuid: 036a28c3-5c8d-4df3-a79b-9da622640f2b
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _14
+    type: vmess
+    server: 192.53.113.156
+    port: 10002
+    uuid: 036a28c3-5c8d-4df3-a79b-9da622640f2b
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _15
+    type: vmess
+    server: 84.247.146.161
+    port: 39530
+    uuid: 7aa56e39-29b8-45c3-8b53-6d2a23b2461c
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _16
+    type: vmess
+    server: 84.247.147.67
+    port: 54179
+    uuid: d143ebbc-7825-4b43-a55e-f11cb153bd5b
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _17
+    type: vmess
+    server: 84.247.146.161
+    port: 39530
+    uuid: 7aa56e39-29b8-45c3-8b53-6d2a23b2461c
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _18
+    type: vmess
+    server: 84.247.146.189
+    port: 33754
+    uuid: 45f4f565-8c78-4906-a5b9-08ea9075cd31
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _19
+    type: vmess
+    server: 84.247.147.243
+    port: 51566
+    uuid: ae6ae977-17f2-43fd-a336-20b3b3a9e791
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: _20
+    type: vmess
+    server: 84.247.146.189
+    port: 33754
+    uuid: 45f4f565-8c78-4906-a5b9-08ea9075cd31
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_51
+    type: vless
+    server: 102.177.189.29
+    port: 8880
+    uuid: fab7bf9c-ddb9-4563-8a04-fb01ce6c0fbf
+    network: ws
+    tls: false
+    ws-opts:
+      path: /TelegramU0001F1E8U0001F1F3
+      headers:
+        host: hk.laoyoutiao.link
+    ip-version: dual
+    udp: true
+  - name: _21
+    type: vmess
+    server: 84.247.147.67
+    port: 54179
+    uuid: d143ebbc-7825-4b43-a55e-f11cb153bd5b
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+    alterId: 0
+    cipher: auto
+  - name: DefaultName_52
+    type: vless
+    server: 81.29.255.187
+    port: 699
+    uuid: 512c8ed7-13dc-9d8d-039a-d0d47c84a0be
+    network: ws
+    tls: false
+    ws-opts:
+      path: /ws?ed=2048
+      headers:
+        host: telewebion.com,user.telewebion.com,plus.telewebion.com,api.telewebion.com
+    ip-version: dual
+    udp: true
+  - name: DefaultName_53
+    type: vless
+    server: 102.177.189.29
+    port: 8880
+    uuid: fab7bf9c-ddb9-4563-8a04-fb01ce6c0fbf
+    network: ws
+    tls: false
+    ws-opts:
+      path: /TelegramU0001F1E8U0001F1F3
+      headers:
+        host: hk.laoyoutiao.link
+    ip-version: dual
+    udp: true
+  - name: DefaultName_54
+    type: vless
+    server: 45.149.12.251
+    port: 8880
+    uuid: 0132166f-e702-48ed-a9e7-b07af768faf8
+    network: ws
+    tls: false
+    ws-opts:
+      path: '/Telegram🇨🇳 @WangCai2 '
+      headers:
+        host: cf.d3z.net
+    ip-version: dual
+    udp: true
+  - name: DefaultName_55
+    type: vless
+    server: 185.143.233.120
+    port: 443
+    uuid: b6ecaebb-cfb8-4dd8-86d7-380a7285b687
+    network: ws
+    tls: true
+    servername: arv.multiscrape.ir
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /ws
+      headers:
+        host: arv.multiscrape.ir
+    ip-version: dual
+    udp: true
+  - name: DefaultName_56
+    type: vless
+    server: 188.212.97.205
+    port: 2030
+    uuid: 65da960e-97bd-499c-a79f-69c8c3a6984d
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_57
+    type: vless
+    server: 188.212.97.205
+    port: 2030
+    uuid: 65da960e-97bd-499c-a79f-69c8c3a6984d
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_58
+    type: vless
+    server: 217.60.37.197
+    port: 12497
+    uuid: 41543083-fdfc-4951-b2a1-238ea58cdda6
+    network: ws
+    tls: false
+    ws-opts:
+      path: /@VPNPacket
+    ip-version: dual
+    udp: true
+  - name: DefaultName_59
+    type: vless
+    server: 109.122.251.87
+    port: 35762
+    uuid: 64826a3c-b875-45d8-a746-7613e0d4a75b
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -424,6 +931,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -468,6 +1017,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -512,6 +1103,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
   - name: 📲 电报信息
     type: select
     proxies:
@@ -555,6 +1188,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -598,6 +1273,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -641,6 +1358,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -701,6 +1460,48 @@ proxy-groups:
       - DefaultName_36
       - DefaultName_37
       - DefaultName_38
+      - DefaultName_39
+      - DefaultName_40
+      - _1
+      - DefaultName_41
+      - _2
+      - DefaultName_42
+      - DefaultName_43
+      - _3
+      - DefaultName_44
+      - DefaultName_45
+      - DefaultName_46
+      - _4
+      - _5
+      - _6
+      - DefaultName_47
+      - _7
+      - _8
+      - _9
+      - DefaultName_48
+      - DefaultName_49
+      - _10
+      - _11
+      - _12
+      - DefaultName_50
+      - _13
+      - _14
+      - _15
+      - _16
+      - _17
+      - _18
+      - _19
+      - _20
+      - DefaultName_51
+      - _21
+      - DefaultName_52
+      - DefaultName_53
+      - DefaultName_54
+      - DefaultName_55
+      - DefaultName_56
+      - DefaultName_57
+      - DefaultName_58
+      - DefaultName_59
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
