@@ -1,135 +1,71 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-07-04 00:26:21
+# 配置生成日期：2025-07-04 18:16:34
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
-    server: 146.59.15.81
+    server: 51.38.98.69
     port: 443
-    uuid: c14b2731-7db6-49ee-9271-b1efc56c2630
+    uuid: 6b690c69-7301-44c4-81e8-9d5d7e8263a6
     network: tcp
-    tls: true
-    servername: dl.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: l8HS4g_h8xPWlhQm8hmj5ohKNMrMCBcoHSNBFij79Sk
-      short-id: 5bb805
-    ip-version: dual
-    udp: true
-  - name: DefaultName_2
-    type: vless
-    server: 51.89.229.98
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_3
-    type: vless
-    server: 138.201.89.148
-    port: 23740
-    uuid: 6ca93e58-aba2-497d-a861-aabd4daf7c55
-    network: grpc
     tls: true
     servername: yahoo.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: q7cASjRRRLT3-oIf4HMmyn0R-NxGg8wMH1iWzv9lmEg
-      short-id: c17be4
-    grpc-opts: {}
+      public-key: '-3sZE2OPDhkNtxufF2YqPmoa5hqVna5zalfJfrUiMm0'
+      short-id: 'ecd6615548c2bddb '
     ip-version: dual
     udp: true
-  - name: DefaultName_4
-    type: vless
-    server: 51.195.233.195
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_5
-    type: vless
-    server: 57.128.165.176
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_6
-    type: vless
-    server: 51.89.137.223
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_7
-    type: vless
-    server: 5.181.171.10
-    port: 443
-    uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
-    network: tcp
-    tls: true
-    servername: speed.cloudflare.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: YNGotlyAx3ELUmi4lxOUjiEDmibqf1pPUTE9o3YYT2Y
-    ip-version: dual
-    udp: true
-  - name: DefaultName_8
-    type: vless
-    server: 185.236.232.237
-    port: 1001
-    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
-    network: tcp
-    tls: true
-    servername: telewebion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
-      short-id: 5fab0deb
-    ip-version: dual
-    udp: true
-  - name: DefaultName_9
+  - name: DefaultName_2
     type: vless
     server: 51.89.230.46
     port: 1370
@@ -141,26 +77,115 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
+      short-id: 'e1afb93bfe75a34b '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_3
+    type: vless
+    server: 91.99.27.51
+    port: 2083
+    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
+    network: tcp
+    tls: true
+    servername: cdn-download.zula.ir
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: AxIOXEujA6HwUz2QZnPM6O8llj2QVaI50lZXGUlibhs
+      short-id: 'ea83a8b0 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_4
+    type: vless
+    server: 45.15.170.80
+    port: 28495
+    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
+    network: tcp
+    tls: true
+    servername: dl.google.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
+      short-id: '0ecc2c1392 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_5
+    type: vless
+    server: 46.62.154.63
+    port: 55555
+    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
+    network: tcp
+    tls: true
+    servername: stackoverflow.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iN6Mxm-XgB9_nfgRHxdE3QX9XJpAY-EHv-EtvAIkYx4
+      short-id: 'ea83a8b0 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_6
+    type: vless
+    server: 185.236.232.237
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
+    network: tcp
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: '5fab0deb '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_7
+    type: vless
+    server: 198.244.140.7
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
+    network: tcp
+    tls: true
+    servername: refersion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_8
+    type: vless
+    server: 51.195.232.167
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
+    network: tcp
+    tls: true
+    servername: refersion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_9
+    type: vless
+    server: 148.113.174.213
+    port: 28495
+    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
+    network: tcp
+    tls: true
+    servername: dl.google.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
+      short-id: '0ecc2c1392 '
     ip-version: dual
     udp: true
   - name: DefaultName_10
-    type: vless
-    server: 148.113.207.221
-    port: 2087
-    uuid: 1f46cb74-40ba-4964-9a1f-ccbd448b483b
-    network: tcp
-    tls: true
-    servername: cloudflare.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: firefox
-    reality-opts:
-      public-key: nzxEupJqZ3vDwqrV95RfHLKKJT8dCByBmBNwsbvHVyc
-      short-id: e11e857b70
-    ip-version: dual
-    udp: true
-  - name: DefaultName_11
     type: vless
     server: 113.29.230.65
     port: 8880
@@ -173,74 +198,12 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: afyGbyVtSnU4-TVYh_UG3eAOwjrH2MNgxcxKeD_aOEM
-      short-id: 93c21ebdd1f7349e
+      short-id: '93c21ebdd1f7349e '
     ip-version: dual
     udp: true
-  - name: DefaultName_12
+  - name: DefaultName_11
     type: vless
-    server: 91.99.27.51
-    port: 2083
-    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
-    network: tcp
-    tls: true
-    servername: cdn-download.zula.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: AxIOXEujA6HwUz2QZnPM6O8llj2QVaI50lZXGUlibhs
-      short-id: ea83a8b0
-    ip-version: dual
-    udp: true
-  - name: DefaultName_13
-    type: vless
-    server: 8.213.149.42
-    port: 443
-    uuid: 5c183802-747d-4d2f-a6f1-aff2d5d78401
-    network: tcp
-    tls: true
-    servername: wwwimages2.adobe.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: DNdTBHyztOVJOBJQX91YXEhNkWbSAntqUoTFBHc6Clw
-      short-id: 6ba85179e30d4fc2
-    ip-version: dual
-    udp: true
-  - name: DefaultName_14
-    type: vless
-    server: 91.99.195.6
-    port: 80
-    uuid: 91a5d5b3-4b88-4359-aeec-e1532f535fd6
-    network: grpc
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: ZO276Z5WXIqCmNLXT8Lewzjhhgm365JUJXAKyKq8Rz4
-      short-id: bc063769cb
-    grpc-opts:
-      grpc-service-name: refersion.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_15
-    type: vless
-    server: 157.173.127.225
-    port: 443
-    uuid: 11beaf11-726d-4c11-8ce9-27308c1c608c
-    network: tcp
-    tls: true
-    servername: analytics.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: v3EwzA9RIIh5Ndxm-gypRY6RCJhOpQ-2WO7KaH8nsC8
-      short-id: eab26c4a32
-    ip-version: dual
-    udp: true
-  - name: DefaultName_16
-    type: vless
-    server: 57.128.167.167
+    server: 51.89.231.215
     port: 1370
     uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
     network: tcp
@@ -250,57 +213,10 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
+      short-id: 'e1afb93bfe75a34b '
     ip-version: dual
     udp: true
-  - name: DefaultName_17
-    type: vless
-    server: 45.15.170.80
-    port: 28495
-    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
-    network: tcp
-    tls: true
-    servername: dl.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
-    ip-version: dual
-    udp: true
-  - name: DefaultName_18
-    type: vless
-    server: 62.60.233.250
-    port: 443
-    uuid: 809c908f-2219-11f0-9970-45e1d80c4039
-    network: tcp
-    tls: true
-    servername: images.apple.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: MFsbnsNQsSpZwP-_Ohzako6aHpfK4-rbssxhr3eywWw
-      short-id: 4476a3
-    ip-version: dual
-    udp: true
-  - name: DefaultName_19
-    type: vless
-    server: 178.20.208.134
-    port: 2083
-    uuid: 84cec1f6-8312-40da-b17a-4511e11a6026
-    network: tcp
-    tls: true
-    servername: refersion.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 64ZzXuN3BNiYLcliMenVVbjdSX_jCpB-yvW7MTsz2n4
-      short-id: 4d932424dbe98b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_20
+  - name: DefaultName_12
     type: vless
     server: 176.120.72.63
     port: 38339
@@ -312,71 +228,55 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: o0MFuznHh_Wztg0FTAMhFXm3hjAqOJAJIIVNn-_A9WA
-      short-id: e16883e511
+      short-id: 'e16883e511 '
     ip-version: dual
     udp: true
-  - name: DefaultName_21
+  - name: DefaultName_13
     type: vless
-    server: 148.113.174.213
-    port: 28495
-    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
+    server: 51.89.137.223
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
     network: tcp
     tls: true
-    servername: dl.google.com
+    servername: refersion.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
     ip-version: dual
     udp: true
-  - name: DefaultName_22
+  - name: DefaultName_14
     type: vless
-    server: 157.173.127.224
+    server: 8.213.149.42
     port: 443
-    uuid: bec44ac3-a662-4179-a9dd-2aa881706dde
+    uuid: 5c183802-747d-4d2f-a6f1-aff2d5d78401
     network: tcp
     tls: true
-    servername: analytics.google.com
+    servername: wwwimages2.adobe.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: Ajk0QudeMVQocN88OG14PpsxparFuRJlvqzXDlW-gyQ
-      short-id: aba7bc9a
+      public-key: DNdTBHyztOVJOBJQX91YXEhNkWbSAntqUoTFBHc6Clw
+      short-id: '6ba85179e30d4fc2 '
     ip-version: dual
     udp: true
-  - name: DefaultName_23
+  - name: DefaultName_15
     type: vless
-    server: 157.173.127.228
-    port: 443
-    uuid: d50f50ef-20ff-47a1-a922-f476c2b83eb4
+    server: 51.195.233.195
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
     network: tcp
     tls: true
-    servername: analytics.google.com
+    servername: refersion.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: XIDvViESjfi-zRq4bdvHK7EyeT7vjJcA_MZO0QGTFhI
-      short-id: 7fb3b0
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
     ip-version: dual
     udp: true
-  - name: DefaultName_24
-    type: vless
-    server: 77.91.77.230
-    port: 443
-    uuid: a84263bb-49ab-43dc-a352-c464414e8a62
-    network: tcp
-    tls: true
-    servername: germany1.secretvibe.ru
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: GHl0OQmUmM8JzAraDgnn2ic7lzuWhjUMkZus6DzSvys
-      short-id: 5660c4
-    ip-version: dual
-    udp: true
-  - name: DefaultName_25
+  - name: DefaultName_16
     type: vless
     server: 181.214.99.36
     port: 443
@@ -388,86 +288,40 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: zguKemuiateh9w_YrRsbWEwm94KaNd-fAUxuZMR1p2c
-      short-id: 781c
+      short-id: '781c '
     ip-version: dual
     udp: true
-  - name: DefaultName_26
+  - name: DefaultName_17
     type: vless
-    server: 51.38.98.69
+    server: 146.59.15.81
     port: 443
-    uuid: 6b690c69-7301-44c4-81e8-9d5d7e8263a6
-    network: tcp
-    tls: true
-    servername: yahoo.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: '-3sZE2OPDhkNtxufF2YqPmoa5hqVna5zalfJfrUiMm0'
-      short-id: ecd6615548c2bddb
-    ip-version: dual
-    udp: true
-  - name: DefaultName_27
-    type: vless
-    server: 198.244.140.163
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_28
-    type: vless
-    server: 198.244.140.105
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_29
-    type: vless
-    server: 185.33.24.229
-    port: 28495
-    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
+    uuid: c14b2731-7db6-49ee-9271-b1efc56c2630
     network: tcp
     tls: true
     servername: dl.google.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
+      public-key: l8HS4g_h8xPWlhQm8hmj5ohKNMrMCBcoHSNBFij79Sk
+      short-id: '5bb805 '
     ip-version: dual
     udp: true
-  - name: DefaultName_30
+  - name: DefaultName_18
     type: vless
-    server: 209.38.202.192
-    port: 42030
-    uuid: f6bd0b57-1e1c-4dd1-8f1c-939cb96bdb0a
-    network: grpc
+    server: 172.233.51.248
+    port: 990
+    uuid: cee94d0d-dbb6-4e02-b688-bb663ef01f38
+    network: tcp
     tls: true
-    servername: journalofbigdata.springeropen.com
+    servername: tgju.org
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
-      short-id: '15'
-    grpc-opts: {}
+      public-key: '-d7gZw19wFxZcnqRsf0L8gin2NcQC8Quub0Y-NUnaR4'
+      short-id: 'e1ac6d894342c318 '
     ip-version: dual
     udp: true
-  - name: DefaultName_31
+  - name: DefaultName_19
     type: vless
     server: 8.218.114.184
     port: 443
@@ -480,126 +334,287 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: z3dsRlZdhVuCHIaU6d5nNePmRmNG_-KGdLpu-m0Jz0M
-      short-id: 35f29e450ad773a3
+      short-id: '35f29e450ad773a3 '
     ip-version: dual
     udp: true
-  - name: DefaultName_32
+  - name: DefaultName_20
     type: vless
-    server: 51.38.64.196
-    port: 443
-    uuid: fac1c66f-3ba3-4d24-8ae8-d6049d949898
+    server: 198.244.140.105
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
     network: tcp
     tls: true
-    servername: yahoo.com
+    servername: refersion.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: guQofANvA8Ia_uVwhRMriU09zudRTM_k7Nr498g161s
-      short-id: a31a8d04622560
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
     ip-version: dual
     udp: true
-  - name: DefaultName_33
+  - name: DefaultName_21
     type: vless
-    server: 109.73.206.90
-    port: 443
-    uuid: 4eff2388-2092-4b0a-aa74-0e464889ffaf
+    server: 198.244.140.163
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
     network: tcp
     tls: true
-    servername: google.com
+    servername: refersion.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: cTm0TIKL9qK550XICK2YroOSr1u-f12h5UmBw2EAr2c
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
     ip-version: dual
     udp: true
-  - name: DefaultName_34
+  - name: DefaultName_22
     type: vless
-    server: 188.253.26.127
-    port: 443
-    uuid: a84263bb-49ab-43dc-a352-c464414e8a62
+    server: 51.89.229.92
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
     network: tcp
     tls: true
-    servername: netherlands.secretvibe.ru
+    servername: refersion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_23
+    type: vless
+    server: 51.91.173.52
+    port: 7852
+    uuid: 2917d821-9327-4c76-bf7f-1b7857b38811
+    network: tcp
+    tls: true
+    servername: www.speedtest.net
+    skip-cert-verify: true
+    client-fingerprint: random
+    reality-opts:
+      public-key: rBXjuQ9eGNAUtELw1KFOMH7Aq0Q2t3RqcbdPcddYyTk
+      short-id: '69 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_24
+    type: vless
+    server: 209.38.202.192
+    port: 42030
+    uuid: f6bd0b57-1e1c-4dd1-8f1c-939cb96bdb0a
+    network: grpc
+    tls: true
+    servername: journalofbigdata.springeropen.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
+      short-id: '15 '
+    grpc-opts: {}
+    ip-version: dual
+    udp: true
+  - name: DefaultName_25
+    type: vless
+    server: 51.89.175.164
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
+    network: tcp
+    tls: true
+    servername: refersion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_26
+    type: vless
+    server: 159.69.118.125
+    port: 443
+    uuid: b3164e0a-f76a-4bb2-83b9-8f385488e836
+    network: tcp
+    tls: true
+    servername: www.psnapptapsi.ir
     flow: xtls-rprx-vision
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: IFgSZ6-4ceD0tPigCvDBPHtrb6YUNPfxf1EVGUfAwBA
-      short-id: df9038e40a9b
+      public-key: fTRUKzSjDld9OYMUxx641aP9W1n_aIp_UswZghdjzwM
+      short-id: '78ce8c07a9235a '
     ip-version: dual
     udp: true
-  - name: DefaultName_35
+  - name: DefaultName_27
     type: vless
-    server: 81.12.30.51
-    port: 58045
-    uuid: 9deda4f9-a9b9-4614-b840-ece9998ec6db
+    server: 57.128.167.167
+    port: 1370
+    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
+    network: tcp
+    tls: true
+    servername: refersion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
+      short-id: 'e1afb93bfe75a34b '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_28
+    type: vless
+    server: 89.44.113.58
+    port: 606
+    uuid: aac76e15-76e8-df0c-41a3-74d2d5450043
     network: ws
     tls: false
     ws-opts:
-      path: /
+      path: '/ws?ed=2048 '
+      headers:
+        host: telewebion.com,user.telewebion.com,plus.telewebion.com,api.telewebion.com
     ip-version: dual
     udp: true
-  - name: DefaultName_36
+  - name: DefaultName_29
     type: vless
-    server: 81.12.30.51
-    port: 58045
-    uuid: 9deda4f9-a9b9-4614-b840-ece9998ec6db
-    network: ws
-    tls: false
-    ws-opts:
-      path: /
-    ip-version: dual
-    udp: true
-  - name: DefaultName_37
-    type: vless
-    server: 37.32.41.102
-    port: 8883
-    uuid: 45bd2131-b7af-4d2d-bf96-5ad4ad0786cb
+    server: 85.133.201.46
+    port: 8585
+    uuid: ab03d1bd-2f19-4f10-a1a7-68b1ab13cfc7
     network: tcp
     tls: false
     ip-version: dual
     udp: true
+  - name: DefaultName_30
+    type: vless
+    server: 91.99.207.230
+    port: 51615
+    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_31
+    type: vless
+    server: 89.44.113.58
+    port: 606
+    uuid: aac76e15-76e8-df0c-41a3-74d2d5450043
+    network: ws
+    tls: false
+    ws-opts:
+      path: '/ws?ed=2048 '
+      headers:
+        host: telewebion.com,user.telewebion.com,plus.telewebion.com,api.telewebion.com
+    ip-version: dual
+    udp: true
+  - name: DefaultName_32
+    type: vless
+    server: 91.99.207.230
+    port: 51615
+    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_33
+    type: vless
+    server: 91.99.207.230
+    port: 51615
+    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_34
+    type: vless
+    server: 62.60.163.77
+    port: 3333
+    uuid: 7d283c1a-3a5b-4b2a-a924-0bd256e89726
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_35
+    type: vless
+    server: 37.32.43.104
+    port: 33200
+    uuid: c4389c70-1e5a-4bd2-934f-44fb2e62ccf5
+    network: tcp
+    tls: false
+    flow: ' '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_36
+    type: vless
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_37
+    type: vless
+    server: 85.133.249.58
+    port: 29294
+    uuid: 61ea20dc-2022-4215-924c-99198157d0a7
+    network: tcp
+    tls: false
+    flow: ' '
+    ip-version: dual
+    udp: true
   - name: DefaultName_38
     type: vless
-    server: 85.133.204.235
-    port: 1010
-    uuid: a3ed4feb-d7c5-4f8f-bd9e-74cb01597843
+    server: 185.133.125.10
+    port: 19161
+    uuid: c5b69a7f-8e71-4425-8613-0f3c2a97d6d7
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_39
     type: vless
-    server: 85.133.204.235
-    port: 1010
-    uuid: a3ed4feb-d7c5-4f8f-bd9e-74cb01597843
+    server: 85.133.249.58
+    port: 29294
+    uuid: 61ea20dc-2022-4215-924c-99198157d0a7
     network: tcp
     tls: false
+    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_40
     type: vless
-    server: 85.198.23.227
-    port: 1991
-    uuid: 353ae6e9-b8b8-41eb-bf45-cd2bcd9adb61
+    server: 5.202.10.5
+    port: 2089
+    uuid: 74c925ef-a199-4f9d-85c1-5282cf979892
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_41
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    server: 5.202.10.5
+    port: 2089
+    uuid: 74c925ef-a199-4f9d-85c1-5282cf979892
+    network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_42
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_43
@@ -613,40 +628,114 @@ proxies:
     udp: true
   - name: DefaultName_44
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_45
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_46
     type: vless
-    server: 84.47.232.55
-    port: 54
-    uuid: a6bc389a-80df-43e4-adbc-e9d6ae018c43
-    network: ws
+    server: 37.32.43.104
+    port: 33200
+    uuid: c4389c70-1e5a-4bd2-934f-44fb2e62ccf5
+    network: tcp
     tls: false
-    ws-opts:
-      path: /
+    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_47
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    server: 91.99.207.230
+    port: 51615
+    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_48
+    type: vless
+    server: 91.99.207.230
+    port: 51615
+    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_49
+    type: vless
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_50
+    type: vless
+    server: 84.47.233.110
+    port: 59761
+    uuid: ae9539b5-70dd-41b5-9666-11a29559a840
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_51
+    type: vless
+    server: 91.99.187.13
+    port: 443
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_52
+    type: vless
+    server: 91.99.187.13
+    port: 443
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_53
+    type: vless
+    server: 91.99.187.13
+    port: 443
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_54
     type: vless
     server: 185.133.125.8
     port: 19151
@@ -655,109 +744,66 @@ proxies:
     tls: false
     ip-version: dual
     udp: true
-  - name: DefaultName_49
-    type: vless
-    server: 85.133.204.235
-    port: 1010
-    uuid: a3ed4feb-d7c5-4f8f-bd9e-74cb01597843
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_50
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_51
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_52
-    type: vless
-    server: 185.133.125.4
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_53
-    type: vless
-    server: 85.198.23.227
-    port: 1991
-    uuid: 353ae6e9-b8b8-41eb-bf45-cd2bcd9adb61
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_54
-    type: vless
-    server: 185.133.125.4
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
   - name: DefaultName_55
     type: vless
-    server: 85.133.204.235
-    port: 1010
-    uuid: a3ed4feb-d7c5-4f8f-bd9e-74cb01597843
+    server: 91.99.187.13
+    port: 443
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_56
     type: vless
-    server: 91.99.199.137
+    server: 91.99.187.13
     port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
+    network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_57
     type: vless
-    server: 91.99.199.137
+    server: 91.99.187.13
     port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_58
     type: vless
-    server: 85.198.23.227
-    port: 1991
-    uuid: 353ae6e9-b8b8-41eb-bf45-cd2bcd9adb61
+    server: 84.47.233.98
+    port: 33326
+    uuid: 72dc074b-91ed-4564-9424-cd14652c1743
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_59
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
+    server: 185.208.77.113
+    port: 11140
+    uuid: 39420bb7-5535-48fc-c56c-5c98c6eafce8
+    network: ws
     tls: false
+    ws-opts:
+      path: '/ '
     ip-version: dual
     udp: true
   - name: DefaultName_60
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
     network: tcp
-    tls: false
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_61
@@ -765,55 +811,72 @@ proxies:
     server: 91.99.199.137
     port: 443
     uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_62
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    tls: false
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_63
     type: vless
-    server: 46.38.150.199
-    port: 9090
-    uuid: 31a0713a-2c36-41ec-8bc5-52a5f546cc4e
-    network: tcp
+    server: 85.198.16.221
+    port: 80
+    uuid: f5f2458c-5fcb-4820-82c2-2997492c54d5
+    network: ws
     tls: false
+    ws-opts:
+      path: '/ '
     ip-version: dual
     udp: true
   - name: DefaultName_64
     type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
     network: tcp
-    tls: false
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_65
     type: vless
-    server: 91.99.207.47
+    server: 91.99.207.21
     port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_66
     type: vless
-    server: 91.99.199.137
+    server: 91.99.187.13
     port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
+    network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_67
     type: vless
-    server: 91.99.194.54
+    server: 91.99.207.21
     port: 443
     uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
     network: tcp
@@ -822,10 +885,9 @@ proxies:
     udp: true
   - name: DefaultName_68
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
+    server: 91.99.207.21
+    port: 443
+    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
     tls: false
     ip-version: dual
     udp: true
@@ -840,22 +902,14 @@ proxies:
     udp: true
   - name: DefaultName_70
     type: vless
-    server: 91.99.199.137
+    server: 91.99.187.13
     port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_71
-    type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
+    uuid: 7a66b8ef-9713-4b69-b839-6bb45070af35
     network: tcp
     tls: false
     ip-version: dual
     udp: true
-  - name: DefaultName_72
+  - name: DefaultName_71
     type: vless
     server: 91.99.207.21
     port: 443
@@ -864,124 +918,197 @@ proxies:
     tls: false
     ip-version: dual
     udp: true
+  - name: DefaultName_72
+    type: vless
+    server: 84.47.233.98
+    port: 33326
+    uuid: 72dc074b-91ed-4564-9424-cd14652c1743
+    network: tcp
+    tls: false
+    ip-version: dual
+    udp: true
   - name: DefaultName_73
     type: vless
-    server: 91.99.199.137
+    server: 91.99.207.21
     port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_74
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    server: 62.60.193.203
+    port: 49141
+    uuid: c053d3eb-e68a-445d-9136-c6f9dd09e90f
     network: tcp
     tls: false
+    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_75
     type: vless
-    server: 91.99.199.137
+    server: 91.99.207.21
     port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
+    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_76
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
+    network: tcp
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_77
     type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
+    network: tcp
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_78
     type: vless
-    server: 185.133.125.6
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_79
     type: vless
-    server: 185.133.125.6
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
+    server: 91.99.182.117
+    port: 443
+    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_80
     type: vless
-    server: 84.47.233.110
-    port: 59761
-    uuid: ae9539b5-70dd-41b5-9666-11a29559a840
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_81
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    tls: false
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
+    network: tcp
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_82
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_83
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    tls: false
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
+    network: tcp
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_84
     type: vless
-    server: 91.99.194.54
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_85
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_86
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_87
@@ -995,141 +1122,142 @@ proxies:
     udp: true
   - name: DefaultName_88
     type: vless
-    server: 91.99.194.54
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    server: 62.60.223.6
+    port: 2080
+    uuid: bea34b73-3244-475b-b914-7bb80e1cda91
     network: tcp
-    tls: false
+    tls: true
+    servername: dash.cloudflare.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+      short-id: 'bf517367267685 '
     ip-version: dual
     udp: true
   - name: DefaultName_89
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
+    server: 185.133.125.8
+    port: 19151
+    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
+    network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_90
     type: vless
-    server: 91.99.194.54
+    server: 91.99.182.117
     port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_91
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
+    server: 185.133.125.8
+    port: 19151
+    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_92
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    server: 185.232.152.148
+    port: 1501
+    uuid: 2f33cc6f-c80a-4c19-ac4f-66547bfdd33d
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_93
     type: vless
-    server: 46.38.150.199
-    port: 9090
-    uuid: 31a0713a-2c36-41ec-8bc5-52a5f546cc4e
-    network: tcp
+    server: 91.99.199.137
+    port: 443
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_94
     type: vless
-    server: 91.99.182.117
+    server: 91.99.199.137
     port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_95
     type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
-    network: tcp
+    server: 91.99.199.137
+    port: 443
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_96
     type: vless
-    server: 185.215.228.90
-    port: 20118
-    uuid: 142dd8b5-0b9e-4018-a961-2370d50cc435
+    server: 91.99.199.137
+    port: 443
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_97
     type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
-    network: tcp
+    server: 91.99.199.137
+    port: 443
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_98
     type: vless
-    server: 91.99.194.54
+    server: 91.99.199.137
     port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_99
     type: vless
-    server: 91.99.194.54
+    server: 91.99.199.137
     port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_100
     type: vless
-    server: 185.215.228.90
-    port: 20118
-    uuid: 142dd8b5-0b9e-4018-a961-2370d50cc435
-    network: tcp
+    server: 91.99.199.137
+    port: 443
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_101
     type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
+    server: 91.99.182.117
+    port: 443
+    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_102
     type: vless
-    server: 91.99.194.54
+    server: 91.99.182.117
     port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_103
     type: vless
-    server: 91.99.194.54
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    server: 185.133.125.10
+    port: 19161
+    uuid: c5b69a7f-8e71-4425-8613-0f3c2a97d6d7
     network: tcp
     tls: false
     ip-version: dual
@@ -1145,782 +1273,133 @@ proxies:
     udp: true
   - name: DefaultName_105
     type: vless
-    server: 91.99.194.54
+    server: 91.99.182.117
     port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_106
     type: vless
-    server: 91.99.194.54
+    server: 91.99.182.117
     port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_107
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
+    server: 185.133.125.10
+    port: 19161
+    uuid: c5b69a7f-8e71-4425-8613-0f3c2a97d6d7
     network: tcp
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_108
     type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
+    server: 217.60.236.41
+    port: 3134
+    uuid: 6683e519-99b1-4df8-9d20-f39a2a7ed1b0
+    network: ws
     tls: false
+    ws-opts:
+      path: '/ '
     ip-version: dual
     udp: true
   - name: DefaultName_109
     type: vless
-    server: 91.99.194.54
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
     network: tcp
-    tls: false
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_110
     type: vless
-    server: 91.99.194.54
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
+    server: 37.152.191.40
+    port: 33410
+    uuid: 8fdf1ba7-e457-43a4-b8e3-29ddc06b529e
+    network: tcp
     tls: false
+    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_111
     type: vless
-    server: 91.99.194.54
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
+    server: 91.99.199.145
+    port: 56127
+    uuid: c316446d-825c-4c0e-882e-4c3badb7456d
+    network: tcp
+    tls: true
+    servername: www.latimes.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iZBGYZP2PommEmcSDKWOypL3d3HWsWG7WDOh-Cuz418
+      short-id: '6d26d809580dc9f7 '
     ip-version: dual
     udp: true
   - name: DefaultName_112
     type: vless
-    server: 185.155.72.101
-    port: 59761
-    uuid: ae9539b5-70dd-41b5-9666-11a29559a840
+    server: 51.38.98.69
+    port: 443
+    uuid: 6b690c69-7301-44c4-81e8-9d5d7e8263a6
     network: tcp
-    tls: false
+    tls: true
+    servername: yahoo.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: '-3sZE2OPDhkNtxufF2YqPmoa5hqVna5zalfJfrUiMm0'
+      short-id: 'ecd6615548c2bddb '
     ip-version: dual
     udp: true
   - name: DefaultName_113
     type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
-    network: tcp
+    server: 91.99.14.202
+    port: 443
+    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
     tls: false
     ip-version: dual
     udp: true
   - name: DefaultName_114
     type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
+    server: 151.101.3.8
+    port: 80
+    uuid: 08c650ba-6585-449f-ba5f-6bfbf8b890e7
+    network: ws
     tls: false
+    ws-opts:
+      headers:
+        host: Operatorus.com
     ip-version: dual
     udp: true
   - name: DefaultName_115
     type: vless
-    server: 109.122.249.156
-    port: 57107
-    uuid: 600eae54-5014-40a2-99f3-215ff340c26d
+    server: 185.236.232.237
+    port: 1001
+    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
     network: tcp
-    tls: false
+    tls: true
+    servername: telewebion.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
+      short-id: '5fab0deb '
     ip-version: dual
     udp: true
   - name: DefaultName_116
-    type: vless
-    server: 185.215.228.90
-    port: 20118
-    uuid: 142dd8b5-0b9e-4018-a961-2370d50cc435
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_117
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_118
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_119
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_120
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_121
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_122
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_123
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_124
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_125
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_126
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_127
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_128
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_129
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_130
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_131
-    type: vless
-    server: 91.99.182.226
-    port: 34171
-    uuid: 82bdbba7-105d-4590-b08f-1d4d238abada
-    network: tcp
-    tls: true
-    servername: www.latimes.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: xnqAqhJPTN9MejLmPrBprshg49u92dkYnraLNkI3EXA
-      short-id: fb18ca71d301b50c
-    ip-version: dual
-    udp: true
-  - name: DefaultName_132
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_133
-    type: vless
-    server: 91.99.207.47
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_134
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_135
-    type: vless
-    server: 91.99.207.230
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_136
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_137
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_138
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_139
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_140
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_141
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_142
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_143
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_144
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_145
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_146
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_147
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_148
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_149
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_150
-    type: vless
-    server: 91.99.207.47
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_151
-    type: vless
-    server: 185.133.125.10
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_152
-    type: vless
-    server: 185.133.125.12
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_153
-    type: vless
-    server: 84.47.233.110
-    port: 59761
-    uuid: ae9539b5-70dd-41b5-9666-11a29559a840
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_154
-    type: vless
-    server: 91.99.182.226
-    port: 34171
-    uuid: 82bdbba7-105d-4590-b08f-1d4d238abada
-    network: tcp
-    tls: true
-    servername: www.latimes.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: xnqAqhJPTN9MejLmPrBprshg49u92dkYnraLNkI3EXA
-      short-id: fb18ca71d301b50c
-    ip-version: dual
-    udp: true
-  - name: DefaultName_155
-    type: vless
-    server: 185.133.125.10
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_156
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_157
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_158
-    type: vless
-    server: 84.47.233.110
-    port: 59761
-    uuid: ae9539b5-70dd-41b5-9666-11a29559a840
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_159
-    type: vless
-    server: 91.99.207.47
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_160
-    type: vless
-    server: 185.208.77.113
-    port: 14040
-    uuid: a2691bdd-7989-4e7e-9c44-302e360c021f
-    network: ws
-    tls: false
-    ws-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_161
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_162
-    type: vless
-    server: 84.47.233.98
-    port: 33326
-    uuid: 72dc074b-91ed-4564-9424-cd14652c1743
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_163
-    type: vless
-    server: 91.99.207.47
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_164
-    type: vless
-    server: 91.99.199.137
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_165
-    type: vless
-    server: 185.208.77.113
-    port: 14040
-    uuid: a2691bdd-7989-4e7e-9c44-302e360c021f
-    network: ws
-    tls: false
-    ws-opts:
-      path: /
-    ip-version: dual
-    udp: true
-  - name: DefaultName_166
-    type: vless
-    server: 84.47.233.98
-    port: 33326
-    uuid: 72dc074b-91ed-4564-9424-cd14652c1743
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_167
-    type: vless
-    server: 84.47.233.98
-    port: 33326
-    uuid: 72dc074b-91ed-4564-9424-cd14652c1743
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_168
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_169
-    type: vless
-    server: 91.99.207.21
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_170
-    type: vless
-    server: 185.215.228.90
-    port: 20118
-    uuid: 142dd8b5-0b9e-4018-a961-2370d50cc435
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_171
-    type: vless
-    server: 185.215.228.90
-    port: 20118
-    uuid: 142dd8b5-0b9e-4018-a961-2370d50cc435
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_172
-    type: vless
-    server: 185.215.228.90
-    port: 20118
-    uuid: 142dd8b5-0b9e-4018-a961-2370d50cc435
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_173
-    type: vless
-    server: 84.47.233.110
-    port: 59761
-    uuid: ae9539b5-70dd-41b5-9666-11a29559a840
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_174
-    type: vless
-    server: 185.133.125.10
-    port: 19151
-    uuid: 84e7d7ea-fbb8-4a62-b3c6-a22165a21bee
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_175
-    type: vless
-    server: 51.89.137.223
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_176
-    type: vless
-    server: 46.62.154.63
-    port: 55555
-    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
-    network: tcp
-    tls: true
-    servername: stackoverflow.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: iN6Mxm-XgB9_nfgRHxdE3QX9XJpAY-EHv-EtvAIkYx4
-      short-id: ea83a8b0
-    ip-version: dual
-    udp: true
-  - name: DefaultName_177
-    type: vless
-    server: 57.128.167.167
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_178
-    type: vless
-    server: 146.59.15.81
-    port: 443
-    uuid: c14b2731-7db6-49ee-9271-b1efc56c2630
-    network: tcp
-    tls: true
-    servername: dl.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: l8HS4g_h8xPWlhQm8hmj5ohKNMrMCBcoHSNBFij79Sk
-      short-id: 5bb805
-    ip-version: dual
-    udp: true
-  - name: DefaultName_179
-    type: vless
-    server: 91.99.27.51
-    port: 2083
-    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
-    network: tcp
-    tls: true
-    servername: cdn-download.zula.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: AxIOXEujA6HwUz2QZnPM6O8llj2QVaI50lZXGUlibhs
-      short-id: ea83a8b0
-    ip-version: dual
-    udp: true
-  - name: DefaultName_180
-    type: vless
-    server: 91.99.162.239
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_181
-    type: vless
-    server: 51.195.233.195
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_182
-    type: vless
-    server: 45.15.170.80
-    port: 28495
-    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
-    network: tcp
-    tls: true
-    servername: dl.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
-    ip-version: dual
-    udp: true
-  - name: DefaultName_183
-    type: vless
-    server: 91.99.182.117
-    port: 443
-    uuid: 36ee3f5a-3816-4c03-a324-47531167e53b
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_184
-    type: vless
-    server: 91.99.203.69
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_185
-    type: vless
-    server: 148.113.207.221
-    port: 2087
-    uuid: 1f46cb74-40ba-4964-9a1f-ccbd448b483b
-    network: tcp
-    tls: true
-    servername: cloudflare.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: firefox
-    reality-opts:
-      public-key: nzxEupJqZ3vDwqrV95RfHLKKJT8dCByBmBNwsbvHVyc
-      short-id: e11e857b70
-    ip-version: dual
-    udp: true
-  - name: DefaultName_186
     type: vless
     server: 113.29.230.65
     port: 8880
@@ -1933,25 +1412,25 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: afyGbyVtSnU4-TVYh_UG3eAOwjrH2MNgxcxKeD_aOEM
-      short-id: 93c21ebdd1f7349e
+      short-id: '93c21ebdd1f7349e '
     ip-version: dual
     udp: true
-  - name: DefaultName_187
+  - name: DefaultName_117
     type: vless
-    server: 157.173.127.225
-    port: 443
-    uuid: 11beaf11-726d-4c11-8ce9-27308c1c608c
+    server: 91.99.27.51
+    port: 2083
+    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
     network: tcp
     tls: true
-    servername: analytics.google.com
+    servername: cdn-download.zula.ir
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: v3EwzA9RIIh5Ndxm-gypRY6RCJhOpQ-2WO7KaH8nsC8
-      short-id: eab26c4a32
+      public-key: AxIOXEujA6HwUz2QZnPM6O8llj2QVaI50lZXGUlibhs
+      short-id: 'ea83a8b0 '
     ip-version: dual
     udp: true
-  - name: DefaultName_188
+  - name: DefaultName_118
     type: vless
     server: 8.213.149.42
     port: 443
@@ -1963,83 +1442,50 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: DNdTBHyztOVJOBJQX91YXEhNkWbSAntqUoTFBHc6Clw
-      short-id: 6ba85179e30d4fc2
+      short-id: '6ba85179e30d4fc2 '
     ip-version: dual
     udp: true
-  - name: DefaultName_189
+  - name: DefaultName_119
     type: vless
-    server: 198.244.140.136
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_190
-    type: vless
-    server: 51.89.231.215
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_191
-    type: vless
-    server: 51.38.64.196
-    port: 443
-    uuid: fac1c66f-3ba3-4d24-8ae8-d6049d949898
-    network: tcp
-    tls: true
-    servername: yahoo.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: guQofANvA8Ia_uVwhRMriU09zudRTM_k7Nr498g161s
-      short-id: a31a8d04622560
-    ip-version: dual
-    udp: true
-  - name: DefaultName_192
-    type: vless
-    server: 141.101.121.55
-    port: 8080
-    uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: 1750293123492.china.baidu.bilibili.china.aeko.cn
-    ip-version: dual
-    udp: true
-  - name: DefaultName_193
-    type: vless
-    server: 209.38.202.192
-    port: 42030
-    uuid: f6bd0b57-1e1c-4dd1-8f1c-939cb96bdb0a
+    server: 91.99.195.6
+    port: 80
+    uuid: 91a5d5b3-4b88-4359-aeec-e1532f535fd6
     network: grpc
     tls: true
-    servername: journalofbigdata.springeropen.com
+    servername: refersion.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
-      short-id: '15'
-    grpc-opts: {}
+      public-key: ZO276Z5WXIqCmNLXT8Lewzjhhgm365JUJXAKyKq8Rz4
+      short-id: 'bc063769cb '
+    grpc-opts:
+      grpc-service-name: refersion.com
     ip-version: dual
     udp: true
-  - name: DefaultName_194
+  - name: DefaultName_120
+    type: vless
+    server: 46.62.154.63
+    port: 55555
+    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
+    network: tcp
+    tls: true
+    servername: stackoverflow.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: iN6Mxm-XgB9_nfgRHxdE3QX9XJpAY-EHv-EtvAIkYx4
+      short-id: 'ea83a8b0 '
+    ip-version: dual
+    udp: true
+  - name: DefaultName_121
+    type: vless
+    server: 91.99.162.239
+    port: 443
+    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
+    tls: false
+    ip-version: dual
+    udp: true
+  - name: DefaultName_122
     type: vless
     server: 83.222.23.113
     port: 443
@@ -2052,620 +1498,26 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: Jwam5OBjXf4bffZzA3IqzfcNONIMhYMgjysXPU44XFU
-      short-id: c4da507c203b545a
+      short-id: 'c4da507c203b545a '
     ip-version: dual
     udp: true
-  - name: DefaultName_195
+  - name: DefaultName_123
     type: vless
-    server: 198.244.140.7
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
+    server: 209.38.202.192
+    port: 42030
+    uuid: f6bd0b57-1e1c-4dd1-8f1c-939cb96bdb0a
+    network: grpc
     tls: true
-    servername: refersion.com
+    servername: journalofbigdata.springeropen.com
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
+      public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
+      short-id: '15 '
+    grpc-opts: {}
     ip-version: dual
     udp: true
-  - name: DefaultName_196
-    type: vless
-    server: 91.99.160.145
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: _1
-    type: vmess
-    server: 217.145.79.108
-    port: 80
-    uuid: 473d176d-23b8-4c86-8d17-684683d4892c
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-    alterId: 0
-    cipher: auto
-  - name: DefaultName_197
-    type: vless
-    server: 151.101.3.8
-    port: 80
-    uuid: 08c650ba-6585-449f-ba5f-6bfbf8b890e7
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: Operatorus.com
-    ip-version: dual
-    udp: true
-  - name: DefaultName_198
-    type: vless
-    server: 62.60.233.250
-    port: 443
-    uuid: 809c908f-2219-11f0-9970-45e1d80c4039
-    network: tcp
-    tls: true
-    servername: images.apple.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: MFsbnsNQsSpZwP-_Ohzako6aHpfK4-rbssxhr3eywWw
-      short-id: 4476a3
-    ip-version: dual
-    udp: true
-  - name: DefaultName_199
-    type: vless
-    server: v05.vxlimir.com
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_200
-    type: vless
-    server: 167.235.67.79
-    port: 11260
-    uuid: 35a0361a-c0d4-42e0-9022-b3c9f647837d
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_201
-    type: vless
-    server: 91.99.122.102
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_202
-    type: vless
-    server: 91.99.162.239
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_203
-    type: vless
-    server: 91.99.203.70
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_204
-    type: vless
-    server: 91.99.203.70
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_205
-    type: vless
-    server: 91.99.151.199
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_206
-    type: vless
-    server: 91.99.202.155
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_207
-    type: vless
-    server: 167.235.67.79
-    port: 11260
-    uuid: 35a0361a-c0d4-42e0-9022-b3c9f647837d
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_208
-    type: vless
-    server: 91.99.231.218
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_209
-    type: vless
-    server: srv5.amazon-osishop.ir
-    port: 8880
-    uuid: a2eda8e1-4452-481b-9a71-aab18d3ed17e
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_210
-    type: vless
-    server: 57.128.165.176
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_211
-    type: vless
-    server: 91.99.203.65
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_212
-    type: vless
-    server: 91.99.205.130
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_213
-    type: vless
-    server: 62.60.148.14
-    port: 25756
-    uuid: 905cb697-fc5b-4291-986c-43cc529146c8
-    network: tcp
-    tls: true
-    servername: google.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: QYKUzjbRc3V_-SwJ7DbChBt5nT6miAoFuNCqbflDF2o
-      short-id: '61'
-    ip-version: dual
-    udp: true
-  - name: DefaultName_214
-    type: vless
-    server: 91.99.122.102
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_215
-    type: vless
-    server: 91.99.160.210
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_216
-    type: vless
-    server: 91.99.202.155
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_217
-    type: vless
-    server: 91.99.14.202
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_218
-    type: vless
-    server: 91.99.190.38
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_219
-    type: vless
-    server: 91.99.203.70
-    port: 51615
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_220
-    type: vless
-    server: 91.99.231.218
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_221
-    type: vless
-    server: 91.99.83.138
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_222
-    type: vless
-    server: 91.99.169.206
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_223
-    type: vless
-    server: 91.99.205.10
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_224
-    type: vless
-    server: 91.99.160.13
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_225
-    type: vless
-    server: 91.99.231.218
-    port: 443
-    uuid: 7b6eca4c-44ae-40c6-973a-4e3b29d30803
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_226
-    type: vless
-    server: 91.99.202.155
-    port: 443
-    uuid: 2eaef053-5fd6-4def-b234-d760690355ff
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_227
-    type: vless
-    server: 91.99.160.145
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_228
-    type: vless
-    server: 52.47.92.41
-    port: 22224
-    uuid: 05519058-d2ac-4f28-9e4a-2b2a1386749e
-    network: ws
-    tls: true
-    servername: trojan.burgerip.co.uk
-    skip-cert-verify: true
-    ws-opts:
-      path: /telegram-channel-vlessconfig
-    ip-version: dual
-    udp: true
-  - name: DefaultName_229
-    type: vless
-    server: 91.99.54.106
-    port: 443
-    uuid: 15398933-070d-4ea2-9697-5fcd79793c97
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: _2
-    type: vmess
-    server: amesterdam.shahmagic.online
-    port: 8081
-    uuid: 4f4d8183-1171-4db6-b8c6-9f73199771c9
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-    alterId: 0
-    cipher: auto
-  - name: DefaultName_230
-    type: vless
-    server: 91.99.192.189
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_231
-    type: vless
-    server: 91.99.54.106
-    port: 443
-    uuid: 15398933-070d-4ea2-9697-5fcd79793c97
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_232
-    type: vless
-    server: 91.99.54.106
-    port: 443
-    uuid: 15398933-070d-4ea2-9697-5fcd79793c97
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_233
-    type: vless
-    server: 91.99.205.10
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: _3
-    type: vmess
-    server: 31.129.105.239
-    port: 16231
-    uuid: 793e03cc-2b08-4d1b-bb0b-592567d19043
-    network: ws
-    tls: false
-    ip-version: dual
-    udp: true
-    alterId: 0
-    cipher: auto
-  - name: DefaultName_234
-    type: vless
-    server: 91.99.205.10
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_235
-    type: vless
-    server: 91.99.160.151
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_236
-    type: vless
-    server: 104.16.104.151
-    port: 80
-    uuid: 1f431db3-1918-4e7b-a855-c93485e11694
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        host: pari.parinazz.dpdns.org
-    ip-version: dual
-    udp: true
-  - name: DefaultName_237
-    type: vless
-    server: 91.99.205.10
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_238
-    type: vless
-    server: 91.99.192.155
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_239
-    type: vless
-    server: 91.99.192.155
-    port: 443
-    uuid: 153ee04c-dcc1-4ef8-a146-8fb31cec1f48
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_240
-    type: vless
-    server: 62.60.179.100
-    port: 54080
-    uuid: 079291d7-2d5a-4dcc-b2a9-514cda7eb9f9
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_241
-    type: vless
-    server: 62.60.179.100
-    port: 54080
-    uuid: 079291d7-2d5a-4dcc-b2a9-514cda7eb9f9
-    network: tcp
-    tls: false
-    ip-version: dual
-    udp: true
-  - name: DefaultName_242
-    type: vless
-    server: 146.59.15.81
-    port: 443
-    uuid: c14b2731-7db6-49ee-9271-b1efc56c2630
-    network: tcp
-    tls: true
-    servername: dl.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: l8HS4g_h8xPWlhQm8hmj5ohKNMrMCBcoHSNBFij79Sk
-      short-id: 5bb805
-    ip-version: dual
-    udp: true
-  - name: DefaultName_243
-    type: vless
-    server: 178.20.208.134
-    port: 2083
-    uuid: 84cec1f6-8312-40da-b17a-4511e11a6026
-    network: tcp
-    tls: true
-    servername: refersion.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 64ZzXuN3BNiYLcliMenVVbjdSX_jCpB-yvW7MTsz2n4
-      short-id: 4d932424dbe98b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_244
-    type: vless
-    server: 46.62.154.63
-    port: 55555
-    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
-    network: tcp
-    tls: true
-    servername: stackoverflow.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: iN6Mxm-XgB9_nfgRHxdE3QX9XJpAY-EHv-EtvAIkYx4
-      short-id: ea83a8b0
-    ip-version: dual
-    udp: true
-  - name: DefaultName_245
-    type: vless
-    server: 91.99.27.51
-    port: 2083
-    uuid: 3ab9cb9a-4ed8-426c-b42d-b3079c89df84
-    network: tcp
-    tls: true
-    servername: cdn-download.zula.ir
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: AxIOXEujA6HwUz2QZnPM6O8llj2QVaI50lZXGUlibhs
-      short-id: ea83a8b0
-    ip-version: dual
-    udp: true
-  - name: DefaultName_246
-    type: vless
-    server: 51.89.230.46
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_247
-    type: vless
-    server: 45.15.170.80
-    port: 28495
-    uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
-    network: tcp
-    tls: true
-    servername: dl.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
-    ip-version: dual
-    udp: true
-  - name: DefaultName_248
-    type: vless
-    server: 185.236.232.237
-    port: 1001
-    uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
-    network: tcp
-    tls: true
-    servername: telewebion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
-      short-id: 5fab0deb
-    ip-version: dual
-    udp: true
-  - name: DefaultName_249
-    type: vless
-    server: 51.195.233.195
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_250
+  - name: DefaultName_124
     type: vless
     server: 5.181.171.10
     port: 443
@@ -2678,25 +1530,10 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: YNGotlyAx3ELUmi4lxOUjiEDmibqf1pPUTE9o3YYT2Y
+      short-id: ' '
     ip-version: dual
     udp: true
-  - name: DefaultName_251
-    type: vless
-    server: 148.113.207.221
-    port: 2087
-    uuid: 1f46cb74-40ba-4964-9a1f-ccbd448b483b
-    network: tcp
-    tls: true
-    servername: cloudflare.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: firefox
-    reality-opts:
-      public-key: nzxEupJqZ3vDwqrV95RfHLKKJT8dCByBmBNwsbvHVyc
-      short-id: e11e857b70
-    ip-version: dual
-    udp: true
-  - name: DefaultName_252
+  - name: DefaultName_125
     type: vless
     server: 148.113.174.213
     port: 28495
@@ -2708,164 +1545,26 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
+      short-id: '0ecc2c1392 '
     ip-version: dual
     udp: true
-  - name: DefaultName_253
+  - name: DefaultName_126
     type: vless
-    server: 51.89.137.223
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
+    server: 8.218.114.184
+    port: 443
+    uuid: f2d09fb7-ac3d-4b62-b359-e2c35a5be126
     network: tcp
     tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_254
-    type: vless
-    server: 113.29.230.65
-    port: 8880
-    uuid: 54af7d89-3ac6-426b-82c2-993984064066
-    network: tcp
-    tls: true
-    servername: www.apple.com
+    servername: www.ebay.com
     flow: xtls-rprx-vision
     skip-cert-verify: true
     client-fingerprint: chrome
     reality-opts:
-      public-key: afyGbyVtSnU4-TVYh_UG3eAOwjrH2MNgxcxKeD_aOEM
-      short-id: 93c21ebdd1f7349e
+      public-key: z3dsRlZdhVuCHIaU6d5nNePmRmNG_-KGdLpu-m0Jz0M
+      short-id: '35f29e450ad773a3 '
     ip-version: dual
     udp: true
-  - name: DefaultName_255
-    type: vless
-    server: 157.173.127.225
-    port: 443
-    uuid: 11beaf11-726d-4c11-8ce9-27308c1c608c
-    network: tcp
-    tls: true
-    servername: analytics.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: v3EwzA9RIIh5Ndxm-gypRY6RCJhOpQ-2WO7KaH8nsC8
-      short-id: eab26c4a32
-    ip-version: dual
-    udp: true
-  - name: DefaultName_256
-    type: vless
-    server: 8.213.149.42
-    port: 443
-    uuid: 5c183802-747d-4d2f-a6f1-aff2d5d78401
-    network: tcp
-    tls: true
-    servername: wwwimages2.adobe.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: DNdTBHyztOVJOBJQX91YXEhNkWbSAntqUoTFBHc6Clw
-      short-id: 6ba85179e30d4fc2
-    ip-version: dual
-    udp: true
-  - name: DefaultName_257
-    type: vless
-    server: 51.89.229.98
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_258
-    type: vless
-    server: 62.60.233.250
-    port: 443
-    uuid: 809c908f-2219-11f0-9970-45e1d80c4039
-    network: tcp
-    tls: true
-    servername: images.apple.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: MFsbnsNQsSpZwP-_Ohzako6aHpfK4-rbssxhr3eywWw
-      short-id: 4476a3
-    ip-version: dual
-    udp: true
-  - name: DefaultName_259
-    type: vless
-    server: 198.244.140.163
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_260
-    type: vless
-    server: 51.89.175.164
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_261
-    type: vless
-    server: 77.91.77.230
-    port: 443
-    uuid: a84263bb-49ab-43dc-a352-c464414e8a62
-    network: tcp
-    tls: true
-    servername: germany1.secretvibe.ru
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: GHl0OQmUmM8JzAraDgnn2ic7lzuWhjUMkZus6DzSvys
-      short-id: 5660c4
-    ip-version: dual
-    udp: true
-  - name: DefaultName_262
-    type: vless
-    server: 188.253.26.127
-    port: 443
-    uuid: a84263bb-49ab-43dc-a352-c464414e8a62
-    network: tcp
-    tls: true
-    servername: netherlands.secretvibe.ru
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: IFgSZ6-4ceD0tPigCvDBPHtrb6YUNPfxf1EVGUfAwBA
-      short-id: df9038e40a9b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_263
+  - name: DefaultName_127
     type: vless
     server: 51.91.173.52
     port: 7852
@@ -2877,71 +1576,10 @@ proxies:
     client-fingerprint: random
     reality-opts:
       public-key: rBXjuQ9eGNAUtELw1KFOMH7Aq0Q2t3RqcbdPcddYyTk
-      short-id: '69'
+      short-id: '69 '
     ip-version: dual
     udp: true
-  - name: DefaultName_264
-    type: vless
-    server: 198.244.140.7
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_265
-    type: vless
-    server: 51.195.232.167
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_266
-    type: vless
-    server: 209.38.202.192
-    port: 42030
-    uuid: f6bd0b57-1e1c-4dd1-8f1c-939cb96bdb0a
-    network: grpc
-    tls: true
-    servername: journalofbigdata.springeropen.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
-      short-id: '15'
-    grpc-opts: {}
-    ip-version: dual
-    udp: true
-  - name: DefaultName_267
-    type: vless
-    server: 51.38.98.69
-    port: 443
-    uuid: 6b690c69-7301-44c4-81e8-9d5d7e8263a6
-    network: tcp
-    tls: true
-    servername: yahoo.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: '-3sZE2OPDhkNtxufF2YqPmoa5hqVna5zalfJfrUiMm0'
-      short-id: ecd6615548c2bddb
-    ip-version: dual
-    udp: true
-  - name: DefaultName_268
+  - name: DefaultName_128
     type: vless
     server: 185.33.24.229
     port: 28495
@@ -2953,40 +1591,10 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
+      short-id: '0ecc2c1392 '
     ip-version: dual
     udp: true
-  - name: DefaultName_269
-    type: vless
-    server: 57.128.167.167
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_270
-    type: vless
-    server: 157.173.127.233
-    port: 443
-    uuid: 17a6e953-8fac-428c-b86c-8585722b0b52
-    network: tcp
-    tls: true
-    servername: analytics.google.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: MbTwpwMFXu8duJgVMb_jFpqEuopSWJW1FPH_D6fZAEM
-      short-id: 1f
-    ip-version: dual
-    udp: true
-  - name: DefaultName_271
+  - name: DefaultName_129
     type: vless
     server: 51.38.64.196
     port: 443
@@ -2999,53 +1607,6 @@ proxies:
     reality-opts:
       public-key: guQofANvA8Ia_uVwhRMriU09zudRTM_k7Nr498g161s
       short-id: a31a8d04622560
-    ip-version: dual
-    udp: true
-  - name: DefaultName_272
-    type: vless
-    server: 198.244.140.136
-    port: 1370
-    uuid: e71f9e93-064e-4847-b628-f41c6e74e6cb
-    network: tcp
-    tls: true
-    servername: refersion.com
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
-    ip-version: dual
-    udp: true
-  - name: DefaultName_273
-    type: vless
-    server: 2.56.126.76
-    port: 443
-    uuid: 7f97131b-0d9d-4be9-b7b4-3fa21403cffa
-    network: tcp
-    tls: true
-    servername: yahoo.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: XThpnyytziagvWMwmxGuSQ0nqfUw2sosq49F2fUEzmk
-      short-id: 0ca18da2c8f9
-    ip-version: dual
-    udp: true
-  - name: DefaultName_274
-    type: vless
-    server: 83.222.23.113
-    port: 443
-    uuid: 9a8a52d6-f24b-4f03-bf6f-f4854717f54e
-    network: tcp
-    tls: true
-    servername: google.com
-    flow: xtls-rprx-vision
-    skip-cert-verify: true
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: Jwam5OBjXf4bffZzA3IqzfcNONIMhYMgjysXPU44XFU
-      short-id: c4da507c203b545a
     ip-version: dual
     udp: true
 proxy-groups:
@@ -3183,154 +1744,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -3466,154 +1879,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
   - name: 🌍 国外媒体
     type: select
     proxies:
@@ -3749,154 +2014,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
   - name: 📲 电报信息
     type: select
     proxies:
@@ -4031,154 +2148,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
@@ -4313,154 +2282,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
   - name: 🍎 苹果服务
     type: select
     proxies:
@@ -4595,154 +2416,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -4894,154 +2567,6 @@ proxy-groups:
       - DefaultName_127
       - DefaultName_128
       - DefaultName_129
-      - DefaultName_130
-      - DefaultName_131
-      - DefaultName_132
-      - DefaultName_133
-      - DefaultName_134
-      - DefaultName_135
-      - DefaultName_136
-      - DefaultName_137
-      - DefaultName_138
-      - DefaultName_139
-      - DefaultName_140
-      - DefaultName_141
-      - DefaultName_142
-      - DefaultName_143
-      - DefaultName_144
-      - DefaultName_145
-      - DefaultName_146
-      - DefaultName_147
-      - DefaultName_148
-      - DefaultName_149
-      - DefaultName_150
-      - DefaultName_151
-      - DefaultName_152
-      - DefaultName_153
-      - DefaultName_154
-      - DefaultName_155
-      - DefaultName_156
-      - DefaultName_157
-      - DefaultName_158
-      - DefaultName_159
-      - DefaultName_160
-      - DefaultName_161
-      - DefaultName_162
-      - DefaultName_163
-      - DefaultName_164
-      - DefaultName_165
-      - DefaultName_166
-      - DefaultName_167
-      - DefaultName_168
-      - DefaultName_169
-      - DefaultName_170
-      - DefaultName_171
-      - DefaultName_172
-      - DefaultName_173
-      - DefaultName_174
-      - DefaultName_175
-      - DefaultName_176
-      - DefaultName_177
-      - DefaultName_178
-      - DefaultName_179
-      - DefaultName_180
-      - DefaultName_181
-      - DefaultName_182
-      - DefaultName_183
-      - DefaultName_184
-      - DefaultName_185
-      - DefaultName_186
-      - DefaultName_187
-      - DefaultName_188
-      - DefaultName_189
-      - DefaultName_190
-      - DefaultName_191
-      - DefaultName_192
-      - DefaultName_193
-      - DefaultName_194
-      - DefaultName_195
-      - DefaultName_196
-      - _1
-      - DefaultName_197
-      - DefaultName_198
-      - DefaultName_199
-      - DefaultName_200
-      - DefaultName_201
-      - DefaultName_202
-      - DefaultName_203
-      - DefaultName_204
-      - DefaultName_205
-      - DefaultName_206
-      - DefaultName_207
-      - DefaultName_208
-      - DefaultName_209
-      - DefaultName_210
-      - DefaultName_211
-      - DefaultName_212
-      - DefaultName_213
-      - DefaultName_214
-      - DefaultName_215
-      - DefaultName_216
-      - DefaultName_217
-      - DefaultName_218
-      - DefaultName_219
-      - DefaultName_220
-      - DefaultName_221
-      - DefaultName_222
-      - DefaultName_223
-      - DefaultName_224
-      - DefaultName_225
-      - DefaultName_226
-      - DefaultName_227
-      - DefaultName_228
-      - DefaultName_229
-      - _2
-      - DefaultName_230
-      - DefaultName_231
-      - DefaultName_232
-      - DefaultName_233
-      - _3
-      - DefaultName_234
-      - DefaultName_235
-      - DefaultName_236
-      - DefaultName_237
-      - DefaultName_238
-      - DefaultName_239
-      - DefaultName_240
-      - DefaultName_241
-      - DefaultName_242
-      - DefaultName_243
-      - DefaultName_244
-      - DefaultName_245
-      - DefaultName_246
-      - DefaultName_247
-      - DefaultName_248
-      - DefaultName_249
-      - DefaultName_250
-      - DefaultName_251
-      - DefaultName_252
-      - DefaultName_253
-      - DefaultName_254
-      - DefaultName_255
-      - DefaultName_256
-      - DefaultName_257
-      - DefaultName_258
-      - DefaultName_259
-      - DefaultName_260
-      - DefaultName_261
-      - DefaultName_262
-      - DefaultName_263
-      - DefaultName_264
-      - DefaultName_265
-      - DefaultName_266
-      - DefaultName_267
-      - DefaultName_268
-      - DefaultName_269
-      - DefaultName_270
-      - DefaultName_271
-      - DefaultName_272
-      - DefaultName_273
-      - DefaultName_274
 rules:
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
