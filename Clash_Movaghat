@@ -1,12 +1,54 @@
 # 模版名称：ACL4SSR.ini
 # 模版最后更新日期：2025/02/10 20:52:37
-# 配置生成日期：2025-07-09 18:37:58
+# 配置生成日期：2025-07-09 21:03:48
 
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
   - name: DefaultName_1
     type: vless
@@ -20,7 +62,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_2
@@ -32,7 +73,7 @@ proxies:
     tls: true
     servername: 638874929583581773.zagreb-prx-dnraaad.info
     alpn:
-      - 'h3h2 '
+      - h3h2
     skip-cert-verify: true
     ws-opts:
       path: /ikhocbws
@@ -49,7 +90,7 @@ proxies:
     tls: true
     servername: NGINX.NSCl.IR
     alpn:
-      - 'h3 '
+      - h3
     skip-cert-verify: true
     ws-opts:
       path: /assets
@@ -63,8 +104,9 @@ proxies:
     port: 2096
     uuid: fd7ef777-55be-43fe-8462-ea0cd549be5a
     network: ws
-    tls: false
-    servername: '638874931195359438.kish-prx-dnraaaf.info '
+    tls: true
+    servername: 638874931195359438.kish-prx-dnraaaf.info
+    skip-cert-verify: true
     ws-opts:
       path: /rlogcews
       headers:
@@ -80,7 +122,7 @@ proxies:
     tls: true
     servername: NGINX.NSCl.IR
     alpn:
-      - 'h3 '
+      - h3
     skip-cert-verify: true
     ws-opts:
       path: /config-proxy-free--Telegram--config-proxy-free--Telegram--config-proxy-free--Telegram--config-proxy-free--Telegram--config-proxy-free--Telegram--config-proxy-free?ed=2560
@@ -95,7 +137,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -106,7 +147,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -122,7 +162,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
-      short-id: 'bf517367267685 '
+      short-id: bf517367267685
     ip-version: dual
     udp: true
   - name: DefaultName_9
@@ -131,8 +171,9 @@ proxies:
     port: 2096
     uuid: fd7ef777-55be-43fe-8462-ea0cd549be5a
     network: ws
-    tls: false
-    servername: '638874931195359438.kish-prx-dnraaaf.info '
+    tls: true
+    servername: 638874931195359438.kish-prx-dnraaaf.info
+    skip-cert-verify: true
     ws-opts:
       path: /rlogcews
       headers:
@@ -151,7 +192,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
-      short-id: 'bf517367267685 '
+      short-id: bf517367267685
     ip-version: dual
     udp: true
   - name: DefaultName_11
@@ -161,7 +202,6 @@ proxies:
     uuid: 633d3f6b-5f34-4ef8-b240-01667f6dd07d
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_12
@@ -172,7 +212,7 @@ proxies:
     network: ws
     tls: false
     ws-opts:
-      path: '/Telegram@vpnjeyTelegram@vpnjeyTelegram@vpnjey '
+      path: /Telegram@vpnjeyTelegram@vpnjeyTelegram@vpnjey
       headers:
         host: www.speedtest.net.tax.gov.ir.aparat.com.a.2.jEy.dPdNs.org.
     ip-version: dual
@@ -185,7 +225,7 @@ proxies:
     network: ws
     tls: false
     ws-opts:
-      path: '/ '
+      path: /
     ip-version: dual
     udp: true
   - name: DefaultName_14
@@ -212,7 +252,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
-      short-id: 'bf517367267685 '
+      short-id: bf517367267685
     ip-version: dual
     udp: true
   - name: DefaultName_16
@@ -298,7 +338,7 @@ proxies:
     alpn:
       - http/1.1
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /T8fVuPhDQWrbtRol/c2hpcmVuLnlhZW1pa28uZ2dmZi5uZXQ=?ed=2560
       headers:
@@ -329,7 +369,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: i5nssGunCVG0W2CI3OM-wGXJwCn9W5Xvm0-tQw_SgEQ
-      short-id: '7c0b6c88fe5c '
+      short-id: 7c0b6c88fe5c
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -408,7 +448,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: i5nssGunCVG0W2CI3OM-wGXJwCn9W5Xvm0-tQw_SgEQ
-      short-id: '7c0b6c88fe5c '
+      short-id: 7c0b6c88fe5c
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -428,7 +468,6 @@ proxies:
     uuid: c4389c70-1e5a-4bd2-934f-44fb2e62ccf5
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_35
@@ -438,7 +477,6 @@ proxies:
     uuid: c4389c70-1e5a-4bd2-934f-44fb2e62ccf5
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_36
@@ -628,7 +666,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
-      short-id: 'bf517367267685 '
+      short-id: bf517367267685
     ip-version: dual
     udp: true
   - name: DefaultName_54
@@ -704,7 +742,6 @@ proxies:
     uuid: 8dce20d6-db7e-4e1a-93d1-8ef0fe348116
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: _5
@@ -725,7 +762,6 @@ proxies:
     uuid: 6f6a5d6a-cb63-453b-ae06-dfdff5b13446
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: _6
@@ -745,8 +781,9 @@ proxies:
     port: 2053
     uuid: 0982abd9-ee22-45b3-9dc0-061ac0148ce6
     network: ws
-    tls: false
-    servername: 'mojito.djjw8292n.ir '
+    tls: true
+    servername: mojito.djjw8292n.ir
+    skip-cert-verify: true
     ws-opts:
       path: /homepage?ed=2560
       headers:
@@ -771,7 +808,6 @@ proxies:
     uuid: ee3eb0a4-bd49-4f60-88f0-3fc4b661f7cf
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_60
@@ -786,7 +822,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_61
@@ -801,7 +836,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: l8HS4g_h8xPWlhQm8hmj5ohKNMrMCBcoHSNBFij79Sk
-      short-id: '5bb805 '
+      short-id: 5bb805
     ip-version: dual
     udp: true
   - name: DefaultName_62
@@ -829,7 +864,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: '0ecc2c1392 '
+      short-id: 0ecc2c1392
     ip-version: dual
     udp: true
   - name: DefaultName_64
@@ -839,7 +874,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -861,7 +895,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -872,7 +905,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -883,7 +915,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -894,7 +925,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -905,7 +935,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -916,7 +945,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -927,7 +955,6 @@ proxies:
     uuid: a020eb91-54b1-4a73-8dd5-f705a6dcc6ae
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_72
@@ -937,7 +964,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -959,7 +985,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -975,7 +1000,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: i5nssGunCVG0W2CI3OM-wGXJwCn9W5Xvm0-tQw_SgEQ
-      short-id: '7c0b6c88fe5c '
+      short-id: 7c0b6c88fe5c
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -986,7 +1011,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -997,7 +1021,6 @@ proxies:
     uuid: 2466eb01-4400-4281-9c1a-1cb96f9a5083
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_77
@@ -1013,7 +1036,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: hw3MbOnPen0fjaAWytYHFCEQIGMcPGf7leBLcFK_E2U
-      short-id: '4fb4 '
+      short-id: 4fb4
     ip-version: dual
     udp: true
   - name: DefaultName_78
@@ -1028,7 +1051,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: q70yFMTo4Dz6IWwVcL9icqgJPgyIuv3j3n5fZxym6kg
-      short-id: '40e3350da285 '
+      short-id: 40e3350da285
     ip-version: dual
     udp: true
   - name: _10
@@ -1055,7 +1078,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: MFsbnsNQsSpZwP-_Ohzako6aHpfK4-rbssxhr3eywWw
-      short-id: '4476a3 '
+      short-id: 4476a3
     ip-version: dual
     udp: true
   - name: DefaultName_80
@@ -1065,7 +1088,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1076,7 +1098,6 @@ proxies:
     uuid: 0d6b5af6-17df-4bb1-af76-e524f00602a5
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_82
@@ -1088,7 +1109,7 @@ proxies:
     tls: true
     servername: pOStWArE-2Jm.PAgEs.dEv
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /ssqKt5JYIXEwDOMJ?ed=2560
       headers:
@@ -1103,7 +1124,7 @@ proxies:
     network: ws
     tls: false
     ws-opts:
-      path: '/test=true '
+      path: /test=true
       headers:
         host: d1.hetzner.com
     ip-version: dual
@@ -1115,7 +1136,6 @@ proxies:
     uuid: 633d3f6b-5f34-4ef8-b240-01667f6dd07d
     network: tcp
     tls: false
-    flow: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_85
@@ -1136,7 +1156,7 @@ proxies:
     tls: true
     servername: POstwARE-2jm.PagES.DEv
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /3BiOQ1rCgST9FvMj?ed=2560
       headers:
@@ -1165,7 +1185,7 @@ proxies:
     alpn:
       - http/1.1
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /iqySBCJZh3v7AmTx?ed=2560
       headers:
@@ -1195,7 +1215,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: l8HS4g_h8xPWlhQm8hmj5ohKNMrMCBcoHSNBFij79Sk
-      short-id: '5bb805 '
+      short-id: 5bb805
     ip-version: dual
     udp: true
   - name: DefaultName_89
@@ -1220,7 +1240,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: i5nssGunCVG0W2CI3OM-wGXJwCn9W5Xvm0-tQw_SgEQ
-      short-id: '7c0b6c88fe5c '
+      short-id: 7c0b6c88fe5c
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1303,7 +1323,7 @@ proxies:
     network: ws
     tls: false
     ws-opts:
-      path: '/test=true '
+      path: /test=true
       headers:
         host: d1.hetzner.com
     ip-version: dual
@@ -1331,7 +1351,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: MFsbnsNQsSpZwP-_Ohzako6aHpfK4-rbssxhr3eywWw
-      short-id: '4476a3 '
+      short-id: 4476a3
     ip-version: dual
     udp: true
   - name: DefaultName_100
@@ -1395,7 +1415,7 @@ proxies:
     tls: true
     servername: 638874929556912040.abadan-prx-dnraaad.info
     alpn:
-      - 'h3h2 '
+      - h3h2
     skip-cert-verify: true
     ws-opts:
       path: /dbjfngws
@@ -1424,7 +1444,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: DNdTBHyztOVJOBJQX91YXEhNkWbSAntqUoTFBHc6Clw
-      short-id: '6ba85179e30d4fc2 '
+      short-id: 6ba85179e30d4fc2
     ip-version: dual
     udp: true
   - name: _16
@@ -1450,7 +1470,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
-      short-id: '15 '
+      short-id: '15'
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1476,7 +1496,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 1wWJ_HJdLChMyEqb1agU0pQr26966K5SK4u7ehst-VQ
-      short-id: '8c5f97c86a710a '
+      short-id: 8c5f97c86a710a
     ip-version: dual
     udp: true
   - name: _17
@@ -1502,7 +1522,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
-      short-id: 'bf517367267685 '
+      short-id: bf517367267685
     ip-version: dual
     udp: true
   - name: DefaultName_110
@@ -1516,7 +1536,7 @@ proxies:
     alpn:
       - http/1.1
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /ISk6mbFfXf0Pa9zB9hTi5E8d
       headers:
@@ -1562,7 +1582,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: cTm0TIKL9qK550XICK2YroOSr1u-f12h5UmBw2EAr2c
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_114
@@ -1578,7 +1597,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: vfmqSXTEjdIOgz43eZTNzBRztAvd1U1dDkSz_mnaSk4
-      short-id: 'fc7a526a7e61ba3b '
+      short-id: fc7a526a7e61ba3b
     ip-version: dual
     udp: true
   - name: _18
@@ -1616,7 +1635,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 1wWJ_HJdLChMyEqb1agU0pQr26966K5SK4u7ehst-VQ
-      short-id: '8c5f97c86a710a '
+      short-id: 8c5f97c86a710a
     ip-version: dual
     udp: true
   - name: DefaultName_116
@@ -1625,8 +1644,9 @@ proxies:
     port: 2087
     uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
     network: ws
-    tls: false
-    servername: 'smart.v2plusify.org '
+    tls: true
+    servername: smart.v2plusify.org
+    skip-cert-verify: true
     ws-opts:
       path: /
       headers:
@@ -1657,7 +1677,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: XThpnyytziagvWMwmxGuSQ0nqfUw2sosq49F2fUEzmk
-      short-id: '0ca18da2c8f9 '
+      short-id: 0ca18da2c8f9
     ip-version: dual
     udp: true
   - name: _21
@@ -1704,7 +1724,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_121
@@ -1719,7 +1738,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: _22
@@ -1750,8 +1768,9 @@ proxies:
     port: 443
     uuid: 4e4768df-0fbb-4cc1-8fd3-7c6fea95742a
     network: ws
-    tls: false
-    servername: 'rayan-09.parastoo.dpdns.org '
+    tls: true
+    servername: rayan-09.parastoo.dpdns.org
+    skip-cert-verify: true
     ws-opts:
       path: /@Rayan_Config
       headers:
@@ -1765,7 +1784,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1776,7 +1794,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1787,7 +1804,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1803,7 +1819,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_127
@@ -1813,7 +1828,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1829,7 +1843,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ' '
     ip-version: dual
     udp: true
   - name: DefaultName_129
@@ -1853,7 +1866,7 @@ proxies:
     tls: true
     servername: 147135004002.sec20org.com
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ip-version: dual
     udp: true
   - name: DefaultName_131
@@ -1874,7 +1887,7 @@ proxies:
     tls: true
     servername: rayan-08.leila.dpdns.org
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /@Rayan_Config
       headers:
@@ -1907,7 +1920,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: z3dsRlZdhVuCHIaU6d5nNePmRmNG_-KGdLpu-m0Jz0M
-      short-id: '35f29e450ad773a3 '
+      short-id: 35f29e450ad773a3
     ip-version: dual
     udp: true
   - name: DefaultName_135
@@ -1930,7 +1943,6 @@ proxies:
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1941,7 +1953,6 @@ proxies:
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -1953,7 +1964,7 @@ proxies:
     network: ws
     tls: false
     ws-opts:
-      path: '/ '
+      path: /
       headers:
         host: reedfree8mahsang2.redorg.ir
     ip-version: dual
@@ -1967,7 +1978,7 @@ proxies:
     tls: false
     ws-opts:
       headers:
-        host: 'q6.19kalA.co '
+        host: q6.19kalA.co
     ip-version: dual
     udp: true
   - name: DefaultName_140
@@ -1976,8 +1987,9 @@ proxies:
     port: 443
     uuid: f108e0e2-5f12-42b6-9e67-1b2f073ffb2b
     network: ws
-    tls: false
-    servername: 'DDCvVbhyu78.852224.DpDns.ORG '
+    tls: true
+    servername: DDCvVbhyu78.852224.DpDns.ORG
+    skip-cert-verify: true
     ws-opts:
       path: /DB8W1KX5xnNGIhMum8sDKRwvFCJq
       headers:
@@ -2025,7 +2037,6 @@ proxies:
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
@@ -2040,7 +2051,7 @@ proxies:
     alpn:
       - http/1.1
     skip-cert-verify: true
-    client-fingerprint: 'chrome '
+    client-fingerprint: chrome
     ws-opts:
       path: /6fqYRq6DD1shcFIO/c2hpcmVuLnlhZW1pa28uZ2dmZi5uZXQ=?ed=2560
       headers:
@@ -2071,7 +2082,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: Jwam5OBjXf4bffZzA3IqzfcNONIMhYMgjysXPU44XFU
-      short-id: 'c4da507c203b545a '
+      short-id: c4da507c203b545a
     ip-version: dual
     udp: true
   - name: DefaultName_145
@@ -2081,7 +2092,6 @@ proxies:
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    flow: ' '
     grpc-opts: {}
     ip-version: dual
     udp: true
