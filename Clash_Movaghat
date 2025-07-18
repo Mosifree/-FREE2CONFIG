@@ -1,25 +1,14 @@
-# General Configuration
-port: 7890
-socks-port: 7891
-allow-lan: false # Set to true if you want other devices in your LAN to use this proxy
-mode: rule # Rule-based routing
-log-level: info
-external-ui: dashboard # Optional: for a web dashboard (e.g., http://clash.razord.top/)
-
-# --- Proxies ---
 proxies:
-  # [cite_start]VLESS Proxies from your file [cite: 1, 2, 3]
-  - name: "Vless-193.162.129.71-28819-tcp"
+  - name: "vless-e7b1b989-83db-4420-aa6a-fb9a6a3b24e9-1"
     type: vless
     server: 193.162.129.71
     port: 28819
     uuid: e7b1b989-83db-4420-aa6a-fb9a6a3b24e9
     network: tcp
     tls: false
-    udp: true # VLESS TCP usually supports UDP
-    # encryption: none (default in Clash for VLESS)
-
-  - name: "Vless-185.243.51.67-21760-tcp"
+    udp: true
+    flow: ""
+  - name: "vless-73e10f2a-bb9a-40c1-8e2c-ebfe0dac1dac-1"
     type: vless
     server: 185.243.51.67
     port: 21760
@@ -27,8 +16,8 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-91.99.179.203-443-tcp-http"
+    flow: ""
+  - name: "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-1"
     type: vless
     server: 91.99.179.203
     port: 443
@@ -36,11 +25,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers": # Clash uses ws-headers for http-header
+    flow: ""
+    headers:
       Host: zula.ir
-    "tcp-early-data": true # For http-header, often implies early data
-
-  - name: "Vless-185.243.51.67-21760-tcp-xudp"
+    servername: zula.ir
+  - name: "vless-73e10f2a-bb9a-40c1-8e2c-ebfe0dac1dac-2"
     type: vless
     server: 185.243.51.67
     port: 21760
@@ -48,19 +37,19 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    # packetEncoding: xudp (Clash does not have a direct equivalent for packetEncoding, usually handled by core)
-
-  - name: "Vless-62.60.192.209-80-ws"
+    flow: ""
+    packetEncoding: xudp
+  - name: "vless-f5f2458c-5fcb-4820-82c2-2997492c54d5-1"
     type: vless
     server: 62.60.192.209
     port: 80
     uuid: f5f2458c-5fcb-4820-82c2-2997492c54d5
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-62.60.163.77-3333-tcp-http"
+    flow: ""
+    path: /
+  - name: "vless-7d283c1a-3a5b-4b2a-a924-0bd256e89726-1"
     type: vless
     server: 62.60.163.77
     port: 3333
@@ -68,10 +57,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: bmw.com
-
-  - name: "Vless-31.47.51.123-80-tcp"
+    servername: bmw.com
+  - name: "vless-88d5b659-3c15-47a6-ae3c-b79ed49ef9f3-1"
     type: vless
     server: 31.47.51.123
     port: 80
@@ -79,38 +69,38 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-94.183.158.12-8083-ws"
+    flow: ""
+  - name: "vless-007d3ef7-b3cb-4681-917e-c5edeebdbb6c-1"
     type: vless
     server: 94.183.158.12
     port: 8083
     uuid: 007d3ef7-b3cb-4681-917e-c5edeebdbb6c
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-94.183.158.16-8083-ws"
+    flow: ""
+    path: /
+  - name: "vless-73ef9961-ad5d-4b2f-ad84-60b965b42ac9-1"
     type: vless
     server: 94.183.158.16
     port: 8083
     uuid: 73ef9961-ad5d-4b2f-ad84-60b965b42ac9
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-94.183.158.13-8083-ws"
+    flow: ""
+    path: /
+  - name: "vless-80a8dd9e-9e71-407e-9f31-1f488cea081f-1"
     type: vless
     server: 94.183.158.13
     port: 8083
     uuid: 80a8dd9e-9e71-407e-9f31-1f488cea081f
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-185.243.49.205-8444-tcp-http-speedtest"
+    flow: ""
+    path: /
+  - name: "vless-ac083fa9-df9a-4722-b70d-24c17bef0516-1"
     type: vless
     server: 185.243.49.205
     port: 8444
@@ -118,30 +108,31 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: speedtest.net
-
-  - name: "Vless-94.183.158.11-8083-ws"
+    servername: speedtest.net
+  - name: "vless-1cfbf08c-6e6f-4f2f-9345-c513a8e1b916-1"
     type: vless
     server: 94.183.158.11
     port: 8083
     uuid: 1cfbf08c-6e6f-4f2f-9345-c513a8e1b916
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-94.183.158.10-8083-ws"
+    flow: ""
+    path: /
+  - name: "vless-0ac2cfd0-9ff1-4b82-882b-8c651c464ae9-1"
     type: vless
     server: 94.183.158.10
     port: 8083
     uuid: 0ac2cfd0-9ff1-4b82-882b-8c651c464ae9
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-91.99.182.155-443-tcp-http"
+    flow: ""
+    path: /
+  - name: "vless-04bb5055-bc44-4d21-85c7-42317dd5fd37-1"
     type: vless
     server: 91.99.182.155
     port: 443
@@ -149,10 +140,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-151.232.51.247-2096-tcp-http-speedtest"
+    servername: zula.ir
+  - name: "vless-01860891-2645-420f-a494-a653d960f58d-1"
     type: vless
     server: 151.232.51.247
     port: 2096
@@ -160,10 +152,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: speedtest.net
-
-  - name: "Vless-91.99.179.201-443-tcp-http"
+    servername: speedtest.net
+  - name: "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-2"
     type: vless
     server: 91.99.179.201
     port: 443
@@ -171,10 +164,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-94.182.83.109-8085-tcp"
+    servername: zula.ir
+  - name: "vless-77eb0a34-e172-48fa-8093-6c488664da44-1"
     type: vless
     server: 94.182.83.109
     port: 8085
@@ -182,83 +176,72 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-test.leperfume.ir-443-grpc-reality"
+    flow: ""
+  - name: "vless-0102199d-1264-45b1-8e76-50de2bedcd25-1"
     type: vless
     server: test.leperfume.ir
     port: 443
     uuid: 0102199d-1264-45b1-8e76-50de2bedcd25
     network: grpc
     tls: true
-    grpc-service-name: "" # No serviceName specified in link
-    servername: journalofbigdata.springeropen.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 8eFzByo1ERD94b3SfZDmOoeykxKCXi8OpQhnSof5OQY
-      short-id: 8e
     udp: true
-
-  - name: "Vless-server2.fergalvpnmod.com-25126-grpc-reality"
+    flow: ""
+    servername: journalofbigdata.springeropen.com
+    skip-cert-verify: false
+    grpc-service-name: ""
+    client-fingerprint: chrome
+  - name: "vless-bab6b157-a6e8-4756-a485-dcb4ca476eb9-1"
     type: vless
     server: server2.fergalvpnmod.com
     port: 25126
     uuid: bab6b157-a6e8-4756-a485-dcb4ca476eb9
     network: grpc
     tls: true
-    grpc-service-name: "Telegram:@FergalVpnMod"
-    servername: cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: AtKTc84OxbQltdeNKIgGRpUBmO1nKRCyqV6OuZmGIik
-      short-id: 1e
     udp: true
-
-  - name: "Vless-server2.fergalvpnmod.com-59365-grpc-reality"
+    flow: ""
+    servername: cloudflare.com
+    skip-cert-verify: false
+    grpc-service-name: Telegram:@FergalVpnMod
+    client-fingerprint: chrome
+  - name: "vless-dc1985a0-76ce-486f-b571-4b210aadbc8c-1"
     type: vless
     server: server2.fergalvpnmod.com
     port: 59365
     uuid: dc1985a0-76ce-486f-b571-4b210aadbc8c
     network: grpc
     tls: true
-    grpc-service-name: "Telegram:@FergalVpnMod"
-    servername: cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: AtKTc84OxbQltdeNKIgGRpUBmO1nKRCyqV6OuZmGIik
-      short-id: 1e
     udp: true
-
-  - name: "Vless-server1.fergalvpnmod.com-28338-grpc-reality"
+    flow: ""
+    servername: cloudflare.com
+    skip-cert-verify: false
+    grpc-service-name: Telegram:@FergalVpnMod
+    client-fingerprint: chrome
+  - name: "vless-0b9ee474-19f6-4d7f-9281-96f239e6cebc-1"
     type: vless
     server: server1.fergalvpnmod.com
     port: 28338
     uuid: 0b9ee474-19f6-4d7f-9281-96f239e6cebc
     network: grpc
     tls: true
-    grpc-service-name: "Telegram:@FergalVpnMod"
-    servername: cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: MJwVQS7Qs5U_FYJn_osHZJSQ9ioxZRHC2HDPVwt7nmw
-      short-id: 9ecc4615ce
     udp: true
-
-  - name: "Vless-2.56.125.209-49868-tcp-reality"
+    flow: ""
+    servername: cloudflare.com
+    skip-cert-verify: false
+    grpc-service-name: Telegram:@FergalVpnMod
+    client-fingerprint: chrome
+  - name: "vless-be015dd2-30b4-4fcf-a9ee-080c13ac13fb-1"
     type: vless
     server: 2.56.125.209
     port: 49868
     uuid: be015dd2-30b4-4fcf-a9ee-080c13ac13fb
     network: tcp
     tls: true
-    servername: yahoo.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: joEKL4Itljxodt1SOe1itSMrAH9bk_udpPtXgIjdu10
-      short-id: 6d638e
     udp: true
-
-  # [cite_start]VMESS Proxies from your file [cite: 1, 2, 3]
-  - name: "Vmess-panel1.ipyar.org-42684-tcp"
+    flow: ""
+    servername: yahoo.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vmess-c4bd9eba-8aea-4d5e-a2ee-b5de65ac14e1-1"
     type: vmess
     server: panel1.ipyar.org
     port: 42684
@@ -268,18 +251,17 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-dedicated-development.seotoolsforyou.co.uk-80-ws"
+  - name: "vless-2054405e-70ff-40a2-ae27-16b63d72390a-1"
     type: vless
     server: dedicated-development.seotoolsforyou.co.uk
     port: 80
     uuid: 2054405e-70ff-40a2-ae27-16b63d72390a
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-zzyd6dhd5.pet0er23mh21qq.com-8080-tcp"
+    flow: ""
+    path: /
+  - name: "vless-598a6cea-dfd2-4e97-9415-4571f742bf18-1"
     type: vless
     server: zzyd6dhd5.pet0er23mh21qq.com
     port: 8080
@@ -287,62 +269,60 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-62.60.216.61-8443-tcp-reality"
+    flow: ""
+  - name: "vless-829619da-d88e-4c12-acd5-4172f8145d22-1"
     type: vless
     server: 62.60.216.61
     port: 8443
     uuid: 829619da-d88e-4c12-acd5-4172f8145d22
     network: tcp
     tls: true
-    servername: www.cdnjs.cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: Itg7rBe40jt_FLzZ7gmbuApmnkDDQDxa2E1gZRxLfgk
-      short-id: 947ba02be8959504
     udp: true
-
-  - name: "Vless-fruitful-exchange.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    servername: www.cdnjs.cloudflare.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-9570a079-f83f-4454-88d0-884057c57a35-1"
     type: vless
     server: fruitful-exchange.seotoolsforyou.co.uk
     port: 80
     uuid: 9570a079-f83f-4454-88d0-884057c57a35
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-practical-complaint.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-aadbf0d6-6a32-4473-8a87-5b17db90e035-1"
     type: vless
     server: practical-complaint.seotoolsforyou.co.uk
     port: 80
     uuid: aadbf0d6-6a32-4473-8a87-5b17db90e035
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-deep-radio.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-5139af95-a453-46c6-831a-a532b6b51305-1"
     type: vless
     server: deep-radio.seotoolsforyou.co.uk
     port: 80
     uuid: 5139af95-a453-46c6-831a-a532b6b51305
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-hopeful-appointment.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-491e4f76-42f0-43a7-a987-25072a68d5e4-1"
     type: vless
     server: hopeful-appointment.seotoolsforyou.co.uk
     port: 80
     uuid: 491e4f76-42f0-43a7-a987-25072a68d5e4
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-fbi11.wizard2shop.com-8085-tcp"
+    flow: ""
+    path: /
+  - name: "vless-77eb0a34-e172-48fa-8093-6c488664da44-2"
     type: vless
     server: fbi11.wizard2shop.com
     port: 8085
@@ -350,23 +330,21 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-de.pixvpn.app-8443-grpc-reality"
+    flow: ""
+  - name: "vless-d6aa457d-8214-40d0-b5fe-3f7b551cb1c6-1"
     type: vless
     server: de.pixvpn.app
     port: 8443
     uuid: d6aa457d-8214-40d0-b5fe-3f7b551cb1c6
     network: grpc
     tls: true
-    grpc-service-name: grpc-jd
-    servername: jd.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-      short-id: c13a37127db7ebd0
     udp: true
-
-  - name: "Vless-91.99.178.171-443-tcp-http"
+    flow: ""
+    servername: jd.com
+    skip-cert-verify: false
+    grpc-service-name: grpc-jd
+    client-fingerprint: chrome
+  - name: "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-3"
     type: vless
     server: 91.99.178.171
     port: 443
@@ -374,10 +352,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-209.38.244.147-80-tcp-http"
+    servername: zula.ir
+  - name: "vless-869e096b-3cc5-4336-a618-f8acc6d421d1-1"
     type: vless
     server: 209.38.244.147
     port: 80
@@ -385,20 +364,21 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: nobitex.ir
-
-  - name: "Vless-gleeful-error.seotoolsforyou.co.uk-80-ws"
+    servername: nobitex.ir
+  - name: "vless-9a37131b-2b68-427f-a2fc-cc7381c2d575-1"
     type: vless
     server: gleeful-error.seotoolsforyou.co.uk
     port: 80
     uuid: 9a37131b-2b68-427f-a2fc-cc7381c2d575
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-91.99.151.110-443-tcp-http"
+    flow: ""
+    path: /
+  - name: "vless-14d7b46f-66f7-4778-898a-55f8b7c059bb-1"
     type: vless
     server: 91.99.151.110
     port: 443
@@ -406,24 +386,23 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-vpn_proxy_channel_vpn_proxy_channel.hohod.ir-443-tcp-reality"
+    servername: zula.ir
+  - name: "vless-1584806e-f63d-4f9b-a0b3-abe64b35a09c-1"
     type: vless
     server: vpn_proxy_channel_vpn_proxy_channel.hohod.ir
     port: 443
     uuid: 1584806e-f63d-4f9b-a0b3-abe64b35a09c
     network: tcp
     tls: true
-    servername: vpn_proxy_channel_vpn_proxy_channel.hohod.ir
-    fingerprint: chrome
-    reality-opts:
-      public-key: GpgfsA-U8Y8M3LRcTfsaBViDtp2VlN5riSLLZ2kxEiQ
-      short-id: 974a74bf
     udp: true
-
-  - name: "Vless-300232332.webnama.com.tr.privatepack.ir-1517-tcp-http"
+    flow: ""
+    servername: vpn_proxy_channel_vpn_proxy_channel.hohod.ir
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-88f9173d-09b1-463a-99c8-e39852693cba-1"
     type: vless
     server: 300232332.webnama.com.tr.privatepack.ir
     port: 1517
@@ -431,30 +410,31 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: varzesh3.com
-
-  - name: "Vless-obedient-detail.seotoolsforyou.co.uk-80-ws"
+    servername: varzesh3.com
+  - name: "vless-1dd49fb8-6570-4a2a-a236-f410b63159cf-1"
     type: vless
     server: obedient-detail.seotoolsforyou.co.uk
     port: 80
     uuid: 1dd49fb8-6570-4a2a-a236-f410b63159cf
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-confident-club.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-9926ee97-4398-48dd-b263-2863c2f5c41-1"
     type: vless
     server: confident-club.seotoolsforyou.co.uk
     port: 80
-    uuid: 9926ee97-4398-48dd-b263-2863c62f5c41
+    uuid: 9926ee97-4398-48dd-b263-2863c2f5c41
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vmess-panel3.ipyar.org-32017-tcp"
+    flow: ""
+    path: /
+  - name: "vmess-c0ccdeb9-784c-4d67-b904-20dcaac9902a-1"
     type: vmess
     server: panel3.ipyar.org
     port: 32017
@@ -464,81 +444,78 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-104.24.135.129-2087-ws-tls"
+  - name: "vless-7b5ea382-cbc6-4169-9f88-8200ca80c31a-1"
     type: vless
     server: 104.24.135.129
     port: 2087
     uuid: 7b5ea382-cbc6-4169-9f88-8200ca80c31a
     network: ws
     tls: true
-    servername: fandouhuayuan.pages.dev
-    ws-path: "/?ed=2560"
     udp: true
-
-  - name: "Vless-famous-experience.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    servername: fandouhuayuan.pages.dev
+    skip-cert-verify: false
+    path: /?ed=2560
+  - name: "vless-7f09e7b4-4680-4653-a2da-307d110b6961-1"
     type: vless
     server: famous-experience.seotoolsforyou.co.uk
     port: 80
     uuid: 7f09e7b4-4680-4653-a2da-307d110b6961
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-Telegram-TokaVpn-@91.99.184.35-3060-grpc-reality"
+    flow: ""
+    path: /
+  - name: "vless-Telegram-TokaVpn-TokaVpn-1"
     type: vless
     server: 91.99.184.35
     port: 3060
     uuid: Telegram-TokaVpn-TokaVpn
     network: grpc
     tls: true
-    grpc-service-name: 23145vless
-    servername: journalofbigdata.springeropen.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: mruN_C8EQxa11ez_NVmtFqf8oLEatFn6OIVtnJPZ_TI
-      short-id: 87
     udp: true
-
-  - name: "Vless-23.227.38.32-2053-ws-tls"
+    flow: ""
+    servername: journalofbigdata.springeropen.com
+    skip-cert-verify: false
+    grpc-service-name: 23145vless
+    client-fingerprint: chrome
+  - name: "vless-39f9a4f4-f2c6-4aea-b6ce-0c6a3e410051-1"
     type: vless
     server: 23.227.38.32
     port: 2053
     uuid: 39f9a4f4-f2c6-4aea-b6ce-0c6a3e410051
     network: ws
     tls: true
-    servername: mojito.djjw8292n.ir
-    ws-path: "/homepage?ed=2560"
     udp: true
-
-  - name: "Vless-it.panelmarzban.com-3037-tcp-reality"
+    flow: ""
+    servername: mojito.djjw8292n.ir
+    skip-cert-verify: false
+    path: /homepage?ed=2560
+  - name: "vless-a0a3e34d-87e4-4ff3-b04a-875c85325d62-1"
     type: vless
     server: it.panelmarzban.com
     port: 3037
     uuid: a0a3e34d-87e4-4ff3-b04a-875c85325d62
     network: tcp
     tls: true
-    servername: refersion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ""
     udp: true
-
-  - name: "Vless-kafshu.ir-8080-ws"
+    flow: ""
+    servername: refersion.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-00347fa5-5b04-420a-844e-6689ff27abff-1"
     type: vless
     server: kafshu.ir
     port: 8080
     uuid: 00347fa5-5b04-420a-844e-6689ff27abff
     network: ws
     tls: false
-    ws-path: "/@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet"
-    ws-headers:
-      Host: inFo.laLezaRanegomaNandish.sNap.ir.snapfoodsuppoRt.onlIne.
     udp: true
-
-  - name: "Vless-em-2.webnama.com.tr-3799-tcp-http"
+    flow: ""
+    path: /@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet--@Maznet
+    headers:
+      Host: inFo.laLezaRanegomaNandish.sNap.ir.snapfoodsuppoRt.onlIne.
+  - name: "vless-05dae90c-872c-4d10-bd13-09523d53c27f-1"
     type: vless
     server: em-2.webnama.com.tr
     port: 3799
@@ -546,143 +523,136 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: varzesh3.com
-
-  - name: "Vless-Telegram--TokaVpn--TokaVpn@91.99.184.35-3070-grpc-reality"
+    servername: varzesh3.com
+  - name: "vless-Telegram--TokaVpn--TokaVpn-1"
     type: vless
     server: 91.99.184.35
     port: 3070
     uuid: Telegram--TokaVpn--TokaVpn
     network: grpc
     tls: true
-    grpc-service-name: 23145vless
-    servername: journalofbigdata.springeropen.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: Sq2cfOPGoEQVuMZxcenxBRD8Y6oslb_7z_pfsJ2BPgg
-      short-id: e782bc
     udp: true
-
-  - name: "Vless-charming-process.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    servername: journalofbigdata.springeropen.com
+    skip-cert-verify: false
+    grpc-service-name: 23145vless
+    client-fingerprint: chrome
+  - name: "vless-43791e7f-8e02-4189-9533-4f842bcacd79-1"
     type: vless
     server: charming-process.seotoolsforyou.co.uk
     port: 80
     uuid: 43791e7f-8e02-4189-9533-4f842bcacd79
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-fierce-data.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-c313c27c-97ff-45ed-ab5c-64641af5debc-1"
     type: vless
     server: fierce-data.seotoolsforyou.co.uk
     port: 80
     uuid: c313c27c-97ff-45ed-ab5c-64641af5debc
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-informed-location.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-5c929ec5-5b1e-447a-950c-354c5d1ba1de-1"
     type: vless
     server: informed-location.seotoolsforyou.co.uk
     port: 80
     uuid: 5c929ec5-5b1e-447a-950c-354c5d1ba1de
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-www.speedtest.net-2095-httpupgrade"
+    flow: ""
+    path: /
+  - name: "vless-1a8539db-bb26-4ea6-82b9-68b29adfdbcd-1"
     type: vless
     server: www.speedtest.net
     port: 2095
     uuid: 1a8539db-bb26-4ea6-82b9-68b29adfdbcd
-    network: httpupgrade
+    network: httpUpgrade
     tls: false
-    http-upgrade-path: "/@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02"
-    http-upgrade-headers:
-      Host: Fi1.vipmehspd.ir.
     udp: true
-
-  - name: "Vless-pj.bestirstorei.top-62000-grpc-reality"
+    flow: ""
+    path: /@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02@FREE_VPN02
+    headers:
+      Host: Fi1.vipmehspd.ir.
+  - name: "vless-14FuseVPN----------ProxyPJ-1"
     type: vless
     server: pj.bestirstorei.top
     port: 62000
     uuid: 14FuseVPN----------ProxyPJ
     network: grpc
     tls: true
-    grpc-service-name: 32135vless
-    servername: journalofbigdata.springeropen.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: BiugAGWpcH4kTwIsUDeRh83FPxapxYfLuh4Gpi1Qb3s
-      short-id: 116440bf
     udp: true
-
-  - name: "Vless-194.182.79.64-14073-grpc-reality"
+    flow: ""
+    servername: journalofbigdata.springeropen.com
+    skip-cert-verify: false
+    grpc-service-name: 32135vless
+    client-fingerprint: chrome
+  - name: "vless-8b39daa8-01e0-4054-8271-0630cd517f10-1"
     type: vless
     server: 194.182.79.64
     port: 14073
     uuid: 8b39daa8-01e0-4054-8271-0630cd517f10
     network: grpc
     tls: true
-    grpc-service-name: "Join-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON"
-    servername: sourceforge.net
-    fingerprint: chrome
-    reality-opts:
-      public-key: k8x94p4pxXmLjNWkgLRsdi_raiVGIX0EPGyP70CyBVs
-      short-id: f11c49ff
     udp: true
-
-  - name: "Vless-bewildered-poem.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    servername: sourceforge.net
+    skip-cert-verify: false
+    grpc-service-name: Join-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON
+    client-fingerprint: chrome
+  - name: "vless-0f4865d9-9405-4703-a282-46e326e6d9e7-1"
     type: vless
     server: bewildered-poem.seotoolsforyou.co.uk
     port: 80
     uuid: 0f4865d9-9405-4703-a282-46e326e6d9e7
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-grumpy-building.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-935c990a-9bcc-484b-86a2-2a402f9ad1d4-1"
     type: vless
     server: grumpy-building.seotoolsforyou.co.uk
     port: 80
     uuid: 935c990a-9bcc-484b-86a2-2a402f9ad1d4
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-172.66.40.99-8080-ws"
+    flow: ""
+    path: /
+  - name: "vless-11c89ba7-b173-4372-9976-c9e8b97557aa-1"
     type: vless
     server: 172.66.40.99
     port: 8080
     uuid: 11c89ba7-b173-4372-9976-c9e8b97557aa
     network: ws
     tls: false
-    ws-path: "/telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420?ed=80"
-    ws-headers:
-      Host: Kk78.4qwertyuiopasdfGhjklzxcvbnmmnbvccjzlkjhgfdsapoiuytre010751.Academigroup.iR.
     udp: true
-
-  - name: "Vless-finreal.weketshop.ir-2087-tcp-reality"
+    flow: ""
+    path: /telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420?ed=80
+    headers:
+      Host: Kk78.4qwertyuiopasdfGhjklzxcvbnmmnbvccjzlkjhgfdsapoiuytre010751.Academigroup.iR.
+  - name: "vless-802e1dd7-61ac-4473-9dd6-d77f97fdf816-1"
     type: vless
     server: finreal.weketshop.ir
     port: 2087
     uuid: 802e1dd7-61ac-4473-9dd6-d77f97fdf816
     network: tcp
     tls: true
-    servername: www.sb24.ir
-    fingerprint: chrome
-    reality-opts:
-      public-key: YWfCdTnr4FAOMYTY2dLrMtQUokyxOGpPhYEEszPj20E
-      short-id: f830f6
     udp: true
-
-  - name: "Vless-sn434.nikatel.uno-8080-tcp-http"
+    flow: ""
+    servername: www.sb24.ir
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-8b262468-6e0d-46bf-b54f-32e6fae5af8b-1"
     type: vless
     server: sn434.nikatel.uno
     port: 8080
@@ -690,40 +660,41 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: avidmehregan.com
-
-  - name: "Vless-brainy-party.seotoolsforyou.co.uk-80-ws"
+    servername: avidmehregan.com
+  - name: "vless-34797f17-09a1-400c-9f4b-275718d62a0f-1"
     type: vless
     server: brainy-party.seotoolsforyou.co.uk
     port: 80
     uuid: 34797f17-09a1-400c-9f4b-275718d62a0f
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-obedient-menu.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-561623c8-4983-44d3-a6ef-92b803a74ee8-1"
     type: vless
     server: obedient-menu.seotoolsforyou.co.uk
     port: 80
     uuid: 561623c8-4983-44d3-a6ef-92b803a74ee8
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-wonderful-degree.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-6192c1d9-5ae1-40ba-9cbb-cfacc2f8533c-1"
     type: vless
     server: wonderful-degree.seotoolsforyou.co.uk
     port: 80
     uuid: 6192c1d9-5ae1-40ba-9cbb-cfacc2f8533c
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-dl1.pokerad.sbs-80-tcp"
+    flow: ""
+    path: /
+  - name: "vless-88d5b659-3c15-47a6-ae3c-b79ed49ef9f3-2"
     type: vless
     server: dl1.pokerad.sbs
     port: 80
@@ -731,232 +702,220 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-beloved-failure.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+  - name: "vless-3cad733b-3526-476b-adf5-b7cbdd33dc6c-1"
     type: vless
     server: beloved-failure.seotoolsforyou.co.uk
     port: 80
     uuid: 3cad733b-3526-476b-adf5-b7cbdd33dc6c
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-real-all3-2.sdcards.ir-8501-tcp-reality"
+    flow: ""
+    path: /
+  - name: "vless-ac37eb9c-0db8-4056-8f61-e8db4e2da35e-1"
     type: vless
     server: real-all3-2.sdcards.ir
     port: 8501
     uuid: ac37eb9c-0db8-4056-8f61-e8db4e2da35e
     network: tcp
     tls: true
-    servername: tgju.org
-    fingerprint: chrome
-    reality-opts:
-      public-key: OJ0wA5wp55uZdD16dutlTZvx1x-rbMMXmiO9D_MMCHI
-      short-id: e701a013553059ba
     udp: true
-
-  - name: "Vless-wild-bird.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    servername: tgju.org
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-1d0dfde1-9f18-4557-9af8-4f3124ee5dcd-1"
     type: vless
     server: wild-bird.seotoolsforyou.co.uk
     port: 80
     uuid: 1d0dfde1-9f18-4557-9af8-4f3124ee5dcd
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-sweet-combination.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-05020a61-3c0c-4ead-b256-7851ff905a75-1"
     type: vless
     server: sweet-combination.seotoolsforyou.co.uk
     port: 80
     uuid: 05020a61-3c0c-4ead-b256-7851ff905a75
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-dl.dataserverplus.top-2082-ws"
+    flow: ""
+    path: /
+  - name: "vless-27d32caf-84d0-45b1-aedf-cf45b4d25ec9-1"
     type: vless
     server: dl.dataserverplus.top
     port: 2082
     uuid: 27d32caf-84d0-45b1-aedf-cf45b4d25ec9
     network: ws
     tls: false
-    ws-path: "/"
-    ws-headers:
-      Host: refersion.com
     udp: true
-
-  - name: "Vless-104.17.147.22-8080-ws"
+    flow: ""
+    path: /
+    headers:
+      Host: refersion.com
+  - name: "vless-85f00847-6c0b-41a3-882d-9bbee4ca453d-1"
     type: vless
     server: 104.17.147.22
     port: 8080
     uuid: 85f00847-6c0b-41a3-882d-9bbee4ca453d
     network: ws
     tls: false
-    ws-path: "/@HqV2rayNG?ed=2048"
-    ws-headers:
-      Host: s2p2e45.speedtest.web.s2pp.ir.
     udp: true
-
-  - name: "Vless-elegant-corporation.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /@HqV2rayNG?ed=2048
+    headers:
+      Host: s2p2e45.speedtest.web.s2pp.ir.
+  - name: "vless-d03d8815-a06f-408f-a62f-6c84869b96a9-1"
     type: vless
     server: elegant-corporation.seotoolsforyou.co.uk
     port: 80
     uuid: d03d8815-a06f-408f-a62f-6c84869b96a9
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-172.66.40.99-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-0b58d103-e198-4a36-aa79-84a4aca8188b-1"
     type: vless
     server: 172.66.40.99
     port: 80
     uuid: 0b58d103-e198-4a36-aa79-84a4aca8188b
     network: ws
     tls: false
-    ws-path: "/telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE?ed=80"
-    ws-headers:
-      Host: kk213.motorphrotan.ir.
     udp: true
-
-  - name: "Vless-90.156.254.164-40432-ws"
+    flow: ""
+    path: /telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE,telegram-CONFiGLiNE?ed=80
+    headers:
+      Host: kk213.motorphrotan.ir.
+  - name: "vless-5ae45629-3db6-4c6b-9b9e-346c3e1a798d-1"
     type: vless
     server: 90.156.254.164
     port: 40432
     uuid: 5ae45629-3db6-4c6b-9b9e-346c3e1a798d
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-45.8.146.207-80-ws"
+    flow: ""
+    path: /
+  - name: "vless-a6c4db3e-7785-429e-8bc5-9eaf7b1a79b1-1"
     type: vless
     server: 45.8.146.207
     port: 80
     uuid: a6c4db3e-7785-429e-8bc5-9eaf7b1a79b1
     network: ws
     tls: false
-    ws-path: "/vless/"
     udp: true
-
-  - name: "Vless-185.236.232.136-1001-tcp-reality"
+    flow: ""
+    path: /vless/
+  - name: "vless-c7c922da-ab54-433c-8046-1f9bf9d95c23-1"
     type: vless
     server: 185.236.232.136
     port: 1001
     uuid: c7c922da-ab54-433c-8046-1f9bf9d95c23
     network: tcp
     tls: true
-    servername: telewebion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 8Gunn8hjWbit5yLtTPcvLph0u2ovHLsGoXX4IJS1EQ0
-      short-id: 5fab0deb
     udp: true
-
-  - name: "Vless-modern-promise.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    servername: telewebion.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-bd9b0366-e5dd-4665-bd5b-9896bc7327ae-1"
     type: vless
     server: modern-promise.seotoolsforyou.co.uk
     port: 80
     uuid: bd9b0366-e5dd-4665-bd5b-9896bc7327ae
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-amazon-4.cristiano.name.ng-443-tcp-vision"
+    flow: ""
+    path: /
+  - name: "vless-4c26ebc3-7784-46d8-b52a-7b0ccae6f4b4-1"
     type: vless
     server: amazon-4.cristiano.name.ng
     port: 443
     uuid: 4c26ebc3-7784-46d8-b52a-7b0ccae6f4b4
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: store.steampowered.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: TGlPtfVzGIVpMauPRMGJj2Uu6GUiCpu5ZizIIjw-wx4
-      short-id: f5
-    udp: true
-
-  - name: "Vless-65.109.191.254-80-ws"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-c6ac1649-5dc5-4d45-8977-9805d639d30b-1"
     type: vless
     server: 65.109.191.254
     port: 80
     uuid: c6ac1649-5dc5-4d45-8977-9805d639d30b
     network: ws
     tls: false
-    ws-path: "/test=true"
-    ws-headers:
-      Host: d1.hetzner.com
     udp: true
-
-  - name: "Vless-start.adsplustnet.com-80-ws"
+    flow: ""
+    path: /test=true
+    headers:
+      Host: d1.hetzner.com
+  - name: "vless-c6ac1649-5dc5-4d45-8977-9805d639d30b-2"
     type: vless
     server: start.adsplustnet.com
     port: 80
     uuid: c6ac1649-5dc5-4d45-8977-9805d639d30b
     network: ws
     tls: false
-    ws-path: "/test=true"
-    ws-headers:
-      Host: d1.hetzner.com
     udp: true
-
-  - name: "Vless-5.181.3.169-2040-tcp-vision"
+    flow: ""
+    path: /test=true
+    headers:
+      Host: d1.hetzner.com
+  - name: "vless-320bc89e-2a48-42c4-b7b2-0f982342a9fe-1"
     type: vless
     server: 5.181.3.169
     port: 2040
     uuid: 320bc89e-2a48-42c4-b7b2-0f982342a9fe
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: tradingview.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: hOt5bCyO5AwK6aGZKIOBR0U-wPgu_13HjvTMAfBgAT0
-      short-id: ""
-    udp: true
-
-  - name: "Vless-176.120.72.63-38339-tcp-reality"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-481c5606-b586-44d7-bc2e-d8ef30d67f62-1"
     type: vless
     server: 176.120.72.63
     port: 38339
     uuid: 481c5606-b586-44d7-bc2e-d8ef30d67f62
     network: tcp
     tls: true
-    servername: dl.google.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: o0MFuznHh_Wztg0FTAMhFXm3hjAqOJAJIIVNn-_A9WA
-      short-id: e16883e511
     udp: true
-
-  - name: "Vless-104.21.112.1-8080-ws"
+    flow: ""
+    servername: dl.google.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-17034eef-9472-45cc-bca5-a71f90e36244-1"
     type: vless
     server: 104.21.112.1
     port: 8080
     uuid: 17034eef-9472-45cc-bca5-a71f90e36244
     network: ws
     tls: false
-    ws-path: "/@unlimiteddev----@unlimiteddev-----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimitedev----@vmessorg----@unlimiteddev----@unlimiteddev?ed=2480"
-    ws-headers:
-      Host: join-to-unlimiteddev.sabadyt.ir
     udp: true
-
-  - name: "Vless-moody-lock.seotoolsforyou.co.uk-80-ws"
+    flow: ""
+    path: /@unlimiteddev----@unlimiteddev-----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimitedev----@vmessorg----@unlimiteddev----@unlimiteddev?ed=2480
+    headers:
+      Host: join-to-unlimiteddev.sabadyt.ir
+  - name: "vless-82cdcdf0-e772-4d9a-b0a2-d6b605572ac1-1"
     type: vless
     server: moody-lock.seotoolsforyou.co.uk
     port: 80
     uuid: 82cdcdf0-e772-4d9a-b0a2-d6b605572ac1
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-5.223.53.13-1743-tcp-http"
+    flow: ""
+    path: /
+  - name: "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-1"
     type: vless
     server: 5.223.53.13
     port: 1743
@@ -964,22 +923,24 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-edt-f5k.pages.dev-443-ws-tls"
+    servername: zula.ir
+  - name: "vless-98371613-b71d-4185-9e8a-eb7ba73373b4-1"
     type: vless
     server: edt-f5k.pages.dev
     port: 443
     uuid: 98371613-b71d-4185-9e8a-eb7ba73373b4
     network: ws
     tls: true
-    servername: edt-f5k.pages.dev
-    fingerprint: chrome
-    ws-path: "/?ed=2560"
     udp: true
-
-  - name: "Vless-5.223.51.186-80-tcp-http"
+    flow: ""
+    servername: edt-f5k.pages.dev
+    skip-cert-verify: false
+    path: /?ed=2560
+    client-fingerprint: chrome
+  - name: "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-2"
     type: vless
     server: 5.223.51.186
     port: 80
@@ -987,10 +948,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-5.223.45.64-80-tcp-http"
+    servername: zula.ir
+  - name: "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-3"
     type: vless
     server: 5.223.45.64
     port: 80
@@ -998,20 +960,21 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-94.183.158.9-8083-ws"
+    servername: zula.ir
+  - name: "vless-0ac2cfd0-9ff1-4b82-882b-8c651c464ae9-2"
     type: vless
     server: 94.183.158.9
     port: 8083
     uuid: 0ac2cfd0-9ff1-4b82-882b-8c651c464ae9
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-5.223.68.198-80-tcp-http"
+    flow: ""
+    path: /
+  - name: "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-4"
     type: vless
     server: 5.223.68.198
     port: 80
@@ -1019,10 +982,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vmess-62.60.176.240-10410-tcp-http"
+    servername: zula.ir
+  - name: "vmess-f107a60e-af79-44c9-bc7e-b5707f3208e1-1"
     type: vmess
     server: 62.60.176.240
     port: 10410
@@ -1031,23 +995,23 @@ proxies:
     cipher: auto
     network: tcp
     tls: false
-    http-headers:
-      Host: zula.ir
     udp: true
-
-  - name: "Vless-192.0.54.219-8080-ws"
+    http-opts:
+      headers:
+        Host: zula.ir
+  - name: "vless-17034eef-9472-45cc-bca5-a71f90e36244-2"
     type: vless
     server: 192.0.54.219
     port: 8080
     uuid: 17034eef-9472-45cc-bca5-a71f90e36244
     network: ws
     tls: false
-    ws-path: "/@unlimiteddev----@unlimiteddev-----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimitedev----@vmessorg----@unlimiteddev----@unlimiteddev?ed=2480"
-    ws-headers:
-      Host: join-to-unlimiteddev.sabadyt.ir
     udp: true
-
-  - name: "Vless-13.115.231.128-48603-tcp"
+    flow: ""
+    path: /@unlimiteddev----@unlimiteddev-----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimiteddev----@unlimitedev----@vmessorg----@unlimiteddev----@unlimiteddev?ed=2480
+    headers:
+      Host: join-to-unlimiteddev.sabadyt.ir
+  - name: "vless-a4a5aedb-0509-4764-b46f-ede33469b3cf-1"
     type: vless
     server: 13.115.231.128
     port: 48603
@@ -1055,20 +1019,21 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-104.21.36.57-443-ws-tls"
+    flow: ""
+  - name: "vless-0cc731b9-0375-4590-aeaa-7e2611a149fe-1"
     type: vless
     server: 104.21.36.57
     port: 443
     uuid: 0cc731b9-0375-4590-aeaa-7e2611a149fe
     network: ws
     tls: true
-    servername: black.fullmargintraders.com
-    fingerprint: chrome
-    ws-path: "/wsv/0cc731b9-0375-4590-aeaa-7e2611a149fe"
     udp: true
-
-  - name: "Vless-46.8.227.178-81-tcp"
+    flow: ""
+    servername: black.fullmargintraders.com
+    skip-cert-verify: false
+    path: /wsv/0cc731b9-0375-4590-aeaa-7e2611a149fe
+    client-fingerprint: chrome
+  - name: "vless-9ef68890-9a43-4f28-b118-1921dbdd6b1e-1"
     type: vless
     server: 46.8.227.178
     port: 81
@@ -1076,88 +1041,84 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-62.3.12.185-443-ws-tls"
+    flow: ""
+  - name: "vless-75fde681-ec64-4654-86fa-30732e8e179c-1"
     type: vless
     server: 62.3.12.185
     port: 443
     uuid: 75fde681-ec64-4654-86fa-30732e8e179c
     network: ws
     tls: true
+    udp: true
+    flow: ""
     servername: NGINX-Z.pages.DEV
-    fingerprint: chrome
+    skip-cert-verify: false
+    path: /assets?ed=2560
     alpn:
       - h3
-    ws-path: "/assets?ed=2560"
-    udp: true
-
-  - name: "Vless-light-presence.oneeat.co-80-ws"
+    client-fingerprint: chrome
+  - name: "vless-7e74ff43-3a90-48b3-8372-7d92a045c2d4-1"
     type: vless
     server: light-presence.oneeat.co
     port: 80
     uuid: 7e74ff43-3a90-48b3-8372-7d92a045c2d4
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-51.38.98.69-443-tcp-reality"
+    flow: ""
+    path: /
+  - name: "vless-6b690c69-7301-44c4-81e8-9d5d7e8263a6-1"
     type: vless
     server: 51.38.98.69
     port: 443
     uuid: 6b690c69-7301-44c4-81e8-9d5d7e8263a6
     network: tcp
     tls: true
-    servername: yahoo.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: -3sZE2OPDhkNtxufF2YqPmoa5hqVna5zalfJfrUiMm0
-      short-id: ecd6615548c2bddb
     udp: true
-
-  - name: "Vless-sourceforge.net-443-ws-tls"
+    flow: ""
+    servername: yahoo.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-7a80a8d9-92f9-4f0a-8352-9005a8215ab8-1"
     type: vless
     server: sourceforge.net
     port: 443
     uuid: 7a80a8d9-92f9-4f0a-8352-9005a8215ab8
     network: ws
     tls: true
-    servername: rAyAn-09.LeIlA.DpDnS.OrG
-    fingerprint: chrome
-    ws-path: "/@warp_city"
-    ws-headers:
-      Host: rayan-09.leila.dpdns.org
     udp: true
-
-  - name: "Vless-ipw.gfdv54cvghhgfhgj-njhgj64.info-443-ws-tls"
+    flow: ""
+    servername: rAyAn-09.LeIlA.DpDnS.OrG
+    skip-cert-verify: false
+    path: /@warp_city
+    client-fingerprint: chrome
+  - name: "vless-337bf72e-bb79-4d5f-be3f-7822eb77100c-1"
     type: vless
     server: ipw.gfdv54cvghhgfhgj-njhgj64.info
     port: 443
     uuid: 337bf72e-bb79-4d5f-be3f-7822eb77100c
     network: ws
     tls: true
-    servername: NpFzCqA01g.V2pLuSmLm.OrG
-    ws-path: "/"
-    ws-headers:
-      Host: NpFzCqA01g.V2pLuSmLm.OrG
     udp: true
-
-  - name: "Vless-194.182.79.182-29706-grpc-reality"
+    flow: ""
+    servername: NpFzCqA01g.V2pLuSmLm.OrG
+    skip-cert-verify: false
+    path: /
+    client-fingerprint: chrome
+  - name: "vless-c8da575a-b3ab-4949-985c-d151335b5301-1"
     type: vless
     server: 194.182.79.182
     port: 29706
     uuid: c8da575a-b3ab-4949-985c-d151335b5301
     network: grpc
     tls: true
-    grpc-service-name: "Join-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON"
-    servername: sourceforge.net
-    fingerprint: chrome
-    reality-opts:
-      public-key: 9EHYRTmUgCJodNs5L4wTxoxniVtvsXFonfQ1H72LqRQ
-      short-id: ef8dfc4f801d89
     udp: true
-
-  - name: "Vless-45.129.36.85-3500-tcp-http"
+    flow: ""
+    servername: sourceforge.net
+    skip-cert-verify: false
+    grpc-service-name: Join-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON
+    client-fingerprint: chrome
+  - name: "vless-6f284683-f117-49a9-8091-a1099b4ccdf2-1"
     type: vless
     server: 45.129.36.85
     port: 3500
@@ -1165,51 +1126,48 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: Atinad.ir
-
-  - name: "Vless-141.101.121.224-8080-ws"
+    servername: Atinad.ir
+  - name: "vless-d342d11e-d424-4583-b36e-524ab1f0afa4-1"
     type: vless
     server: 141.101.121.224
     port: 8080
     uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
     network: ws
     tls: false
-    ws-path: "/?ed=2048"
-    ws-headers:
-      Host: 1750293123492.china.baidu.bilibili.china.aeko.cn
     udp: true
-
-  - name: "Vless-194.182.79.70-31516-grpc-reality"
+    flow: ""
+    path: /?ed=2048
+    headers:
+      Host: 1750293123492.china.baidu.bilibili.china.aeko.cn
+  - name: "vless-6fc3195e-e1ad-4e1b-8552-ac88e2780364-1"
     type: vless
     server: 194.182.79.70
     port: 31516
     uuid: 6fc3195e-e1ad-4e1b-8552-ac88e2780364
     network: grpc
     tls: true
-    grpc-service-name: "Join-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON"
-    servername: sourceforge.net
-    fingerprint: chrome
-    reality-opts:
-      public-key: tUuTbwQPiJSQXexLrOXTo6DsoOsXw_TTRSormnX8emk
-      short-id: 5f3c96
     udp: true
-
-  - name: "Vless-85.208.110.203-443-tcp-reality"
+    flow: ""
+    servername: sourceforge.net
+    skip-cert-verify: false
+    grpc-service-name: Join-ZEDMODEON-ZEDMODEON-bia-ZEDMODEON-ZEDMODEON
+    client-fingerprint: chrome
+  - name: "vless-a351b0a4-6c4e-4456-8f8e-45db3fe0bcb2-1"
     type: vless
     server: 85.208.110.203
     port: 443
     uuid: a351b0a4-6c4e-4456-8f8e-45db3fe0bcb2
     network: tcp
     tls: true
-    servername: www.samsung.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: SUP3nblQDtku381iK83Nl0YXGXJw15sZYH-ilRRssAM
-      short-id: db7491a2
     udp: true
-
-  - name: "Vless-91.99.113.54-443-tcp-http"
+    flow: ""
+    servername: www.samsung.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-6bf993b8-328f-4d88-9c8e-71057b825d78-1"
     type: vless
     server: 91.99.113.54
     port: 443
@@ -1217,10 +1175,11 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-holkanas.atroart.ir-52928-tcp"
+    servername: zula.ir
+  - name: "vless-dc58f214-4227-4f58-8090-cbcedf1adeba-1"
     type: vless
     server: holkanas.atroart.ir
     port: 52928
@@ -1228,86 +1187,80 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-185.33.24.229-28495-tcp-reality"
+    flow: ""
+  - name: "vless-7e296434-2d17-48d3-928d-19eaa34aecb1-1"
     type: vless
     server: 185.33.24.229
     port: 28495
     uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
     network: tcp
     tls: true
-    servername: dl.google.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
-      short-id: 0ecc2c1392
     udp: true
-
-  - name: "Vless-51.38.207.189-2082-ws"
+    flow: ""
+    servername: dl.google.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-17953b21-65ee-4b59-bf8f-6ebe90601e85-1"
     type: vless
     server: 51.38.207.189
     port: 2082
     uuid: 17953b21-65ee-4b59-bf8f-6ebe90601e85
     network: ws
     tls: false
-    ws-path: "/"
-    ws-headers:
-      Host: refersion.com
     udp: true
-
-  - name: "Vless-5.75.197.120-2025-grpc-reality-pouriacheat"
+    flow: ""
+    path: /
+    headers:
+      Host: refersion.com
+  - name: "vless-54b4c039-7be6-448f-b704-820251b079db-1"
     type: vless
     server: 5.75.197.120
     port: 2025
     uuid: 54b4c039-7be6-448f-b704-820251b079db
     network: grpc
     tls: true
-    grpc-service-name: "Telegram : @PouRia_Cheat"
-    servername: www.cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: AUNIYov4R2TvNmC0cF0NiKWYGqzikosOu4g2wcCALlw
-      short-id: 8d9c20be72b4
     udp: true
-
-  - name: "Vless-141.101.121.243-8080-ws"
+    flow: ""
+    servername: www.cloudflare.com
+    skip-cert-verify: false
+    grpc-service-name: Telegram : @PouRia_Cheat
+    client-fingerprint: chrome
+  - name: "vless-d342d11e-d424-4583-b36e-524ab1f0afa4-2"
     type: vless
     server: 141.101.121.243
     port: 8080
     uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
     network: ws
     tls: false
-    ws-path: "" # Path is empty, setting to default
-    ws-headers:
-      Host: 1750293123492.china.baidu.bilibili.china.aeko.cn
     udp: true
-
-  - name: "Vless-pouriacheat.fergalvpnmod.com-2025-grpc-reality-pouriacheat"
+    flow: ""
+    path: ""
+    headers:
+      Host: 1750293123492.china.baidu.bilibili.china.aeko.cn
+  - name: "vless-54b4c039-7be6-448f-b704-820251b079db-2"
     type: vless
     server: pouriacheat.fergalvpnmod.com
     port: 2025
     uuid: 54b4c039-7be6-448f-b704-820251b079db
     network: grpc
     tls: true
-    grpc-service-name: "Telegram : @PouRia_Cheat"
-    servername: www.cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: AUNIYov4R2TvNmC0cF0NiKWYGqzikosOu4g2wcCALlw
-      short-id: 8d9c20be72b4
     udp: true
-
-  - name: "Vless-small-meal.oneeat.co-80-ws"
+    flow: ""
+    servername: www.cloudflare.com
+    skip-cert-verify: false
+    grpc-service-name: Telegram : @PouRia_Cheat
+    client-fingerprint: chrome
+  - name: "vless-d1e44075-8c92-4698-9db0-e71d7015b757-1"
     type: vless
     server: small-meal.oneeat.co
     port: 80
     uuid: d1e44075-8c92-4698-9db0-e71d7015b757
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-178.162.244.224-443-tcp-http"
+    flow: ""
+    path: /
+  - name: "vless-83a85a41-fb7f-43e0-9c15-d199509a9624-1"
     type: vless
     server: 178.162.244.224
     port: 443
@@ -1315,59 +1268,60 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-141.101.120.38-8080-ws"
+    servername: zula.ir
+  - name: "vless-d342d11e-d424-4583-b36e-524ab1f0afa4-3"
     type: vless
     server: 141.101.120.38
     port: 8080
     uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
     network: ws
     tls: false
-    ws-path: "/Telegram@Filter_breaker/?ed=2048"
-    ws-headers:
-      Host: 1750293123492.china.baidu.bilibili.china.aeko.cn
     udp: true
-
-  - name: "Vless-172.67.169.132-2087-ws-tls"
+    flow: ""
+    path: /Telegram@Filter_breaker/?ed=2048
+    headers:
+      Host: 1750293123492.china.baidu.bilibili.china.aeko.cn
+  - name: "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-1"
     type: vless
     server: 172.67.169.132
     port: 2087
     uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
     network: ws
     tls: true
-    servername: smart.v2plusify.org
-    fingerprint: chrome
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-de2.panelmarzban.com-3030-tcp-reality"
+    flow: ""
+    servername: smart.v2plusify.org
+    skip-cert-verify: false
+    path: /
+    client-fingerprint: chrome
+  - name: "vless-08016b13-fb33-4b61-9608-cf79d5e27414-1"
     type: vless
     server: de2.panelmarzban.com
     port: 3030
     uuid: 08016b13-fb33-4b61-9608-cf79d5e27414
     network: tcp
     tls: true
-    servername: refersion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ""
     udp: true
-
-  - name: "Vless-104.17.147.22-2087-ws"
+    flow: ""
+    servername: refersion.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-2"
     type: vless
     server: 104.17.147.22
     port: 2087
     uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
     network: ws
-    tls: false
-    servername: smart.v2plusify.org
-    ws-path: "/"
+    tls: true
     udp: true
-
-  - name: "Vless-178.162.244.226-443-tcp-http"
+    flow: ""
+    servername: smart.v2plusify.org
+    skip-cert-verify: false
+    path: /
+  - name: "vless-4e57e34d-fc11-486e-9dbb-bcce9db1c39d-1"
     type: vless
     server: 178.162.244.226
     port: 443
@@ -1375,113 +1329,111 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-
-  - name: "Vless-104.26.6.89-8443-ws-tls"
+    servername: zula.ir
+  - name: "vless-96a1b724-68d2-4f4d-ab25-38ecd83577bc-1"
     type: vless
     server: 104.26.6.89
     port: 8443
     uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
     network: ws
     tls: true
-    servername: IyFpLkXk10.jOoLaJoOlA.OrG
-    fingerprint: chrome
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-micro.slumbo.com-443-tcp-vision"
+    flow: ""
+    servername: IyFpLkXk10.jOoLaJoOlA.OrG
+    skip-cert-verify: false
+    path: /
+  - name: "vless-60bc841c-cfbd-408f-889b-473f90bb4a26-1"
     type: vless
     server: micro.slumbo.com
     port: 443
     uuid: 60bc841c-cfbd-408f-889b-473f90bb4a26
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: refersion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: jH08UU9id-Q8i17ltvHPO3sfGL6YTJIFveAJGgNjNl8
-      short-id: 190d32b118caf07f
-    udp: true
-
-  - name: "Vless-communal-loss.oneeat.co-80-ws"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-a2af50d9-09c7-4a44-90d0-42da35923e9e-1"
     type: vless
     server: communal-loss.oneeat.co
     port: 80
     uuid: a2af50d9-09c7-4a44-90d0-42da35923e9e
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-5.181.171.10-443-tcp-vision"
+    flow: ""
+    path: /
+  - name: "vless-49ed01ad-3bb4-204f-b0ff-a58f658fd618-1"
     type: vless
     server: 5.181.171.10
     port: 443
     uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: speed.cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: YNGotlyAx3ELUmi4lxOUjiEDmibqf1pPUTE9o3YYT2Y
-      short-id: ""
-    udp: true
-
-  - name: "Vless-147135004002.sec20org.com-443-tcp-tls"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-1"
     type: vless
     server: 147135004002.sec20org.com
     port: 443
     uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
     network: tcp
     tls: true
-    servername: 147135004002.sec20org.com
     udp: true
-
-  - name: "Vless-narrow-passenger.oneeat.co-80-ws"
+    flow: ""
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: false
+  - name: "vless-5a12794b-2125-46d7-a748-927a989faa04-1"
     type: vless
     server: narrow-passenger.oneeat.co
     port: 80
     uuid: 5a12794b-2125-46d7-a748-927a989faa04
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-147.135.4.2-443-tcp-tls"
+    flow: ""
+    path: /
+  - name: "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-2"
     type: vless
     server: 147.135.4.2
     port: 443
     uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
     network: tcp
     tls: true
-    servername: 147135004002.sec20org.com
     udp: true
-
-  - name: "Vless-15.204.200.209-443-tcp-tls"
+    flow: ""
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: false
+  - name: "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-3"
     type: vless
     server: 15.204.200.209
     port: 443
     uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
     network: tcp
     tls: true
-    servername: 147135004002.sec20org.com
-    fingerprint: chrome
     udp: true
-
-  - name: "Vless-crazy-identity.oneeat.co-80-ws"
+    flow: ""
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-64d6d0d4-3706-4837-b154-cda2816adcc5-1"
     type: vless
     server: crazy-identity.oneeat.co
     port: 80
     uuid: 64d6d0d4-3706-4837-b154-cda2816adcc5
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vmess-15.204.234.200-41100-tcp"
+    flow: ""
+    path: /
+  - name: "vmess-c7f169a3-2e9a-4894-ba53-7b2fa6fd08b4-1"
     type: vmess
     server: 15.204.234.200
     port: 41100
@@ -1491,43 +1443,40 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-103.175.79.10-443-tcp-vision"
+  - name: "vless-49ed01ad-3bb4-204f-b0ff-a58f658fd618-2"
     type: vless
     server: 103.175.79.10
     port: 443
     uuid: 49ed01ad-3bb4-204f-b0ff-a58f658fd618
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: speed.cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 4e-unF1RO2v--E7-X3aqxnCSPaK9QaTfJ7LawAr2bRI
-      short-id: ""
-    udp: true
-
-  - name: "Vless-135.148.74.157-443-tcp-tls"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-4"
     type: vless
     server: 135.148.74.157
     port: 443
     uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
     network: tcp
     tls: true
-    servername: 147135004002.sec20org.com
     udp: true
-
-  - name: "Vless-handsome-device.oneeat.co-80-ws"
+    flow: ""
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: false
+  - name: "vless-2ad87f95-7a0b-4018-8497-5ecaac2f0ddf-1"
     type: vless
     server: handsome-device.oneeat.co
     port: 80
     uuid: 2ad87f95-7a0b-4018-8497-5ecaac2f0ddf
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-47.76.81.217-38971-tcp"
+    flow: ""
+    path: /
+  - name: "vless-633d3f6b-5f34-4ef8-b240-01667f6dd07d-1"
     type: vless
     server: 47.76.81.217
     port: 38971
@@ -1535,18 +1484,17 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-x8-germany-amazon-v2-rug6e.we-are-team-xstack-this-is-free-config-join-us-enjoy.net-8080-ws"
+    flow: ""
+  - name: "vless-c699685e-b072-4141-9406-ee22f89f13ed-1"
     type: vless
     server: x8-germany-amazon-v2-rug6e.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
     port: 8080
     uuid: c699685e-b072-4141-9406-ee22f89f13ed
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-103.82.25.166-2321-tcp"
+    flow: ""
+  - name: "vless-89ce1d87-bf2f-4c74-bafc-f089a9cf532f-1"
     type: vless
     server: 103.82.25.166
     port: 2321
@@ -1554,8 +1502,8 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vmess-38.60.251.213-57038-ws"
+    flow: ""
+  - name: "vmess-fdd9c524-3ef3-49ef-88ef-20ac4a29a806-1"
     type: vmess
     server: 38.60.251.213
     port: 57038
@@ -1564,22 +1512,21 @@ proxies:
     cipher: auto
     network: ws
     tls: false
-    ws-path: "/fdd9c524"
     udp: true
-
-  - name: "Vless-104.21.96.1-80-ws"
+    path: /fdd9c524
+  - name: "vless-2036e2c3-18a5-4eed-9db4-f91a7f02c7d5-1"
     type: vless
     server: 104.21.96.1
     port: 80
     uuid: 2036e2c3-18a5-4eed-9db4-f91a7f02c7d5
     network: ws
     tls: false
-    ws-path: "/193.123.81.105=443"
-    ws-headers:
-      Host: zoomgov.vipren.biz.id
     udp: true
-
-  - name: "Vmess-51.79.102.253-80-ws"
+    flow: ""
+    path: /193.123.81.105=443
+    headers:
+      Host: zoomgov.vipren.biz.id
+  - name: "vmess-58fe1542-5290-40ad-815a-77707a81afe5-1"
     type: vmess
     server: 51.79.102.253
     port: 80
@@ -1588,234 +1535,221 @@ proxies:
     cipher: auto
     network: ws
     tls: false
-    ws-path: "/IOebhLMhl1CTbFHbL95myfRX2"
-    ws-headers:
-      Host: 51.79.102.253
     udp: true
-
-  - name: "Vless-104.16.98.3-2053-ws-tls"
+    path: /IOebhLMhl1CTbFHbl95myfRX2
+    headers:
+      Host: 51.79.102.253
+  - name: "vless-c106802e-577e-4dfd-ab45-c65d88af1ef9-1"
     type: vless
     server: 104.16.98.3
     port: 2053
     uuid: c106802e-577e-4dfd-ab45-c65d88af1ef9
     network: ws
     tls: true
+    udp: true
+    flow: ""
     servername: 0p9oj0annx3ywe408ctenbtw3mhacrc7.pages.dev
+    skip-cert-verify: false
+    path: /pBo4JI9ey63R7sN5?ed=2560/?Join_Bade_Channel@JOKERRVPN
     alpn:
       - http/1.1
-    fingerprint: chrome
-    ws-path: "/pBo4JI9ey63R7sN5/?ed=2560/?Join_Bade_Channel@JOKERRVPN"
-    ws-headers:
-      Host: 0p9oj0annx3ywe408ctenbtw3mhacrc7.pages.dev
-    udp: true
-
-  - name: "Vless-188.114.96.3-8443-ws-tls"
+    client-fingerprint: chrome
+  - name: "vless-88d05a33-ff36-415d-9d2c-7e1e8468e7e8-1"
     type: vless
     server: 188.114.96.3
     port: 8443
     uuid: 88d05a33-ff36-415d-9d2c-7e1e8468e7e8
     network: ws
     tls: true
+    udp: true
+    flow: ""
     servername: w325.pAges.Dev
+    skip-cert-verify: false
+    path: /6WKNgcKo7LMqOzhb?ed=2560
     alpn:
       - http/1.1
-    fingerprint: chrome
-    ws-path: "/6WKNgcKo7LMqOzhb?ed=2560"
-    ws-headers:
-      Host: w325.pages.dev
-    udp: true
-
-  - name: "Vless-104.21.112.1-80-ws"
+    client-fingerprint: chrome
+  - name: "vless-2036e2c3-18a5-4eed-9db4-f91a7f02c7d5-2"
     type: vless
     server: 104.21.112.1
     port: 80
     uuid: 2036e2c3-18a5-4eed-9db4-f91a7f02c7d5
     network: ws
     tls: false
-    ws-path: "/193.123.81.105=443"
-    ws-headers:
-      Host: zoomgov.vipren.biz.id
     udp: true
-
-  - name: "Vless-w325.pages.dev-443-ws-tls"
+    flow: ""
+    path: /193.123.81.105=443
+    headers:
+      Host: zoomgov.vipren.biz.id
+  - name: "vless-88d05a33-ff36-415d-9d2c-7e1e8468e7e8-2"
     type: vless
     server: w325.pages.dev
     port: 443
     uuid: 88d05a33-ff36-415d-9d2c-7e1e8468e7e8
     network: ws
     tls: true
+    udp: true
+    flow: ""
     servername: W325.paGeS.Dev
+    skip-cert-verify: false
+    path: /UzqdLlugYzBpZgQx?ed=2560
     alpn:
       - http/1.1
-    fingerprint: chrome
-    ws-path: "/UzqdLlugYzBpZgQx?ed=2560"
-    ws-headers:
-      Host: w325.pages.dev
-    udp: true
-
-  - name: "Vless-104.18.29.253-443-ws-tls"
+    client-fingerprint: chrome
+  - name: "vless-9dd24d01-2b7a-4bd8-8c76-129d6ca89b8c-1"
     type: vless
     server: 104.18.29.253
     port: 443
     uuid: 9dd24d01-2b7a-4bd8-8c76-129d6ca89b8c
     network: ws
     tls: true
-    servername: kawaiifreevpn-7ds.pages.dev
-    fingerprint: chrome
-    ws-path: "/?ed=2560"
     udp: true
-
-  - name: "Vless-185.231.205.181-8880-grpc"
+    flow: ""
+    servername: kawaiifreevpn-7ds.pages.dev
+    skip-cert-verify: false
+    path: /?ed=2560
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-1"
     type: vless
     server: 185.231.205.181
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: "" # No serviceName in link
     udp: true
-
-  - name: "Vless-185.231.205.139-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-2"
     type: vless
     server: 185.231.205.139
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-194.182.79.163-10108-grpc-reality"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-edeffe9e-4725-428e-a1c0-7b6a96124f8d-1"
     type: vless
     server: 194.182.79.163
     port: 10108
     uuid: edeffe9e-4725-428e-a1c0-7b6a96124f8d
     network: grpc
     tls: true
-    grpc-service-name: "ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON"
-    servername: journalofbigdata.springeropen.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: wGHsRP4taNR7OgyRPba24krQVhH9ZRbR7pvDxVsGjj0
-      short-id: ed
     udp: true
-
-  - name: "Vless-104.248.136.27-28338-grpc-reality"
+    flow: ""
+    servername: journalofbigdata.springeropen.com
+    skip-cert-verify: false
+    grpc-service-name: ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON-ZEDMODEON
+    client-fingerprint: chrome
+  - name: "vless-0b9ee474-19f6-4d7f-9281-96f239e6cebc-2"
     type: vless
     server: 104.248.136.27
     port: 28338
     uuid: 0b9ee474-19f6-4d7f-9281-96f239e6cebc
     network: grpc
     tls: true
-    grpc-service-name: "Telegram:@FergalVpnMod"
-    servername: cloudflare.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: MJwVQS7Qs5U_FYJn_osHZJSQ9ioxZRHC2HDPVwt7nmw
-      short-id: 9ecc4615ce
     udp: true
-
-  - name: "Vless-185.231.205.188-8880-grpc"
+    flow: ""
+    servername: cloudflare.com
+    skip-cert-verify: false
+    grpc-service-name: Telegram:@FergalVpnMod
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-3"
     type: vless
     server: 185.231.205.188
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-185.231.205.186-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-4"
     type: vless
     server: 185.231.205.186
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-78.159.131.107-443-tcp-vision-reality"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-10f3650d-32f6-470a-b100-e29471cf3380-1"
     type: vless
     server: 78.159.131.107
     port: 443
     uuid: 10f3650d-32f6-470a-b100-e29471cf3380
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: pingless.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 6vqqlSsqIQLQ-pmkPfTQ0tJ2kh3U74YqTUcn06nYagY
-      short-id: b6
-    udp: true
-
-  - name: "Vless-95.164.45.85-8880-grpc"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-5"
     type: vless
     server: 95.164.45.85
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-185.231.205.253-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-6"
     type: vless
     server: 185.231.205.253
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-91.107.251.56-443-tcp-vision-reality"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-a08e37ad-e4ab-4d3e-95ac-aa8493b41911-1"
     type: vless
     server: 91.107.251.56
     port: 443
     uuid: a08e37ad-e4ab-4d3e-95ac-aa8493b41911
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: yahoo.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: WjYNpDmgqI19JN7jmgTW6lAHUGN1YEa4yc9Bwqs9w0Y
-      short-id: 0f8bc395378e80
-    udp: true
-
-  - name: "Vless-95.164.45.95-8880-grpc"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-7"
     type: vless
     server: 95.164.45.95
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-185.231.205.231-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-8"
     type: vless
     server: 185.231.205.231
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-185.231.205.239-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-9"
     type: vless
     server: 185.231.205.239
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-91.99.182.155-443-tcp-http-no-flow"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-04bb5055-bc44-4d21-85c7-42317dd5fd37-2"
     type: vless
     server: 91.99.182.155
     port: 443
@@ -1823,50 +1757,45 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-    # flow: (not specified in link)
-
-  - name: "Vless-185.231.205.246-8880-grpc"
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-10"
     type: vless
     server: 185.231.205.246
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-91.107.251.56-22-grpc-reality"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-8f10f456-fbb0-492a-a71b-9b88cde3e511-1"
     type: vless
     server: 91.107.251.56
     port: 22
     uuid: 8f10f456-fbb0-492a-a71b-9b88cde3e511
     network: grpc
     tls: true
-    grpc-service-name: "کانال‌تلگرام @ev2rayy"
-    servername: yahoo.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: O1JNAhjldpMPvqA-GCbjVlm1gvVQSYAtXULtfC-9z1w
-      short-id: d757f949ab85
     udp: true
-
-  - name: "Vless-91.99.172.101-3037-tcp-reality"
+    flow: ""
+    servername: yahoo.com
+    skip-cert-verify: false
+    grpc-service-name: کانال‌تلگرام @ev2rayy
+    client-fingerprint: chrome
+  - name: "vless-a0a3e34d-87e4-4ff3-b04a-875c85325d62-2"
     type: vless
     server: 91.99.172.101
     port: 3037
     uuid: a0a3e34d-87e4-4ff3-b04a-875c85325d62
     network: tcp
     tls: true
-    servername: refersion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: 21V_VkMUD2XRbyRDg7hjpblUAwxHvlLmbarATdhhJQI
-      short-id: ""
     udp: true
-
-  - name: "Vless-91.99.179.202-443-tcp-http-no-flow"
+    flow: ""
+    servername: refersion.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-4"
     type: vless
     server: 91.99.179.202
     port: 443
@@ -1874,77 +1803,80 @@ proxies:
     network: tcp
     tls: false
     udp: true
-    "ws-headers":
+    flow: ""
+    headers:
       Host: zula.ir
-    # flow: (not specified in link)
-
-  - name: "Vless-5.75.198.47-443-tcp-reality"
+  - name: "vless-1584806e-f63d-4f9b-a0b3-abe64b35a09c-2"
     type: vless
     server: 5.75.198.47
     port: 443
     uuid: 1584806e-f63d-4f9b-a0b3-abe64b35a09c
     network: tcp
     tls: true
-    servername: vpn_proxy_channel_vpn_proxy_channel.hohod.ir
-    fingerprint: chrome
-    reality-opts:
-      public-key: GpgfsA-U8Y8M3LRcTfsaBViDtp2VlN5riSLLZ2kxEiQ
-      short-id: 974a74bf
     udp: true
-
-  - name: "Vless-54.38.215.76-1370-tcp-reality"
+    flow: ""
+    servername: vpn_proxy_channel_vpn_proxy_channel.hohod.ir
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-f5f2458c-5fcb-4820-82c2-2997492c54d5-2"
+    type: vless
+    server: 62.60.192.209
+    port: 80
+    uuid: f5f2458c-5fcb-4820-82c2-2997492c54d5
+    network: ws
+    tls: false
+    udp: true
+    flow: ""
+    path: /
+  - name: "vless-878879e6-4f80-4e85-a415-85533b536d13-1"
     type: vless
     server: 54.38.215.76
     port: 1370
     uuid: 878879e6-4f80-4e85-a415-85533b536d13
     network: tcp
     tls: true
-    servername: refersion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: _N3KecwB9Ck28IIMxIck00ivkq3_ZEUvU3KXELnfvHw
-      short-id: e1afb93bfe75a34b
     udp: true
-
-  - name: "Vless-198.41.193.13-2087-ws-tls"
+    flow: ""
+    servername: refersion.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-3"
     type: vless
     server: 198.41.193.13
     port: 2087
     uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
     network: ws
     tls: true
-    servername: smart.v2plusify.org
-    fingerprint: chrome
-    ws-path: "/"
-    ws-headers:
-      Host: smart.v2plusify.org
     udp: true
-
-  - name: "Vless-95.164.45.78-8880-grpc"
+    flow: ""
+    servername: smart.v2plusify.org
+    skip-cert-verify: false
+    path: /
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-11"
     type: vless
     server: 95.164.45.78
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-172.67.91.177-2087-ws-tls"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-4"
     type: vless
     server: 172.67.91.177
     port: 2087
     uuid: 9e769ce1-34be-4e3f-b0a6-823f30eb8f69
     network: ws
     tls: true
-    servername: smart.v2plusify.org
-    fingerprint: chrome
-    ws-path: "/"
-    ws-headers:
-      Host: smart.v2plusify.org
     udp: true
-
-  - name: "Vmess-109.122.253.12-40521-ws"
+    flow: ""
+    servername: smart.v2plusify.org
+    skip-cert-verify: false
+    path: /
+    client-fingerprint: chrome
+  - name: "vmess-481c8834-3aef-4541-ae36-3e93b4f8ec2e-1"
     type: vmess
     server: 109.122.253.12
     port: 40521
@@ -1953,56 +1885,53 @@ proxies:
     cipher: auto
     network: ws
     tls: false
-    ws-path: "/"
     udp: true
-
-  - name: "Vless-185.231.205.248-8880-grpc"
+    path: /
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-12"
     type: vless
     server: 185.231.205.248
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-45.80.229.254-58258-tcp-reality"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-f73d8952-81f2-4bac-b6c4-d81348f282ef-1"
     type: vless
     server: 45.80.229.254
     port: 58258
     uuid: f73d8952-81f2-4bac-b6c4-d81348f282ef
     network: tcp
     tls: true
-    servername: yahoo.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: t75QpaHSW2E2O2jzeAa7ELBlrDk4ttCKUJYzwsfvPzk
-      short-id: a3
     udp: true
-
-  - name: "Vless-185.231.205.5-8880-grpc"
+    flow: ""
+    servername: yahoo.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-13"
     type: vless
     server: 185.231.205.5
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-188.119.112.3-2052-ws"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-838f5273-5d2d-4630-a0f5-9cc8e4aef4d6-1"
     type: vless
     server: 188.119.112.3
     port: 2052
     uuid: 838f5273-5d2d-4630-a0f5-9cc8e4aef4d6
     network: ws
     tls: false
-    ws-path: "/"
-    ws-headers:
-      Host: vkvd127.mycdn.me
     udp: true
-
-  - name: "Vmess-91.107.243.150-32017-tcp"
+    flow: ""
+    path: /
+    headers:
+      Host: vkvd127.mycdn.me
+  - name: "vmess-c0ccdeb9-784c-4d67-b904-20dcaac9902a-2"
     type: vmess
     server: 91.107.243.150
     port: 32017
@@ -2012,471 +1941,388 @@ proxies:
     network: tcp
     tls: false
     udp: true
-
-  - name: "Vless-49.13.12.238-8501-tcp-reality"
+  - name: "vless-ac37eb9c-0db8-4056-8f61-e8db4e2da35e-2"
     type: vless
     server: 49.13.12.238
     port: 8501
     uuid: ac37eb9c-0db8-4056-8f61-e8db4e2da35e
     network: tcp
     tls: true
-    servername: tgju.org
-    fingerprint: chrome
-    reality-opts:
-      public-key: OJ0wA5wp55uZdD16dutlTZvx1x-rbMMXmiO9D_MMCHI
-      short-id: e701a013553059ba
     udp: true
-
-  - name: "Vless-95.164.45.94-8880-grpc"
+    flow: ""
+    servername: tgju.org
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-14"
     type: vless
     server: 95.164.45.94
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-172.67.181.173-2052-httpupgrade"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-bac0d769-a6ac-4b00-8aa5-092391aaac42-1"
     type: vless
     server: 172.67.181.173
     port: 2052
     uuid: bac0d769-a6ac-4b00-8aa5-092391aaac42
-    network: httpupgrade
+    network: httpUpgrade
     tls: false
-    http-upgrade-path: "Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-"
-    http-upgrade-headers:
-      Host: fgvgvgvygfccgvgvg.ghhhrhjrhfjfjfjhdhd-fhhgghgfgggfghj.BLOG
     udp: true
-
-  - name: "Vless-45.89.111.250-8880-grpc"
+    flow: ""
+    path: Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-Telegramjoin:@V2Ray_Rolly-
+    headers:
+      Host: fgvgvgvygfccgvgvg.ghhhrhjrhfjfjfjhdhd-fhhgghgfgggfghj.BLOG
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-15"
     type: vless
     server: 45.89.111.250
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-188.245.237.23-443-tcp-vision-reality"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-60bc841c-cfbd-408f-889b-473f90bb4a26-2"
     type: vless
     server: 188.245.237.23
     port: 443
     uuid: 60bc841c-cfbd-408f-889b-473f90bb4a26
     network: tcp
     tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: refersion.com
-    fingerprint: chrome
-    reality-opts:
-      public-key: jH08UU9id-Q8i17ltvHPO3sfGL6YTJIFveAJGgNjNl8
-      short-id: 190d32b118caf07f
-    udp: true
-
-  - name: "Vless-104.26.6.89-443-ws-tls-alpn"
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-337bf72e-bb79-4d5f-be3f-7822eb77100c-2"
     type: vless
     server: 104.26.6.89
     port: 443
     uuid: 337bf72e-bb79-4d5f-be3f-7822eb77100c
     network: ws
     tls: true
+    udp: true
+    flow: ""
     servername: NpFzCqA01g.V2pLuSmLm.OrG
+    skip-cert-verify: false
+    path: /
     alpn:
       - h3
       - h2
-    ws-path: "/"
-    ws-headers:
-      Host: NpFzCqA01g.V2pLuSmLm.OrG
-    udp: true
-
-  - name: "Vless-104.26.6.89-2096-ws-tls-alpn"
+  - name: "vless-24a4aa9b-b341-4717-9d4a-00d74c2b84e0-1"
     type: vless
     server: 104.26.6.89
     port: 2096
     uuid: 24a4aa9b-b341-4717-9d4a-00d74c2b84e0
     network: ws
     tls: true
+    udp: true
+    flow: ""
     servername: 0XmVfUlK85.vPbEtHoRvP002.iNfO
+    skip-cert-verify: false
+    path: /
     alpn:
       - h3
       - h2
-    ws-path: "/"
-    ws-headers:
-      Host: 0XmVfUlK85.vPbEtHoRvP002.iNfO
-    udp: true
-
-  - name: "Vless-45.82.251.184-8880-grpc"
+  - name: "vless-e4824193-4f54-453b-d037-88368e85ef0e-1"
     type: vless
     server: 45.82.251.184
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-95.164.45.70-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-df0680ca-e43c-498d-ed86-8e196eedd012-16"
     type: vless
     server: 95.164.45.70
     port: 8880
     uuid: df0680ca-e43c-498d-ed86-8e196eedd012
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-45.82.251.92-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-e4824193-4f54-453b-d037-88368e85ef0e-2"
     type: vless
     server: 45.82.251.92
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-135.148.152.110-443-tcp-tls"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-ea286109-d20f-415e-849e-4af20ab04b65-1"
     type: vless
     server: 135.148.152.110
     port: 443
     uuid: ea286109-d20f-415e-849e-4af20ab04b65
     network: tcp
     tls: true
-    servername: 147135001195.sec22org.com
-    fingerprint: chrome
     udp: true
-
-  - name: "Vless-135.148.152.97-443-tcp-tls-alpn"
+    flow: ""
+    servername: 147135001195.sec22org.com
+    skip-cert-verify: false
+    client-fingerprint: chrome
+  - name: "vless-ea286109-d20f-415e-849e-4af20ab04b65-2"
     type: vless
     server: 135.148.152.97
     port: 443
     uuid: ea286109-d20f-415e-849e-4af20ab04b65
     network: tcp
     tls: true
+    udp: true
+    flow: ""
     servername: 147135001195.sec22org.com
+    skip-cert-verify: false
     alpn:
       - h2
       - http/1.1
-    udp: true
-
-  - name: "Vless-45.82.251.121-8880-grpc"
+  - name: "vless-e4824193-4f54-453b-d037-88368e85ef0e-3"
     type: vless
     server: 45.82.251.121
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-45.82.251.58-8880-grpc"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-e4824193-4f54-453b-d037-88368e85ef0e-4"
     type: vless
     server: 45.82.251.58
     port: 8880
     uuid: e4824193-4f54-453b-d037-88368e85ef0e
     network: grpc
     tls: false
-    grpc-service-name: ""
     udp: true
-
-  - name: "Vless-15.204.200.208-443-tcp-tls"
+    flow: ""
+    grpc-service-name: ""
+  - name: "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-5"
     type: vless
     server: 15.204.200.208
     port: 443
     uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
     network: tcp
     tls: true
-    servername: 147135004002.sec20org.com
     udp: true
-  
-  - name: "Vmess-62.60.156.107-40000-ws" # Corrected port and added path for the last VMESS link
+    flow: ""
+    servername: 147135004002.sec20org.com
+    skip-cert-verify: false
+  - name: "vmess-6260156107-1"
     type: vmess
     server: 62.60.156.107
-    port: 40521
+    port: 443
     uuid: 8f74ec8a-971c-11ed-a8fc-0242ac120002
     alterId: 0
     cipher: auto
     network: ws
     tls: false
-    ws-path: "/920f9840-4d0f-11f0-a948-6a75f667b472?ed=2048"
-    ws-headers:
-      Host: 920f9840-4d0f-11f0-a948-6a75f667b472.ShomaParvazRoyadetonNist-BypassIsHere.lat
     udp: true
+    path: /920f9840-4d0f-11f0-a948-6a75f667b472?ed=
+    headers:
+      Host: 920f9840-4d0f-11f0-a948-6a75f667b472.ShomaParvazRoyadetonNist-BypassIsHere.lat
 
-# --- Proxy Groups ---
 proxy-groups:
-  - name: "🚀 Selected Proxy"
-    type: select
-    proxies:
-      - "♻️ Auto Select"
-      - "DIRECT"
-      # Add individual proxies here if you want them selectable in the main menu, e.g.:
-      # - "Vless-193.162.129.71-28819-tcp"
-      # - "Vless-91.99.179.203-443-tcp-http"
-      # - "Vmess-panel1.ipyar.org-42684-tcp"
-
-  - name: "♻️ Auto Select"
+  - name: "⚡️Proxy"
     type: url-test
-    url: "http://www.gstatic.com/generate_204" # Standard URL for connectivity test
-    interval: 300 # Test every 300 seconds (5 minutes)
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
     proxies:
-      # List all your VLESS and VMESS proxies here for automatic selection.
-      # It's recommended to include all working proxies from the list above.
-      - "Vless-193.162.129.71-28819-tcp"
-      - "Vless-185.243.51.67-21760-tcp"
-      - "Vless-91.99.179.203-443-tcp-http"
-      - "Vless-185.243.51.67-21760-tcp-xudp"
-      - "Vless-62.60.192.209-80-ws"
-      - "Vless-62.60.163.77-3333-tcp-http"
-      - "Vless-31.47.51.123-80-tcp"
-      - "Vless-94.183.158.12-8083-ws"
-      - "Vless-94.183.158.16-8083-ws"
-      - "Vless-94.183.158.13-8083-ws"
-      - "Vless-185.243.49.205-8444-tcp-http-speedtest"
-      - "Vless-94.183.158.11-8083-ws"
-      - "Vless-94.183.158.10-8083-ws"
-      - "Vless-91.99.182.155-443-tcp-http"
-      - "Vless-151.232.51.247-2096-tcp-http-speedtest"
-      - "Vless-91.99.179.201-443-tcp-http"
-      - "Vless-94.182.83.109-8085-tcp"
-      - "Vless-test.leperfume.ir-443-grpc-reality"
-      - "Vless-server2.fergalvpnmod.com-25126-grpc-reality"
-      - "Vless-server2.fergalvpnmod.com-59365-grpc-reality"
-      - "Vless-server1.fergalvpnmod.com-28338-grpc-reality"
-      - "Vless-2.56.125.209-49868-tcp-reality"
-      - "Vmess-panel1.ipyar.org-42684-tcp"
-      - "Vless-dedicated-development.seotoolsforyou.co.uk-80-ws"
-      - "Vless-zzyd6dhd5.pet0er23mh21qq.com-8080-tcp"
-      - "Vless-62.60.216.61-8443-tcp-reality"
-      - "Vless-fruitful-exchange.seotoolsforyou.co.uk-80-ws"
-      - "Vless-practical-complaint.seotoolsforyou.co.uk-80-ws"
-      - "Vless-deep-radio.seotoolsforyou.co.uk-80-ws"
-      - "Vless-hopeful-appointment.seotoolsforyou.co.uk-80-ws"
-      - "Vless-fbi11.wizard2shop.com-8085-tcp"
-      - "Vless-de.pixvpn.app-8443-grpc-reality"
-      - "Vless-91.99.178.171-443-tcp-http"
-      - "Vless-209.38.244.147-80-tcp-http"
-      - "Vless-gleeful-error.seotoolsforyou.co.uk-80-ws"
-      - "Vless-91.99.151.110-443-tcp-http"
-      - "Vless-vpn_proxy_channel_vpn_proxy_channel.hohod.ir-443-tcp-reality"
-      - "Vless-300232332.webnama.com.tr.privatepack.ir-1517-tcp-http"
-      - "Vless-obedient-detail.seotoolsforyou.co.uk-80-ws"
-      - "Vless-confident-club.seotoolsforyou.co.uk-80-ws"
-      - "Vmess-panel3.ipyar.org-32017-tcp"
-      - "Vless-104.24.135.129-2087-ws-tls"
-      - "Vless-famous-experience.seotoolsforyou.co.uk-80-ws"
-      - "Vless-Telegram-TokaVpn-@91.99.184.35-3060-grpc-reality"
-      - "Vless-23.227.38.32-2053-ws-tls"
-      - "Vless-it.panelmarzban.com-3037-tcp-reality"
-      - "Vless-kafshu.ir-8080-ws"
-      - "Vless-em-2.webnama.com.tr-3799-tcp-http"
-      - "Vless-Telegram--TokaVpn--TokaVpn@91.99.184.35-3070-grpc-reality"
-      - "Vless-charming-process.seotoolsforyou.co.uk-80-ws"
-      - "Vless-fierce-data.seotoolsforyou.co.uk-80-ws"
-      - "Vless-informed-location.seotoolsforyou.co.uk-80-ws"
-      - "Vless-www.speedtest.net-2095-httpupgrade"
-      - "Vless-pj.bestirstorei.top-62000-grpc-reality"
-      - "Vless-194.182.79.64-14073-grpc-reality"
-      - "Vless-bewildered-poem.seotoolsforyou.co.uk-80-ws"
-      - "Vless-grumpy-building.seotoolsforyou.co.uk-80-ws"
-      - "Vless-172.66.40.99-8080-ws"
-      - "Vless-finreal.weketshop.ir-2087-tcp-reality"
-      - "Vless-sn434.nikatel.uno-8080-tcp-http"
-      - "Vless-brainy-party.seotoolsforyou.co.uk-80-ws"
-      - "Vless-obedient-menu.seotoolsforyou.co.uk-80-ws"
-      - "Vless-wonderful-degree.seotoolsforyou.co.uk-80-ws"
-      - "Vless-dl1.pokerad.sbs-80-tcp"
-      - "Vless-beloved-failure.seotoolsforyou.co.uk-80-ws"
-      - "Vless-real-all3-2.sdcards.ir-8501-tcp-reality"
-      - "Vless-wild-bird.seotoolsforyou.co.uk-80-ws"
-      - "Vless-sweet-combination.seotoolsforyou.co.uk-80-ws"
-      - "Vless-dl.dataserverplus.top-2082-ws"
-      - "Vless-104.17.147.22-8080-ws"
-      - "Vless-elegant-corporation.seotoolsforyou.co.uk-80-ws"
-      - "Vless-172.66.40.99-80-ws"
-      - "Vless-90.156.254.164-40432-ws"
-      - "Vless-45.8.146.207-80-ws"
-      - "Vless-185.236.232.136-1001-tcp-reality"
-      - "Vless-modern-promise.seotoolsforyou.co.uk-80-ws"
-      - "Vless-amazon-4.cristiano.name.ng-443-tcp-vision"
-      - "Vless-65.109.191.254-80-ws"
-      - "Vless-start.adsplustnet.com-80-ws"
-      - "Vless-5.181.3.169-2040-tcp-vision"
-      - "Vless-176.120.72.63-38339-tcp-reality"
-      - "Vless-104.21.112.1-8080-ws"
-      - "Vless-moody-lock.seotoolsforyou.co.uk-80-ws"
-      - "Vless-5.223.53.13-1743-tcp-http"
-      - "Vless-edt-f5k.pages.dev-443-ws-tls"
-      - "Vless-5.223.51.186-80-tcp-http"
-      - "Vless-5.223.45.64-80-tcp-http"
-      - "Vless-94.183.158.9-8083-ws"
-      - "Vless-5.223.68.198-80-tcp-http"
-      - "Vmess-62.60.176.240-10410-tcp-http"
-      - "Vless-192.0.54.219-8080-ws"
-      - "Vless-13.115.231.128-48603-tcp"
-      - "Vless-104.21.36.57-443-ws-tls"
-      - "Vless-46.8.227.178-81-tcp"
-      - "Vless-62.3.12.185-443-ws-tls"
-      - "Vless-light-presence.oneeat.co-80-ws"
-      - "Vless-51.38.98.69-443-tcp-reality"
-      - "Vless-sourceforge.net-443-ws-tls"
-      - "Vless-ipw.gfdv54cvghhgfhgj-njhgj64.info-443-ws-tls"
-      - "Vless-194.182.79.182-29706-grpc-reality"
-      - "Vless-45.129.36.85-3500-tcp-http"
-      - "Vless-141.101.121.224-8080-ws"
-      - "Vless-194.182.79.70-31516-grpc-reality"
-      - "Vless-85.208.110.203-443-tcp-reality"
-      - "Vless-91.99.113.54-443-tcp-http"
-      - "Vless-holkanas.atroart.ir-52928-tcp"
-      - "Vless-185.33.24.229-28495-tcp-reality"
-      - "Vless-51.38.207.189-2082-ws"
-      - "Vless-5.75.197.120-2025-grpc-reality-pouriacheat"
-      - "Vless-141.101.121.243-8080-ws"
-      - "Vless-pouriacheat.fergalvpnmod.com-2025-grpc-reality-pouriacheat"
-      - "Vless-small-meal.oneeat.co-80-ws"
-      - "Vless-178.162.244.224-443-tcp-http"
-      - "Vless-141.101.120.38-8080-ws"
-      - "Vless-172.67.169.132-2087-ws-tls"
-      - "Vless-de2.panelmarzban.com-3030-tcp-reality"
-      - "Vless-104.17.147.22-2087-ws"
-      - "Vless-178.162.244.226-443-tcp-http"
-      - "Vless-104.26.6.89-8443-ws-tls"
-      - "Vless-micro.slumbo.com-443-tcp-vision"
-      - "Vless-communal-loss.oneeat.co-80-ws"
-      - "Vless-5.181.171.10-443-tcp-vision"
-      - "Vless-147135004002.sec20org.com-443-tcp-tls"
-      - "Vless-narrow-passenger.oneeat.co-80-ws"
-      - "Vless-147.135.4.2-443-tcp-tls"
-      - "Vless-15.204.200.209-443-tcp-tls"
-      - "Vless-crazy-identity.oneeat.co-80-ws"
-      - "Vmess-15.204.234.200-41100-tcp"
-      - "Vless-103.175.79.10-443-tcp-vision"
-      - "Vless-135.148.74.157-443-tcp-tls"
-      - "Vless-handsome-device.oneeat.co-80-ws"
-      - "Vless-47.76.81.217-38971-tcp"
-      - "Vless-x8-germany-amazon-v2-rug6e.we-are-team-xstack-this-is-free-config-join-us-enjoy.net-8080-ws"
-      - "Vless-103.82.25.166-2321-tcp"
-      - "Vmess-38.60.251.213-57038-ws"
-      - "Vless-104.21.96.1-80-ws"
-      - "Vmess-51.79.102.253-80-ws"
-      - "Vless-104.16.98.3-2053-ws-tls"
-      - "Vless-188.114.96.3-8443-ws-tls"
-      - "Vless-104.21.112.1-80-ws"
-      - "Vless-w325.pages.dev-443-ws-tls"
-      - "Vless-104.18.29.253-443-ws-tls"
-      - "Vless-185.231.205.181-8880-grpc"
-      - "Vless-185.231.205.139-8880-grpc"
-      - "Vless-194.182.79.163-10108-grpc-reality"
-      - "Vless-104.248.136.27-28338-grpc-reality"
-      - "Vless-185.231.205.188-8880-grpc"
-      - "Vless-185.231.205.186-8880-grpc"
-      - "Vless-78.159.131.107-443-tcp-vision-reality"
-      - "Vless-95.164.45.85-8880-grpc"
-      - "Vless-185.231.205.253-8880-grpc"
-      - "Vless-91.107.251.56-443-tcp-vision-reality"
-      - "Vless-95.164.45.95-8880-grpc"
-      - "Vless-185.231.205.231-8880-grpc"
-      - "Vless-185.231.205.239-8880-grpc"
-      - "Vless-91.99.182.155-443-tcp-http-no-flow"
-      - "Vless-185.231.205.246-8880-grpc"
-      - "Vless-91.107.251.56-22-grpc-reality"
-      - "Vless-91.99.172.101-3037-tcp-reality"
-      - "Vless-91.99.179.202-443-tcp-http-no-flow"
-      - "Vless-5.75.198.47-443-tcp-reality"
-      - "Vless-54.38.215.76-1370-tcp-reality"
-      - "Vless-198.41.193.13-2087-ws-tls"
-      - "Vless-95.164.45.78-8880-grpc"
-      - "Vless-172.67.91.177-2087-ws-tls"
-      - "Vmess-109.122.253.12-40521-ws"
-      - "Vless-185.231.205.248-8880-grpc"
-      - "Vless-45.80.229.254-58258-tcp-reality"
-      - "Vless-185.231.205.5-8880-grpc"
-      - "Vless-188.119.112.3-2052-ws"
-      - "Vmess-91.107.243.150-32017-tcp"
-      - "Vless-49.13.12.238-8501-tcp-reality"
-      - "Vless-95.164.45.94-8880-grpc"
-      - "Vless-172.67.181.173-2052-httpupgrade"
-      - "Vless-45.89.111.250-8880-grpc"
-      - "Vless-188.245.237.23-443-tcp-vision-reality"
-      - "Vless-104.26.6.89-443-ws-tls-alpn"
-      - "Vless-104.26.6.89-2096-ws-tls-alpn"
-      - "Vless-45.82.251.184-8880-grpc"
-      - "Vless-95.164.45.70-8880-grpc"
-      - "Vless-45.82.251.92-8880-grpc"
-      - "Vless-135.148.152.110-443-tcp-tls"
-      - "Vless-135.148.152.97-443-tcp-tls-alpn"
-      - "Vless-45.82.251.121-8880-grpc"
-      - "Vless-45.82.251.58-8880-grpc"
-      - "Vless-15.204.200.208-443-tcp-tls"
-      - "Vmess-62.60.156.107-40000-ws" # Last VMESS proxy
-      - DIRECT # Fallback to direct if all proxies fail
+      - "vless-e7b1b989-83db-4420-aa6a-fb9a6a3b24e9-1"
+      - "vless-73e10f2a-bb9a-40c1-8e2c-ebfe0dac1dac-1"
+      - "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-1"
+      - "vless-73e10f2a-bb9a-40c1-8e2c-ebfe0dac1dac-2"
+      - "vless-f5f2458c-5fcb-4820-82c2-2997492c54d5-1"
+      - "vless-7d283c1a-3a5b-4b2a-a924-0bd256e89726-1"
+      - "vless-88d5b659-3c15-47a6-ae3c-b79ed49ef9f3-1"
+      - "vless-007d3ef7-b3cb-4681-917e-c5edeebdbb6c-1"
+      - "vless-73ef9961-ad5d-4b2f-ad84-60b965b42ac9-1"
+      - "vless-80a8dd9e-9e71-407e-9f31-1f488cea081f-1"
+      - "vless-ac083fa9-df9a-4722-b70d-24c17bef0516-1"
+      - "vless-1cfbf08c-6e6f-4f2f-9345-c513a8e1b916-1"
+      - "vless-0ac2cfd0-9ff1-4b82-882b-8c651c464ae9-1"
+      - "vless-04bb5055-bc44-4d21-85c7-42317dd5fd37-1"
+      - "vless-01860891-2645-420f-a494-a653d960f58d-1"
+      - "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-2"
+      - "vless-77eb0a34-e172-48fa-8093-6c488664da44-1"
+      - "vless-0102199d-1264-45b1-8e76-50de2bedcd25-1"
+      - "vless-bab6b157-a6e8-4756-a485-dcb4ca476eb9-1"
+      - "vless-dc1985a0-76ce-486f-b571-4b210aadbc8c-1"
+      - "vless-0b9ee474-19f6-4d7f-9281-96f239e6cebc-1"
+      - "vless-be015dd2-30b4-4fcf-a9ee-080c13ac13fb-1"
+      - "vmess-c4bd9eba-8aea-4d5e-a2ee-b5de65ac14e1-1"
+      - "vless-2054405e-70ff-40a2-ae27-16b63d72390a-1"
+      - "vless-598a6cea-dfd2-4e97-9415-4571f742bf18-1"
+      - "vless-829619da-d88e-4c12-acd5-4172f8145d22-1"
+      - "vless-9570a079-f83f-4454-88d0-884057c57a35-1"
+      - "vless-aadbf0d6-6a32-4473-8a87-5b17db90e035-1"
+      - "vless-5139af95-a453-46c6-831a-a532b6b51305-1"
+      - "vless-491e4f76-42f0-43a7-a987-25072a68d5e4-1"
+      - "vless-77eb0a34-e172-48fa-8093-6c488664da44-2"
+      - "vless-d6aa457d-8214-40d0-b5fe-3f7b551cb1c6-1"
+      - "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-3"
+      - "vless-869e096b-3cc5-4336-a618-f8acc6d421d1-1"
+      - "vless-9a37131b-2b68-427f-a2fc-cc7381c2d575-1"
+      - "vless-14d7b46f-66f7-4778-898a-55f8b7c059bb-1"
+      - "vless-1584806e-f63d-4f9b-a0b3-abe64b35a09c-1"
+      - "vless-88f9173d-09b1-463a-99c8-e39852693cba-1"
+      - "vless-1dd49fb8-6570-4a2a-a236-f410b63159cf-1"
+      - "vless-9926ee97-4398-48dd-b263-2863c2f5c41-1"
+      - "vmess-c0ccdeb9-784c-4d67-b904-20dcaac9902a-1"
+      - "vless-7b5ea382-cbc6-4169-9f88-8200ca80c31a-1"
+      - "vless-7f09e7b4-4680-4653-a2da-307d110b6961-1"
+      - "vless-Telegram-TokaVpn-TokaVpn-1"
+      - "vless-39f9a4f4-f2c6-4aea-b6ce-0c6a3e410051-1"
+      - "vless-a0a3e34d-87e4-4ff3-b04a-875c85325d62-1"
+      - "vless-00347fa5-5b04-420a-844e-6689ff27abff-1"
+      - "vless-05dae90c-872c-4d10-bd13-09523d53c27f-1"
+      - "vless-Telegram--TokaVpn--TokaVpn-1"
+      - "vless-43791e7f-8e02-4189-9533-4f842bcacd79-1"
+      - "vless-c313c27c-97ff-45ed-ab5c-64641af5debc-1"
+      - "vless-5c929ec5-5b1e-447a-950c-354c5d1ba1de-1"
+      - "vless-1a8539db-bb26-4ea6-82b9-68b29adfdbcd-1"
+      - "vless-14FuseVPN----------ProxyPJ-1"
+      - "vless-8b39daa8-01e0-4054-8271-0630cd517f10-1"
+      - "vless-0f4865d9-9405-4703-a282-46e326e6d9e7-1"
+      - "vless-935c990a-9bcc-484b-86a2-2a402f9ad1d4-1"
+      - "vless-11c89ba7-b173-4372-9976-c9e8b97557aa-1"
+      - "vless-802e1dd7-61ac-4473-9dd6-d77f97fdf816-1"
+      - "vless-8b262468-6e0d-46bf-b54f-32e6fae5af8b-1"
+      - "vless-34797f17-09a1-400c-9f4b-275718d62a0f-1"
+      - "vless-561623c8-4983-44d3-a6ef-92b803a74ee8-1"
+      - "vless-6192c1d9-5ae1-40ba-9cbb-cfacc2f8533c-1"
+      - "vless-88d5b659-3c15-47a6-ae3c-b79ed49ef9f3-2"
+      - "vless-3cad733b-3526-476b-adf5-b7cbdd33dc6c-1"
+      - "vless-ac37eb9c-0db8-4056-8f61-e8db4e2da35e-1"
+      - "vless-1d0dfde1-9f18-4557-9af8-4f3124ee5dcd-1"
+      - "vless-05020a61-3c0c-4ead-b256-7851ff905a75-1"
+      - "vless-27d32caf-84d0-45b1-aedf-cf45b4d25ec9-1"
+      - "vless-85f00847-6c0b-41a3-882d-9bbee4ca453d-1"
+      - "vless-d03d8815-a06f-408f-a62f-6c84869b96a9-1"
+      - "vless-0b58d103-e198-4a36-aa79-84a4aca8188b-1"
+      - "vless-5ae45629-3db6-4c6b-9b9e-346c3e1a798d-1"
+      - "vless-a6c4db3e-7785-429e-8bc5-9eaf7b1a79b1-1"
+      - "vless-c7c922da-ab54-433c-8046-1f9bf9d95c23-1"
+      - "vless-bd9b0366-e5dd-4665-bd5b-9896bc7327ae-1"
+      - "vless-4c26ebc3-7784-46d8-b52a-7b0ccae6f4b4-1"
+      - "vless-c6ac1649-5dc5-4d45-8977-9805d639d30b-1"
+      - "vless-c6ac1649-5dc5-4d45-8977-9805d639d30b-2"
+      - "vless-320bc89e-2a48-42c4-b7b2-0f982342a9fe-1"
+      - "vless-481c5606-b586-44d7-bc2e-d8ef30d67f62-1"
+      - "vless-17034eef-9472-45cc-bca5-a71f90e36244-1"
+      - "vless-82cdcdf0-e772-4d9a-b0a2-d6b605572ac1-1"
+      - "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-1"
+      - "vless-98371613-b71d-4185-9e8a-eb7ba73373b4-1"
+      - "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-2"
+      - "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-3"
+      - "vless-0ac2cfd0-9ff1-4b82-882b-8c651c464ae9-2"
+      - "vless-31cebb90-917e-4bf4-9f2c-8ec4e35b286d-4"
+      - "vmess-f107a60e-af79-44c9-bc7e-b5707f3208e1-1"
+      - "vless-17034eef-9472-45cc-bca5-a71f90e36244-2"
+      - "vless-a4a5aedb-0509-4764-b46f-ede33469b3cf-1"
+      - "vless-0cc731b9-0375-4590-aeaa-7e2611a149fe-1"
+      - "vless-9ef68890-9a43-4f28-b118-1921dbdd6b1e-1"
+      - "vless-75fde681-ec64-4654-86fa-30732e8e179c-1"
+      - "vless-7e74ff43-3a90-48b3-8372-7d92a045c2d4-1"
+      - "vless-6b690c69-7301-44c4-81e8-9d5d7e8263a6-1"
+      - "vless-7a80a8d9-92f9-4f0a-8352-9005a8215ab8-1"
+      - "vless-337bf72e-bb79-4d5f-be3f-7822eb77100c-1"
+      - "vless-c8da575a-b3ab-4949-985c-d151335b5301-1"
+      - "vless-6f284683-f117-49a9-8091-a1099b4ccdf2-1"
+      - "vless-d342d11e-d424-4583-b36e-524ab1f0afa4-1"
+      - "vless-6fc3195e-e1ad-4e1b-8552-ac88e2780364-1"
+      - "vless-a351b0a4-6c4e-4456-8f8e-45db3fe0bcb2-1"
+      - "vless-6bf993b8-328f-4d88-9c8e-71057b825d78-1"
+      - "vless-dc58f214-4227-4f58-8090-cbcedf1adeba-1"
+      - "vless-7e296434-2d17-48d3-928d-19eaa34aecb1-1"
+      - "vless-17953b21-65ee-4b59-bf8f-6ebe90601e85-1"
+      - "vless-54b4c039-7be6-448f-b704-820251b079db-1"
+      - "vless-d342d11e-d424-4583-b36e-524ab1f0afa4-2"
+      - "vless-54b4c039-7be6-448f-b704-820251b079db-2"
+      - "vless-d1e44075-8c92-4698-9db0-e71d7015b757-1"
+      - "vless-83a85a41-fb7f-43e0-9c15-d199509a9624-1"
+      - "vless-d342d11e-d424-4583-b36e-524ab1f0afa4-3"
+      - "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-1"
+      - "vless-08016b13-fb33-4b61-9608-cf79d5e27414-1"
+      - "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-2"
+      - "vless-4e57e34d-fc11-486e-9dbb-bcce9db1c39d-1"
+      - "vless-96a1b724-68d2-4f4d-ab25-38ecd83577bc-1"
+      - "vless-60bc841c-cfbd-408f-889b-473f90bb4a26-1"
+      - "vless-a2af50d9-09c7-4a44-90d0-42da35923e9e-1"
+      - "vless-49ed01ad-3bb4-204f-b0ff-a58f658fd618-1"
+      - "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-1"
+      - "vless-5a12794b-2125-46d7-a748-927a989faa04-1"
+      - "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-2"
+      - "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-3"
+      - "vless-64d6d0d4-3706-4837-b154-cda2816adcc5-1"
+      - "vmess-c7f169a3-2e9a-4894-ba53-7b2fa6fd08b4-1"
+      - "vless-49ed01ad-3bb4-204f-b0ff-a58f658fd618-2"
+      - "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-4"
+      - "vless-2ad87f95-7a0b-4018-8497-5ecaac2f0ddf-1"
+      - "vless-633d3f6b-5f34-4ef8-b240-01667f6dd07d-1"
+      - "vless-c699685e-b072-4141-9406-ee22f89f13ed-1"
+      - "vless-89ce1d87-bf2f-4c74-bafc-f089a9cf532f-1"
+      - "vmess-fdd9c524-3ef3-49ef-88ef-20ac4a29a806-1"
+      - "vless-2036e2c3-18a5-4eed-9db4-f91a7f02c7d5-1"
+      - "vmess-58fe1542-5290-40ad-815a-77707a81afe5-1"
+      - "vless-c106802e-577e-4dfd-ab45-c65d88af1ef9-1"
+      - "vless-88d05a33-ff36-415d-9d2c-7e1e8468e7e8-1"
+      - "vless-2036e2c3-18a5-4eed-9db4-f91a7f02c7d5-2"
+      - "vless-88d05a33-ff36-415d-9d2c-7e1e8468e7e8-2"
+      - "vless-9dd24d01-2b7a-4bd8-8c76-129d6ca89b8c-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-2"
+      - "vless-edeffe9e-4725-428e-a1c0-7b6a96124f8d-1"
+      - "vless-0b9ee474-19f6-4d7f-9281-96f239e6cebc-2"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-3"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-4"
+      - "vless-10f3650d-32f6-470a-b100-e29471cf3380-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-5"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-6"
+      - "vless-a08e37ad-e4ab-4d3e-95ac-aa8493b41911-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-7"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-8"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-9"
+      - "vless-04bb5055-bc44-4d21-85c7-42317dd5fd37-2"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-10"
+      - "vless-8f10f456-fbb0-492a-a71b-9b88cde3e511-1"
+      - "vless-a0a3e34d-87e4-4ff3-b04a-875c85325d62-2"
+      - "vless-88b9da00-7a25-45ec-859b-14ad57a6bd2b-4"
+      - "vless-1584806e-f63d-4f9b-a0b3-abe64b35a09c-2"
+      - "vless-f5f2458c-5fcb-4820-82c2-2997492c54d5-2"
+      - "vless-878879e6-4f80-4e85-a415-85533b536d13-1"
+      - "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-3"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-11"
+      - "vless-9e769ce1-34be-4e3f-b0a6-823f30eb8f69-4"
+      - "vmess-481c8834-3aef-4541-ae36-3e93b4f8ec2e-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-12"
+      - "vless-f73d8952-81f2-4bac-b6c4-d81348f282ef-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-13"
+      - "vless-838f5273-5d2d-4630-a0f5-9cc8e4aef4d6-1"
+      - "vmess-c0ccdeb9-784c-4d67-b904-20dcaac9902a-2"
+      - "vless-ac37eb9c-0db8-4056-8f61-e8db4e2da35e-2"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-14"
+      - "vless-bac0d769-a6ac-4b00-8aa5-092391aaac42-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-15"
+      - "vless-60bc841c-cfbd-408f-889b-473f90bb4a26-2"
+      - "vless-337bf72e-bb79-4d5f-be3f-7822eb77100c-2"
+      - "vless-24a4aa9b-b341-4717-9d4a-00d74c2b84e0-1"
+      - "vless-e4824193-4f54-453b-d037-88368e85ef0e-1"
+      - "vless-df0680ca-e43c-498d-ed86-8e196eedd012-16"
+      - "vless-e4824193-4f54-453b-d037-88368e85ef0e-2"
+      - "vless-ea286109-d20f-415e-849e-4af20ab04b65-1"
+      - "vless-ea286109-d20f-415e-849e-4af20ab04b65-2"
+      - "vless-e4824193-4f54-453b-d037-88368e85ef0e-3"
+      - "vless-e4824193-4f54-453b-d037-88368e85ef0e-4"
+      - "vless-54694a33-a8dc-47dd-bc38-acd3971e0055-5"
+      - "vmess-6260156107-1"
 
-
-  - name: "DIRECT"
-    type: select
-    proxies:
-      - DIRECT
-
-  - name: "REJECT"
-    type: select
-    proxies:
-      - REJECT
-
-# --- Rules ---
 rules:
-  # Rules for Iranian Traffic (Direct)
-  - DOMAIN-SUFFIX,ir,DIRECT
-  - DOMAIN-KEYWORD,iran,DIRECT
-  - GEOIP,IR,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve # Private IPs
-  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
-  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
-
-  # Common Iranian services that should go direct
-  - DOMAIN-SUFFIX,shaparak.ir,DIRECT # Payment gateways
-  - DOMAIN-SUFFIX,bankmellat.ir,DIRECT
-  - DOMAIN-SUFFIX,bankpasargad.com,DIRECT
-  - DOMAIN-SUFFIX,bale.ir,DIRECT # Local messengers/services
-  - DOMAIN-SUFFIX,filimo.com,DIRECT
-  - DOMAIN-SUFFIX,namava.ir,DIRECT
-  - DOMAIN-SUFFIX,aparat.com,DIRECT
-  - DOMAIN-SUFFIX,varzesh3.com,DIRECT
-  - DOMAIN-SUFFIX,irancell.ir,DIRECT
-  - DOMAIN-SUFFIX,mci.ir,DIRECT
-  - DOMAIN-SUFFIX,telewebion.com,DIRECT
-  - DOMAIN-SUFFIX,tgju.org,DIRECT
-  - DOMAIN-SUFFIX,nobitex.ir,DIRECT
-  - DOMAIN-SUFFIX,zula.ir,DIRECT # As seen in your links
-  - DOMAIN-SUFFIX,snapp.ir,DIRECT
-  - DOMAIN-SUFFIX,snappfood.ir,DIRECT
-
-  # Rules for bypassing ads and analytics (optional but recommended)
-  - RULE-SET,https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject-all.txt,REJECT,no-resolve
-  - RULE-SET,https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cn.txt,DIRECT # Example: Chinese sites direct (if you have any)
-
-  # Rules for common blocked/foreign services (via proxy)
-  - DOMAIN-SUFFIX,google.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,youtube.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,whatsapp.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,instagram.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,twitter.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,facebook.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,telegram.org,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,t.me,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,cdninstagram.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,netflix.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,spotify.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,discord.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,tiktok.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,reddit.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,wikipedia.org,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,github.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,amazon.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,microsoft.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,apple.com,🚀 Selected Proxy
-  - DOMAIN-SUFFIX,cloudflare.com,🚀 Selected Proxy # Some of your proxies use Cloudflare SNI
-  - DOMAIN-SUFFIX,speedtest.net,🚀 Selected Proxy # Seen in your links
-
-  # Final rule: All other traffic goes through the selected proxy
-  - MATCH,🚀 Selected Proxy
+  - MATCH,⚡️Proxy
