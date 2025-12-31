@@ -1,25 +1,31 @@
-name: Auto-Sync Configs from Shahab
+name: Auto-Sync Configs
+
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/30 * * * *'  # every 30 minutes
   workflow_dispatch:
+
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout Forked Repo
       uses: actions/checkout@v3
       with:
-        repository: shahabprv1/-FREE2CONFIG
+        repository: shahabprv/-FREE2CONFIG  # your forked repo
         token: ${{ secrets.PERSONAL_TOKEN }}
         ref: main
-    - name: Rename Configs for Maedeh
+
+    - name: Rename Configs
       run: |
-        sed -i 's/shahabprv/maedehprv/g' *.txt
+        # replace all occurrences of FREE2CONFIG with shahabprv in all txt files
+        sed -i 's/FREE2CONFIG/shahabprv/g' *.txt
+
     - name: Commit and Push Changes
       run: |
-        git config --global user.name "Maedeh"
-        git config --global user.email "maedeh@example.com"
+        git config --global user.name "shahabprv"
+        git config --global user.email "shahabprv@example.com"
         git add .
-        git commit -m "Auto sync from Shahab with renamed configs"
+        git diff --cached --quiet || git commit -m "Auto sync from Shahab with renamed configs"
         git push origin main
