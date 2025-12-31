@@ -17,12 +17,11 @@ jobs:
 
     - name: Add upstream repo
       run: |
-        git remote add upstream https://github.com/Mosifree/-FREE2CONFIG.git || true
+        git remote add upstream https://github.com/FREE2CONFIG/FREE2CONFIG.git || true
 
     - name: Sync from upstream
       run: |
         git fetch upstream
-        git checkout main
         git merge upstream/main --allow-unrelated-histories || true
 
     - name: Replace config names
@@ -30,7 +29,7 @@ jobs:
       with:
         find: 'FREE2CONFIG'
         replace: 'shahabprv'
-        include: '**/*.txt'
+        include: '**/*'
         regex: false
 
     - name: Commit and push changes
