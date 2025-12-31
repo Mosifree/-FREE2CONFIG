@@ -1,0 +1,41 @@
+name: Auto Sync From Upstream And Rename
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout fork
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Add upstream repo
+      run: |
+        git remote add upstream https://github.com/FREE2CONFIG/FREE2CONFIG.git || true
+
+    - name: Sync from upstream
+      run: |
+        git fetch upstream
+        git merge upstream/main --allow-unrelated-histories || true
+
+    - name: Replace config names
+      uses: jacobtomlinson/gha-find-replace@v3
+      with:
+        find: 'FREE2CONFIG'
+        replace: 'shahabprv'
+        include: '**/*'
+        regex: false
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "shahabprv"
+        git config --global user.email "shahabprv@example.com"
+        git add .
+        git diff --cached --quiet || git commit -m "Auto sync from upstream and rename configs" || true
+        git push origin main
