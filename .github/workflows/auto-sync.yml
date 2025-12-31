@@ -1,0 +1,25 @@
+name: Auto-Sync Configs from Shahab
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Forked Repo
+      uses: actions/checkout@v3
+      with:
+        repository: shahab/Configs
+        token: ${{ secrets.PERSONAL_TOKEN }}
+        ref: main
+    - name: Rename Configs for Maedeh
+      run: |
+        sed -i 's/shahabprv/maedehprv/g' *.txt
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name "Maedeh"
+        git config --global user.email "maedeh@example.com"
+        git add .
+        git commit -m "Auto sync from Shahab with renamed configs"
+        git push origin main
