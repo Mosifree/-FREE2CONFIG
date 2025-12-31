@@ -1,4 +1,4 @@
-name: Auto Sync From Upstream And Rename
+name: Auto Sync And Rename
 
 on:
   schedule:
@@ -15,14 +15,11 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Add upstream repo
+    - name: Reset fork to upstream
       run: |
         git remote add upstream https://github.com/FREE2CONFIG/FREE2CONFIG.git || true
-
-    - name: Sync from upstream
-      run: |
         git fetch upstream
-        git merge upstream/main --allow-unrelated-histories || true
+        git reset --hard upstream/main
 
     - name: Replace config names
       uses: jacobtomlinson/gha-find-replace@v3
@@ -32,10 +29,10 @@ jobs:
         include: '**/*'
         regex: false
 
-    - name: Commit and push changes
+    - name: Commit and push
       run: |
         git config --global user.name "shahabprv"
         git config --global user.email "shahabprv@example.com"
         git add .
-        git diff --cached --quiet || git commit -m "Auto sync from upstream and rename configs" || true
+        git diff --cached --quiet || git commit -m "Auto sync and rename configs" || true
         git push origin main
