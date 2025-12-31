@@ -1,4 +1,4 @@
-name: Auto Rename Configs
+name: Rename Configs Safely
 
 permissions:
   contents: write
@@ -19,8 +19,14 @@ jobs:
       with:
         find: 'FREE2CONFIG'
         replace: 'shahabprv'
-        include: '**/*'
+        include: |
+          **/*.txt
+          **/*.yaml
+          **/*.yml
+          **/*.conf
+          **/*.json
         regex: false
+        fail_on_no_changes: false
 
     - name: Commit and push
       run: |
