@@ -10,16 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Forked Repo
+    - name: Checkout Repo
       uses: actions/checkout@v3
-      with:
-        repository: shahabprv/-FREE2CONFIG  # your forked repo
-        token: ${{ secrets.PERSONAL_TOKEN }}
-        ref: main
 
     - name: Rename Configs
       run: |
-        # replace all occurrences of FREE2CONFIG with shahabprv in all txt files
         sed -i 's/FREE2CONFIG/shahabprv/g' *.txt
 
     - name: Commit and Push Changes
@@ -27,5 +22,5 @@ jobs:
         git config --global user.name "shahabprv"
         git config --global user.email "shahabprv@example.com"
         git add .
-        git diff --cached --quiet || git commit -m "Auto sync from Shahab with renamed configs"
+        git diff --cached --quiet || git commit -m "Auto sync with renamed configs"
         git push origin main
