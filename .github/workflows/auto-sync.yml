@@ -1,25 +1,18 @@
-name: Auto Sync And Rename
+name: Auto Rename Configs
+
+permissions:
+  contents: write
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
-  sync:
+  rename:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout fork
+    - name: Checkout repo
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: Reset fork to upstream
-      run: |
-        git remote add upstream https://github.com/FREE2CONFIG/FREE2CONFIG.git || true
-        git fetch upstream
-        git reset --hard upstream/main
 
     - name: Replace config names
       uses: jacobtomlinson/gha-find-replace@v3
@@ -34,5 +27,5 @@ jobs:
         git config --global user.name "shahabprv"
         git config --global user.email "shahabprv@example.com"
         git add .
-        git diff --cached --quiet || git commit -m "Auto sync and rename configs" || true
-        git push origin main
+        git diff --cached --quiet || git commit -m "Rename configs" || true
+        git push
