@@ -15,12 +15,12 @@ jobs:
 
     - name: Rename Configs
       run: |
-        sed -i 's/FREE2CONFIG/shahabprv/g' *.txt
+        sed -i "s/FREE2CONFIG/${{ github.actor }}/g" *.txt
 
     - name: Commit and Push Changes
-  run: |
-    git config --global user.name "shahabprv"
-    git config --global user.email "shahabprv@example.com"
-    git add .
-    git diff --cached --quiet || git commit -m "Auto sync with renamed configs" || true
-    git push origin main
+      run: |
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor }}@example.com"
+        git add .
+        git diff --cached --quiet || git commit -m "Auto sync with renamed configs" || true
+        git push origin main
