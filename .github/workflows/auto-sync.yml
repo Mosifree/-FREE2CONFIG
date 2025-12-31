@@ -2,7 +2,7 @@ name: Auto-Sync Configs
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # every 30 minutes
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,14 +13,18 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
 
-    - name: Rename Configs
-      run: |
-        sed -i "s/FREE2CONFIG/${{ github.actor }}/g" *.txt
+    - name: Find and Replace Config Names
+      uses: jacobtomlinson/gha-find-replace@v3
+      with:
+        find: 'FREE2CONFIG'
+        replace: '${{ github.actor }}'
+        include: '**/*.txt'
+        regex: false
 
     - name: Commit and Push Changes
       run: |
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@example.com"
         git add .
-        git diff --cached --quiet || git commit -m "Auto sync with renamed configs" || true
+        git diff --cached --quiet || git commit -m "Auto sync renamed configs" || true
         git push origin main
