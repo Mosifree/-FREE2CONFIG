@@ -1,171 +1,1884 @@
-port: 7890
-socks-port: 7891
+mixed-port: 7890
 allow-lan: true
-mode: Rule
+mode: rule
 log-level: info
-external-controller: 0.0.0.0:9090
-
+ipv6: true
+external-controller: 127.0.0.1:9090
 dns:
-  enabled: true
+  enable: true
+  listen: 0.0.0.0:1053
   ipv6: true
-  default-nameserver:
-    - 223.5.5.5
-    - 1.1.1.1
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
   nameserver:
     - https://dns.alidns.com/dns-query
-    - https://1.1.1.1/dns-query
-
+    - https://doh.pub/dns-query
 proxies:
-  - {"type":"vless","name":"@FREE2CONFIG - 1","server":"72.56.5.150","port":443,"uuid":"881cbd87-6cc3-41f9-9d4c-303fa2f8deab","network":"raw","tls":true,"servername":"shopper.applepie-recipe.ru","flow":"xtls-rprx-vision"}
-  - {"type":"vless","name":"@FREE2CONFIG - 2","server":"185.152.93.9","port":443,"uuid":"881cbd87-6cc3-41f9-9d4c-303fa2f8deab","network":"raw","tls":true,"servername":"shopper.applepie-recipe.ru","flow":"xtls-rprx-vision"}
-  - {"type":"vless","name":"@FREE2CONFIG - 3","server":"185.231.101.88","port":443,"uuid":"ecad47b0-249e-4f6f-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"se.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 4","server":"185.231.101.88","port":443,"uuid":"ecad47b0-249e-4f6f-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"se.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 5","server":"31.76.113.161","port":445,"uuid":"fe56cb08-6d4c-4954-808d-216fa945d3e8","network":"tcp","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"IrgMA7g_C4JRT3gXWQvNXtHRd7dgC6fkSkKvxIxbfF0","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 6_1","server":"185.231.101.88","port":443,"uuid":"ecad47b0-249e-4f6f-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"se.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 7_1","server":"192.144.57.152","port":2087,"uuid":"3bafe192-f47b-40c2-9bd2-fe8c3d1c3e6d","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"weSBb2pHXmOg1gVjtNRN48p9gUpTfuu6Lu206Q5W4Bk","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 8","server":"72.56.5.150","port":443,"uuid":"881cbd87-6cc3-41f9-9d4c-303fa2f8deab","network":"raw","tls":true,"servername":"shopper.applepie-recipe.ru","flow":"xtls-rprx-vision"}
-  - {"type":"vless","name":"@FREE2CONFIG - 9","server":"212.233.78.243","port":8443,"uuid":"68d3fcbe-f025-1f40-82d6-9455c5e5f6b5","network":"raw","tls":true,"servername":"secget.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI","short-id":"f8a8ee8381529673"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 10","server":"52.29.73.217","port":22222,"uuid":"e4514801-0d5a-42ba-869f-39bd605aef9e","network":"tcp"}
-  - {"type":"vless","name":"@FREE2CONFIG - 11_1","server":"185.231.101.88","port":443,"uuid":"ecad47b0-249e-4f6f-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"se.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 12","server":"212.233.78.246","port":8443,"uuid":"68d3fcbe-f025-1f40-82d6-9455c5e5f6b5","network":"raw","tls":true,"servername":"secget.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI","short-id":"f8a8ee8381529673"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 13","server":"31.76.113.136","port":445,"uuid":"8d90a1bf-7d6a-4cb7-812a-afd355e73489","network":"tcp","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"wXOV7-oBLNnuIy8smYrLLdK-NkN1j-NEf9MxePbAT2Y","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 14","server":"31.76.113.136","port":2087,"uuid":"8d90a1bf-7d6a-4cb7-812a-afd355e73489","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"wXOV7-oBLNnuIy8smYrLLdK-NkN1j-NEf9MxePbAT2Y","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 15","server":"212.233.78.246","port":8443,"uuid":"68d3fcbe-f025-1f40-82d6-9455c5e5f6b5","network":"raw","tls":true,"servername":"secget.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI","short-id":"f8a8ee8381529673"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 16","server":"hudrososov.blog","port":443,"uuid":"2428711f-5117-46e9-a2cb-741797a60ed8","network":"tcp","tls":true,"servername":"hudrososov.blog","flow":"xtls-rprx-vision","reality-opts":{"public-key":"yuKSmrb2MumCllTTmBJiuNTQcGxEaNhqmZVR8dVjLwI","short-id":"d1c2b3a4"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 17","server":"31.76.113.160","port":445,"uuid":"b90064cf-3f61-4f37-b549-a72100a8c9db","network":"tcp","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"YPbKkg4p8zdxymjtC0qBiDkiMIlu0Iutu5zEbgR46So","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 18","server":"31.76.113.136","port":445,"uuid":"8d90a1bf-7d6a-4cb7-812a-afd355e73489","network":"tcp","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"wXOV7-oBLNnuIy8smYrLLdK-NkN1j-NEf9MxePbAT2Y","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 19","server":"185.152.93.9","port":443,"uuid":"881cbd87-6cc3-41f9-9d4c-303fa2f8deab","network":"raw","tls":true,"servername":"shopper.applepie-recipe.ru","flow":"xtls-rprx-vision"}
-  - {"type":"vless","name":"@FREE2CONFIG - 20","server":"212.233.78.246","port":8443,"uuid":"68d3fcbe-f025-1f40-82d6-9455c5e5f6b5","network":"tcp","tls":true,"servername":"secget.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI","short-id":"f8a8ee8381529673"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 21_1","server":"89.105.212.138","port":443,"uuid":"ecad47b0-249e-4f6f-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"nl.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 22","server":"51.250.44.66","port":443,"uuid":"bbae962a-b6e9-46e6-990c-6abf13e6b075","network":"raw","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"MZ4v9kcs6nnAKuCAz4pvViC50BoM3exoL_5Yi-1b1kE","short-id":"59de66570907b747"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 23","server":"72.56.235.19","port":443,"uuid":"881cbd87-6cc3-41f9-9d4c-303fa2f8deab","network":"raw","tls":true,"servername":"shopper.applepie-recipe.ru","flow":"xtls-rprx-vision"}
-  - {"type":"vless","name":"@FREE2CONFIG - 24","server":"45.91.54.113","port":443,"uuid":"a77cedab-f429-40bb-b6d4-fd9dd681e675","network":"raw","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"OD-2VgiGzoTEekLuLg5sEsGmlxgqUML3n2OR9Qj6YT0","short-id":"135f6d63"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 25","server":"89.105.212.138","port":443,"uuid":"ecad47b0-249e-4f6f-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"nl.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 26","server":"138.16.184.123","port":2087,"uuid":"81ef8e1d-4d31-4c1b-92e8-d2e65e7ffaf4","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"n9tFDSBvLVWje_hxPG5QqEZIf-ZhqbNH-i1PfmAHYkQ","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 27_1","server":"212.233.78.246","port":8443,"uuid":"68d3fcbe-f025-1f40-82d6-9455c5e5f6b5","network":"tcp","tls":true,"servername":"secget.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI","short-id":"f8a8ee8381529673"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 28","server":"89.110.98.232","port":446,"uuid":"fdb773e6-7446-4c89-8f3d-296b48f77446","network":"tcp","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"3w_rGK3Ht1HnuT453oqFwJn7zQofWhHkKYd6I7_85Qo","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 29","server":"164.138.100.196","port":443,"uuid":"c1ad576a-302d-4bd2-9549-77c0b32e2027","network":"grpc","tls":true,"servername":"api-maps.yandex.ru","reality-opts":{"public-key":"_QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA","short-id":"10ffb85da1c2d986"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"de-br-yandex"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 30","server":"qq.utiltools.ru","port":443,"uuid":"eb78e1f0-d921-4ca9-a889-261fcc5a0547","network":"tcp","tls":true,"servername":"qq.utiltools.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"drY21DHNOr6ezJLA2B10mzTExeJ9-gVBfTBNLwVBtWI","short-id":""},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 31","server":"72.56.235.19","port":443,"uuid":"881cbd87-6cc3-41f9-9d4c-303fa2f8deab","network":"raw","tls":true,"servername":"shopper.applepie-recipe.ru","flow":"xtls-rprx-vision"}
-  - {"type":"vless","name":"@FREE2CONFIG - 32","server":"185.91.54.30","port":443,"uuid":"2d840b2f-ac86-42e3-ac20-a5e60438bf2f","network":"raw","tls":true,"servername":"www.ya.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"J60eiW_9W4Pk_jf3atrxE_E_X0xw9rwYcABS_frZxGo","short-id":"abcd"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 33","server":"212.233.78.243","port":8443,"uuid":"68d3fcbe-f025-1f40-82d6-9455c5e5f6b5","network":"raw","tls":true,"servername":"secget.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI","short-id":"f8a8ee8381529673"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 34","server":"89.110.98.232","port":2087,"uuid":"fdb773e6-7446-4c89-8f3d-296b48f77446","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"3w_rGK3Ht1HnuT453oqFwJn7zQofWhHkKYd6I7_85Qo","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 35","server":"192.144.57.152","port":2087,"uuid":"3bafe192-f47b-40c2-9bd2-fe8c3d1c3e6d","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"weSBb2pHXmOg1gVjtNRN48p9gUpTfuu6Lu206Q5W4Bk","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 36","server":"185.93.33.7","port":443,"uuid":"ecad47b0-249e-0014-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 37","server":"185.93.33.7","port":443,"uuid":"ecad47b0-249e-0014-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 38","server":"138.16.184.72","port":2087,"uuid":"97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 39","server":"185.93.33.7","port":443,"uuid":"ecad47b0-249e-0014-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 40","server":"185.93.33.7","port":443,"uuid":"ecad47b0-249e-0014-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 41","server":"51.250.44.66","port":443,"uuid":"bbae962a-b6e9-46e6-990c-6abf13e6b075","network":"raw","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"MZ4v9kcs6nnAKuCAz4pvViC50BoM3exoL_5Yi-1b1kE","short-id":"59de66570907b747"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 42","server":"185.93.33.7","port":443,"uuid":"ecad47b0-249e-0014-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 43","server":"a.bazardam.shop","port":2056,"uuid":"3f646f4d-b96e-4ba4-b562-0fd4854391a8","network":"xhttp","tls":true,"servername":"yahoo.com","reality-opts":{"public-key":"qXZfqpQScWQea7Kpr69if9iHhiA7IMLwUgZflIvuWh8","short-id":"4eee3ae71639f189"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 44","server":"138.16.184.123","port":2087,"uuid":"81ef8e1d-4d31-4c1b-92e8-d2e65e7ffaf4","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"n9tFDSBvLVWje_hxPG5QqEZIf-ZhqbNH-i1PfmAHYkQ","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 45","server":"fn.fifapes.monster","port":2090,"uuid":"eab915bc-d2df-73d1-47d0-6eb240497055","network":"tcp"}
-  - {"type":"vless","name":"@FREE2CONFIG - 46","server":"138.16.184.72","port":2087,"uuid":"97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 47","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 48","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 49","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 50","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 51","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 52","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 53","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 54","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 55","server":"138.16.184.72","port":444,"uuid":"97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce","network":"tcp","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 56","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 57","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 58","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 59","server":"193.124.128.144","port":2087,"uuid":"67cad96e-9bfe-48b7-bd85-1acb66a7a937","network":"grpc","tls":true,"servername":"ads.x5.ru","reality-opts":{"public-key":"2EmWIOV_DOnYyCtoH0_0ccFMT-JBGR-UGhiMnwR6dxs","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"grpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 60","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 61_1","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 62","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 63","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 64","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 65","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 66","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 67","server":"192.144.57.152","port":447,"uuid":"3bafe192-f47b-40c2-9bd2-fe8c3d1c3e6d","network":"raw","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"weSBb2pHXmOg1gVjtNRN48p9gUpTfuu6Lu206Q5W4Bk","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 68","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 69","server":"fn.fifapes.monster","port":2090,"uuid":"eab915bc-d2df-73d1-47d0-6eb240497055","network":"tcp"}
-  - {"type":"vless","name":"@FREE2CONFIG - 70","server":"51.250.44.66","port":443,"uuid":"bbae962a-b6e9-46e6-990c-6abf13e6b075","network":"raw","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"MZ4v9kcs6nnAKuCAz4pvViC50BoM3exoL_5Yi-1b1kE","short-id":"59de66570907b747"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 71","server":"188.72.103.3","port":443,"uuid":"1cd800be-0317-44a9-b56c-a60f13bc2c78","network":"xhttp","tls":true,"servername":"worldstream.club"}
-  - {"type":"vless","name":"@FREE2CONFIG - 72","server":"188.72.103.3","port":443,"uuid":"741cb574-4ed3-463a-af2c-291b5e4b0fdc","network":"xhttp","tls":true,"servername":"worldstream.club"}
-  - {"type":"vless","name":"@FREE2CONFIG - 73","server":"fn.fifapes.monster","port":2090,"uuid":"eab915bc-d2df-73d1-47d0-6eb240497055","network":"tcp"}
-  - {"type":"vless","name":"@FREE2CONFIG - 74","server":"188.72.103.3","port":443,"uuid":"1cd800be-0317-44a9-b56c-a60f13bc2c78","network":"xhttp","tls":true,"servername":"worldstream.club"}
-  - {"type":"vless","name":"@FREE2CONFIG - 75","server":"138.16.184.72","port":446,"uuid":"97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce","network":"raw","tls":true,"servername":"ads.x5.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs","short-id":"c226283c4de5b1ad"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 76","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 77","server":"188.72.103.3","port":443,"uuid":"8282fbe3-eff8-4805-96ff-0ed73a2d0f02","network":"xhttp","tls":true,"servername":"worldstream.club"}
-  - {"type":"vless","name":"@FREE2CONFIG - 78","server":"188.72.103.3","port":443,"uuid":"17c2ee7a-4faf-43fd-bf54-aa43310c3595","network":"xhttp","tls":true,"servername":"worldstream.club"}
-  - {"type":"vless","name":"@FREE2CONFIG - 79","server":"141.98.118.70","port":443,"uuid":"de64aaa6-a0ea-48d0-853b-1c3cbc7fb42c","network":"xhttp","tls":true,"servername":"www.google.com","reality-opts":{"public-key":"LjEQR0FEtsOs5eQoVsZgJX5ZI0yeadUKTCLoGD641RQ","short-id":"44"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 80","server":"5.253.66.203","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"8c4d9e1f"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 81","server":"5.253.66.63","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"0c6d3e2f"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 82","server":"178.104.225.122","port":44444,"uuid":"e044297a-304f-40a9-a9fb-d17b744fa781","network":"tcp","tls":true,"servername":"yahoo.com.","reality-opts":{"public-key":"79ji8OAmCVQTKcJmvf-iqZypOSKwuTD_sbatB4RHXXM","short-id":"f37329647c9a1886"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 83","server":"5.253.66.63","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"0c6d3e2f"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 84","server":"195.254.165.243","port":443,"uuid":"1f6531a1-a6eb-4274-9f51-4a0899456fcf","network":"tcp","tls":true,"servername":"play.google.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE","short-id":"eaa8"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 85","server":"72.56.81.165","port":40443,"uuid":"4bf5a71c-d726-4585-b095-7396675706d5","network":"tcp","tls":true,"servername":"deepl.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"D_ks4Yyk4-osnWBxCFvd0_UEgohUXvR2zJoWQg1CACU","short-id":"c84f"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 86","server":"185.155.97.58","port":45176,"uuid":"dc7940e0-6bff-45e3-853d-4007561803c3","network":"tcp","tls":true,"servername":"www.googletagmanager.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"A1Qf_rMG4KDfLzfCK-M5R9qW_0uThfeSosQnv6LBL1M","short-id":"8433cb66b6c3ab6d"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 87","server":"140.233.177.250","port":55715,"uuid":"914f97ee-1e5e-475d-9f04-fb93ef8585e7","network":"tcp"}
-  - {"type":"vless","name":"@FREE2CONFIG - 88","server":"195.254.165.243","port":443,"uuid":"1f6531a1-a6eb-4274-9f51-4a0899456fcf","network":"tcp","tls":true,"servername":"play.google.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE","short-id":"eaa8"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 89","server":"104.21.94.161","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 90","server":"144.31.0.100","port":443,"uuid":"8f0560ec-ba22-4431-a6a7-318dc59d5233","network":"tcp","tls":true,"servername":"vaultivo-hgooe.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"CxMPFpwhcR9Ocp-Xy_1J08mo-atdHKUf58WLOy_XlgM","short-id":"d9662905"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 91","server":"176.109.106.6","port":443,"uuid":"8a22fde8-e72e-4ce2-96f6-285aeffe66a2","network":"raw","tls":true,"servername":"eh.vk.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY","short-id":"6c6082a2223c1d03"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 92","server":"172.64.152.241","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 93","server":"185.137.157.72","port":443,"uuid":"55a5044d-5b35-405f-971c-ea7aacaafcb4","network":"tcp","tls":true,"servername":"www.nvidia.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"z6_OFl0jskilOOxkQcUcdQOCS4-LVndwFF9i7kIOPzg","short-id":"d23753491eefde7e"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 94","server":"151.80.147.30","port":443,"uuid":"a1750ade-801f-4e3e-a5d2-de825771205d","network":"tcp","tls":true,"servername":"speedtest.net","flow":"xtls-rprx-vision","reality-opts":{"public-key":"Ij3Iz1jqht6zLOy9uI0iusTy4n1oIr7gpgTwRTtA8kY","short-id":"42b395462da31c0e"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 95","server":"159.195.44.159","port":443,"uuid":"859a537b-09cf-4bce-8da4-ecbb72950e3a","network":"tcp","tls":true,"servername":"5.oncloudnineservicestreang.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"RurLbpOTStqCjS3lhwB0d3MEZ3629j3atv_r1dT5zjM","short-id":"273940fba6ad8250"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 96","server":"5.253.66.203","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"8c4d9e1f"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 97","server":"178.104.225.122","port":44444,"uuid":"e044297a-304f-40a9-a9fb-d17b744fa781","network":"tcp","tls":true,"servername":"yahoo.com.","reality-opts":{"public-key":"79ji8OAmCVQTKcJmvf-iqZypOSKwuTD_sbatB4RHXXM","short-id":"f37329647c9a1886"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 98","server":"5.253.66.63","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"0c6d3e2f"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 99","server":"185.40.28.216","port":8443,"uuid":"ecad47b0-249e-0007-adff-e3c8f02b1897","network":"raw","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 100","server":"195.254.165.243","port":443,"uuid":"1f6531a1-a6eb-4274-9f51-4a0899456fcf","network":"tcp","tls":true,"servername":"play.google.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE","short-id":"eaa8"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 101","server":"151.80.147.30","port":443,"uuid":"a1750ade-801f-4e3e-a5d2-de825771205d","network":"tcp","tls":true,"servername":"speedtest.net","flow":"xtls-rprx-vision","reality-opts":{"public-key":"Ij3Iz1jqht6zLOy9uI0iusTy4n1oIr7gpgTwRTtA8kY","short-id":"42b395462da31c0e"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 102","server":"108.162.198.43","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 103","server":"151.80.147.30","port":443,"uuid":"a1750ade-801f-4e3e-a5d2-de825771205d","network":"tcp","tls":true,"servername":"speedtest.net","flow":"xtls-rprx-vision","reality-opts":{"public-key":"Ij3Iz1jqht6zLOy9uI0iusTy4n1oIr7gpgTwRTtA8kY","short-id":"42b395462da31c0e"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 104","server":"185.40.28.216","port":8443,"uuid":"ecad47b0-249e-0007-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 105","server":"37.230.192.111","port":443,"uuid":"8a22fde8-e72e-4ce2-96f6-285aeffe66a2","network":"raw","tls":true,"servername":"eh.vk.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY","short-id":"6c6082a2223c1d03"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 106","server":"51.68.165.126","port":2053,"uuid":"fcf4db22-3134-452f-a5d2-107f04afc89c","network":"grpc","tls":true,"servername":"play.google.com","reality-opts":{"public-key":"GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY","short-id":"524efc1f88592266"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"api.v1.data"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 107","server":"144.31.0.100","port":443,"uuid":"8f0560ec-ba22-4431-a6a7-318dc59d5233","network":"tcp","tls":true,"servername":"vaultivo-hgooe.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"CxMPFpwhcR9Ocp-Xy_1J08mo-atdHKUf58WLOy_XlgM","short-id":"d9662905"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 108","server":"95.85.228.34","port":443,"uuid":"8f0560ec-ba22-4431-a6a7-318dc59d5233","network":"grpc","tls":true,"servername":"1vga81kaw013f-topology-gslb-yccdn.ru","reality-opts":{"public-key":"ibignrnL_bVupAb4hFM939eT22FtlzPvc1FZY_FDwnw","short-id":"5e3ab3ab228625"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"nexusGrpc"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 109","server":"172.67.170.11","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=2560","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 110","server":"108.162.198.43","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/fp","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 111","server":"5.175.136.134","port":2053,"uuid":"dd280dbb-75ec-4631-9979-d65237e27185","network":"xhttp","tls":true,"servername":"www.yahoo.com","reality-opts":{"public-key":"AsmltIw-2fVcbpcbckmIJZrWiVyDW_Kid8VIvHkcmC4","short-id":"81053c0bc6adc9"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 112","server":"151.115.167.6","port":8880,"uuid":"8dc7722c-2767-4eea-a28b-2f8daacc07e3","network":"grpc","grpc-opts":{"grpc-service-name":""}}
-  - {"type":"vless","name":"@FREE2CONFIG - 113_1","server":"195.254.165.243","port":443,"uuid":"1f6531a1-a6eb-4274-9f51-4a0899456fcf","network":"tcp","tls":true,"servername":"play.google.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE","short-id":"eaa8"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 114","server":"162.159.38.119","port":8443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 115","server":"162.159.38.119","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 116","server":"45.89.106.101","port":40443,"uuid":"6ae44ad9-c2cb-4bdf-8e48-6c01fa646372","network":"raw","tls":true,"servername":"deepl.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"f6MOnGRTqdns7Lut75DSrnFZeiiZ4N04gnj5m-l7KnM","short-id":"54ce"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 117","server":"137.184.218.169","port":36925,"uuid":"c9fd0fb1-8251-4106-b09a-f4b426736f67","network":"tcp","tls":true,"servername":"www.cloudflare.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0","short-id":""},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 118","server":"159.195.45.129","port":443,"uuid":"859a537b-09cf-4bce-8da4-ecbb72950e3a","network":"tcp","tls":true,"servername":"3.oncloudnineservicestreang.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"dp-ncBuRHgZl5O80eHBYhSKo1i9qbt-J7MJ1alyWXmM","short-id":"1991780b928b292d"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 119_1","server":"217.114.12.143","port":443,"uuid":"eeb6823c-b926-4ea2-866a-5542edd26e59","network":"ws","tls":true,"servername":"t1s1.rittbo.kdns.fr","ws-opts":{"path":"/","headers":{"Host":"t1s1.rittbo.kdns.fr"}}}
-  - {"type":"vless","name":"@FREE2CONFIG - 120","server":"194.55.239.200","port":8443,"uuid":"ecad47b0-249e-0009-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"rutube.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0","short-id":""},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 1 (1)","server":"78.159.250.214","port":443,"uuid":"eb78e1f0-d921-4ca9-a889-261fcc5a0547","network":"tcp","tls":true,"servername":"qq.utiltools.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"drY21DHNOr6ezJLA2B10mzTExeJ9-gVBfTBNLwVBtWI","short-id":""},"client-fingerprint":"qq"}
-  - {"type":"vless","name":"@FREE2CONFIG - 6_2","server":"82.192.69.94","port":38733,"uuid":"384a72e6-8a10-4695-9ee5-c93728ef7e2a","network":"grpc","tls":true,"servername":"play.google.com","reality-opts":{"public-key":"CXOpQI3hwCqEp5ul2SKWfdAK-PBjjzUn-eRb7bAxDgU","short-id":"09e78c1d381f98ed"},"client-fingerprint":"chrome","grpc-opts":{"grpc-service-name":""}}
-  - {"type":"vless","name":"@FREE2CONFIG - 11_2","server":"195.254.165.243","port":443,"uuid":"1f6531a1-a6eb-4274-9f51-4a0899456fcf","network":"raw","tls":true,"servername":"play.google.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE","short-id":"eaa8"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 119_2","server":"5.253.66.203","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"8c4d9e1f"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 7_2","server":"5.253.66.63","port":443,"uuid":"c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692","network":"tcp","tls":true,"servername":"cdn-up.perecbass.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8","short-id":"0c6d3e2f"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 113_2","server":"31.76.111.44","port":443,"uuid":"8a22fde8-e72e-4ce2-96f6-285aeffe66a2","network":"tcp","tls":true,"servername":"de2.raketa-balance.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY","short-id":"6c6082a2223c1d03"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 6 (1)","server":"72.56.81.165","port":40443,"uuid":"4bf5a71c-d726-4585-b095-7396675706d5","network":"raw","tls":true,"servername":"deepl.com","flow":"xtls-rprx-vision","reality-opts":{"public-key":"D_ks4Yyk4-osnWBxCFvd0_UEgohUXvR2zJoWQg1CACU","short-id":"c84f"},"client-fingerprint":"chrome"}
-  - {"type":"vless","name":"@FREE2CONFIG - 61_2","server":"185.40.28.216","port":8443,"uuid":"ecad47b0-249e-0007-adff-e3c8f02b1897","network":"tcp","tls":true,"servername":"auto.quattro-tech.ru","flow":"xtls-rprx-vision","reality-opts":{"public-key":"10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc","short-id":"43dcff53849b81e6"},"client-fingerprint":"firefox"}
-  - {"type":"vless","name":"@FREE2CONFIG - 27_2","server":"217.179.220.67","port":8443,"uuid":"f885cecc-a6ea-4e9b-87da-c7dc4b745348","network":"grpc","tls":true,"servername":"avatars.mds.yandex.net","reality-opts":{"public-key":"sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg","short-id":"844352756c1fabba"},"client-fingerprint":"chrome","grpc-opts":{"grpc-service-name":"grpc-yandex"}}
-  - {"type":"vless","name":"@FREE2CONFIG - 21_2","server":"95.85.228.34","port":443,"uuid":"8f0560ec-ba22-4431-a6a7-318dc59d5233","network":"grpc","tls":true,"servername":"1vga81kaw013f-topology-gslb-yccdn.ru","reality-opts":{"public-key":"ibignrnL_bVupAb4hFM939eT22FtlzPvc1FZY_FDwnw","short-id":"5e3ab3ab228625"},"client-fingerprint":"firefox","grpc-opts":{"grpc-service-name":"nexusGrpc"}}
-
+  - name: "@FREE2CONFIG - 1"
+    type: vless
+    server: 72.56.5.150
+    port: 443
+    uuid: 881cbd87-6cc3-41f9-9d4c-303fa2f8deab
+    network: raw
+    servername: shopper.applepie-recipe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 2"
+    type: vless
+    server: 185.152.93.9
+    port: 443
+    uuid: 881cbd87-6cc3-41f9-9d4c-303fa2f8deab
+    network: raw
+    servername: shopper.applepie-recipe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 3"
+    type: vless
+    server: 185.231.101.88
+    port: 443
+    uuid: ecad47b0-249e-4f6f-adff-e3c8f02b1897
+    servername: se.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 4"
+    type: vless
+    server: 185.231.101.88
+    port: 443
+    uuid: ecad47b0-249e-4f6f-adff-e3c8f02b1897
+    servername: se.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 5"
+    type: vless
+    server: 31.76.113.161
+    port: 445
+    uuid: fe56cb08-6d4c-4954-808d-216fa945d3e8
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: IrgMA7g_C4JRT3gXWQvNXtHRd7dgC6fkSkKvxIxbfF0
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 6"
+    type: vless
+    server: 185.231.101.88
+    port: 443
+    uuid: ecad47b0-249e-4f6f-adff-e3c8f02b1897
+    servername: se.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 7"
+    type: vless
+    server: 192.144.57.152
+    port: 2087
+    uuid: 3bafe192-f47b-40c2-9bd2-fe8c3d1c3e6d
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: weSBb2pHXmOg1gVjtNRN48p9gUpTfuu6Lu206Q5W4Bk
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 8"
+    type: vless
+    server: 72.56.5.150
+    port: 443
+    uuid: 881cbd87-6cc3-41f9-9d4c-303fa2f8deab
+    network: raw
+    servername: shopper.applepie-recipe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 9"
+    type: vless
+    server: 212.233.78.243
+    port: 8443
+    uuid: 68d3fcbe-f025-1f40-82d6-9455c5e5f6b5
+    network: raw
+    servername: secget.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI
+      short-id: f8a8ee8381529673
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 10"
+    type: vless
+    server: 52.29.73.217
+    port: 22222
+    uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 11"
+    type: vless
+    server: 185.231.101.88
+    port: 443
+    uuid: ecad47b0-249e-4f6f-adff-e3c8f02b1897
+    servername: se.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 12"
+    type: vless
+    server: 212.233.78.246
+    port: 8443
+    uuid: 68d3fcbe-f025-1f40-82d6-9455c5e5f6b5
+    network: raw
+    servername: secget.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI
+      short-id: f8a8ee8381529673
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 13"
+    type: vless
+    server: 31.76.113.136
+    port: 445
+    uuid: 8d90a1bf-7d6a-4cb7-812a-afd355e73489
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: wXOV7-oBLNnuIy8smYrLLdK-NkN1j-NEf9MxePbAT2Y
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 14"
+    type: vless
+    server: 31.76.113.136
+    port: 2087
+    uuid: 8d90a1bf-7d6a-4cb7-812a-afd355e73489
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: wXOV7-oBLNnuIy8smYrLLdK-NkN1j-NEf9MxePbAT2Y
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 15"
+    type: vless
+    server: 212.233.78.246
+    port: 8443
+    uuid: 68d3fcbe-f025-1f40-82d6-9455c5e5f6b5
+    network: raw
+    servername: secget.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI
+      short-id: f8a8ee8381529673
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 16"
+    type: vless
+    server: hudrososov.blog
+    port: 443
+    uuid: 2428711f-5117-46e9-a2cb-741797a60ed8
+    servername: hudrososov.blog
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: yuKSmrb2MumCllTTmBJiuNTQcGxEaNhqmZVR8dVjLwI
+      short-id: d1c2b3a4
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 17"
+    type: vless
+    server: 31.76.113.160
+    port: 445
+    uuid: b90064cf-3f61-4f37-b549-a72100a8c9db
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: YPbKkg4p8zdxymjtC0qBiDkiMIlu0Iutu5zEbgR46So
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 18"
+    type: vless
+    server: 31.76.113.136
+    port: 445
+    uuid: 8d90a1bf-7d6a-4cb7-812a-afd355e73489
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: wXOV7-oBLNnuIy8smYrLLdK-NkN1j-NEf9MxePbAT2Y
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 19"
+    type: vless
+    server: 185.152.93.9
+    port: 443
+    uuid: 881cbd87-6cc3-41f9-9d4c-303fa2f8deab
+    network: raw
+    servername: shopper.applepie-recipe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 20"
+    type: vless
+    server: 212.233.78.246
+    port: 8443
+    uuid: 68d3fcbe-f025-1f40-82d6-9455c5e5f6b5
+    servername: secget.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI
+      short-id: f8a8ee8381529673
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 21"
+    type: vless
+    server: 89.105.212.138
+    port: 443
+    uuid: ecad47b0-249e-4f6f-adff-e3c8f02b1897
+    servername: nl.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 22"
+    type: vless
+    server: 51.250.44.66
+    port: 443
+    uuid: bbae962a-b6e9-46e6-990c-6abf13e6b075
+    network: raw
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: MZ4v9kcs6nnAKuCAz4pvViC50BoM3exoL_5Yi-1b1kE
+      short-id: 59de66570907b747
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 23"
+    type: vless
+    server: 72.56.235.19
+    port: 443
+    uuid: 881cbd87-6cc3-41f9-9d4c-303fa2f8deab
+    network: raw
+    servername: shopper.applepie-recipe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 24"
+    type: vless
+    server: 45.91.54.113
+    port: 443
+    uuid: a77cedab-f429-40bb-b6d4-fd9dd681e675
+    network: raw
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: OD-2VgiGzoTEekLuLg5sEsGmlxgqUML3n2OR9Qj6YT0
+      short-id: 135f6d63
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 25"
+    type: vless
+    server: 89.105.212.138
+    port: 443
+    uuid: ecad47b0-249e-4f6f-adff-e3c8f02b1897
+    servername: nl.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 26"
+    type: vless
+    server: 138.16.184.123
+    port: 2087
+    uuid: 81ef8e1d-4d31-4c1b-92e8-d2e65e7ffaf4
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: n9tFDSBvLVWje_hxPG5QqEZIf-ZhqbNH-i1PfmAHYkQ
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 27"
+    type: vless
+    server: 212.233.78.246
+    port: 8443
+    uuid: 68d3fcbe-f025-1f40-82d6-9455c5e5f6b5
+    servername: secget.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI
+      short-id: f8a8ee8381529673
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 28"
+    type: vless
+    server: 89.110.98.232
+    port: 446
+    uuid: fdb773e6-7446-4c89-8f3d-296b48f77446
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: 3w_rGK3Ht1HnuT453oqFwJn7zQofWhHkKYd6I7_85Qo
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 29"
+    type: vless
+    server: 164.138.100.196
+    port: 443
+    uuid: c1ad576a-302d-4bd2-9549-77c0b32e2027
+    network: grpc
+    servername: api-maps.yandex.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: de-br-yandex
+    reality-opts:
+      public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+      short-id: 10ffb85da1c2d986
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 30"
+    type: vless
+    server: qq.utiltools.ru
+    port: 443
+    uuid: eb78e1f0-d921-4ca9-a889-261fcc5a0547
+    servername: qq.utiltools.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: drY21DHNOr6ezJLA2B10mzTExeJ9-gVBfTBNLwVBtWI
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 31"
+    type: vless
+    server: 72.56.235.19
+    port: 443
+    uuid: 881cbd87-6cc3-41f9-9d4c-303fa2f8deab
+    network: raw
+    servername: shopper.applepie-recipe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 32"
+    type: vless
+    server: 185.91.54.30
+    port: 443
+    uuid: 2d840b2f-ac86-42e3-ac20-a5e60438bf2f
+    network: raw
+    servername: www.ya.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: J60eiW_9W4Pk_jf3atrxE_E_X0xw9rwYcABS_frZxGo
+      short-id: abcd
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 33"
+    type: vless
+    server: 212.233.78.243
+    port: 8443
+    uuid: 68d3fcbe-f025-1f40-82d6-9455c5e5f6b5
+    network: raw
+    servername: secget.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: vV3mxSgZ-8x3Gp373AXdMDM3FAdmLP0v5zIfI486SDI
+      short-id: f8a8ee8381529673
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 34"
+    type: vless
+    server: 89.110.98.232
+    port: 2087
+    uuid: fdb773e6-7446-4c89-8f3d-296b48f77446
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: 3w_rGK3Ht1HnuT453oqFwJn7zQofWhHkKYd6I7_85Qo
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 35"
+    type: vless
+    server: 192.144.57.152
+    port: 2087
+    uuid: 3bafe192-f47b-40c2-9bd2-fe8c3d1c3e6d
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: weSBb2pHXmOg1gVjtNRN48p9gUpTfuu6Lu206Q5W4Bk
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 36"
+    type: vless
+    server: 185.93.33.7
+    port: 443
+    uuid: ecad47b0-249e-0014-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 37"
+    type: vless
+    server: 185.93.33.7
+    port: 443
+    uuid: ecad47b0-249e-0014-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 38"
+    type: vless
+    server: 138.16.184.72
+    port: 2087
+    uuid: 97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 39"
+    type: vless
+    server: 185.93.33.7
+    port: 443
+    uuid: ecad47b0-249e-0014-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 40"
+    type: vless
+    server: 185.93.33.7
+    port: 443
+    uuid: ecad47b0-249e-0014-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 41"
+    type: vless
+    server: 51.250.44.66
+    port: 443
+    uuid: bbae962a-b6e9-46e6-990c-6abf13e6b075
+    network: raw
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: MZ4v9kcs6nnAKuCAz4pvViC50BoM3exoL_5Yi-1b1kE
+      short-id: 59de66570907b747
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 42"
+    type: vless
+    server: 185.93.33.7
+    port: 443
+    uuid: ecad47b0-249e-0014-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 43"
+    type: vless
+    server: a.bazardam.shop
+    port: 2056
+    uuid: 3f646f4d-b96e-4ba4-b562-0fd4854391a8
+    network: http
+    servername: yahoo.com
+    tls: true
+    client-fingerprint: chrome
+    http-opts:
+      path:
+        - /path
+      headers:
+        Host:
+          - hostname
+    reality-opts:
+      public-key: qXZfqpQScWQea7Kpr69if9iHhiA7IMLwUgZflIvuWh8
+      short-id: 4eee3ae71639f189
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 44"
+    type: vless
+    server: 138.16.184.123
+    port: 2087
+    uuid: 81ef8e1d-4d31-4c1b-92e8-d2e65e7ffaf4
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: n9tFDSBvLVWje_hxPG5QqEZIf-ZhqbNH-i1PfmAHYkQ
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 45"
+    type: vless
+    server: fn.fifapes.monster
+    port: 2090
+    uuid: eab915bc-d2df-73d1-47d0-6eb240497055
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 46"
+    type: vless
+    server: 138.16.184.72
+    port: 2087
+    uuid: 97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 47"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 48"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 49"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 50"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 51"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 52"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 53"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 54"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 55"
+    type: vless
+    server: 138.16.184.72
+    port: 444
+    uuid: 97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 56"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 57"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /?v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus--v2rayNplus
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 58"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 59"
+    type: vless
+    server: 193.124.128.144
+    port: 2087
+    uuid: 67cad96e-9bfe-48b7-bd85-1acb66a7a937
+    network: grpc
+    servername: ads.x5.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: grpc
+    reality-opts:
+      public-key: 2EmWIOV_DOnYyCtoH0_0ccFMT-JBGR-UGhiMnwR6dxs
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 60"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 61"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 62"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 63"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 64"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 65"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 66"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 67"
+    type: vless
+    server: 192.144.57.152
+    port: 447
+    uuid: 3bafe192-f47b-40c2-9bd2-fe8c3d1c3e6d
+    network: raw
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: weSBb2pHXmOg1gVjtNRN48p9gUpTfuu6Lu206Q5W4Bk
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 68"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 69"
+    type: vless
+    server: fn.fifapes.monster
+    port: 2090
+    uuid: eab915bc-d2df-73d1-47d0-6eb240497055
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 70"
+    type: vless
+    server: 51.250.44.66
+    port: 443
+    uuid: bbae962a-b6e9-46e6-990c-6abf13e6b075
+    network: raw
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: MZ4v9kcs6nnAKuCAz4pvViC50BoM3exoL_5Yi-1b1kE
+      short-id: 59de66570907b747
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 71"
+    type: vless
+    server: 188.72.103.3
+    port: 443
+    uuid: 1cd800be-0317-44a9-b56c-a60f13bc2c78
+    network: http
+    servername: worldstream.club
+    tls: true
+    client-fingerprint: edge
+    http-opts:
+      path:
+        - /static/getFile/video/segment.ts
+      headers:
+        Host:
+          - worldstream.club
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 72"
+    type: vless
+    server: 188.72.103.3
+    port: 443
+    uuid: 741cb574-4ed3-463a-af2c-291b5e4b0fdc
+    network: http
+    servername: worldstream.club
+    tls: true
+    client-fingerprint: edge
+    http-opts:
+      path:
+        - /static/getFile/video/segment.ts
+      headers:
+        Host:
+          - worldstream.club
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 73"
+    type: vless
+    server: fn.fifapes.monster
+    port: 2090
+    uuid: eab915bc-d2df-73d1-47d0-6eb240497055
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 74"
+    type: vless
+    server: 188.72.103.3
+    port: 443
+    uuid: 1cd800be-0317-44a9-b56c-a60f13bc2c78
+    network: http
+    servername: worldstream.club
+    tls: true
+    client-fingerprint: edge
+    http-opts:
+      path:
+        - /static/getFile/video/segment.ts
+      headers:
+        Host:
+          - worldstream.club
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 75"
+    type: vless
+    server: 138.16.184.72
+    port: 446
+    uuid: 97d6ec9c-9702-43ff-8ac8-5a8b4423d3ce
+    network: raw
+    servername: ads.x5.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: DZQE8nDxD9hcmMSNEIaFC1_VIB1_SslMgEB-3jyIZHs
+      short-id: c226283c4de5b1ad
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 76"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 77"
+    type: vless
+    server: 188.72.103.3
+    port: 443
+    uuid: 8282fbe3-eff8-4805-96ff-0ed73a2d0f02
+    network: http
+    servername: worldstream.club
+    tls: true
+    client-fingerprint: edge
+    http-opts:
+      path:
+        - /static/getFile/audio/segment.ts
+      headers:
+        Host:
+          - worldstream.club
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 78"
+    type: vless
+    server: 188.72.103.3
+    port: 443
+    uuid: 17c2ee7a-4faf-43fd-bf54-aa43310c3595
+    network: http
+    servername: worldstream.club
+    tls: true
+    client-fingerprint: edge
+    http-opts:
+      path:
+        - /static/getFile/audio/segment.ts
+      headers:
+        Host:
+          - worldstream.club
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 79"
+    type: vless
+    server: 141.98.118.70
+    port: 443
+    uuid: de64aaa6-a0ea-48d0-853b-1c3cbc7fb42c
+    network: http
+    servername: www.google.com
+    tls: true
+    client-fingerprint: chrome
+    http-opts:
+      path:
+        - /
+    reality-opts:
+      public-key: LjEQR0FEtsOs5eQoVsZgJX5ZI0yeadUKTCLoGD641RQ
+      short-id: "44"
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 80"
+    type: vless
+    server: 5.253.66.203
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 8c4d9e1f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 81"
+    type: vless
+    server: 5.253.66.63
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 0c6d3e2f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 82"
+    type: vless
+    server: 178.104.225.122
+    port: 44444
+    uuid: e044297a-304f-40a9-a9fb-d17b744fa781
+    servername: yahoo.com.
+    tls: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 79ji8OAmCVQTKcJmvf-iqZypOSKwuTD_sbatB4RHXXM
+      short-id: f37329647c9a1886
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 83"
+    type: vless
+    server: 5.253.66.63
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 0c6d3e2f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 84"
+    type: vless
+    server: 195.254.165.243
+    port: 443
+    uuid: 1f6531a1-a6eb-4274-9f51-4a0899456fcf
+    servername: play.google.com
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE
+      short-id: eaa8
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 85"
+    type: vless
+    server: 72.56.81.165
+    port: 40443
+    uuid: 4bf5a71c-d726-4585-b095-7396675706d5
+    servername: deepl.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: D_ks4Yyk4-osnWBxCFvd0_UEgohUXvR2zJoWQg1CACU
+      short-id: c84f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 86"
+    type: vless
+    server: 185.155.97.58
+    port: 45176
+    uuid: dc7940e0-6bff-45e3-853d-4007561803c3
+    servername: www.googletagmanager.com
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: A1Qf_rMG4KDfLzfCK-M5R9qW_0uThfeSosQnv6LBL1M
+      short-id: 8433cb66b6c3ab6d
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 87"
+    type: vless
+    server: 140.233.177.250
+    port: 55715
+    uuid: 914f97ee-1e5e-475d-9f04-fb93ef8585e7
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 88"
+    type: vless
+    server: 195.254.165.243
+    port: 443
+    uuid: 1f6531a1-a6eb-4274-9f51-4a0899456fcf
+    servername: play.google.com
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE
+      short-id: eaa8
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 89"
+    type: vless
+    server: 104.21.94.161
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 90"
+    type: vless
+    server: 144.31.0.100
+    port: 443
+    uuid: 8f0560ec-ba22-4431-a6a7-318dc59d5233
+    servername: vaultivo-hgooe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: CxMPFpwhcR9Ocp-Xy_1J08mo-atdHKUf58WLOy_XlgM
+      short-id: d9662905
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 91"
+    type: vless
+    server: 176.109.106.6
+    port: 443
+    uuid: 8a22fde8-e72e-4ce2-96f6-285aeffe66a2
+    network: raw
+    servername: eh.vk.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY
+      short-id: 6c6082a2223c1d03
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 92"
+    type: vless
+    server: 172.64.152.241
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 93"
+    type: vless
+    server: 185.137.157.72
+    port: 443
+    uuid: 55a5044d-5b35-405f-971c-ea7aacaafcb4
+    servername: www.nvidia.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: z6_OFl0jskilOOxkQcUcdQOCS4-LVndwFF9i7kIOPzg
+      short-id: d23753491eefde7e
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 94"
+    type: vless
+    server: 151.80.147.30
+    port: 443
+    uuid: a1750ade-801f-4e3e-a5d2-de825771205d
+    servername: speedtest.net
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: Ij3Iz1jqht6zLOy9uI0iusTy4n1oIr7gpgTwRTtA8kY
+      short-id: 42b395462da31c0e
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 95"
+    type: vless
+    server: 159.195.44.159
+    port: 443
+    uuid: 859a537b-09cf-4bce-8da4-ecbb72950e3a
+    servername: 5.oncloudnineservicestreang.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: RurLbpOTStqCjS3lhwB0d3MEZ3629j3atv_r1dT5zjM
+      short-id: 273940fba6ad8250
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 96"
+    type: vless
+    server: 5.253.66.203
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 8c4d9e1f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 97"
+    type: vless
+    server: 178.104.225.122
+    port: 44444
+    uuid: e044297a-304f-40a9-a9fb-d17b744fa781
+    servername: yahoo.com.
+    tls: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 79ji8OAmCVQTKcJmvf-iqZypOSKwuTD_sbatB4RHXXM
+      short-id: f37329647c9a1886
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 98"
+    type: vless
+    server: 5.253.66.63
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 0c6d3e2f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 99"
+    type: vless
+    server: 185.40.28.216
+    port: 8443
+    uuid: ecad47b0-249e-0007-adff-e3c8f02b1897
+    network: raw
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 100"
+    type: vless
+    server: 195.254.165.243
+    port: 443
+    uuid: 1f6531a1-a6eb-4274-9f51-4a0899456fcf
+    servername: play.google.com
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE
+      short-id: eaa8
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 101"
+    type: vless
+    server: 151.80.147.30
+    port: 443
+    uuid: a1750ade-801f-4e3e-a5d2-de825771205d
+    servername: speedtest.net
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: Ij3Iz1jqht6zLOy9uI0iusTy4n1oIr7gpgTwRTtA8kY
+      short-id: 42b395462da31c0e
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 102"
+    type: vless
+    server: 108.162.198.43
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 103"
+    type: vless
+    server: 151.80.147.30
+    port: 443
+    uuid: a1750ade-801f-4e3e-a5d2-de825771205d
+    servername: speedtest.net
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: Ij3Iz1jqht6zLOy9uI0iusTy4n1oIr7gpgTwRTtA8kY
+      short-id: 42b395462da31c0e
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 104"
+    type: vless
+    server: 185.40.28.216
+    port: 8443
+    uuid: ecad47b0-249e-0007-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 105"
+    type: vless
+    server: 37.230.192.111
+    port: 443
+    uuid: 8a22fde8-e72e-4ce2-96f6-285aeffe66a2
+    network: raw
+    servername: eh.vk.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY
+      short-id: 6c6082a2223c1d03
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 106"
+    type: vless
+    server: 51.68.165.126
+    port: 2053
+    uuid: fcf4db22-3134-452f-a5d2-107f04afc89c
+    network: grpc
+    servername: play.google.com
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: api.v1.data
+    reality-opts:
+      public-key: GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY
+      short-id: 524efc1f88592266
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 107"
+    type: vless
+    server: 144.31.0.100
+    port: 443
+    uuid: 8f0560ec-ba22-4431-a6a7-318dc59d5233
+    servername: vaultivo-hgooe.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: CxMPFpwhcR9Ocp-Xy_1J08mo-atdHKUf58WLOy_XlgM
+      short-id: d9662905
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 108"
+    type: vless
+    server: 95.85.228.34
+    port: 443
+    uuid: 8f0560ec-ba22-4431-a6a7-318dc59d5233
+    network: grpc
+    servername: 1vga81kaw013f-topology-gslb-yccdn.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: nexusGrpc
+    reality-opts:
+      public-key: ibignrnL_bVupAb4hFM939eT22FtlzPvc1FZY_FDwnw
+      short-id: 5e3ab3ab228625
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 109"
+    type: vless
+    server: 172.67.170.11
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=2560
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 110"
+    type: vless
+    server: 108.162.198.43
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /fp
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 111"
+    type: vless
+    server: 5.175.136.134
+    port: 2053
+    uuid: dd280dbb-75ec-4631-9979-d65237e27185
+    network: http
+    servername: www.yahoo.com
+    tls: true
+    client-fingerprint: chrome
+    http-opts:
+      path:
+        - /
+    reality-opts:
+      public-key: AsmltIw-2fVcbpcbckmIJZrWiVyDW_Kid8VIvHkcmC4
+      short-id: 81053c0bc6adc9
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 112"
+    type: vless
+    server: 151.115.167.6
+    port: 8880
+    uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+    network: grpc
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 113"
+    type: vless
+    server: 195.254.165.243
+    port: 443
+    uuid: 1f6531a1-a6eb-4274-9f51-4a0899456fcf
+    servername: play.google.com
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE
+      short-id: eaa8
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 114"
+    type: vless
+    server: 162.159.38.119
+    port: 8443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 115"
+    type: vless
+    server: 162.159.38.119
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 116"
+    type: vless
+    server: 45.89.106.101
+    port: 40443
+    uuid: 6ae44ad9-c2cb-4bdf-8e48-6c01fa646372
+    network: raw
+    servername: deepl.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: f6MOnGRTqdns7Lut75DSrnFZeiiZ4N04gnj5m-l7KnM
+      short-id: 54ce
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 117"
+    type: vless
+    server: 137.184.218.169
+    port: 36925
+    uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+    servername: www.cloudflare.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 118"
+    type: vless
+    server: 159.195.45.129
+    port: 443
+    uuid: 859a537b-09cf-4bce-8da4-ecbb72950e3a
+    servername: 3.oncloudnineservicestreang.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: dp-ncBuRHgZl5O80eHBYhSKo1i9qbt-J7MJ1alyWXmM
+      short-id: 1991780b928b292d
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 119"
+    type: vless
+    server: 217.114.12.143
+    port: 443
+    uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    servername: t1s1.rittbo.kdns.fr
+    tls: true
+    client-fingerprint: firefox
+    ws-opts:
+      path: /
+      headers:
+        Host: t1s1.rittbo.kdns.fr
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 120"
+    type: vless
+    server: 194.55.239.200
+    port: 8443
+    uuid: ecad47b0-249e-0009-adff-e3c8f02b1897
+    servername: rutube.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 1 (1)"
+    type: vless
+    server: 78.159.250.214
+    port: 443
+    uuid: eb78e1f0-d921-4ca9-a889-261fcc5a0547
+    servername: qq.utiltools.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: qq
+    reality-opts:
+      public-key: drY21DHNOr6ezJLA2B10mzTExeJ9-gVBfTBNLwVBtWI
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 6_1"
+    type: vless
+    server: 82.192.69.94
+    port: 38733
+    uuid: 384a72e6-8a10-4695-9ee5-c93728ef7e2a
+    network: grpc
+    servername: play.google.com
+    tls: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: CXOpQI3hwCqEp5ul2SKWfdAK-PBjjzUn-eRb7bAxDgU
+      short-id: 09e78c1d381f98ed
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 11_1"
+    type: vless
+    server: 195.254.165.243
+    port: 443
+    uuid: 1f6531a1-a6eb-4274-9f51-4a0899456fcf
+    network: raw
+    servername: play.google.com
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: zSjG6wndmLAzE8ykCBXpAm2eh0viWVSy3gt2juXF4EE
+      short-id: eaa8
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 119_1"
+    type: vless
+    server: 5.253.66.203
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 8c4d9e1f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 7_1"
+    type: vless
+    server: 5.253.66.63
+    port: 443
+    uuid: c8b5f6c9-83ff-4ca1-be9c-f997a5b2f692
+    servername: cdn-up.perecbass.ru
+    tls: true
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: PDBVcDR6o01XUpdNNZ6rutJ_DBqnF7VcDuWceHIpyE8
+      short-id: 0c6d3e2f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 113_1"
+    type: vless
+    server: 31.76.111.44
+    port: 443
+    uuid: 8a22fde8-e72e-4ce2-96f6-285aeffe66a2
+    servername: de2.raketa-balance.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY
+      short-id: 6c6082a2223c1d03
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 6 (1)"
+    type: vless
+    server: 72.56.81.165
+    port: 40443
+    uuid: 4bf5a71c-d726-4585-b095-7396675706d5
+    network: raw
+    servername: deepl.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: D_ks4Yyk4-osnWBxCFvd0_UEgohUXvR2zJoWQg1CACU
+      short-id: c84f
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 61_1"
+    type: vless
+    server: 185.40.28.216
+    port: 8443
+    uuid: ecad47b0-249e-0007-adff-e3c8f02b1897
+    servername: auto.quattro-tech.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    reality-opts:
+      public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+      short-id: 43dcff53849b81e6
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 27_1"
+    type: vless
+    server: 217.179.220.67
+    port: 8443
+    uuid: f885cecc-a6ea-4e9b-87da-c7dc4b745348
+    network: grpc
+    servername: avatars.mds.yandex.net
+    tls: true
+    grpc-opts:
+      grpc-service-name: grpc-yandex
+    reality-opts:
+      public-key: sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg
+      short-id: 844352756c1fabba
+    skip-cert-verify: true
+    udp: true
+  - name: "@FREE2CONFIG - 21_1"
+    type: vless
+    server: 95.85.228.34
+    port: 443
+    uuid: 8f0560ec-ba22-4431-a6a7-318dc59d5233
+    network: grpc
+    servername: 1vga81kaw013f-topology-gslb-yccdn.ru
+    tls: true
+    client-fingerprint: firefox
+    grpc-opts:
+      grpc-service-name: nexusGrpc
+    reality-opts:
+      public-key: ibignrnL_bVupAb4hFM939eT22FtlzPvc1FZY_FDwnw
+      short-id: 5e3ab3ab228625
+    skip-cert-verify: true
+    udp: true
 proxy-groups:
-  - name: "🔰 انتخاب پروکسی"
+  - name: 🚀 节点选择
     type: select
     proxies:
-      - "♻️ خودکار"
+      - ♻️ 自动选择
       - DIRECT
       - "@FREE2CONFIG - 1"
       - "@FREE2CONFIG - 2"
       - "@FREE2CONFIG - 3"
       - "@FREE2CONFIG - 4"
       - "@FREE2CONFIG - 5"
-      - "@FREE2CONFIG - 6_1"
-      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
       - "@FREE2CONFIG - 8"
       - "@FREE2CONFIG - 9"
       - "@FREE2CONFIG - 10"
-      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 11"
       - "@FREE2CONFIG - 12"
       - "@FREE2CONFIG - 13"
       - "@FREE2CONFIG - 14"
@@ -175,13 +1888,13 @@ proxy-groups:
       - "@FREE2CONFIG - 18"
       - "@FREE2CONFIG - 19"
       - "@FREE2CONFIG - 20"
-      - "@FREE2CONFIG - 21_1"
+      - "@FREE2CONFIG - 21"
       - "@FREE2CONFIG - 22"
       - "@FREE2CONFIG - 23"
       - "@FREE2CONFIG - 24"
       - "@FREE2CONFIG - 25"
       - "@FREE2CONFIG - 26"
-      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 27"
       - "@FREE2CONFIG - 28"
       - "@FREE2CONFIG - 29"
       - "@FREE2CONFIG - 30"
@@ -215,7 +1928,7 @@ proxy-groups:
       - "@FREE2CONFIG - 58"
       - "@FREE2CONFIG - 59"
       - "@FREE2CONFIG - 60"
-      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 61"
       - "@FREE2CONFIG - 62"
       - "@FREE2CONFIG - 63"
       - "@FREE2CONFIG - 64"
@@ -267,41 +1980,177 @@ proxy-groups:
       - "@FREE2CONFIG - 110"
       - "@FREE2CONFIG - 111"
       - "@FREE2CONFIG - 112"
-      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 113"
       - "@FREE2CONFIG - 114"
       - "@FREE2CONFIG - 115"
       - "@FREE2CONFIG - 116"
       - "@FREE2CONFIG - 117"
       - "@FREE2CONFIG - 118"
-      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 119"
       - "@FREE2CONFIG - 120"
       - "@FREE2CONFIG - 1 (1)"
-      - "@FREE2CONFIG - 6_2"
-      - "@FREE2CONFIG - 11_2"
-      - "@FREE2CONFIG - 119_2"
-      - "@FREE2CONFIG - 7_2"
-      - "@FREE2CONFIG - 113_2"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
       - "@FREE2CONFIG - 6 (1)"
-      - "@FREE2CONFIG - 61_2"
-      - "@FREE2CONFIG - 27_2"
-      - "@FREE2CONFIG - 21_2"
-  - name: "♻️ خودکار"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
+  - name: ♻️ 自动选择
     type: url-test
+    proxies:
+      - "@FREE2CONFIG - 1"
+      - "@FREE2CONFIG - 2"
+      - "@FREE2CONFIG - 3"
+      - "@FREE2CONFIG - 4"
+      - "@FREE2CONFIG - 5"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
+      - "@FREE2CONFIG - 8"
+      - "@FREE2CONFIG - 9"
+      - "@FREE2CONFIG - 10"
+      - "@FREE2CONFIG - 11"
+      - "@FREE2CONFIG - 12"
+      - "@FREE2CONFIG - 13"
+      - "@FREE2CONFIG - 14"
+      - "@FREE2CONFIG - 15"
+      - "@FREE2CONFIG - 16"
+      - "@FREE2CONFIG - 17"
+      - "@FREE2CONFIG - 18"
+      - "@FREE2CONFIG - 19"
+      - "@FREE2CONFIG - 20"
+      - "@FREE2CONFIG - 21"
+      - "@FREE2CONFIG - 22"
+      - "@FREE2CONFIG - 23"
+      - "@FREE2CONFIG - 24"
+      - "@FREE2CONFIG - 25"
+      - "@FREE2CONFIG - 26"
+      - "@FREE2CONFIG - 27"
+      - "@FREE2CONFIG - 28"
+      - "@FREE2CONFIG - 29"
+      - "@FREE2CONFIG - 30"
+      - "@FREE2CONFIG - 31"
+      - "@FREE2CONFIG - 32"
+      - "@FREE2CONFIG - 33"
+      - "@FREE2CONFIG - 34"
+      - "@FREE2CONFIG - 35"
+      - "@FREE2CONFIG - 36"
+      - "@FREE2CONFIG - 37"
+      - "@FREE2CONFIG - 38"
+      - "@FREE2CONFIG - 39"
+      - "@FREE2CONFIG - 40"
+      - "@FREE2CONFIG - 41"
+      - "@FREE2CONFIG - 42"
+      - "@FREE2CONFIG - 43"
+      - "@FREE2CONFIG - 44"
+      - "@FREE2CONFIG - 45"
+      - "@FREE2CONFIG - 46"
+      - "@FREE2CONFIG - 47"
+      - "@FREE2CONFIG - 48"
+      - "@FREE2CONFIG - 49"
+      - "@FREE2CONFIG - 50"
+      - "@FREE2CONFIG - 51"
+      - "@FREE2CONFIG - 52"
+      - "@FREE2CONFIG - 53"
+      - "@FREE2CONFIG - 54"
+      - "@FREE2CONFIG - 55"
+      - "@FREE2CONFIG - 56"
+      - "@FREE2CONFIG - 57"
+      - "@FREE2CONFIG - 58"
+      - "@FREE2CONFIG - 59"
+      - "@FREE2CONFIG - 60"
+      - "@FREE2CONFIG - 61"
+      - "@FREE2CONFIG - 62"
+      - "@FREE2CONFIG - 63"
+      - "@FREE2CONFIG - 64"
+      - "@FREE2CONFIG - 65"
+      - "@FREE2CONFIG - 66"
+      - "@FREE2CONFIG - 67"
+      - "@FREE2CONFIG - 68"
+      - "@FREE2CONFIG - 69"
+      - "@FREE2CONFIG - 70"
+      - "@FREE2CONFIG - 71"
+      - "@FREE2CONFIG - 72"
+      - "@FREE2CONFIG - 73"
+      - "@FREE2CONFIG - 74"
+      - "@FREE2CONFIG - 75"
+      - "@FREE2CONFIG - 76"
+      - "@FREE2CONFIG - 77"
+      - "@FREE2CONFIG - 78"
+      - "@FREE2CONFIG - 79"
+      - "@FREE2CONFIG - 80"
+      - "@FREE2CONFIG - 81"
+      - "@FREE2CONFIG - 82"
+      - "@FREE2CONFIG - 83"
+      - "@FREE2CONFIG - 84"
+      - "@FREE2CONFIG - 85"
+      - "@FREE2CONFIG - 86"
+      - "@FREE2CONFIG - 87"
+      - "@FREE2CONFIG - 88"
+      - "@FREE2CONFIG - 89"
+      - "@FREE2CONFIG - 90"
+      - "@FREE2CONFIG - 91"
+      - "@FREE2CONFIG - 92"
+      - "@FREE2CONFIG - 93"
+      - "@FREE2CONFIG - 94"
+      - "@FREE2CONFIG - 95"
+      - "@FREE2CONFIG - 96"
+      - "@FREE2CONFIG - 97"
+      - "@FREE2CONFIG - 98"
+      - "@FREE2CONFIG - 99"
+      - "@FREE2CONFIG - 100"
+      - "@FREE2CONFIG - 101"
+      - "@FREE2CONFIG - 102"
+      - "@FREE2CONFIG - 103"
+      - "@FREE2CONFIG - 104"
+      - "@FREE2CONFIG - 105"
+      - "@FREE2CONFIG - 106"
+      - "@FREE2CONFIG - 107"
+      - "@FREE2CONFIG - 108"
+      - "@FREE2CONFIG - 109"
+      - "@FREE2CONFIG - 110"
+      - "@FREE2CONFIG - 111"
+      - "@FREE2CONFIG - 112"
+      - "@FREE2CONFIG - 113"
+      - "@FREE2CONFIG - 114"
+      - "@FREE2CONFIG - 115"
+      - "@FREE2CONFIG - 116"
+      - "@FREE2CONFIG - 117"
+      - "@FREE2CONFIG - 118"
+      - "@FREE2CONFIG - 119"
+      - "@FREE2CONFIG - 120"
+      - "@FREE2CONFIG - 1 (1)"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 6 (1)"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
+  - name: 🌍 国外媒体
+    type: select
     proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连
       - "@FREE2CONFIG - 1"
       - "@FREE2CONFIG - 2"
       - "@FREE2CONFIG - 3"
       - "@FREE2CONFIG - 4"
       - "@FREE2CONFIG - 5"
-      - "@FREE2CONFIG - 6_1"
-      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
       - "@FREE2CONFIG - 8"
       - "@FREE2CONFIG - 9"
       - "@FREE2CONFIG - 10"
-      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 11"
       - "@FREE2CONFIG - 12"
       - "@FREE2CONFIG - 13"
       - "@FREE2CONFIG - 14"
@@ -311,13 +2160,13 @@ proxy-groups:
       - "@FREE2CONFIG - 18"
       - "@FREE2CONFIG - 19"
       - "@FREE2CONFIG - 20"
-      - "@FREE2CONFIG - 21_1"
+      - "@FREE2CONFIG - 21"
       - "@FREE2CONFIG - 22"
       - "@FREE2CONFIG - 23"
       - "@FREE2CONFIG - 24"
       - "@FREE2CONFIG - 25"
       - "@FREE2CONFIG - 26"
-      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 27"
       - "@FREE2CONFIG - 28"
       - "@FREE2CONFIG - 29"
       - "@FREE2CONFIG - 30"
@@ -351,7 +2200,7 @@ proxy-groups:
       - "@FREE2CONFIG - 58"
       - "@FREE2CONFIG - 59"
       - "@FREE2CONFIG - 60"
-      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 61"
       - "@FREE2CONFIG - 62"
       - "@FREE2CONFIG - 63"
       - "@FREE2CONFIG - 64"
@@ -403,43 +2252,655 @@ proxy-groups:
       - "@FREE2CONFIG - 110"
       - "@FREE2CONFIG - 111"
       - "@FREE2CONFIG - 112"
-      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 113"
       - "@FREE2CONFIG - 114"
       - "@FREE2CONFIG - 115"
       - "@FREE2CONFIG - 116"
       - "@FREE2CONFIG - 117"
       - "@FREE2CONFIG - 118"
-      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 119"
       - "@FREE2CONFIG - 120"
       - "@FREE2CONFIG - 1 (1)"
-      - "@FREE2CONFIG - 6_2"
-      - "@FREE2CONFIG - 11_2"
-      - "@FREE2CONFIG - 119_2"
-      - "@FREE2CONFIG - 7_2"
-      - "@FREE2CONFIG - 113_2"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
       - "@FREE2CONFIG - 6 (1)"
-      - "@FREE2CONFIG - 61_2"
-      - "@FREE2CONFIG - 27_2"
-      - "@FREE2CONFIG - 21_2"
-  - name: "🇮🇷 سرویس‌های ایرانی"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - "@FREE2CONFIG - 1"
+      - "@FREE2CONFIG - 2"
+      - "@FREE2CONFIG - 3"
+      - "@FREE2CONFIG - 4"
+      - "@FREE2CONFIG - 5"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
+      - "@FREE2CONFIG - 8"
+      - "@FREE2CONFIG - 9"
+      - "@FREE2CONFIG - 10"
+      - "@FREE2CONFIG - 11"
+      - "@FREE2CONFIG - 12"
+      - "@FREE2CONFIG - 13"
+      - "@FREE2CONFIG - 14"
+      - "@FREE2CONFIG - 15"
+      - "@FREE2CONFIG - 16"
+      - "@FREE2CONFIG - 17"
+      - "@FREE2CONFIG - 18"
+      - "@FREE2CONFIG - 19"
+      - "@FREE2CONFIG - 20"
+      - "@FREE2CONFIG - 21"
+      - "@FREE2CONFIG - 22"
+      - "@FREE2CONFIG - 23"
+      - "@FREE2CONFIG - 24"
+      - "@FREE2CONFIG - 25"
+      - "@FREE2CONFIG - 26"
+      - "@FREE2CONFIG - 27"
+      - "@FREE2CONFIG - 28"
+      - "@FREE2CONFIG - 29"
+      - "@FREE2CONFIG - 30"
+      - "@FREE2CONFIG - 31"
+      - "@FREE2CONFIG - 32"
+      - "@FREE2CONFIG - 33"
+      - "@FREE2CONFIG - 34"
+      - "@FREE2CONFIG - 35"
+      - "@FREE2CONFIG - 36"
+      - "@FREE2CONFIG - 37"
+      - "@FREE2CONFIG - 38"
+      - "@FREE2CONFIG - 39"
+      - "@FREE2CONFIG - 40"
+      - "@FREE2CONFIG - 41"
+      - "@FREE2CONFIG - 42"
+      - "@FREE2CONFIG - 43"
+      - "@FREE2CONFIG - 44"
+      - "@FREE2CONFIG - 45"
+      - "@FREE2CONFIG - 46"
+      - "@FREE2CONFIG - 47"
+      - "@FREE2CONFIG - 48"
+      - "@FREE2CONFIG - 49"
+      - "@FREE2CONFIG - 50"
+      - "@FREE2CONFIG - 51"
+      - "@FREE2CONFIG - 52"
+      - "@FREE2CONFIG - 53"
+      - "@FREE2CONFIG - 54"
+      - "@FREE2CONFIG - 55"
+      - "@FREE2CONFIG - 56"
+      - "@FREE2CONFIG - 57"
+      - "@FREE2CONFIG - 58"
+      - "@FREE2CONFIG - 59"
+      - "@FREE2CONFIG - 60"
+      - "@FREE2CONFIG - 61"
+      - "@FREE2CONFIG - 62"
+      - "@FREE2CONFIG - 63"
+      - "@FREE2CONFIG - 64"
+      - "@FREE2CONFIG - 65"
+      - "@FREE2CONFIG - 66"
+      - "@FREE2CONFIG - 67"
+      - "@FREE2CONFIG - 68"
+      - "@FREE2CONFIG - 69"
+      - "@FREE2CONFIG - 70"
+      - "@FREE2CONFIG - 71"
+      - "@FREE2CONFIG - 72"
+      - "@FREE2CONFIG - 73"
+      - "@FREE2CONFIG - 74"
+      - "@FREE2CONFIG - 75"
+      - "@FREE2CONFIG - 76"
+      - "@FREE2CONFIG - 77"
+      - "@FREE2CONFIG - 78"
+      - "@FREE2CONFIG - 79"
+      - "@FREE2CONFIG - 80"
+      - "@FREE2CONFIG - 81"
+      - "@FREE2CONFIG - 82"
+      - "@FREE2CONFIG - 83"
+      - "@FREE2CONFIG - 84"
+      - "@FREE2CONFIG - 85"
+      - "@FREE2CONFIG - 86"
+      - "@FREE2CONFIG - 87"
+      - "@FREE2CONFIG - 88"
+      - "@FREE2CONFIG - 89"
+      - "@FREE2CONFIG - 90"
+      - "@FREE2CONFIG - 91"
+      - "@FREE2CONFIG - 92"
+      - "@FREE2CONFIG - 93"
+      - "@FREE2CONFIG - 94"
+      - "@FREE2CONFIG - 95"
+      - "@FREE2CONFIG - 96"
+      - "@FREE2CONFIG - 97"
+      - "@FREE2CONFIG - 98"
+      - "@FREE2CONFIG - 99"
+      - "@FREE2CONFIG - 100"
+      - "@FREE2CONFIG - 101"
+      - "@FREE2CONFIG - 102"
+      - "@FREE2CONFIG - 103"
+      - "@FREE2CONFIG - 104"
+      - "@FREE2CONFIG - 105"
+      - "@FREE2CONFIG - 106"
+      - "@FREE2CONFIG - 107"
+      - "@FREE2CONFIG - 108"
+      - "@FREE2CONFIG - 109"
+      - "@FREE2CONFIG - 110"
+      - "@FREE2CONFIG - 111"
+      - "@FREE2CONFIG - 112"
+      - "@FREE2CONFIG - 113"
+      - "@FREE2CONFIG - 114"
+      - "@FREE2CONFIG - 115"
+      - "@FREE2CONFIG - 116"
+      - "@FREE2CONFIG - 117"
+      - "@FREE2CONFIG - 118"
+      - "@FREE2CONFIG - 119"
+      - "@FREE2CONFIG - 120"
+      - "@FREE2CONFIG - 1 (1)"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 6 (1)"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - "@FREE2CONFIG - 1"
+      - "@FREE2CONFIG - 2"
+      - "@FREE2CONFIG - 3"
+      - "@FREE2CONFIG - 4"
+      - "@FREE2CONFIG - 5"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
+      - "@FREE2CONFIG - 8"
+      - "@FREE2CONFIG - 9"
+      - "@FREE2CONFIG - 10"
+      - "@FREE2CONFIG - 11"
+      - "@FREE2CONFIG - 12"
+      - "@FREE2CONFIG - 13"
+      - "@FREE2CONFIG - 14"
+      - "@FREE2CONFIG - 15"
+      - "@FREE2CONFIG - 16"
+      - "@FREE2CONFIG - 17"
+      - "@FREE2CONFIG - 18"
+      - "@FREE2CONFIG - 19"
+      - "@FREE2CONFIG - 20"
+      - "@FREE2CONFIG - 21"
+      - "@FREE2CONFIG - 22"
+      - "@FREE2CONFIG - 23"
+      - "@FREE2CONFIG - 24"
+      - "@FREE2CONFIG - 25"
+      - "@FREE2CONFIG - 26"
+      - "@FREE2CONFIG - 27"
+      - "@FREE2CONFIG - 28"
+      - "@FREE2CONFIG - 29"
+      - "@FREE2CONFIG - 30"
+      - "@FREE2CONFIG - 31"
+      - "@FREE2CONFIG - 32"
+      - "@FREE2CONFIG - 33"
+      - "@FREE2CONFIG - 34"
+      - "@FREE2CONFIG - 35"
+      - "@FREE2CONFIG - 36"
+      - "@FREE2CONFIG - 37"
+      - "@FREE2CONFIG - 38"
+      - "@FREE2CONFIG - 39"
+      - "@FREE2CONFIG - 40"
+      - "@FREE2CONFIG - 41"
+      - "@FREE2CONFIG - 42"
+      - "@FREE2CONFIG - 43"
+      - "@FREE2CONFIG - 44"
+      - "@FREE2CONFIG - 45"
+      - "@FREE2CONFIG - 46"
+      - "@FREE2CONFIG - 47"
+      - "@FREE2CONFIG - 48"
+      - "@FREE2CONFIG - 49"
+      - "@FREE2CONFIG - 50"
+      - "@FREE2CONFIG - 51"
+      - "@FREE2CONFIG - 52"
+      - "@FREE2CONFIG - 53"
+      - "@FREE2CONFIG - 54"
+      - "@FREE2CONFIG - 55"
+      - "@FREE2CONFIG - 56"
+      - "@FREE2CONFIG - 57"
+      - "@FREE2CONFIG - 58"
+      - "@FREE2CONFIG - 59"
+      - "@FREE2CONFIG - 60"
+      - "@FREE2CONFIG - 61"
+      - "@FREE2CONFIG - 62"
+      - "@FREE2CONFIG - 63"
+      - "@FREE2CONFIG - 64"
+      - "@FREE2CONFIG - 65"
+      - "@FREE2CONFIG - 66"
+      - "@FREE2CONFIG - 67"
+      - "@FREE2CONFIG - 68"
+      - "@FREE2CONFIG - 69"
+      - "@FREE2CONFIG - 70"
+      - "@FREE2CONFIG - 71"
+      - "@FREE2CONFIG - 72"
+      - "@FREE2CONFIG - 73"
+      - "@FREE2CONFIG - 74"
+      - "@FREE2CONFIG - 75"
+      - "@FREE2CONFIG - 76"
+      - "@FREE2CONFIG - 77"
+      - "@FREE2CONFIG - 78"
+      - "@FREE2CONFIG - 79"
+      - "@FREE2CONFIG - 80"
+      - "@FREE2CONFIG - 81"
+      - "@FREE2CONFIG - 82"
+      - "@FREE2CONFIG - 83"
+      - "@FREE2CONFIG - 84"
+      - "@FREE2CONFIG - 85"
+      - "@FREE2CONFIG - 86"
+      - "@FREE2CONFIG - 87"
+      - "@FREE2CONFIG - 88"
+      - "@FREE2CONFIG - 89"
+      - "@FREE2CONFIG - 90"
+      - "@FREE2CONFIG - 91"
+      - "@FREE2CONFIG - 92"
+      - "@FREE2CONFIG - 93"
+      - "@FREE2CONFIG - 94"
+      - "@FREE2CONFIG - 95"
+      - "@FREE2CONFIG - 96"
+      - "@FREE2CONFIG - 97"
+      - "@FREE2CONFIG - 98"
+      - "@FREE2CONFIG - 99"
+      - "@FREE2CONFIG - 100"
+      - "@FREE2CONFIG - 101"
+      - "@FREE2CONFIG - 102"
+      - "@FREE2CONFIG - 103"
+      - "@FREE2CONFIG - 104"
+      - "@FREE2CONFIG - 105"
+      - "@FREE2CONFIG - 106"
+      - "@FREE2CONFIG - 107"
+      - "@FREE2CONFIG - 108"
+      - "@FREE2CONFIG - 109"
+      - "@FREE2CONFIG - 110"
+      - "@FREE2CONFIG - 111"
+      - "@FREE2CONFIG - 112"
+      - "@FREE2CONFIG - 113"
+      - "@FREE2CONFIG - 114"
+      - "@FREE2CONFIG - 115"
+      - "@FREE2CONFIG - 116"
+      - "@FREE2CONFIG - 117"
+      - "@FREE2CONFIG - 118"
+      - "@FREE2CONFIG - 119"
+      - "@FREE2CONFIG - 120"
+      - "@FREE2CONFIG - 1 (1)"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 6 (1)"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - "@FREE2CONFIG - 1"
+      - "@FREE2CONFIG - 2"
+      - "@FREE2CONFIG - 3"
+      - "@FREE2CONFIG - 4"
+      - "@FREE2CONFIG - 5"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
+      - "@FREE2CONFIG - 8"
+      - "@FREE2CONFIG - 9"
+      - "@FREE2CONFIG - 10"
+      - "@FREE2CONFIG - 11"
+      - "@FREE2CONFIG - 12"
+      - "@FREE2CONFIG - 13"
+      - "@FREE2CONFIG - 14"
+      - "@FREE2CONFIG - 15"
+      - "@FREE2CONFIG - 16"
+      - "@FREE2CONFIG - 17"
+      - "@FREE2CONFIG - 18"
+      - "@FREE2CONFIG - 19"
+      - "@FREE2CONFIG - 20"
+      - "@FREE2CONFIG - 21"
+      - "@FREE2CONFIG - 22"
+      - "@FREE2CONFIG - 23"
+      - "@FREE2CONFIG - 24"
+      - "@FREE2CONFIG - 25"
+      - "@FREE2CONFIG - 26"
+      - "@FREE2CONFIG - 27"
+      - "@FREE2CONFIG - 28"
+      - "@FREE2CONFIG - 29"
+      - "@FREE2CONFIG - 30"
+      - "@FREE2CONFIG - 31"
+      - "@FREE2CONFIG - 32"
+      - "@FREE2CONFIG - 33"
+      - "@FREE2CONFIG - 34"
+      - "@FREE2CONFIG - 35"
+      - "@FREE2CONFIG - 36"
+      - "@FREE2CONFIG - 37"
+      - "@FREE2CONFIG - 38"
+      - "@FREE2CONFIG - 39"
+      - "@FREE2CONFIG - 40"
+      - "@FREE2CONFIG - 41"
+      - "@FREE2CONFIG - 42"
+      - "@FREE2CONFIG - 43"
+      - "@FREE2CONFIG - 44"
+      - "@FREE2CONFIG - 45"
+      - "@FREE2CONFIG - 46"
+      - "@FREE2CONFIG - 47"
+      - "@FREE2CONFIG - 48"
+      - "@FREE2CONFIG - 49"
+      - "@FREE2CONFIG - 50"
+      - "@FREE2CONFIG - 51"
+      - "@FREE2CONFIG - 52"
+      - "@FREE2CONFIG - 53"
+      - "@FREE2CONFIG - 54"
+      - "@FREE2CONFIG - 55"
+      - "@FREE2CONFIG - 56"
+      - "@FREE2CONFIG - 57"
+      - "@FREE2CONFIG - 58"
+      - "@FREE2CONFIG - 59"
+      - "@FREE2CONFIG - 60"
+      - "@FREE2CONFIG - 61"
+      - "@FREE2CONFIG - 62"
+      - "@FREE2CONFIG - 63"
+      - "@FREE2CONFIG - 64"
+      - "@FREE2CONFIG - 65"
+      - "@FREE2CONFIG - 66"
+      - "@FREE2CONFIG - 67"
+      - "@FREE2CONFIG - 68"
+      - "@FREE2CONFIG - 69"
+      - "@FREE2CONFIG - 70"
+      - "@FREE2CONFIG - 71"
+      - "@FREE2CONFIG - 72"
+      - "@FREE2CONFIG - 73"
+      - "@FREE2CONFIG - 74"
+      - "@FREE2CONFIG - 75"
+      - "@FREE2CONFIG - 76"
+      - "@FREE2CONFIG - 77"
+      - "@FREE2CONFIG - 78"
+      - "@FREE2CONFIG - 79"
+      - "@FREE2CONFIG - 80"
+      - "@FREE2CONFIG - 81"
+      - "@FREE2CONFIG - 82"
+      - "@FREE2CONFIG - 83"
+      - "@FREE2CONFIG - 84"
+      - "@FREE2CONFIG - 85"
+      - "@FREE2CONFIG - 86"
+      - "@FREE2CONFIG - 87"
+      - "@FREE2CONFIG - 88"
+      - "@FREE2CONFIG - 89"
+      - "@FREE2CONFIG - 90"
+      - "@FREE2CONFIG - 91"
+      - "@FREE2CONFIG - 92"
+      - "@FREE2CONFIG - 93"
+      - "@FREE2CONFIG - 94"
+      - "@FREE2CONFIG - 95"
+      - "@FREE2CONFIG - 96"
+      - "@FREE2CONFIG - 97"
+      - "@FREE2CONFIG - 98"
+      - "@FREE2CONFIG - 99"
+      - "@FREE2CONFIG - 100"
+      - "@FREE2CONFIG - 101"
+      - "@FREE2CONFIG - 102"
+      - "@FREE2CONFIG - 103"
+      - "@FREE2CONFIG - 104"
+      - "@FREE2CONFIG - 105"
+      - "@FREE2CONFIG - 106"
+      - "@FREE2CONFIG - 107"
+      - "@FREE2CONFIG - 108"
+      - "@FREE2CONFIG - 109"
+      - "@FREE2CONFIG - 110"
+      - "@FREE2CONFIG - 111"
+      - "@FREE2CONFIG - 112"
+      - "@FREE2CONFIG - 113"
+      - "@FREE2CONFIG - 114"
+      - "@FREE2CONFIG - 115"
+      - "@FREE2CONFIG - 116"
+      - "@FREE2CONFIG - 117"
+      - "@FREE2CONFIG - 118"
+      - "@FREE2CONFIG - 119"
+      - "@FREE2CONFIG - 120"
+      - "@FREE2CONFIG - 1 (1)"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 6 (1)"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
+  - name: 🎯 全球直连
     type: select
     proxies:
       - DIRECT
-      - "🔰 انتخاب پروکسی"
-
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - "@FREE2CONFIG - 1"
+      - "@FREE2CONFIG - 2"
+      - "@FREE2CONFIG - 3"
+      - "@FREE2CONFIG - 4"
+      - "@FREE2CONFIG - 5"
+      - "@FREE2CONFIG - 6"
+      - "@FREE2CONFIG - 7"
+      - "@FREE2CONFIG - 8"
+      - "@FREE2CONFIG - 9"
+      - "@FREE2CONFIG - 10"
+      - "@FREE2CONFIG - 11"
+      - "@FREE2CONFIG - 12"
+      - "@FREE2CONFIG - 13"
+      - "@FREE2CONFIG - 14"
+      - "@FREE2CONFIG - 15"
+      - "@FREE2CONFIG - 16"
+      - "@FREE2CONFIG - 17"
+      - "@FREE2CONFIG - 18"
+      - "@FREE2CONFIG - 19"
+      - "@FREE2CONFIG - 20"
+      - "@FREE2CONFIG - 21"
+      - "@FREE2CONFIG - 22"
+      - "@FREE2CONFIG - 23"
+      - "@FREE2CONFIG - 24"
+      - "@FREE2CONFIG - 25"
+      - "@FREE2CONFIG - 26"
+      - "@FREE2CONFIG - 27"
+      - "@FREE2CONFIG - 28"
+      - "@FREE2CONFIG - 29"
+      - "@FREE2CONFIG - 30"
+      - "@FREE2CONFIG - 31"
+      - "@FREE2CONFIG - 32"
+      - "@FREE2CONFIG - 33"
+      - "@FREE2CONFIG - 34"
+      - "@FREE2CONFIG - 35"
+      - "@FREE2CONFIG - 36"
+      - "@FREE2CONFIG - 37"
+      - "@FREE2CONFIG - 38"
+      - "@FREE2CONFIG - 39"
+      - "@FREE2CONFIG - 40"
+      - "@FREE2CONFIG - 41"
+      - "@FREE2CONFIG - 42"
+      - "@FREE2CONFIG - 43"
+      - "@FREE2CONFIG - 44"
+      - "@FREE2CONFIG - 45"
+      - "@FREE2CONFIG - 46"
+      - "@FREE2CONFIG - 47"
+      - "@FREE2CONFIG - 48"
+      - "@FREE2CONFIG - 49"
+      - "@FREE2CONFIG - 50"
+      - "@FREE2CONFIG - 51"
+      - "@FREE2CONFIG - 52"
+      - "@FREE2CONFIG - 53"
+      - "@FREE2CONFIG - 54"
+      - "@FREE2CONFIG - 55"
+      - "@FREE2CONFIG - 56"
+      - "@FREE2CONFIG - 57"
+      - "@FREE2CONFIG - 58"
+      - "@FREE2CONFIG - 59"
+      - "@FREE2CONFIG - 60"
+      - "@FREE2CONFIG - 61"
+      - "@FREE2CONFIG - 62"
+      - "@FREE2CONFIG - 63"
+      - "@FREE2CONFIG - 64"
+      - "@FREE2CONFIG - 65"
+      - "@FREE2CONFIG - 66"
+      - "@FREE2CONFIG - 67"
+      - "@FREE2CONFIG - 68"
+      - "@FREE2CONFIG - 69"
+      - "@FREE2CONFIG - 70"
+      - "@FREE2CONFIG - 71"
+      - "@FREE2CONFIG - 72"
+      - "@FREE2CONFIG - 73"
+      - "@FREE2CONFIG - 74"
+      - "@FREE2CONFIG - 75"
+      - "@FREE2CONFIG - 76"
+      - "@FREE2CONFIG - 77"
+      - "@FREE2CONFIG - 78"
+      - "@FREE2CONFIG - 79"
+      - "@FREE2CONFIG - 80"
+      - "@FREE2CONFIG - 81"
+      - "@FREE2CONFIG - 82"
+      - "@FREE2CONFIG - 83"
+      - "@FREE2CONFIG - 84"
+      - "@FREE2CONFIG - 85"
+      - "@FREE2CONFIG - 86"
+      - "@FREE2CONFIG - 87"
+      - "@FREE2CONFIG - 88"
+      - "@FREE2CONFIG - 89"
+      - "@FREE2CONFIG - 90"
+      - "@FREE2CONFIG - 91"
+      - "@FREE2CONFIG - 92"
+      - "@FREE2CONFIG - 93"
+      - "@FREE2CONFIG - 94"
+      - "@FREE2CONFIG - 95"
+      - "@FREE2CONFIG - 96"
+      - "@FREE2CONFIG - 97"
+      - "@FREE2CONFIG - 98"
+      - "@FREE2CONFIG - 99"
+      - "@FREE2CONFIG - 100"
+      - "@FREE2CONFIG - 101"
+      - "@FREE2CONFIG - 102"
+      - "@FREE2CONFIG - 103"
+      - "@FREE2CONFIG - 104"
+      - "@FREE2CONFIG - 105"
+      - "@FREE2CONFIG - 106"
+      - "@FREE2CONFIG - 107"
+      - "@FREE2CONFIG - 108"
+      - "@FREE2CONFIG - 109"
+      - "@FREE2CONFIG - 110"
+      - "@FREE2CONFIG - 111"
+      - "@FREE2CONFIG - 112"
+      - "@FREE2CONFIG - 113"
+      - "@FREE2CONFIG - 114"
+      - "@FREE2CONFIG - 115"
+      - "@FREE2CONFIG - 116"
+      - "@FREE2CONFIG - 117"
+      - "@FREE2CONFIG - 118"
+      - "@FREE2CONFIG - 119"
+      - "@FREE2CONFIG - 120"
+      - "@FREE2CONFIG - 1 (1)"
+      - "@FREE2CONFIG - 6_1"
+      - "@FREE2CONFIG - 11_1"
+      - "@FREE2CONFIG - 119_1"
+      - "@FREE2CONFIG - 7_1"
+      - "@FREE2CONFIG - 113_1"
+      - "@FREE2CONFIG - 6 (1)"
+      - "@FREE2CONFIG - 61_1"
+      - "@FREE2CONFIG - 27_1"
+      - "@FREE2CONFIG - 21_1"
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/LocalAreaNetwork.list
+    path: ./rules/LocalAreaNetwork.yaml
+  BanAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/BanAD.list
+    path: ./rules/BanAD.yaml
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/BanProgramAD.list
+    path: ./rules/BanProgramAD.yaml
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/GoogleCN.list
+    path: ./rules/GoogleCN.yaml
+  SteamCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Ruleset/SteamCN.list
+    path: ./rules/SteamCN.yaml
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Microsoft.list
+    path: ./rules/Microsoft.yaml
+  Apple:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Apple.list
+    path: ./rules/Apple.yaml
+  ProxyMedia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ProxyMedia.list
+    path: ./rules/ProxyMedia.yaml
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Telegram.list
+    path: ./rules/Telegram.yaml
+  ProxyLite:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ProxyLite.list
+    path: ./rules/ProxyLite.yaml
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ChinaDomain.list
+    path: ./rules/ChinaDomain.yaml
+  ChinaCompanyIp:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ChinaCompanyIp.list
+    path: ./rules/ChinaCompanyIp.yaml
 rules:
-  - DOMAIN-SUFFIX,ir,DIRECT
-  - DOMAIN-KEYWORD,sheypoor,DIRECT
-  - DOMAIN-KEYWORD,divar,DIRECT
-  - DOMAIN-SUFFIX,digikala.com,DIRECT
-  - DOMAIN-SUFFIX,aparat.com,DIRECT
-  - DOMAIN-SUFFIX,irancell.ir,DIRECT
-  - DOMAIN-SUFFIX,mci.ir,DIRECT
-  - DOMAIN-SUFFIX,shaparak.ir,DIRECT
-  - DOMAIN-SUFFIX,sep.ir,DIRECT
-  - DOMAIN-SUFFIX,bmi.ir,DIRECT
-  - DOMAIN-SUFFIX,bpm.bankmellat.ir,DIRECT
-  - DOMAIN-SUFFIX,santander.ir,DIRECT
-  - DOMAIN-KEYWORD,bank,DIRECT
-  - GEOIP,IR,DIRECT,no-resolve
-  - MATCH,🔰 انتخاب پروکسی
+  - DOMAIN-SUFFIX,nodebuf.com,🚀 节点选择
+  - RULE-SET,LocalAreaNetwork,🎯 全球直连
+  - RULE-SET,BanAD,🛑 全球拦截
+  - RULE-SET,BanProgramAD,🍃 应用净化
+  - RULE-SET,GoogleCN,🎯 全球直连
+  - RULE-SET,SteamCN,🎯 全球直连
+  - RULE-SET,Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,ProxyMedia,🌍 国外媒体
+  - RULE-SET,Telegram,📲 电报信息
+  - RULE-SET,ProxyLite,🚀 节点选择
+  - RULE-SET,ChinaDomain,🎯 全球直连
+  - RULE-SET,ChinaCompanyIp,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
