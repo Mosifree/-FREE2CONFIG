@@ -1,0 +1,37 @@
+name: Rename Configs Safely
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Replace config names
+      uses: jacobtomlinson/gha-find-replace@v3
+      with:
+        find: 'FREE2CONFIG'
+        replace: 'shahabprv'
+        include: |
+          **/*.txt
+          **/*.yaml
+          **/*.yml
+          **/*.conf
+          **/*.json
+        regex: false
+        fail_on_no_changes: false
+
+    - name: Commit and push
+      run: |
+        git config --global user.name "shahabprv"
+        git config --global user.email "shahabprv@example.com"
+        git add .
+        git diff --cached --quiet || git commit -m "Rename configs" || true
+        git push
