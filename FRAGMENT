@@ -99,7 +99,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇨🇦] [vl-tl-ws] [260925-210417.397]",
+    "remarks": "[🇨🇦] [vl-tl-ws] [260927-155730.649]",
     "log": {
       "loglevel": "warning"
     },
@@ -330,7 +330,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇨🇭] [vl-tl-ws] [260925-210328.142]",
+    "remarks": "[🇩🇪] [vl-no-ws] [260927-155615.702]",
     "log": {
       "loglevel": "warning"
     },
@@ -347,10 +347,10 @@
           "vnext": [
             {
               "address": "chatgpt.com",
-              "port": 8443,
+              "port": 2086,
               "users": [
                 {
-                  "id": "b7483fbf-94f6-4d6c-add6-ec3df4fb8015",
+                  "id": "Mahanvpn-vip1",
                   "encryption": "none",
                   "flow": "",
                   "level": 8
@@ -367,17 +367,239 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "",
-            "path": "/assets"
+            "host": "mAhaNrEaliteAm.MaHkHan.iR.",
+            "path": "/internet,?ed=2560"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇩🇪] [vl-tl-ws] [260927-155329.190]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 2053,
+              "users": [
+                {
+                  "id": "0b3e7958-e5c4-498f-ab21-b49686f95d2d",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "bold-term-4edd.mbigspot.workers.dev",
+            "path": "/"
           },
           "security": "tls",
           "tlsSettings": {
             "allowInsecure": false,
             "alpn": [
-              ""
+              "h2,http/1.1"
             ],
             "fingerprint": "chrome",
-            "serverName": "swz.yandex-api.store",
+            "serverName": "bold-term-4edd.mbigspot.workers.dev",
             "show": false
           }
         },
@@ -561,7 +783,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇩🇪] [vm-no-ws] [260925-210517.690]",
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155830.120]",
     "log": {
       "loglevel": "warning"
     },
@@ -782,7 +1004,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇩🇪] [vm-no-ws] [260925-210517.729]",
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155830.159]",
     "log": {
       "loglevel": "warning"
     },
@@ -1003,7 +1225,228 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇩🇪] [vm-no-ws] [260925-210626.517]",
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155938.865]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vmess",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 80,
+              "users": [
+                {
+                  "id": "479526cd-5011-43cf-a788-504da95e07c2",
+                  "security": "auto",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "google.whatsapp.snapp.torob.basalam.fortresshost.ir.",
+            "path": "/"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155938.902]",
     "log": {
       "loglevel": "warning"
     },
@@ -1224,7 +1667,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇩🇪] [vm-no-ws] [260925-210626.557]",
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155938.944]",
     "log": {
       "loglevel": "warning"
     },
@@ -1445,7 +1888,228 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇩🇪] [vm-no-ws] [260925-210626.637]",
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155938.984]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vmess",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 80,
+              "users": [
+                {
+                  "id": "479526cd-5011-43cf-a788-504da95e07c2",
+                  "security": "auto",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "google.whatsapp.snapp.torob.basalam.fortresshost.ir.",
+            "path": "/"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-155939.024]",
     "log": {
       "loglevel": "warning"
     },
@@ -1666,232 +2330,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇫🇷] [tr-tl-ws] [260925-210004.446]",
-    "log": {
-      "loglevel": "warning"
-    },
-    "outbounds": [
-      {
-        "mux": {
-          "concurrency": -1,
-          "enabled": false,
-          "xudpConcurrency": 8,
-          "xudpProxyUDP443": ""
-        },
-        "protocol": "trojan",
-        "settings": {
-          "servers": [
-            {
-              "address": "chatgpt.com",
-              "port": 443,
-              "password": "humanity",
-              "level": 8
-            }
-          ]
-        },
-        "streamSettings": {
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          },
-          "network": "ws",
-          "wsSettings": {
-            "host": "",
-            "path": "/assignment"
-          },
-          "security": "tls",
-          "tlsSettings": {
-            "allowInsecure": false,
-            "alpn": [
-              ""
-            ],
-            "fingerprint": "chrome",
-            "serverName": "www.ignitelimit.com",
-            "show": false
-          }
-        },
-        "tag": "proxy"
-      },
-      {
-        "protocol": "freedom",
-        "settings": {
-          "fragment": {
-            "packets": "tlshello",
-            "length": "10-20",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpKeepAliveIdle": 100,
-            "TcpNoDelay": true
-          }
-        },
-        "tag": "fragment"
-      },
-      {
-        "protocol": "dns",
-        "sockopt": {
-          "dialerProxy": "fragment"
-        },
-        "tag": "dns-out"
-      },
-      {
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP"
-        },
-        "tag": "direct"
-      },
-      {
-        "protocol": "blackhole",
-        "settings": {
-          "response": {
-            "type": "http"
-          }
-        },
-        "tag": "block"
-      }
-    ],
-    "policy": {
-      "levels": {
-        "8": {
-          "connIdle": 300,
-          "downlinkOnly": 1,
-          "handshake": 4,
-          "uplinkOnly": 1
-        }
-      },
-      "system": {
-        "statsOutboundUplink": true,
-        "statsOutboundDownlink": true
-      }
-    },
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "inboundTag": [
-            "dns-in"
-          ],
-          "outboundTag": "dns-out"
-        },
-        {
-          "ip": [
-            "8.8.8.8"
-          ],
-          "outboundTag": "direct",
-          "port": "53"
-        },
-        {
-          "outboundTag": "proxy",
-          "network": "tcp,udp"
-        }
-      ]
-    }
-  },
-  {
-    "dns": {
-      "hosts": {
-        "domain:googleapis.cn": "googleapis.com",
-        "dns.alidns.com": [
-          "223.5.5.5",
-          "223.6.6.6",
-          "2400:3200::1",
-          "2400:3200:baba::1"
-        ],
-        "one.one.one.one": [
-          "1.1.1.1",
-          "1.0.0.1",
-          "2606:4700:4700::1111",
-          "2606:4700:4700::1001"
-        ],
-        "dot.pub": [
-          "1.12.12.12",
-          "120.53.53.53"
-        ],
-        "dns.google": [
-          "8.8.8.8",
-          "8.8.4.4",
-          "2001:4860:4860::8888",
-          "2001:4860:4860::8844"
-        ],
-        "dns.quad9.net": [
-          "9.9.9.9",
-          "149.112.112.112",
-          "2620:fe::fe",
-          "2620:fe::9"
-        ],
-        "common.dot.dns.yandex.net": [
-          "77.88.8.8",
-          "77.88.8.1",
-          "2a02:6b8::feed:0ff",
-          "2a02:6b8:0:1::feed:0ff"
-        ],
-        "dns.403.online": [
-          "10.202.10.202",
-          "10.202.10.102"
-        ],
-        "free.shecan.ir": [
-          "178.22.122.100",
-          "185.51.200.2"
-        ]
-      },
-      "servers": [
-        "https://94.140.14.14/dns-query",
-        "https://free.shecan.ir/dns-query",
-        "https://dns.403.online/dns-query",
-        "10.202.10.11",
-        "10.202.10.10",
-        "85.15.1.15",
-        "85.15.1.14",
-        "1.1.1.1"
-      ],
-      "tag": "dns"
-    },
-    "inbounds": [
-      {
-        "listen": "127.0.0.1",
-        "port": 10808,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls"
-          ],
-          "enabled": true,
-          "routeOnly": true
-        },
-        "tag": "socks-in"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10809,
-        "protocol": "http",
-        "settings": {
-          "userLevel": 8
-        },
-        "tag": "http-in"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10853,
-        "protocol": "dokodemo-door",
-        "settings": {
-          "address": "chatgpt.com",
-          "network": "tcp,udp",
-          "port": 53
-        },
-        "tag": "dns-in"
-      }
-    ],
-    "remarks": "[🇭🇰] [vm-tl-ws] [260925-210655.366]",
+    "remarks": "[🇩🇪] [vm-no-ws] [260927-160002.294]",
     "log": {
       "loglevel": "warning"
     },
@@ -1908,10 +2347,10 @@
           "vnext": [
             {
               "address": "chatgpt.com",
-              "port": 443,
+              "port": 80,
               "users": [
                 {
-                  "id": "3aa71202-a099-49c1-99fc-6662f3335369",
+                  "id": "479526cd-5011-43cf-a788-504da95e07c2",
                   "security": "auto",
                   "level": 8
                 }
@@ -1927,19 +2366,10 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "yoga-suggesting-recording-calls.trycloudflare.com",
-            "path": "/3aa71202-a099-49c1-99fc-6662f3335369-vm"
+            "host": "google.whatsapp.snapp.torob.basalam.fortresshost.ir.",
+            "path": "/"
           },
-          "security": "tls",
-          "tlsSettings": {
-            "allowInsecure": false,
-            "alpn": [
-              ""
-            ],
-            "fingerprint": "chrome",
-            "serverName": "yoga-suggesting-recording-calls.trycloudflare.com",
-            "show": false
-          }
+          "security": "none"
         },
         "tag": "proxy"
       },
@@ -1947,9 +2377,9 @@
         "protocol": "freedom",
         "settings": {
           "fragment": {
-            "packets": "tlshello",
-            "length": "10-20",
-            "interval": "10-20"
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
           }
         },
         "streamSettings": {
@@ -2121,7 +2551,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇮🇱] [vl-tl-ws] [260925-210235.774]",
+    "remarks": "[🇯🇵] [vl-no-ws] [260927-155349.711]",
     "log": {
       "loglevel": "warning"
     },
@@ -2138,10 +2568,10 @@
           "vnext": [
             {
               "address": "chatgpt.com",
-              "port": 443,
+              "port": 8080,
               "users": [
                 {
-                  "id": "83b4af70-376e-427c-8c11-a025bec6b085",
+                  "id": "1f06dae9-e4cc-4aae-b026-07f7fc81fb56",
                   "encryption": "none",
                   "flow": "",
                   "level": 8
@@ -2158,19 +2588,10 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "fserver-worker-001.mapleridgeway.top",
-            "path": "/cdn/99294c014f2c7791?ed=2056"
+            "host": "spring-fire-a493.251-67d.workers.dev",
+            "path": "/pyip=ProxyIP.JP.CMLiussss.net"
           },
-          "security": "tls",
-          "tlsSettings": {
-            "allowInsecure": false,
-            "alpn": [
-              "http/1.1"
-            ],
-            "fingerprint": "chrome",
-            "serverName": "fserver-worker-001.mapleridgeway.top",
-            "show": false
-          }
+          "security": "none"
         },
         "tag": "proxy"
       },
@@ -2178,9 +2599,9 @@
         "protocol": "freedom",
         "settings": {
           "fragment": {
-            "packets": "tlshello",
-            "length": "10-20",
-            "interval": "10-20"
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
           }
         },
         "streamSettings": {
@@ -2352,7 +2773,229 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇯🇵] [vl-tl-ws] [260925-210135.170]",
+    "remarks": "[🇯🇵] [vl-no-ws] [260927-155710.805]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "d9c01a13-cb60-4c48-9fbc-ba1d3a8b5bfb",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "little-silence-1ee8.449.workers.dev",
+            "path": "/pyip=ProxyIP.JP.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇯🇵] [vl-tl-ws] [260927-155446.374]",
     "log": {
       "loglevel": "warning"
     },
@@ -2583,7 +3226,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇯🇵] [vl-tl-ws] [260925-210145.072]",
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155409.203]",
     "log": {
       "loglevel": "warning"
     },
@@ -2600,10 +3243,10 @@
           "vnext": [
             {
               "address": "chatgpt.com",
-              "port": 443,
+              "port": 8880,
               "users": [
                 {
-                  "id": "52fa48c9-1c1f-4c24-badb-ad92c18e6f92",
+                  "id": "2e9012a2-7f8c-4233-b78b-5228a9a4951b",
                   "encryption": "none",
                   "flow": "",
                   "level": 8
@@ -2620,17 +3263,2231 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "mms-static-edio-e.oppocdn.sbs",
-            "path": "/newlogin/login.do"
+            "host": "icy-breeze-126c.211-eb3.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155409.898]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "2f142ede-d555-4ceb-b005-7df31b484be3",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "bitter-pine-001c.450-e0e.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155410.851]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "2ff7eec6-da48-46ab-b770-5c83400a528c",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "icy-glade-ad0f.412.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155417.972]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "363202dd-0521-46b4-b4e2-443dfbaa2ce1",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "flat-heart-b60a.401-306.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155528.852]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "7111212b-6bc3-459a-85b4-3b13038a19f8",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "shrill-fog-67af.235-e6a.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155533.716]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "75e19908-ecd0-4c71-99d2-4f343a52a4d9",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "delicate-hall-3f93.239-23c.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155547.401]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "83744063-3ddc-4ed9-b6e5-d207ce6ed48e",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "still-pine-d15e.368-b2a.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155548.989]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "85e14d59-02ea-4642-a317-50f1e1691660",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "icy-hat-20f3.328-99f.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155638.667]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "b4883d27-3151-4adf-92b1-841c0dccd1ea",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "damp-surf-aacf.296-8ed.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇰🇷] [vl-no-ws] [260927-155730.359]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "efb0a3fe-af52-45c5-b397-1a6866d88d67",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "tight-recipe-11ad.252-068.workers.dev",
+            "path": "/pyip=ProxyIP.KR.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇳🇱] [tr-tl-ws] [260927-155314.696]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "trojan",
+        "settings": {
+          "servers": [
+            {
+              "address": "chatgpt.com",
+              "port": 443,
+              "password": "humanity",
+              "level": 8
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "www.volumeroot.com",
+            "path": "/assignment"
           },
           "security": "tls",
           "tlsSettings": {
             "allowInsecure": false,
             "alpn": [
-              ""
+              "http/1.1"
             ],
-            "fingerprint": "safari",
-            "serverName": "mms-static-rr6asx-e.oppocdn.sbs",
+            "fingerprint": "chrome",
+            "serverName": "www.volumeroot.com",
             "show": false
           }
         },
@@ -2814,7 +5671,673 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇸🇬] [vl-no-ws] [260925-210408.126]",
+    "remarks": "[🇸🇬] [vl-no-ws] [260927-155600.083]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "90f0ae37-5a8f-4649-98ad-ac5323840f93",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "silent-king-06b6.297-842.workers.dev",
+            "path": "/pyip=ProxyIP.SG.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇸🇬] [vl-no-ws] [260927-155603.690]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "94ed4a58-dcf4-43cb-afc1-f158e14ec42d",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "gentle-surf-cc74.345-604.workers.dev",
+            "path": "/pyip=ProxyIP.SG.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇸🇬] [vl-no-ws] [260927-155631.999]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "adcce8be-9de7-41bd-abcd-52939cec108b",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "fancy-haze-ab00.236-68b.workers.dev",
+            "path": "/pyip=ProxyIP.SG.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇸🇬] [vl-no-ws] [260927-155721.450]",
     "log": {
       "loglevel": "warning"
     },
@@ -3036,7 +6559,904 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-no-ws] [260925-210209.492]",
+    "remarks": "[🇸🇬] [vl-no-ws] [260927-155725.504]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "e9d9f06f-d5dd-460a-998f-52efc4732636",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "bitter-meadow-1d60.313-0f9.workers.dev",
+            "path": "/pyip=ProxyIP.SG.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇸🇬] [vl-tl-ws] [260927-155325.140]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 443,
+              "users": [
+                {
+                  "id": "06bfb14e-66cc-48ca-a429-b9301dba2f81",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "long-firefly-a226.216-ce0.workers.dev",
+            "path": "/pyip=ProxyIP.SG.CMLiussss.net"
+          },
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "fingerprint": "unsafe",
+            "serverName": "long-firefly-a226.216-ce0.workers.dev",
+            "show": false
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "tlshello",
+            "length": "10-20",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155347.064]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "1cae67cd-9f09-4c59-94e6-998ed0346c44",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "lingering-lab-91a6.54-8c3.workers.dev",
+            "path": "/pyip=ProxyIP.US.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155447.559]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "4f74ff26-25af-41d6-9d39-be46fe8ff1a8",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "steep-resonance-1ffb.274.workers.dev",
+            "path": "/pyip=ProxyIP.US.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155521.158]",
     "log": {
       "loglevel": "warning"
     },
@@ -3258,7 +7678,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-no-ws] [260925-210238.206]",
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155545.622]",
     "log": {
       "loglevel": "warning"
     },
@@ -3275,10 +7695,10 @@
           "vnext": [
             {
               "address": "chatgpt.com",
-              "port": 2095,
+              "port": 8880,
               "users": [
                 {
-                  "id": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+                  "id": "81b3fa7e-12b0-4c2b-9866-324edd26ef7f",
                   "encryption": "none",
                   "flow": "",
                   "level": 8
@@ -3295,8 +7715,8 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "llm-api.sofurry.dpdns.org",
-            "path": "/"
+            "host": "falling-lake-0b5a.192-3e2.workers.dev",
+            "path": "/pyip=ProxyIP.US.CMLiussss.net"
           },
           "security": "none"
         },
@@ -3480,7 +7900,673 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210203.534]",
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155647.861]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "bf380279-cbd5-4e55-96d1-f5a652aaf6b3",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "mute-dust-f0c4.456-8ae.workers.dev",
+            "path": "/pyip=ProxyIP.US.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155709.653]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "d8235de7-84c7-4454-b333-4d854c393929",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "fragrant-butterfly-3e76.387.workers.dev",
+            "path": "/pyip=ProxyIP.US.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vl-no-ws] [260927-155740.477]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8880,
+              "users": [
+                {
+                  "id": "fbd6ffcc-f07b-4790-898e-2a6827f6d10f",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "old-disk-b667.399-1b9.workers.dev",
+            "path": "/pyip=ProxyIP.US.CMLiussss.net"
+          },
+          "security": "none"
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "1-1",
+            "length": "3-5",
+            "interval": "5"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155405.726]",
     "log": {
       "loglevel": "warning"
     },
@@ -3500,7 +8586,7 @@
               "port": 443,
               "users": [
                 {
-                  "id": "62e499fe-458e-47da-a0c8-cae69144ebe9",
+                  "id": "2c122b00-78ed-44af-ae96-61f0786bf8a6",
                   "encryption": "none",
                   "flow": "",
                   "level": 8
@@ -3517,17 +8603,17 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "1.i0-4.De5.nEt",
-            "path": "/FbLtzaav4GSW7GPL6LUGsEkZ"
+            "host": "",
+            "path": "/"
           },
           "security": "tls",
           "tlsSettings": {
             "allowInsecure": false,
             "alpn": [
-              "http/1.1"
+              ""
             ],
             "fingerprint": "chrome",
-            "serverName": "1.I0-4.de5.Net",
+            "serverName": "dark-rain-2989.gzgshsgs.workers.dev",
             "show": false
           }
         },
@@ -3711,7 +8797,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210242.782]",
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155554.931]",
     "log": {
       "loglevel": "warning"
     },
@@ -3942,7 +9028,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210248.553]",
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155600.919]",
     "log": {
       "loglevel": "warning"
     },
@@ -3979,17 +9065,17 @@
           },
           "network": "ws",
           "wsSettings": {
-            "host": "us9.69lover.my",
+            "host": "edfc774f.69lover.site",
             "path": "/api/v2/63e9687fa53e441c/stream"
           },
           "security": "tls",
           "tlsSettings": {
             "allowInsecure": false,
             "alpn": [
-              ""
+              "http/1.1"
             ],
             "fingerprint": "chrome",
-            "serverName": "us9.69lover.my",
+            "serverName": "edfc774f.69lover.site",
             "show": false
           }
         },
@@ -4173,238 +9259,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210314.875]",
-    "log": {
-      "loglevel": "warning"
-    },
-    "outbounds": [
-      {
-        "mux": {
-          "concurrency": -1,
-          "enabled": false,
-          "xudpConcurrency": 8,
-          "xudpProxyUDP443": ""
-        },
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "chatgpt.com",
-              "port": 443,
-              "users": [
-                {
-                  "id": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-                  "encryption": "none",
-                  "flow": "",
-                  "level": 8
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          },
-          "network": "ws",
-          "wsSettings": {
-            "host": "7-M19.NoRTh-korea-pArk.KDnS.Fr",
-            "path": "/CjBjB9sn5pCvaSwScc"
-          },
-          "security": "tls",
-          "tlsSettings": {
-            "allowInsecure": false,
-            "alpn": [
-              ""
-            ],
-            "fingerprint": "chrome",
-            "serverName": "7-M19.NoRth-KOREA-park.kDNs.Fr",
-            "show": false
-          }
-        },
-        "tag": "proxy"
-      },
-      {
-        "protocol": "freedom",
-        "settings": {
-          "fragment": {
-            "packets": "tlshello",
-            "length": "10-20",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpKeepAliveIdle": 100,
-            "TcpNoDelay": true
-          }
-        },
-        "tag": "fragment"
-      },
-      {
-        "protocol": "dns",
-        "sockopt": {
-          "dialerProxy": "fragment"
-        },
-        "tag": "dns-out"
-      },
-      {
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP"
-        },
-        "tag": "direct"
-      },
-      {
-        "protocol": "blackhole",
-        "settings": {
-          "response": {
-            "type": "http"
-          }
-        },
-        "tag": "block"
-      }
-    ],
-    "policy": {
-      "levels": {
-        "8": {
-          "connIdle": 300,
-          "downlinkOnly": 1,
-          "handshake": 4,
-          "uplinkOnly": 1
-        }
-      },
-      "system": {
-        "statsOutboundUplink": true,
-        "statsOutboundDownlink": true
-      }
-    },
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "inboundTag": [
-            "dns-in"
-          ],
-          "outboundTag": "dns-out"
-        },
-        {
-          "ip": [
-            "8.8.8.8"
-          ],
-          "outboundTag": "direct",
-          "port": "53"
-        },
-        {
-          "outboundTag": "proxy",
-          "network": "tcp,udp"
-        }
-      ]
-    }
-  },
-  {
-    "dns": {
-      "hosts": {
-        "domain:googleapis.cn": "googleapis.com",
-        "dns.alidns.com": [
-          "223.5.5.5",
-          "223.6.6.6",
-          "2400:3200::1",
-          "2400:3200:baba::1"
-        ],
-        "one.one.one.one": [
-          "1.1.1.1",
-          "1.0.0.1",
-          "2606:4700:4700::1111",
-          "2606:4700:4700::1001"
-        ],
-        "dot.pub": [
-          "1.12.12.12",
-          "120.53.53.53"
-        ],
-        "dns.google": [
-          "8.8.8.8",
-          "8.8.4.4",
-          "2001:4860:4860::8888",
-          "2001:4860:4860::8844"
-        ],
-        "dns.quad9.net": [
-          "9.9.9.9",
-          "149.112.112.112",
-          "2620:fe::fe",
-          "2620:fe::9"
-        ],
-        "common.dot.dns.yandex.net": [
-          "77.88.8.8",
-          "77.88.8.1",
-          "2a02:6b8::feed:0ff",
-          "2a02:6b8:0:1::feed:0ff"
-        ],
-        "dns.403.online": [
-          "10.202.10.202",
-          "10.202.10.102"
-        ],
-        "free.shecan.ir": [
-          "178.22.122.100",
-          "185.51.200.2"
-        ]
-      },
-      "servers": [
-        "https://94.140.14.14/dns-query",
-        "https://free.shecan.ir/dns-query",
-        "https://dns.403.online/dns-query",
-        "10.202.10.11",
-        "10.202.10.10",
-        "85.15.1.15",
-        "85.15.1.14",
-        "1.1.1.1"
-      ],
-      "tag": "dns"
-    },
-    "inbounds": [
-      {
-        "listen": "127.0.0.1",
-        "port": 10808,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls"
-          ],
-          "enabled": true,
-          "routeOnly": true
-        },
-        "tag": "socks-in"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10809,
-        "protocol": "http",
-        "settings": {
-          "userLevel": 8
-        },
-        "tag": "http-in"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10853,
-        "protocol": "dokodemo-door",
-        "settings": {
-          "address": "chatgpt.com",
-          "network": "tcp,udp",
-          "port": 53
-        },
-        "tag": "dns-in"
-      }
-    ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210339.537]",
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155652.889]",
     "log": {
       "loglevel": "warning"
     },
@@ -4635,7 +9490,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210353.017]",
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155706.003]",
     "log": {
       "loglevel": "warning"
     },
@@ -4866,7 +9721,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vl-tl-ws] [260925-210416.563]",
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155729.817]",
     "log": {
       "loglevel": "warning"
     },
@@ -5097,7 +9952,468 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vm-tl-ws] [260925-210631.334]",
+    "remarks": "[🇺🇸] [vl-tl-ws] [260927-155742.137]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8443,
+              "users": [
+                {
+                  "id": "fdc48be3-a615-41ac-8bd1-ed844c931048",
+                  "encryption": "none",
+                  "flow": "",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "edgetunnel-4uw.pages.dev",
+            "path": "/fp=chrome"
+          },
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              ""
+            ],
+            "fingerprint": "chrome",
+            "serverName": "edgetunnel-4uw.pages.dev",
+            "show": false
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "tlshello",
+            "length": "10-20",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vm-tl-ws] [260927-155758.367]",
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "vmess",
+        "settings": {
+          "vnext": [
+            {
+              "address": "chatgpt.com",
+              "port": 8443,
+              "users": [
+                {
+                  "id": "60441548-b68e-43b2-8191-e3b884be4b3c",
+                  "security": "auto",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          },
+          "network": "ws",
+          "wsSettings": {
+            "host": "",
+            "path": "/lMnsZUN4/"
+          },
+          "security": "tls",
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              ""
+            ],
+            "fingerprint": "",
+            "serverName": "v2ray1.dozapp.xyz",
+            "show": false
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "fragment": {
+            "packets": "tlshello",
+            "length": "10-20",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpKeepAliveIdle": 100,
+            "TcpNoDelay": true
+          }
+        },
+        "tag": "fragment"
+      },
+      {
+        "protocol": "dns",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tag": "dns-out"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "outboundTag": "proxy",
+          "network": "tcp,udp"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ],
+        "dns.403.online": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "free.shecan.ir": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ]
+      },
+      "servers": [
+        "https://94.140.14.14/dns-query",
+        "https://free.shecan.ir/dns-query",
+        "https://dns.403.online/dns-query",
+        "10.202.10.11",
+        "10.202.10.10",
+        "85.15.1.15",
+        "85.15.1.14",
+        "1.1.1.1"
+      ],
+      "tag": "dns"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": true
+        },
+        "tag": "socks-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http-in"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10853,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "chatgpt.com",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "remarks": "[🇺🇸] [vm-tl-ws] [260927-155944.113]",
     "log": {
       "loglevel": "warning"
     },
@@ -5327,7 +10643,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vm-tl-ws] [260925-210646.514]",
+    "remarks": "[🇺🇸] [vm-tl-ws] [260927-155959.844]",
     "log": {
       "loglevel": "warning"
     },
@@ -5557,7 +10873,7 @@
         "tag": "dns-in"
       }
     ],
-    "remarks": "[🇺🇸] [vm-tl-ws] [260925-210658.658]",
+    "remarks": "[🇺🇸] [vm-tl-ws] [260927-160012.230]",
     "log": {
       "loglevel": "warning"
     },
